@@ -1,0 +1,319 @@
+
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ArrowRight, Download, ExternalLink, ChevronRight, ArrowUpRight, Briefcase, GraduationCap, Trophy, Cpu, Code, Box, Palette, Share2, Calendar, Video } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { personalInfo, services, projects, experience, skills, clients, education, awards } from '../data/content';
+import PageTransition from '../components/layout/PageTransition';
+
+const iconMap: Record<string, React.ReactNode> = {
+  Cpu: <Cpu size={24} />,
+  Code: <Code size={24} />,
+  Box: <Box size={24} />,
+  Palette: <Palette size={24} />,
+  Share2: <Share2 size={24} />,
+  Calendar: <Calendar size={24} />,
+  Video: <Video size={24} />,
+};
+
+const Home = () => {
+  const [activeTab, setActiveTab] = useState('Experience');
+
+  return (
+    <PageTransition>
+      <div className="bg-white text-black dark:bg-black dark:text-white font-sans selection:bg-blue-500 selection:text-white">
+      
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-5xl"
+        >
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-12">
+            I'm <span className="text-blue-600 dark:text-blue-500">Adib</span>. <br />
+            AI Architect. <br />
+            <span className="text-gray-400 dark:text-zinc-600">Creative Tech.</span> <br />
+            Builder.
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-12">
+            Co-Founder of <span className="text-black dark:text-white font-semibold">Green D</span>. 
+            Previously founded <span className="text-black dark:text-white font-semibold">MCT Labs</span>. 
+            Merging machine learning with cinematic design to build intelligent futures.
+          </p>
+
+          <div className="flex flex-wrap gap-6">
+            <Link 
+              to="/projects" 
+              className="group flex items-center gap-2 text-lg font-bold border-b-2 border-black dark:border-white pb-1 hover:text-blue-600 dark:hover:text-blue-500 hover:border-blue-600 dark:hover:border-blue-500 transition-all"
+            >
+              View Projects <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+            </Link>
+            <Link 
+              to="/contact" 
+              className="group flex items-center gap-2 text-lg font-bold border-b-2 border-transparent pb-1 hover:text-blue-600 dark:hover:text-blue-500 transition-all text-gray-500 dark:text-gray-400"
+            >
+              Contact Me
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Marquee Clients */}
+      <section className="py-12 border-y border-gray-100 dark:border-zinc-900 overflow-hidden bg-gray-50 dark:bg-zinc-950/50">
+        <div className="relative flex overflow-hidden group">
+          <div className="flex animate-marquee whitespace-nowrap gap-20 items-center">
+            {[...clients, ...clients, ...clients].map((client, index) => (
+               <span key={index} className="text-2xl md:text-4xl font-bold text-gray-300 dark:text-zinc-800 uppercase tracking-tighter hover:text-black dark:hover:text-white transition-colors cursor-default">
+                  {client.name}
+               </span>
+            ))}
+          </div>
+          <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap gap-20 items-center ml-20">
+            {[...clients, ...clients, ...clients].map((client, index) => (
+               <span key={`clone-${index}`} className="text-2xl md:text-4xl font-bold text-gray-300 dark:text-zinc-800 uppercase tracking-tighter hover:text-black dark:hover:text-white transition-colors cursor-default">
+                  {client.name}
+               </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What I Do - Grid Layout */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="mb-20">
+          <h2 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-4">Curious?</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-black dark:text-white">What I Do</h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <div 
+              key={index}
+              className="p-10 rounded-3xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-100 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-xl hover:border-blue-500/30 transition-all duration-500 group"
+            >
+              <div className="w-14 h-14 bg-white dark:bg-zinc-800 rounded-2xl flex items-center justify-center mb-8 text-blue-600 dark:text-blue-500 shadow-sm border border-gray-100 dark:border-zinc-700 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                {iconMap[service.icon] || <Box size={24} />}
+              </div>
+              <h4 className="text-2xl font-bold mb-4 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
+                {service.title}
+              </h4>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Selected Work - Large Cards */}
+      <section className="py-32 bg-gray-50 dark:bg-zinc-950 border-t border-gray-100 dark:border-zinc-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-end mb-20">
+            <div>
+              <h2 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-4">Portfolio</h2>
+              <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-black dark:text-white">Selected Work</h3>
+            </div>
+            <Link to="/projects" className="hidden md:flex items-center gap-2 text-lg font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+              View All <ArrowUpRight size={20} />
+            </Link>
+          </div>
+
+          <div className="space-y-32">
+            {projects.slice(0, 3).map((project, index) => (
+              <div key={project.id} className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 md:gap-24 items-center group`}>
+                <div className="w-full md:w-1/2">
+                  <Link to={`/projects/${project.id}`} className="block overflow-hidden rounded-xl">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out transform group-hover:scale-105"
+                    />
+                  </Link>
+                </div>
+                <div className="w-full md:w-1/2">
+                  <span className="text-blue-600 dark:text-blue-500 font-mono text-sm uppercase tracking-wider mb-4 block">{project.category}</span>
+                  <h3 className="text-4xl font-bold mb-6 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
+                    <Link to={`/projects/${project.id}`}>{project.title}</Link>
+                  </h3>
+                  <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                    {project.summary}
+                  </p>
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {project.tags.slice(0, 3).map(tag => (
+                      <span key={tag} className="px-3 py-1 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-full text-sm text-gray-500 dark:text-gray-400">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <Link to={`/projects/${project.id}`} className="inline-flex items-center gap-2 font-bold text-black dark:text-white border-b border-black dark:border-white pb-1 hover:text-blue-600 dark:hover:text-blue-500 hover:border-blue-600 dark:hover:border-blue-500 transition-colors">
+                    View Case Study <ArrowRight size={18} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-20 text-center md:hidden">
+            <Link to="/projects" className="inline-flex items-center gap-2 font-bold text-lg">
+              View All Projects <ArrowRight size={20} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Life At A Glance (Experience, Education, Achievements) */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="mb-20 text-center">
+           <h2 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-4">Resume</h2>
+           <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-black dark:text-white">Life At A Glance</h3>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-16">
+          {['Experience', 'Education', 'Achievements'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`text-lg md:text-xl font-bold transition-all relative pb-2 ${
+                activeTab === tab 
+                  ? 'text-black dark:text-white' 
+                  : 'text-gray-400 hover:text-gray-600 dark:text-zinc-500 dark:hover:text-zinc-300'
+              }`}
+            >
+              {tab}
+              {activeTab === tab && (
+                <motion.div 
+                  layoutId="activeTab" 
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-black dark:bg-white" 
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
+        <div className="min-h-[400px]">
+          <AnimatePresence mode="wait">
+            {activeTab === 'Experience' && (
+              <motion.div 
+                key="experience"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="space-y-16"
+              >
+                <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Professional Journey</h4>
+                {experience.map((job, index) => (
+                  <div key={index} className="group">
+                    <h5 className="text-xl font-bold text-black dark:text-white mb-1">{job.company}</h5>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+                      <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{job.role}</span>
+                      <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
+                      <span className="text-sm font-mono text-gray-500">{job.period}</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {job.description.map((desc, i) => (
+                        <li key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed text-base flex items-start gap-3">
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-zinc-700 shrink-0" />
+                          {desc}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
+            {activeTab === 'Education' && (
+              <motion.div 
+                key="education"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="space-y-16"
+              >
+                <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Education</h4>
+                {education.map((edu, index) => (
+                  <div key={index} className="group">
+                    <h5 className="text-xl font-bold text-black dark:text-white mb-1">{edu.degree}</h5>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+                      <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{edu.institution}</span>
+                      <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
+                      <span className="text-sm font-mono text-gray-500">{edu.period}</span>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
+                      {edu.details}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
+            {activeTab === 'Achievements' && (
+              <motion.div 
+                key="achievements"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="space-y-16"
+              >
+                <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Achievements</h4>
+                {awards.map((award, index) => (
+                  <div key={index} className="group">
+                    <div className="mb-2">
+                      <h5 className="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors mb-1">
+                        {award.title}
+                      </h5>
+                      <span className="text-sm font-mono text-gray-500">{award.year}</span>
+                    </div>
+                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 mt-2 ${
+                      award.result === 'Champion' || award.result === 'Winner' 
+                        ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-500' 
+                        : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                    }`}>
+                      {award.result}
+                    </span>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
+                      {award.context}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* Contact - Big Type */}
+      <section className="py-32 bg-blue-600 dark:bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-12">
+            Let's build <br /> the future.
+          </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link 
+              to="/contact" 
+              className="px-10 py-5 bg-white text-blue-600 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors w-full sm:w-auto"
+            >
+              Start a Project
+            </Link>
+            <a 
+              href={`mailto:${personalInfo.email}`} 
+              className="px-10 py-5 bg-transparent border-2 border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-colors w-full sm:w-auto"
+            >
+              {personalInfo.email}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      </div>
+    </PageTransition>
+  );
+};
+
+export default Home;

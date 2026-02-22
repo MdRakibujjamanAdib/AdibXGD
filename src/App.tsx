@@ -1,0 +1,45 @@
+
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import ProjectDetails from './pages/ProjectDetails';
+import Gallery from './pages/Gallery';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Achievements from './pages/Achievements';
+import { AnimatePresence } from 'motion/react';
+
+function App() {
+  const location = useLocation();
+
+  // Scroll to top on route change
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return (
+    <div className="flex flex-col min-h-screen bg-white text-black dark:bg-black dark:text-white font-sans selection:bg-emerald-500/30 selection:text-emerald-800 dark:selection:text-emerald-200">
+      <Navbar />
+      <main className="flex-grow">
+        <AnimatePresence mode="wait">
+          {/* @ts-expect-error: Routes key prop is required for AnimatePresence to work correctly */}
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetails />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/achievements" element={<Achievements />} />
+          </Routes>
+        </AnimatePresence>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
