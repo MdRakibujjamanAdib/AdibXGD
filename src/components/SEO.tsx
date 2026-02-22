@@ -18,10 +18,26 @@ export default function SEO({
     image = "https://adibx.me/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg",
     url = "https://adibx.me"
 }: SEOProps) {
-    const siteTitle = `${title} | ${name} - AI Architect & Creative Technologist`;
+    // Keep title under 60 characters to prevent Google truncation
+    const siteTitle = title === "Home"
+        ? `${name} | Web Developer & 3D Artist`
+        : `${title} | ${name} - Developer`;
 
-    // Keywords explicitly requested by user to be highlighted for SEO
-    const keywords = "Md Rakibujjaman Adib, Web Developer in Dhaka, Graphic Designer in Dhaka, Video Editor in Dhaka, Web Developer Bangladesh, Graphic Designer Bangladesh, Video Editor Bangladesh, 3D Artist, AI Architect, Creative Technologist, Green D Co-Founder, MCT Labs";
+    // High-impact keywords for Dhaka local search and AI parsing
+    const keywordArray = [
+        "Md Rakibujjaman Adib",
+        "Web Developer in Dhaka",
+        "Graphic Designer in Dhaka",
+        "Video Editor in Dhaka",
+        "Top Web Developer Bangladesh",
+        "Graphic Designer Bangladesh",
+        "Video Editor Bangladesh",
+        "3D Artist Dhaka",
+        "AI Architect",
+        "Creative Technologist",
+        "MCT Labs Founder"
+    ];
+    const keywords = keywordArray.join(", ");
 
     return (
         <Helmet>
