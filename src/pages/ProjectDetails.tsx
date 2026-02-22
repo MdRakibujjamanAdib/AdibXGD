@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { ArrowLeft, ExternalLink, Github, Layers, Code, CheckCircle, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data/projects';
 import PageTransition from '../components/layout/PageTransition';
+import SEO from '../components/SEO';
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -23,8 +24,14 @@ const ProjectDetails = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title={`${project.title} - Project Case Study`}
+        description={project.summary}
+        image={project.thumbnail}
+        type="article"
+      />
       <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -45,7 +52,7 @@ const ProjectDetails = () => {
                   </span>
                 )}
               </div>
-              
+
               <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter text-black dark:text-white leading-[0.9]">{project.title}</h1>
             </div>
             <div className="flex flex-col justify-end">
@@ -59,17 +66,17 @@ const ProjectDetails = () => {
           <div className="w-full rounded-3xl overflow-hidden mb-24 bg-gray-100 dark:bg-zinc-900">
             {project.videoUrl ? (
               <div className="aspect-video w-full">
-                <iframe 
-                  src={project.videoUrl} 
+                <iframe
+                  src={project.videoUrl}
                   title={project.title}
                   className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
             ) : (
               <div className="aspect-video w-full">
-                 <img src={project.thumbnail} alt={project.title} className="w-full h-full object-cover" />
+                <img src={project.thumbnail} alt={project.title} className="w-full h-full object-cover" />
               </div>
             )}
           </div>
@@ -115,9 +122,9 @@ const ProjectDetails = () => {
                   <h3 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-6">Links</h3>
                   <div className="space-y-4">
                     {project.demoUrl && (
-                      <a 
-                        href={project.demoUrl} 
-                        target="_blank" 
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="w-full flex items-center justify-between bg-black text-white dark:bg-white dark:text-black px-6 py-4 rounded-xl font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors group"
                       >
@@ -125,9 +132,9 @@ const ProjectDetails = () => {
                       </a>
                     )}
                     {project.repoUrl && (
-                      <a 
-                        href={project.repoUrl} 
-                        target="_blank" 
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="w-full flex items-center justify-between bg-transparent border border-gray-200 dark:border-zinc-800 text-black dark:text-white px-6 py-4 rounded-xl font-bold hover:bg-gray-50 dark:hover:bg-zinc-900 transition-colors group"
                       >

@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react';
 import { personalInfo } from '../data/content';
 import PageTransition from '../components/layout/PageTransition';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -31,13 +32,17 @@ const Contact = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="Contact"
+        description="Get in touch with Md Rakibujjaman Adib for AI architecture, 3D design, or full-stack web development projects."
+      />
       <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             {/* Left Column */}
             <div>
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-6xl md:text-8xl font-bold mb-12 tracking-tighter text-black dark:text-white leading-[0.9]"
@@ -45,7 +50,7 @@ const Contact = () => {
                 Let's <br />
                 <span className="text-blue-600 dark:text-blue-500">Talk.</span>
               </motion.h1>
-              
+
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-16 leading-relaxed max-w-lg">
                 Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or just having a chat.
               </p>
@@ -57,7 +62,7 @@ const Contact = () => {
                     {personalInfo.email}
                   </a>
                 </div>
-                
+
                 <div>
                   <h3 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-2">Socials</h3>
                   <div className="flex gap-6">
@@ -71,7 +76,7 @@ const Contact = () => {
             {/* Right Column - Minimal Form */}
             <div className="lg:pt-8">
               {isSubmitted ? (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-gray-50 dark:bg-zinc-900 p-12 rounded-3xl text-center"
@@ -81,7 +86,7 @@ const Contact = () => {
                   </div>
                   <h3 className="text-3xl font-bold mb-4 text-black dark:text-white">Message Sent</h3>
                   <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">I'll get back to you within 24 hours.</p>
-                  <button 
+                  <button
                     onClick={() => setIsSubmitted(false)}
                     className="text-blue-600 hover:text-blue-500 font-bold text-lg"
                   >

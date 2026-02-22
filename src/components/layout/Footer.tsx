@@ -28,7 +28,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
+
           <div className="flex gap-16 flex-wrap">
             <div>
               <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-zinc-600 mb-6">Sitemap</h3>
@@ -51,10 +51,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
-        <div className="mt-20 pt-8 border-t border-gray-100 dark:border-zinc-900 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 dark:text-gray-600">
+
+        <div className="mt-20 pt-8 border-t border-gray-100 dark:border-zinc-900 flex flex-col md:flex-row justify-center items-center text-sm text-gray-400 dark:text-gray-600">
           <p>&copy; {new Date().getFullYear()} Md Rakibujjaman Adib.</p>
-          <p className="mt-2 md:mt-0">Crafted with precision.</p>
         </div>
       </div>
     </footer>

@@ -2,18 +2,23 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Download, Mail, MapPin, Phone, ArrowRight } from 'lucide-react';
-import { personalInfo, skills } from '../data/content';
+import { personalInfo, experience, education, skills, certifications } from '../data/content';
 import PageTransition from '../components/layout/PageTransition';
+import SEO from '../components/SEO';
 
 const About = () => {
   return (
     <PageTransition>
+      <SEO
+        title="About Me"
+        description="Learn more about Md Rakibujjaman Adib, his background in Multimedia & Creative Technology, and his journey as an AI Architect and founder."
+      />
       <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Intro */}
           <section className="mb-32">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-6xl md:text-8xl font-bold mb-12 tracking-tighter text-black dark:text-white leading-[0.9]"
@@ -21,7 +26,7 @@ const About = () => {
               Creative <br />
               Technologist.
             </motion.h1>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="md:col-span-2">
                 <div className="prose prose-xl text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -32,14 +37,14 @@ const About = () => {
                     Alongside 3D, I build web products and AI tools. I’m the Co-Founder of <span className="text-black dark:text-white font-bold">Green D</span>, leading sustainable tech innovation, and previously founded <span className="text-black dark:text-white font-bold">MCT Labs</span>, an AI platform for creative professionals. My goal is to keep improving every month — art quality, code efficiency, and user experience.
                   </p>
                 </div>
-                
+
                 <div className="mt-12">
                   <a href="#" className="inline-flex items-center gap-2 text-lg font-bold border-b-2 border-black dark:border-white pb-1 hover:text-blue-600 dark:hover:text-blue-500 hover:border-blue-600 dark:hover:border-blue-500 transition-colors">
                     Download Resume <Download size={20} />
                   </a>
                 </div>
               </div>
-              
+
               <div className="space-y-8">
                 <div>
                   <h3 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-2">Location</h3>

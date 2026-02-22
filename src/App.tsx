@@ -4,9 +4,10 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import Projects from './pages/Projects';
+import Projects from './pages/Update/Projects';
 import ProjectDetails from './pages/ProjectDetails';
-import Blogs from './pages/Blogs';
+import Blogs from './pages/Update/Blogs';
+import BlogDetails from './pages/BlogDetails';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Achievements from './pages/Achievements';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetails />} />
             <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:slug" element={<BlogDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/achievements" element={<Achievements />} />

@@ -22,12 +22,12 @@ export const personalInfo = {
 };
 
 export const clients = [
-  { name: "Garena", logo: "https://picsum.photos/seed/garena/200/100" },
-  { name: "MCT Labs", logo: "https://picsum.photos/seed/mct/200/100" },
-  { name: "Green D", logo: "https://picsum.photos/seed/greend/200/100" },
-  { name: "Tech Corp", logo: "https://picsum.photos/seed/tech/200/100" },
-  { name: "Design Studio", logo: "https://picsum.photos/seed/design/200/100" },
-  { name: "AI Systems", logo: "https://picsum.photos/seed/ai/200/100" },
+  { name: "Garena", logo: "https://official.garena.com/sg/v1/assets/garena_logo_v.svg" },
+  { name: "MCT Labs", logo: "https://mctlabs-git-main-md-rakibujjaman-adibs-projects.vercel.app/logo.svg" },
+  { name: "Green D", logo: "https://www.greend.tech/logow.svg" },
+  { name: "MCT Department", logo: "https://scontent.fdac177-1.fna.fbcdn.net/v/t39.30808-6/305472816_536569178283018_6957104917902120149_n.png?_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=7cXn38HI8l0Q7kNvwHUCmON&_nc_oc=AdmjhQ4PffmgvRz0z3VSBwviA9-ZxZM3NuoIGjM_0YQpJXhLd49pVT0ONH8cWNPMnto&_nc_zt=23&_nc_ht=scontent.fdac177-1.fna&_nc_gid=QFGAsZHgWQzfTsN4ro6Lgw&oh=00_AfuObWDHiHqvYvEeD3w9Kk1aExti5qC2raQmn5HLkTI69w&oe=69A145E0" },
+  { name: "ITM Department", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5HyXmrPjkcwXIM0FGA_tuqu7QhSNcY5f80g&s" },
+  { name: "ITM Club", logo: "https://scontent.fdac177-2.fna.fbcdn.net/v/t39.30808-6/313916515_123690643847285_7695700919627697365_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=sspvdBHRp0YQ7kNvwFXqU9C&_nc_oc=AdnJznifRwAm5c4O6oKmn3A9MSR_bGewAb13nNSCmxZJPfHMicCuF4-4pYleJrt3R7Q&_nc_zt=23&_nc_ht=scontent.fdac177-2.fna&_nc_gid=eyraQqJqFGOCekfO4p5sVQ&oh=00_AfuE7tVq7-Nb3P91_adz3TdiWKCF-hUf6P0dQO49RJS6GQ&oe=69A13916" },
 ];
 
 export const services = [
@@ -42,9 +42,14 @@ export const services = [
     icon: "Code",
   },
   {
-    title: "3D & Motion Graphics",
-    description: "Creating stunning 3D visuals, motion graphics, and graphic designs that captivate audiences.",
+    title: "3D & Animation",
+    description: "Creating stunning 3D visuals and immersive animations that captivate audiences.",
     icon: "Box",
+  },
+  {
+    title: "Motion Graphics",
+    description: "Designing dynamic motion graphics and visual effects to tell compelling stories.",
+    icon: "Layers",
   },
   {
     title: "Branding & Visual Identity",
@@ -52,18 +57,8 @@ export const services = [
     icon: "Palette",
   },
   {
-    title: "Social Media Management",
-    description: "Strategizing and managing social media presence to grow communities and engagement.",
-    icon: "Share2",
-  },
-  {
-    title: "Event Management",
-    description: "Planning and executing memorable tech and creative events with precision.",
-    icon: "Calendar",
-  },
-  {
-    title: "Photo & Video Editing",
-    description: "Professional post-production for photography and videography to tell compelling stories.",
+    title: "Video Editing",
+    description: "Professional post-production for videography to tell compelling stories.",
     icon: "Video",
   },
 ];
@@ -297,32 +292,4 @@ export const research = [
   },
 ];
 
-export const blogs = [
-  {
-    id: 1,
-    title: "The Future of AI in Creative Industries",
-    date: "October 15, 2023",
-    category: "AI & Design",
-    summary: "Exploring how artificial intelligence is reshaping the landscape of creative work, from automated design tools to generative art.",
-    image: "https://picsum.photos/seed/blog1/800/600",
-    link: "#"
-  },
-  {
-    id: 2,
-    title: "Building Sustainable Tech Solutions",
-    date: "September 28, 2023",
-    category: "Sustainability",
-    summary: "A deep dive into the principles of green technology and how we can build software that reduces carbon footprints.",
-    image: "https://picsum.photos/seed/blog2/800/600",
-    link: "#"
-  },
-  {
-    id: 3,
-    title: "From Concept to Launch: The Startup Journey",
-    date: "August 10, 2023",
-    category: "Entrepreneurship",
-    summary: "Lessons learned from co-founding Green D and navigating the challenges of early-stage startups.",
-    image: "https://picsum.photos/seed/blog3/800/600",
-    link: "#"
-  }
-];
+
