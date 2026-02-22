@@ -6,7 +6,7 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ProjectDetails from './pages/ProjectDetails';
-import Gallery from './pages/Gallery';
+import Blogs from './pages/Blogs';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Achievements from './pages/Achievements';
@@ -30,7 +30,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetails />} />
-            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/blogs" element={<Blogs />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/achievements" element={<Achievements />} />

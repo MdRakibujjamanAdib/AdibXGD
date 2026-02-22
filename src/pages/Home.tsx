@@ -1,10 +1,11 @@
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 import { ArrowRight, Download, ExternalLink, ChevronRight, ArrowUpRight, Briefcase, GraduationCap, Trophy, Cpu, Code, Box, Palette, Share2, Calendar, Video } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { personalInfo, services, projects, experience, skills, clients, education, awards } from '../data/content';
 import PageTransition from '../components/layout/PageTransition';
+import { useNavbar } from '../context/NavbarContext';
 
 const iconMap: Record<string, React.ReactNode> = {
   Cpu: <Cpu size={24} />,
@@ -17,7 +18,71 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState('Experience');
+  const { setNavMode, setActiveSection } = useNavbar();
+  const lifeAtAGlanceRef = useRef<HTMLElement>(null);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100; 
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  useEffect(() => {
+    const handleCustomScroll = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      scrollToSection(customEvent.detail);
+    };
+
+    window.addEventListener('scrollToSection', handleCustomScroll);
+    return () => window.removeEventListener('scrollToSection', handleCustomScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['experience', 'education', 'achievements'];
+      
+      // Check if we're at the bottom of the page
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        setActiveSection('Achievements');
+      } else {
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 200 && rect.bottom >= 200) {
+              setActiveSection(section.charAt(0).toUpperCase() + section.slice(1));
+            }
+          }
+        }
+      }
+
+      // Handle Navbar Mode
+      if (lifeAtAGlanceRef.current) {
+        const rect = lifeAtAGlanceRef.current.getBoundingClientRect();
+        
+        // When the section is near the top (taking into account navbar height ~80px)
+        if (rect.top <= 100 && rect.bottom > 100) {
+           setNavMode('life-at-a-glance');
+        } else {
+           setNavMode('default');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      setNavMode('default'); // Reset on unmount
+    };
+  }, [setNavMode]);
 
   return (
     <PageTransition>
@@ -165,126 +230,83 @@ const Home = () => {
       </section>
 
       {/* Life At A Glance (Experience, Education, Achievements) */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className="mb-20 text-center">
-           <h2 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-4">Resume</h2>
+      <section ref={lifeAtAGlanceRef} className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+        <div className="mb-12 text-center">
            <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-black dark:text-white">Life At A Glance</h3>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-16">
-          {['Experience', 'Education', 'Achievements'].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`text-lg md:text-xl font-bold transition-all relative pb-2 ${
-                activeTab === tab 
-                  ? 'text-black dark:text-white' 
-                  : 'text-gray-400 hover:text-gray-600 dark:text-zinc-500 dark:hover:text-zinc-300'
-              }`}
-            >
-              {tab}
-              {activeTab === tab && (
-                <motion.div 
-                  layoutId="activeTab" 
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-black dark:bg-white" 
-                />
-              )}
-            </button>
-          ))}
-        </div>
-
-        <div className="min-h-[400px]">
-          <AnimatePresence mode="wait">
-            {activeTab === 'Experience' && (
-              <motion.div 
-                key="experience"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="space-y-16"
-              >
-                <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Professional Journey</h4>
-                {experience.map((job, index) => (
-                  <div key={index} className="group">
-                    <h5 className="text-xl font-bold text-black dark:text-white mb-1">{job.company}</h5>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-                      <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{job.role}</span>
-                      <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
-                      <span className="text-sm font-mono text-gray-500">{job.period}</span>
-                    </div>
-                    <ul className="space-y-2">
-                      {job.description.map((desc, i) => (
-                        <li key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed text-base flex items-start gap-3">
-                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-zinc-700 shrink-0" />
-                          {desc}
-                        </li>
-                      ))}
-                    </ul>
+        <div className="space-y-32 max-w-4xl mx-auto">
+          {/* Experience Section */}
+          <div id="experience" className="scroll-mt-48">
+            <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Professional Journey</h4>
+            <div className="space-y-16">
+              {experience.map((job, index) => (
+                <div key={index} className="group">
+                  <h5 className="text-xl font-bold text-black dark:text-white mb-1">{job.company}</h5>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+                    <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{job.role}</span>
+                    <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
+                    <span className="text-sm font-mono text-gray-500">{job.period}</span>
                   </div>
-                ))}
-              </motion.div>
-            )}
+                  <ul className="space-y-2">
+                    {job.description.map((desc, i) => (
+                      <li key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed text-base flex items-start gap-3">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-zinc-700 shrink-0" />
+                        {desc}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            {activeTab === 'Education' && (
-              <motion.div 
-                key="education"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="space-y-16"
-              >
-                <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Education</h4>
-                {education.map((edu, index) => (
-                  <div key={index} className="group">
-                    <h5 className="text-xl font-bold text-black dark:text-white mb-1">{edu.degree}</h5>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-                      <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{edu.institution}</span>
-                      <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
-                      <span className="text-sm font-mono text-gray-500">{edu.period}</span>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
-                      {edu.details}
-                    </p>
+          {/* Education Section */}
+          <div id="education" className="scroll-mt-48">
+            <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Education</h4>
+            <div className="space-y-16">
+              {education.map((edu, index) => (
+                <div key={index} className="group">
+                  <h5 className="text-xl font-bold text-black dark:text-white mb-1">{edu.degree}</h5>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+                    <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{edu.institution}</span>
+                    <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
+                    <span className="text-sm font-mono text-gray-500">{edu.period}</span>
                   </div>
-                ))}
-              </motion.div>
-            )}
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
+                    {edu.details}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            {activeTab === 'Achievements' && (
-              <motion.div 
-                key="achievements"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="space-y-16"
-              >
-                <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Achievements</h4>
-                {awards.map((award, index) => (
-                  <div key={index} className="group">
-                    <div className="mb-2">
-                      <h5 className="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors mb-1">
-                        {award.title}
-                      </h5>
-                      <span className="text-sm font-mono text-gray-500">{award.year}</span>
-                    </div>
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 mt-2 ${
-                      award.result === 'Champion' || award.result === 'Winner' 
-                        ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-500' 
-                        : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
-                    }`}>
-                      {award.result}
-                    </span>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
-                      {award.context}
-                    </p>
+          {/* Achievements Section */}
+          <div id="achievements" className="scroll-mt-48">
+            <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Achievements</h4>
+            <div className="space-y-16">
+              {awards.map((award, index) => (
+                <div key={index} className="group">
+                  <div className="mb-2">
+                    <h5 className="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors mb-1">
+                      {award.title}
+                    </h5>
+                    <span className="text-sm font-mono text-gray-500">{award.year}</span>
                   </div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 mt-2 ${
+                    award.result === 'Champion' || award.result === 'Winner' 
+                      ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-500' 
+                      : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                  }`}>
+                    {award.result}
+                  </span>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
+                    {award.context}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -292,7 +314,7 @@ const Home = () => {
       <section className="py-32 bg-blue-600 dark:bg-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-12">
-            Let's build <br /> the future.
+            Let's build the future.
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link 

@@ -296,3 +296,33 @@ export const research = [
     description: "A proposed architecture for a mobile application driving sustainable behavior change.",
   },
 ];
+
+export const blogs = [
+  {
+    id: 1,
+    title: "The Future of AI in Creative Industries",
+    date: "October 15, 2023",
+    category: "AI & Design",
+    summary: "Exploring how artificial intelligence is reshaping the landscape of creative work, from automated design tools to generative art.",
+    image: "https://picsum.photos/seed/blog1/800/600",
+    link: "#"
+  },
+  {
+    id: 2,
+    title: "Building Sustainable Tech Solutions",
+    date: "September 28, 2023",
+    category: "Sustainability",
+    summary: "A deep dive into the principles of green technology and how we can build software that reduces carbon footprints.",
+    image: "https://picsum.photos/seed/blog2/800/600",
+    link: "#"
+  },
+  {
+    id: 3,
+    title: "From Concept to Launch: The Startup Journey",
+    date: "August 10, 2023",
+    category: "Entrepreneurship",
+    summary: "Lessons learned from co-founding Green D and navigating the challenges of early-stage startups.",
+    image: "https://picsum.photos/seed/blog3/800/600",
+    link: "#"
+  }
+];

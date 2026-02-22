@@ -1,14 +1,52 @@
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { projects } from '../data/content';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { projects } from '../data/projects';
+import { ArrowUpRight } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
 
 const Projects = () => {
   const [filter, setFilter] = useState('All');
-  const categories = ['All', '3D', 'AI', 'Web', 'Academic'];
+
+  // Define all possible categories
+  const allCategories = [
+    'All',
+    '3D',
+    'Branding & Identity',
+    'Web & AI',
+    'Automation',
+    'Academic',
+    'Film & Video',
+    'Game Dev',
+    'Android Apps'
+  ];
+
+  // Calculate project counts for each category
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    
+    // Initialize counts
+    allCategories.forEach(cat => {
+      if (cat === 'All') {
+        counts[cat] = projects.length;
+      } else {
+        counts[cat] = projects.filter(p => p.category === cat).length;
+      }
+    });
+    return counts;
+  }, []);
+
+  // Sort categories based on count (descending), keeping 'All' first
+  const sortedCategories = useMemo(() => {
+    return allCategories
+      .filter(cat => categoryCounts[cat] > 0) // Filter out empty categories
+      .sort((a, b) => {
+        if (a === 'All') return -1;
+        if (b === 'All') return 1;
+        return categoryCounts[b] - categoryCounts[a];
+      });
+  }, [categoryCounts]);
 
   const filteredProjects = filter === 'All' 
     ? projects 
@@ -25,9 +63,9 @@ const Projects = () => {
             </p>
           </div>
 
-          {/* Minimal Filters */}
+          {/* Dynamic Filters */}
           <div className="flex flex-wrap gap-8 mb-20 border-b border-gray-100 dark:border-zinc-900 pb-4">
-            {categories.map((cat) => (
+            {sortedCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
@@ -37,7 +75,7 @@ const Projects = () => {
                     : 'text-gray-400 hover:text-black dark:hover:text-white'
                 }`}
               >
-                {cat}
+                {cat} <span className="text-xs align-top opacity-50 ml-1">{categoryCounts[cat]}</span>
                 {filter === cat && (
                   <motion.div 
                     layoutId="activeFilter"
@@ -49,7 +87,7 @@ const Projects = () => {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
             <AnimatePresence mode='popLayout'>
             {filteredProjects.map((project) => (
               <motion.div
@@ -63,7 +101,7 @@ const Projects = () => {
               >
                 <Link to={`/projects/${project.id}`} className="block overflow-hidden rounded-2xl mb-8 relative aspect-[4/3]">
                   <img 
-                    src={project.image} 
+                    src={project.thumbnail} 
                     alt={project.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                   />
@@ -95,7 +133,7 @@ const Projects = () => {
               </motion.div>
             ))}
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
       </div>
     </PageTransition>
