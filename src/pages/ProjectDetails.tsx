@@ -109,10 +109,7 @@ const ProjectDetails = () => {
               )}
             </div>
 
-            <h1
-              className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter text-black dark:text-white leading-[0.9]"
-              dangerouslySetInnerHTML={{ __html: project.title }}
-            />
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter text-black dark:text-white leading-[0.9]">{project.title}</h1>
 
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
               {project.summary}

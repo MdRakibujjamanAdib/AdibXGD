@@ -13,7 +13,7 @@ Here is a complete template for adding a new project:
 ```typescript
   {
     id: "my-new-project-url-slug", // (Required) Converts to /projects/my-new-project-url-slug
-    title: "The Project <br /> Title Here", // (Required) Large title on the detail page. Supports HTML like <br />!
+    title: "The Project Title Here", // (Required) Large title on the detail page
     category: "3D", // (Required) The filter category it belongs to
     role: "Lead Designer", // (Optional) Shows next to category: 3D / Lead Designer
     summary: "A short one-sentence summary for the card.", // (Required) Shows on the projects grid list
@@ -39,19 +39,13 @@ Here is a complete template for adding a new project:
 
 ---
 
-## 2. Formatting the Title & Description
+## 2. Formatting the Description (`description`)
 
-Because of our recent update, both the `title` and `description` fields now support raw HTML formatting. 
+Because of our recent update, the `description` field now supports raw HTML formatting. 
 
-**CRITICAL RULE:** For descriptions with multiple lines, **do not use quotes** (`"..."` or `'...'`). You must use **backticks** (`` `...` ``).
+**CRITICAL RULE:** When writing a description with multiple lines or HTML tags, **do not use quotes** (`"..."` or `'...'`). You must use **backticks** (`` `...` ``). 
 
-### Examples of Title Formatting
-If a title is too long (e.g. "The Fading Heartbeat A Documentary"), you can force a line break exactly where you want it by using `<br />`:
-```typescript
-title: "The Fading Heartbeat <br /> A Documentary of Tater Saree",
-```
-
-### Examples of Description Formatting
+### Examples of Formatting
 * **Bold text:** `<b>Important word</b>` or `<strong>Important word</strong>`
 * **Italic text:** `<i>Creative concept</i>`
 * **Break a line:** Use `<br/>`

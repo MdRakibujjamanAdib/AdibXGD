@@ -86,9 +86,7 @@ const Projects = () => {
 
                   <div>
                     <h3 className="text-3xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors mb-2">
-                      <Link to={`/projects/${project.id}`}>
-                        <span dangerouslySetInnerHTML={{ __html: project.title }} />
-                      </Link>
+                      <Link to={`/projects/${project.id}`}>{project.title}</Link>
                     </h3>
                     <span className="text-sm font-mono text-gray-400 dark:text-zinc-600 uppercase tracking-widest mb-3 block">{project.category}</span>
                   </div>

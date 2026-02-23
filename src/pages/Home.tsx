@@ -291,9 +291,7 @@ const Home = () => {
                     <div className="w-full md:w-1/2">
                       <span className="text-blue-600 dark:text-blue-500 font-mono text-sm uppercase tracking-wider mb-4 block">{project.category}</span>
                       <h3 className="text-4xl font-bold mb-6 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
-                        <Link to={`/projects/${project.id}`}>
-                          <span dangerouslySetInnerHTML={{ __html: project.title }} />
-                        </Link>
+                        <Link to={`/projects/${project.id}`}>{project.title}</Link>
                       </h3>
                       <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                         {project.summary}

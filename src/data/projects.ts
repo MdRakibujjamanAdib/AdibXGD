@@ -116,10 +116,10 @@ export const projects: Project[] = [
   // Video Editing (YouTube embed)
   {
     id: "The-Fading-Heartbeat",
-    title: "The Fading Heartbeat /n/n A Documentary of Tater Saree",
+    title: "The Fading Heartbeat ",
     category: "Video Editing",
     role: "Director & Editor",
-    summary: "Discover the rich heritage and harsh economic reality behind the world-famous Tangail Saree.",
+    summary: "A Documentary of Tater Saree, Discovering the rich heritage and harsh economic reality behind the world-famous Tangail Saree.",
     description: "<p style='text-align: justify;'>This documentary provides a deep look into the complete lifecycle of a saree, from the dyeing and spinning of thread to the final meticulous fold. Beyond the aesthetics, the film identifies the critical problems threatening this ancient craft, including the Mahajan system where middlemen control profits, and the significant decline in active looms due to lack of sales. \n \n The rhythmic <b>Khut-Khut</b> sound of the looms has long been the heartbeat of this region, but that heartbeat is slowing down. This video serves as both a record of a disappearing tradition and a call to recognize the labor, sweat, and identity woven into every thread. </p>",
     thumbnail: "/images/Projects Images/tat.png",
     videoUrl: "https://youtu.be/S2vfwbJhwW4", // Example embed
