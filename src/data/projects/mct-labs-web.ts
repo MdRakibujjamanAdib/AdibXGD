@@ -11,7 +11,7 @@ const project: Project = {
     demoUrl: "https://mctlabs.vercel.app/",
     tags: ["React", "Node.js", "AI", "ML", "Web Development"],
     date: "2023-12-10",
-    featured: true
+
 };
 
 export default project;

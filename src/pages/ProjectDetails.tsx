@@ -151,17 +151,17 @@ const ProjectDetails = () => {
               {allImages.length > 0 && (
                 <section>
                   <h2 className="text-3xl font-bold mb-8 text-black dark:text-white">Gallery</h2>
-                  <div className="columns-2 sm:columns-3 gap-4 space-y-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                     {allImages.map((img, index) => (
                       <button
                         key={index}
                         onClick={() => openLightbox(index)}
-                        className="group relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full mb-4 break-inside-avoid block"
+                        className="group relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full block aspect-video"
                       >
                         <img
                           src={img}
                           alt={`${project.title} ${index + 1}`}
-                          className="w-full h-auto block transition-transform duration-300 group-hover:scale-105"
+                          className="w-full h-full object-cover block transition-transform duration-300 group-hover:scale-105"
                         />
                         {/* hover overlay */}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">

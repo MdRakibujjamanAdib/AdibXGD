@@ -67,9 +67,11 @@ const project: Project = {
             {
                 property: "og:video:url",
                 content: "https://youtu.be/S2vfwbJhwW4"
-            }
+            },
+            
         ]
-    }
+    },
+   
 };
 
 export default project;
