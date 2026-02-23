@@ -13,14 +13,39 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitted(true);
-      setFormState({ name: '', email: '', message: '' });
-    }, 1000);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const formData = new FormData();
+      formData.append("access_key", "fc1e1fb5-3901-4624-8fae-419df20514b2");
+      formData.append("name", formState.name);
+      formData.append("email", formState.email);
+      formData.append("message", formState.message);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Network error. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -135,11 +160,20 @@ const Contact = () => {
                       placeholder="Tell me about your project..."
                     />
                   </div>
+
+                  {error && (
+                    <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg text-sm font-medium">
+                      {error}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-3 text-2xl font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-500 transition-colors mt-8 group"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center gap-3 text-2xl font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-500 transition-colors mt-8 group disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message <ArrowRight className="group-hover:translate-x-2 transition-transform" size={28} />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {!isSubmitting && <ArrowRight className="group-hover:translate-x-2 transition-transform" size={28} />}
                   </button>
                 </form>
               )}
