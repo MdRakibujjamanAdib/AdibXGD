@@ -67,7 +67,7 @@ export const education = [
   {
     institution: "Daffodil International University",
     degree: "BSc in Multimedia & Creative Technology",
-    period: "2022–2026",
+    period: "2024–2028",
     details: "Specialized in Graphic Design, 3D Animation, Game Development, Film and more",
   },
 ];
@@ -204,11 +204,24 @@ export const experience = [
   },
   {
     company: "Garena Free Fire",
-    role: "Anti-Hack Assistant",
+    role: "Anti-Hack Associate",
     period: "2023–2024",
     description: [
       "Analyzed game client data to identify potential exploits.",
       "Collaborated with the security team to improve detection systems.",
+    ],
+  },
+  {
+    company: "Garena Free Fire",
+    role: "Community Moderator",
+    period: "2021–2023",
+    description: [
+      "Worked with gaming communities to support engagement, moderation, and feedback collection for localized digital platforms.",
+      "Moderated online community platforms to maintain a positive and engaging environment for players.",
+      "Collected user feedback and shared insights with internal teams to improve campaigns and user experience.",
+      "Communicated with community members through social platforms to understand preferences and build trust.",
+      "Supported localization tasks including translation, copywriting, and content adaptation.",
+      "Acted as a bridge between the player community and internal teams.",
     ],
   },
 ];
