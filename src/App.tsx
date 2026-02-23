@@ -13,6 +13,8 @@ import Contact from './pages/Contact';
 import Achievements from './pages/Achievements';
 import { AnimatePresence } from 'motion/react';
 
+import ScrollToTopProgress from './components/ui/ScrollToTopProgress';
+
 function App() {
   const location = useLocation();
 
@@ -39,6 +41,7 @@ function App() {
           </Routes>
         </AnimatePresence>
       </main>
+      <ScrollToTopProgress />
       <Footer />
     </div>
   );
