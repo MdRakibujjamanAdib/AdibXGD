@@ -37,6 +37,8 @@ const BlogDetails = () => {
                 description={blog.summary}
                 image={blog.image}
                 type="article"
+                customKeywords={blog.seo?.keywords}
+                customMeta={blog.seo?.meta}
             />
             <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -91,9 +91,10 @@ const Projects = () => {
                     <span className="text-sm font-mono text-gray-400 dark:text-zinc-600 uppercase tracking-widest mb-3 block">{project.category}</span>
                   </div>
 
-                  <p className="text-lg text-gray-600 dark:text-gray-400 line-clamp-2 mb-6 leading-relaxed">
-                    {project.summary}
-                  </p>
+                  <div
+                    className="text-lg text-gray-600 dark:text-gray-400 line-clamp-2 mb-6 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: project.description }}
+                  />
 
                   <div className="flex flex-wrap gap-3">
                     {project.tags.slice(0, 3).map(tag => (

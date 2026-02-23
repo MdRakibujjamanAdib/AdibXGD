@@ -8,6 +8,8 @@ interface SEOProps {
     type?: string;
     image?: string;
     url?: string;
+    customKeywords?: string[];
+    customMeta?: Array<{ name?: string; property?: string; content: string }>;
 }
 
 export default function SEO({
@@ -16,7 +18,9 @@ export default function SEO({
     name = "Md Rakibujjaman Adib",
     type = "website",
     image = "https://adibx.me/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg",
-    url = "https://adibx.me"
+    url = "https://adibx.me",
+    customKeywords = [],
+    customMeta = []
 }: SEOProps) {
     // Keep title under 60 characters to prevent Google truncation
     const siteTitle = title === "Home"
@@ -35,7 +39,8 @@ export default function SEO({
         "3D Artist Dhaka",
         "AI Architect",
         "Creative Technologist",
-        "MCT Labs Founder"
+        "MCT Labs Founder",
+        ...customKeywords
     ];
     const keywords = keywordArray.join(", ");
 
@@ -60,6 +65,11 @@ export default function SEO({
             <meta name="twitter:title" content={siteTitle} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={image} />
+
+            {/* Custom metadata tags */}
+            {customMeta.map((meta, i) => (
+                <meta key={i} {...meta} />
+            ))}
 
             {/* JSON-LD Local Search / Person Schema for AI & Google */}
             <script type="application/ld+json">

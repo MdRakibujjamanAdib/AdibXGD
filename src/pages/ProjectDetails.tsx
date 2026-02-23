@@ -86,6 +86,8 @@ const ProjectDetails = () => {
         description={project.summary}
         image={project.thumbnail}
         type="article"
+        customKeywords={project.seo?.keywords}
+        customMeta={project.seo?.meta}
       />
       <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
         <motion.div

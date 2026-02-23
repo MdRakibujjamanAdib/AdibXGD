@@ -293,9 +293,10 @@ const Home = () => {
                       <h3 className="text-4xl font-bold mb-6 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
                         <Link to={`/projects/${project.id}`}>{project.title}</Link>
                       </h3>
-                      <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                        {project.summary}
-                      </p>
+                      <div
+                        className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed line-clamp-3"
+                        dangerouslySetInnerHTML={{ __html: project.description }}
+                      />
                       <div className="flex flex-wrap gap-3 mb-8">
                         {project.tags.slice(0, 3).map(tag => (
                           <span key={tag} className="px-3 py-1 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-full text-sm text-gray-500 dark:text-gray-400">
