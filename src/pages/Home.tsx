@@ -112,7 +112,7 @@ const Home = () => {
 
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-12">
               Co-Founder of <span className="text-black dark:text-white font-semibold">Green D</span>.
-              Previously founded <span className="text-black dark:text-white font-semibold">MCT Labs</span>.
+              Founder of <span className="text-black dark:text-white font-semibold">MCT Labs</span>.
               Merging machine learning with cinematic design to build intelligent futures.
             </p>
 
@@ -280,8 +280,8 @@ const Home = () => {
                         </h5>
                         <div className="flex items-center gap-3">
                           <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${award.result === 'Champion' || award.result === 'Winner'
-                              ? 'bg-yellow-100/50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-500 border border-yellow-200 dark:border-yellow-900/50 group-hover:bg-yellow-500/10 group-hover:border-yellow-500/30'
-                              : 'bg-blue-100/50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 group-hover:bg-blue-500/10 group-hover:border-blue-500/30'
+                            ? 'bg-yellow-100/50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-500 border border-yellow-200 dark:border-yellow-900/50 group-hover:bg-yellow-500/10 group-hover:border-yellow-500/30'
+                            : 'bg-blue-100/50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 group-hover:bg-blue-500/10 group-hover:border-blue-500/30'
                             } transition-colors`}>
                             {award.result}
                           </span>
