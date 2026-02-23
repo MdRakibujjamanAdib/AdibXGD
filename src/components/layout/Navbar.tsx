@@ -33,7 +33,7 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav 
+    <motion.nav
       variants={{
         visible: { y: 0 },
         hidden: { y: "-100%" },
@@ -49,7 +49,7 @@ const Navbar = () => {
               Adib<span className="text-blue-600 dark:text-blue-500">.</span>
             </Link>
           </div>
-          
+
           <div className="hidden md:block overflow-hidden">
             <AnimatePresence mode="wait">
               {navMode === 'default' ? (
@@ -65,11 +65,10 @@ const Navbar = () => {
                     <Link
                       key={link.name}
                       to={link.path}
-                      className={`text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
-                        isActive(link.path)
+                      className={`text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${isActive(link.path)
                           ? 'text-blue-600 dark:text-blue-500'
                           : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'
-                      }`}
+                        }`}
                     >
                       {link.name}
                     </Link>
@@ -88,11 +87,10 @@ const Navbar = () => {
                     <button
                       key={link.name}
                       onClick={() => handleLifeLinkClick(link.action)}
-                      className={`text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
-                        activeSection === link.name
+                      className={`text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${activeSection === link.name
                           ? 'text-blue-600 dark:text-blue-500'
                           : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'
-                      }`}
+                        }`}
                     >
                       {link.name}
                     </button>
@@ -109,10 +107,13 @@ const Navbar = () => {
             <a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
               <Linkedin size={20} />
             </a>
-            <a 
-              href={`https://wa.me/${personalInfo.phone.replace(/[^0-9]/g, '')}`} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a href={(personalInfo.social as any).instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+            </a>
+            <a
+              href={`https://wa.me/${personalInfo.phone.replace(/[^0-9]/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-blue-700 transition-colors"
             >
               <MessageCircle size={16} />
@@ -134,7 +135,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -147,11 +148,10 @@ const Navbar = () => {
                     key={link.name}
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-2xl font-bold ${
-                      isActive(link.path)
+                    className={`block text-2xl font-bold ${isActive(link.path)
                         ? 'text-blue-600 dark:text-blue-500'
                         : 'text-black dark:text-white'
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -164,11 +164,10 @@ const Navbar = () => {
                       handleLifeLinkClick(link.action);
                       setIsOpen(false);
                     }}
-                    className={`block text-2xl font-bold w-full text-left ${
-                      activeSection === link.name
+                    className={`block text-2xl font-bold w-full text-left ${activeSection === link.name
                         ? 'text-blue-600 dark:text-blue-500'
                         : 'text-black dark:text-white'
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </button>
@@ -182,11 +181,14 @@ const Navbar = () => {
                   <a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
                     <Linkedin size={24} />
                   </a>
+                  <a href={(personalInfo.social as any).instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                  </a>
                 </div>
-                <a 
-                  href={`https://wa.me/${personalInfo.phone.replace(/[^0-9]/g, '')}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={`https://wa.me/${personalInfo.phone.replace(/[^0-9]/g, '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-3 rounded-full text-lg font-bold hover:bg-blue-700 transition-colors w-full"
                 >
                   <MessageCircle size={20} />

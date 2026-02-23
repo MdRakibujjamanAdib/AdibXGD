@@ -85,24 +85,24 @@ const Projects = () => {
                   </Link>
 
                   <div>
-                    <div className="flex justify-between items-baseline mb-3">
-                      <h3 className="text-3xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
-                        <Link to={`/projects/${project.id}`}>{project.title}</Link>
-                      </h3>
-                      <span className="text-sm font-mono text-gray-400 dark:text-zinc-600 uppercase tracking-widest">{project.category}</span>
-                    </div>
+                    <h3 className="text-3xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors mb-2">
+                      <Link to={`/projects/${project.id}`}>
+                        <span dangerouslySetInnerHTML={{ __html: project.title }} />
+                      </Link>
+                    </h3>
+                    <span className="text-sm font-mono text-gray-400 dark:text-zinc-600 uppercase tracking-widest mb-3 block">{project.category}</span>
+                  </div>
 
-                    <p className="text-lg text-gray-600 dark:text-gray-400 line-clamp-2 mb-6 leading-relaxed">
-                      {project.summary}
-                    </p>
+                  <p className="text-lg text-gray-600 dark:text-gray-400 line-clamp-2 mb-6 leading-relaxed">
+                    {project.summary}
+                  </p>
 
-                    <div className="flex flex-wrap gap-3">
-                      {project.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="text-sm font-medium text-gray-500 dark:text-gray-500 border border-gray-200 dark:border-zinc-800 px-3 py-1 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-3">
+                    {project.tags.slice(0, 3).map(tag => (
+                      <span key={tag} className="text-sm font-medium text-gray-500 dark:text-gray-500 border border-gray-200 dark:border-zinc-800 px-3 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               ))}

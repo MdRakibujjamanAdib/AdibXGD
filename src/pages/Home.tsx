@@ -136,17 +136,17 @@ const Home = () => {
         {/* Marquee Clients */}
         <section className="py-12 border-y border-gray-100 dark:border-zinc-900 overflow-hidden bg-gray-50 dark:bg-zinc-950/50">
           <div className="relative flex overflow-hidden group">
-            <div className="flex animate-marquee whitespace-nowrap gap-20 items-center">
+            <div className="flex animate-marquee whitespace-nowrap gap-20 items-center py-4">
               {[...clients, ...clients, ...clients].map((client, index) => (
-                <div key={index} className="flex items-center justify-center w-32 h-16 md:w-40 md:h-20 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-                  <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                <div key={index} className="flex items-center justify-center w-32 h-16 md:w-40 md:h-20 opacity-50 hover:opacity-100 transition-opacity cursor-pointer overflow-visible">
+                  <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 hover:scale-110 transform transition-all duration-300" />
                 </div>
               ))}
             </div>
-            <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap gap-20 items-center ml-20">
+            <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap gap-20 items-center ml-20 py-4">
               {[...clients, ...clients, ...clients].map((client, index) => (
-                <div key={`clone-${index}`} className="flex items-center justify-center w-32 h-16 md:w-40 md:h-20 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-                  <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                <div key={`clone-${index}`} className="flex items-center justify-center w-32 h-16 md:w-40 md:h-20 opacity-50 hover:opacity-100 transition-opacity cursor-pointer overflow-visible">
+                  <img src={client.logo} alt={client.name} className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 hover:scale-110 transform transition-all duration-300" />
                 </div>
               ))}
             </div>
@@ -291,7 +291,9 @@ const Home = () => {
                     <div className="w-full md:w-1/2">
                       <span className="text-blue-600 dark:text-blue-500 font-mono text-sm uppercase tracking-wider mb-4 block">{project.category}</span>
                       <h3 className="text-4xl font-bold mb-6 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
-                        <Link to={`/projects/${project.id}`}>{project.title}</Link>
+                        <Link to={`/projects/${project.id}`}>
+                          <span dangerouslySetInnerHTML={{ __html: project.title }} />
+                        </Link>
                       </h3>
                       <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                         {project.summary}

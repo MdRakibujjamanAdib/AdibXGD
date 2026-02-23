@@ -8,10 +8,10 @@ export const personalInfo = {
   phone: "+8801303031080",
   location: "Bangladesh",
   social: {
-    linkedin: "https://linkedin.com/in/adib-placeholder",
-    behance: "https://behance.net/adib-placeholder",
-    github: "https://github.com/adib-placeholder",
-    facebook: "https://facebook.com/adib-placeholder",
+    linkedin: "https://www.linkedin.com/in/md-rakibujjaman-adib/",
+    instagram: "https://www.instagram.com/md_rakibujjaman_adib/",
+    github: "https://github.com/MdRakibujjamanAdib/",
+    facebook: "https://www.facebook.com/100004915484562",
   },
   stats: [
     { label: "Role", value: "Co-Founder @ Green D" },
@@ -22,12 +22,12 @@ export const personalInfo = {
 };
 
 export const clients = [
-  { name: "Garena", logo: "https://official.garena.com/sg/v1/assets/garena_logo_v.svg" },
-  { name: "MCT Labs", logo: "https://mctlabs-git-main-md-rakibujjaman-adibs-projects.vercel.app/logo.svg" },
-  { name: "Green D", logo: "https://www.greend.tech/logow.svg" },
-  { name: "MCT Department", logo: "https://scontent.fdac177-1.fna.fbcdn.net/v/t39.30808-6/305472816_536569178283018_6957104917902120149_n.png?_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=7cXn38HI8l0Q7kNvwHUCmON&_nc_oc=AdmjhQ4PffmgvRz0z3VSBwviA9-ZxZM3NuoIGjM_0YQpJXhLd49pVT0ONH8cWNPMnto&_nc_zt=23&_nc_ht=scontent.fdac177-1.fna&_nc_gid=QFGAsZHgWQzfTsN4ro6Lgw&oh=00_AfuObWDHiHqvYvEeD3w9Kk1aExti5qC2raQmn5HLkTI69w&oe=69A145E0" },
-  { name: "ITM Department", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5HyXmrPjkcwXIM0FGA_tuqu7QhSNcY5f80g&s" },
-  { name: "ITM Club", logo: "https://scontent.fdac177-2.fna.fbcdn.net/v/t39.30808-6/313916515_123690643847285_7695700919627697365_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=sspvdBHRp0YQ7kNvwFXqU9C&_nc_oc=AdnJznifRwAm5c4O6oKmn3A9MSR_bGewAb13nNSCmxZJPfHMicCuF4-4pYleJrt3R7Q&_nc_zt=23&_nc_ht=scontent.fdac177-2.fna&_nc_gid=eyraQqJqFGOCekfO4p5sVQ&oh=00_AfuE7tVq7-Nb3P91_adz3TdiWKCF-hUf6P0dQO49RJS6GQ&oe=69A13916" },
+  { name: "Garena", logo: "/images/Garena-Logo.png" },
+  { name: "MCT Labs", logo: "/images/MCT-Labs-Logo.png" },
+  { name: "Green D", logo: "/images/GreenD-Logo.png" },
+  { name: "MCT Department", logo: "/images/MCT-Logo.png" },
+  { name: "ITM Department", logo: "/images/ITM Logo.png" },
+  { name: "ITM Club", logo: "/images/ITMC-Logo.png" },
 ];
 
 export const services = [

@@ -59,11 +59,13 @@ export const projects: Project[] = [
     role: "Lead Designer",
     summary: "Complete visual identity for a sustainable tech startup.",
     description: "Green D needed a brand that communicated sustainability, technology, and trust. The color palette revolves around deep greens and clean whites, with a logo that combines a leaf motif with digital circuitry.",
-    thumbnail: "https://picsum.photos/seed/greendbrand/800/600",
+    thumbnail: "/images/Projects Images/Green-D-Branding.png",
     images: [
-      "https://picsum.photos/seed/greendbrand1/800/600",
-      "https://picsum.photos/seed/greendbrand2/800/600",
-      "https://picsum.photos/seed/greendbrand3/800/600"
+      "/images/Projects Images/img (1).png",
+      "/images/Projects Images/img (2).png",
+      "/images/Projects Images/img (3).png",
+      "/images/Projects Images/img (4).png",
+      "/images/Projects Images/img.png"
     ],
     tags: ["Branding", "Logo Design", "Identity"],
     date: "2024-02-01"
@@ -77,10 +79,10 @@ export const projects: Project[] = [
     role: "Full Stack Developer",
     summary: "AI-powered creative suite for university students.",
     description: "MCT Labs is a comprehensive platform integrating various AI tools. It features a custom-built chat interface, image generation capabilities using Stable Diffusion, and a code editor. The backend is built with Node.js and Python, ensuring scalable performance.",
-    thumbnail: "https://picsum.photos/seed/mctlabs/800/600",
-    demoUrl: "https://mctlabs.example.com",
-    repoUrl: "https://github.com/example/mctlabs",
-    tags: ["React", "Node.js", "AI", "Stable Diffusion"],
+    thumbnail: "/images/Projects Images/mctlabs.png",
+    demoUrl: "https://mctlabs.vercel.app/",
+
+    tags: ["React", "Node.js", "AI", "ML", "Web Development"],
     date: "2023-12-10",
     featured: true
   },
@@ -113,14 +115,14 @@ export const projects: Project[] = [
 
   // Video Editing (YouTube embed)
   {
-    id: "short-film-echo",
-    title: "Echoes of Tomorrow",
+    id: "The-Fading-Heartbeat",
+    title: "The Fading Heartbeat /n/n A Documentary of Tater Saree",
     category: "Video Editing",
     role: "Director & Editor",
-    summary: "A sci-fi short film about memory and technology.",
-    description: "Written, directed, and edited by me. This short film explores the concept of digital immortality. Shot on Blackmagic Pocket Cinema Camera and graded in DaVinci Resolve.",
-    thumbnail: "https://picsum.photos/seed/film/800/600",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example embed
+    summary: "Discover the rich heritage and harsh economic reality behind the world-famous Tangail Saree.",
+    description: "<p style='text-align: justify;'>This documentary provides a deep look into the complete lifecycle of a saree, from the dyeing and spinning of thread to the final meticulous fold. Beyond the aesthetics, the film identifies the critical problems threatening this ancient craft, including the Mahajan system where middlemen control profits, and the significant decline in active looms due to lack of sales. \n \n The rhythmic <b>Khut-Khut</b> sound of the looms has long been the heartbeat of this region, but that heartbeat is slowing down. This video serves as both a record of a disappearing tradition and a call to recognize the labor, sweat, and identity woven into every thread. </p>",
+    thumbnail: "/images/Projects Images/tat.png",
+    videoUrl: "https://youtu.be/S2vfwbJhwW4", // Example embed
     tags: ["Filmmaking", "Editing", "DaVinci Resolve"],
     date: "2022-11-10",
     featured: true

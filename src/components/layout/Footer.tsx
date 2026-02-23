@@ -23,6 +23,9 @@ const Footer = () => {
               <a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
                 <Linkedin size={24} />
               </a>
+              <a href={(personalInfo.social as any).instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+              </a>
               <a href={`mailto:${personalInfo.email}`} className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
                 <Mail size={24} />
               </a>
@@ -46,6 +49,7 @@ const Footer = () => {
               <ul className="space-y-4">
                 <li><a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors font-medium">LinkedIn</a></li>
                 <li><a href={personalInfo.social.github} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors font-medium">GitHub</a></li>
+                <li><a href={(personalInfo.social as any).instagram} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors font-medium">Instagram</a></li>
                 <li><a href={personalInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors font-medium">Facebook</a></li>
               </ul>
             </div>

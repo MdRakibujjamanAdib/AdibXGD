@@ -68,6 +68,7 @@ const Contact = () => {
                   <div className="flex gap-6">
                     <a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">LinkedIn</a>
                     <a href={personalInfo.social.github} target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">GitHub</a>
+                    <a href={(personalInfo.social as any).instagram} target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">Instagram</a>
                   </div>
                 </div>
               </div>
