@@ -191,21 +191,35 @@ const Home = () => {
           <div className="space-y-32 max-w-4xl mx-auto">
             {/* Experience Section */}
             <div id="experience" className="scroll-mt-48">
-              <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Professional Journey</h4>
-              <div className="space-y-16">
+              <h4 className="text-2xl font-bold text-black dark:text-white mb-12 border-b border-gray-100 dark:border-zinc-800 pb-4">Professional Journey</h4>
+
+              <div className="relative pl-8 sm:pl-12 border-l-2 border-gray-100 dark:border-zinc-800 space-y-12">
                 {experience.map((job, index) => (
-                  <div key={index} className="group">
-                    <h5 className="text-xl font-bold text-black dark:text-white mb-1">{job.company}</h5>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-                      <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{job.role}</span>
-                      <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
-                      <span className="text-sm font-mono text-gray-500">{job.period}</span>
+                  <div key={index} className="relative group p-6 sm:p-8 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 hover:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300">
+                    {/* Timeline Dot */}
+                    <span className="absolute -left-[41px] sm:-left-[57px] top-10 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-2 border-gray-200 dark:border-zinc-700 group-hover:bg-blue-500 group-hover:border-blue-500 transition-colors duration-300" />
+
+                    {/* Content Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
+                      <div>
+                        <h5 className="text-2xl font-bold text-black dark:text-white group-hover:text-white transition-colors">{job.company}</h5>
+                        <p className="text-lg text-blue-600 dark:text-blue-500 font-medium mt-1">{job.role}</p>
+                      </div>
+
+                      {/* Period Badge - Right Aligned on Desktop */}
+                      <div className="shrink-0">
+                        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-white dark:bg-zinc-950 text-gray-600 dark:text-gray-400 group-hover:bg-zinc-800 group-hover:text-gray-200 border border-gray-200 dark:border-zinc-800 group-hover:border-zinc-700 transition-colors">
+                          {job.period}
+                        </span>
+                      </div>
                     </div>
-                    <ul className="space-y-2">
+
+                    {/* Description List */}
+                    <ul className="space-y-3">
                       {job.description.map((desc, i) => (
-                        <li key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed text-base flex items-start gap-3">
-                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-zinc-700 shrink-0" />
-                          {desc}
+                        <li key={i} className="text-gray-600 dark:text-gray-400 group-hover:text-gray-300 leading-relaxed text-base flex items-start gap-4 transition-colors">
+                          <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-blue-500/40 group-hover:bg-blue-500 shrink-0 transition-colors" />
+                          <span>{desc}</span>
                         </li>
                       ))}
                     </ul>
@@ -216,17 +230,31 @@ const Home = () => {
 
             {/* Education Section */}
             <div id="education" className="scroll-mt-48">
-              <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Education</h4>
-              <div className="space-y-16">
+              <h4 className="text-2xl font-bold text-black dark:text-white mb-12 border-b border-gray-100 dark:border-zinc-800 pb-4">Education</h4>
+
+              <div className="relative pl-8 sm:pl-12 border-l-2 border-gray-100 dark:border-zinc-800 space-y-12">
                 {education.map((edu, index) => (
-                  <div key={index} className="group">
-                    <h5 className="text-xl font-bold text-black dark:text-white mb-1">{edu.degree}</h5>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
-                      <span className="text-base text-blue-600 dark:text-blue-500 font-medium">{edu.institution}</span>
-                      <span className="hidden sm:block text-gray-300 dark:text-zinc-700">•</span>
-                      <span className="text-sm font-mono text-gray-500">{edu.period}</span>
+                  <div key={index} className="relative group p-6 sm:p-8 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 hover:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300">
+                    {/* Timeline Dot */}
+                    <span className="absolute -left-[41px] sm:-left-[57px] top-10 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-2 border-gray-200 dark:border-zinc-700 group-hover:bg-blue-500 group-hover:border-blue-500 transition-colors duration-300" />
+
+                    {/* Content Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
+                      <div>
+                        <h5 className="text-2xl font-bold text-black dark:text-white group-hover:text-white transition-colors">{edu.degree}</h5>
+                        <p className="text-lg text-blue-600 dark:text-blue-500 font-medium mt-1">{edu.institution}</p>
+                      </div>
+
+                      {/* Period Badge - Right Aligned on Desktop */}
+                      <div className="shrink-0">
+                        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-white dark:bg-zinc-950 text-gray-600 dark:text-gray-400 group-hover:bg-zinc-800 group-hover:text-gray-200 border border-gray-200 dark:border-zinc-800 group-hover:border-zinc-700 transition-colors">
+                          {edu.period}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
+
+                    {/* Description */}
+                    <p className="text-gray-600 dark:text-gray-400 group-hover:text-gray-300 leading-relaxed text-base transition-colors">
                       {edu.details}
                     </p>
                   </div>
@@ -236,23 +264,40 @@ const Home = () => {
 
             {/* Achievements Section */}
             <div id="achievements" className="scroll-mt-48">
-              <h4 className="text-2xl font-bold text-black dark:text-white mb-8 border-b border-gray-100 dark:border-zinc-800 pb-4">Achievements</h4>
-              <div className="space-y-16">
+              <h4 className="text-2xl font-bold text-black dark:text-white mb-12 border-b border-gray-100 dark:border-zinc-800 pb-4">Achievements</h4>
+
+              <div className="relative pl-8 sm:pl-12 border-l-2 border-gray-100 dark:border-zinc-800 space-y-12">
                 {awards.map((award, index) => (
-                  <div key={index} className="group">
-                    <div className="mb-2">
-                      <h5 className="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors mb-1">
-                        {award.title}
-                      </h5>
-                      <span className="text-sm font-mono text-gray-500">{award.year}</span>
+                  <div key={index} className="relative group p-6 sm:p-8 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 hover:bg-zinc-900 dark:hover:bg-zinc-800 transition-all duration-300">
+                    {/* Timeline Dot */}
+                    <span className="absolute -left-[41px] sm:-left-[57px] top-10 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-2 border-gray-200 dark:border-zinc-700 group-hover:bg-blue-500 group-hover:border-blue-500 transition-colors duration-300" />
+
+                    {/* Content Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                      <div>
+                        <h5 className="text-2xl font-bold text-black dark:text-white group-hover:text-blue-500 transition-colors mb-2">
+                          {award.title}
+                        </h5>
+                        <div className="flex items-center gap-3">
+                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${award.result === 'Champion' || award.result === 'Winner'
+                              ? 'bg-yellow-100/50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-500 border border-yellow-200 dark:border-yellow-900/50 group-hover:bg-yellow-500/10 group-hover:border-yellow-500/30'
+                              : 'bg-blue-100/50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 group-hover:bg-blue-500/10 group-hover:border-blue-500/30'
+                            } transition-colors`}>
+                            {award.result}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Period Badge - Right Aligned on Desktop */}
+                      <div className="shrink-0 mt-2 sm:mt-0">
+                        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-white dark:bg-zinc-950 text-gray-600 dark:text-gray-400 group-hover:bg-zinc-800 group-hover:text-gray-200 border border-gray-200 dark:border-zinc-800 group-hover:border-zinc-700 transition-colors">
+                          {award.year}
+                        </span>
+                      </div>
                     </div>
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 mt-2 ${award.result === 'Champion' || award.result === 'Winner'
-                      ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-500'
-                      : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
-                      }`}>
-                      {award.result}
-                    </span>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base">
+
+                    {/* Description */}
+                    <p className="text-gray-600 dark:text-gray-400 group-hover:text-gray-300 leading-relaxed text-base transition-colors mt-2">
                       {award.context}
                     </p>
                   </div>
