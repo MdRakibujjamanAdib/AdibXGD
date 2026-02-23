@@ -33,7 +33,7 @@ export const projects: Project[] = [
     ],
     tags: ["Blender", "3D", "Cyberpunk", "Environment"],
     date: "2024-01-15",
-    featured: true
+
   },
   {
     id: "mech-warrior",
@@ -68,7 +68,8 @@ export const projects: Project[] = [
       "/images/Projects Images/img.png"
     ],
     tags: ["Branding", "Logo Design", "Identity"],
-    date: "2024-02-01"
+    date: "2024-02-01",
+    featured: true
   },
 
   // Web & Automation (Project description area)
