@@ -22,10 +22,14 @@ export default function SEO({
     customKeywords = [],
     customMeta = []
 }: SEOProps) {
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : "https://adibx.me";
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : url;
+    const absoluteImage = image.startsWith('http') ? image : (image.startsWith('/') ? `${baseUrl}${image}` : `${baseUrl}/${image}`);
+
     // Keep title under 60 characters to prevent Google truncation
     const siteTitle = title === "Home"
-        ? `${name} | Web Developer & 3D Artist`
-        : `${title} | ${name} - Developer`;
+        ? `${name} | Web Developer & Brand Designer`
+        : `${title} | ${name}`;
 
     // High-impact keywords for Dhaka local search and AI parsing
     const keywordArray = [
@@ -51,12 +55,15 @@ export default function SEO({
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
 
+            {/* Canonical Tag */}
+            <link rel="canonical" href={currentUrl.split('?')[0]} />
+
             {/* OpenGraph tags */}
             <meta property="og:type" content={type} />
             <meta property="og:title" content={siteTitle} />
             <meta property="og:description" content={description} />
-            <meta property="og:url" content={url} />
-            <meta property="og:image" content={image} />
+            <meta property="og:url" content={currentUrl} />
+            <meta property="og:image" content={absoluteImage} />
             <meta property="og:site_name" content={name} />
 
             {/* Twitter tags */}
@@ -64,7 +71,7 @@ export default function SEO({
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={siteTitle} />
             <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={image} />
+            <meta name="twitter:image" content={absoluteImage} />
 
             {/* Custom metadata tags */}
             {customMeta.map((meta, i) => (
@@ -79,7 +86,7 @@ export default function SEO({
                     "name": "Md Rakibujjaman Adib",
                     "alternateName": "Adib",
                     "url": "https://adibx.me",
-                    "image": image,
+                    "image": absoluteImage,
                     "jobTitle": [
                         "Web Developer",
                         "Graphic Designer",
@@ -88,6 +95,7 @@ export default function SEO({
                         "AI Architect"
                     ],
                     "description": "Md Rakibujjaman Adib is an AI Architect, Creative Technologist, Graphic Designer, Web Developer, and 3D Artist based in Dhaka, Bangladesh.",
+                    "telephone": "+8801303031080",
                     "address": {
                         "@type": "PostalAddress",
                         "addressLocality": "Dhaka",

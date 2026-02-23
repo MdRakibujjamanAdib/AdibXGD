@@ -91,7 +91,7 @@ const Home = () => {
     <PageTransition>
       <SEO
         title="Home"
-        description="I'm Md Rakibujjaman Adib, an AI Architect, Creative Technologist, and Co-Founder of Green D. Explore my portfolio spanning 3D animation, automation, and full-stack development."
+        description="I'm Md Rakibujjaman Adib, a Web Developer & Creative Technologist. Explore my portfolio in visual brand identity, automation, and 3D design."
       />
       <div className="bg-white text-black dark:bg-black dark:text-white font-sans selection:bg-blue-500 selection:text-white">
 
