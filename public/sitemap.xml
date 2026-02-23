@@ -3,97 +3,127 @@
   
     <url>
       <loc>https://adibx.me</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
     <url>
       <loc>https://adibx.me/about</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/projects</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/services</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/contact</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/blogs</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/projects/3-point-lighting</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/Chess-Board</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/projects/green-d-branding</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/green-d-tracker</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/green-d-website</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/Low-Poly-Village</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/projects/mct-labs-web</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://adibx.me/projects/mech-warrior</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://adibx.me/projects/portfolio-ai-web</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://adibx.me/projects/social-bot</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/projects/the-fading-heartbeat</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/Vray-Depth-Of-Field</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/Vray-Light-Projection-Fog</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/Vray-Light-Study</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://adibx.me/projects/Walton-Trade-Fair-Stall</loc>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/blogs/building-sustainable-tech-solutions</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/blogs/from-concept-to-launch-the-startup-journey</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
       <loc>https://adibx.me/blogs/the-future-of-ai-in-creative-industries</loc>
-      <lastmod>2026-02-23T11:06:13.628Z</lastmod>
+      <lastmod>2026-02-23T17:13:14.727Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
