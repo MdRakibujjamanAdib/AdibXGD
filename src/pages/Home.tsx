@@ -91,7 +91,17 @@ const Home = () => {
     <PageTransition>
       <SEO
         title="Home"
-        description="I'm Md Rakibujjaman Adib, a Web Developer & Creative Technologist. Explore my portfolio in visual brand identity, automation, and 3D design."
+        description="Md Rakibujjaman Adib — Professional Web Developer, Graphic Designer & Brand Designer in Dhaka, Bangladesh. Expert in web design, graphic design, menu card design, brand identity, and 3D visualization. Available for hire worldwide."
+        customKeywords={[
+          "web developer and designer bangladesh",
+          "freelance web developer dhaka",
+          "freelance graphic designer bangladesh",
+          "hire web developer bangladesh",
+          "hire graphic designer bangladesh",
+          "menu card designer dhaka",
+          "brand identity designer bangladesh",
+          "professional portfolio adibx",
+        ]}
       />
       <div className="bg-white text-black dark:bg-black dark:text-white font-sans selection:bg-blue-500 selection:text-white">
 
@@ -111,8 +121,8 @@ const Home = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-12">
-              Co-Founder of <span className="text-black dark:text-white font-semibold">Green D</span>.
-              Founder of <span className="text-black dark:text-white font-semibold">MCT Labs</span>.
+              Co-Founder & CTO of <span className="text-black dark:text-white font-semibold">Green D</span>.
+              Founder of <span className="text-black dark:text-white font-semibold">MCT Labs</span>.<br />
               Merging machine learning with cinematic design to build intelligent futures.
             </p>
 

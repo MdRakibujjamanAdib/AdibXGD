@@ -1,4 +1,11 @@
 {
+    "redirects": [
+        {
+            "source": "https://www.adibx.me/(.*)",
+            "destination": "https://adibx.me/$1",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/(.*)",
