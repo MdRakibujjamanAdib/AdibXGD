@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Download, ExternalLink, ChevronRight, ArrowUpRight, Briefcase, GraduationCap, Trophy, Cpu, Code, Box, Palette, Share2, Calendar, Video, Layers } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Cpu, Code, Box, Palette, Share2, Calendar, Video, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { personalInfo, services, experience, skills, clients, education, awards } from '../data/content';
 import { projects } from '../data/projects';

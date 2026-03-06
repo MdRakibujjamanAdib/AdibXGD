@@ -23,9 +23,9 @@ export default function SEO({
     customMeta = []
 }: SEOProps) {
     const baseUrl = "https://adibx.me";
-    const currentUrl = typeof window !== 'undefined'
-        ? window.location.href.replace(/^https?:\/\/www\./, 'https://').split('?')[0].replace(/\/$/, '') || baseUrl
-        : url;
+    const currentUrl = (typeof window !== 'undefined'
+        ? window.location.href.replace(/^https?:\/\/www\./, 'https://').split('?')[0].split('#')[0].replace(/\/+$/, '')
+        : url.replace(/\/+$/, '')) || baseUrl;
     const absoluteImage = image.startsWith('http') ? image : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
 
     // Keep title under 60 characters to prevent Google truncation

@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 // We are scraping the IDs dynamically to add them as paths.
 
 const siteUrl = 'https://adibx.me';
+const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
 
 const getFiles = (dir: string): string[] => {
     return fs.readdirSync(dir).filter(file => file.endsWith('.ts'));
@@ -19,7 +20,6 @@ const generateSitemap = () => {
     const blogsDir = path.resolve(__dirname, '../src/data/blogs');
 
     const projects = getFiles(projectsDir).map(file => {
-        // file names are the ids in our new structure, e.g. 3-point-lighting.ts
         const id = file.replace('.ts', '');
         return `${siteUrl}/projects/${id}`;
     });
@@ -29,14 +29,29 @@ const generateSitemap = () => {
         return `${siteUrl}/blogs/${id}`;
     });
 
+    // Static pages — must match routes defined in App.tsx
     const staticPages = [
         siteUrl,
         `${siteUrl}/about`,
         `${siteUrl}/projects`,
-        `${siteUrl}/services`,
         `${siteUrl}/contact`,
         `${siteUrl}/blogs`,
+        `${siteUrl}/achievements`,
     ];
+
+    const getPriority = (url: string): string => {
+        if (url === siteUrl) return '1.0';
+        // Main navigation pages
+        if (!url.includes('/projects/') && !url.includes('/blogs/')) return '0.8';
+        // Individual project/blog detail pages
+        return '0.6';
+    };
+
+    const getChangefreq = (url: string): string => {
+        if (url === siteUrl) return 'weekly';
+        if (url === `${siteUrl}/projects` || url === `${siteUrl}/blogs`) return 'weekly';
+        return 'monthly';
+    };
 
     const allUrls = [...staticPages, ...projects, ...blogs];
 
@@ -47,9 +62,9 @@ const generateSitemap = () => {
                 return `
     <url>
       <loc>${url}</loc>
-      <lastmod>${new Date().toISOString()}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>${url === siteUrl ? '1.0' : '0.8'}</priority>
+      <lastmod>${today}</lastmod>
+      <changefreq>${getChangefreq(url)}</changefreq>
+      <priority>${getPriority(url)}</priority>
     </url>`;
             })
             .join('')}

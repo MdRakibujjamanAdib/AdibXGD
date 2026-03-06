@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Download, Mail, MapPin, Phone, ArrowRight } from 'lucide-react';
-import { personalInfo, experience, education, skills, certifications } from '../data/content';
+import { Download } from 'lucide-react';
+import { personalInfo, skills } from '../data/content';
 import PageTransition from '../components/layout/PageTransition';
 import SEO from '../components/SEO';
 
@@ -39,7 +39,7 @@ const About = () => {
                 </div>
 
                 <div className="mt-12">
-                  <a href="#" className="inline-flex items-center gap-2 text-lg font-bold border-b-2 border-black dark:border-white pb-1 hover:text-blue-600 dark:hover:text-blue-500 hover:border-blue-600 dark:hover:border-blue-500 transition-colors">
+                  <a href="/MdRakibujamanAdib_CV.pdf" download className="inline-flex items-center gap-2 text-lg font-bold border-b-2 border-black dark:border-white pb-1 hover:text-blue-600 dark:hover:text-blue-500 hover:border-blue-600 dark:hover:border-blue-500 transition-colors">
                     Download Resume <Download size={20} />
                   </a>
                 </div>
