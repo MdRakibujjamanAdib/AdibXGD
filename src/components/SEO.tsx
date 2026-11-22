@@ -205,7 +205,6 @@ export default function SEO({
                             "longitude": "90.4125"
                         },
                         "openingHours": "Mo-Su 09:00-20:00",
-                        "priceRange": "$$",
                         "sameAs": [
                             "https://www.linkedin.com/in/md-rakibujjaman-adib",
                             "https://github.com/MdRakibujjamanAdib"

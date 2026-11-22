@@ -4,7 +4,7 @@ export const personalInfo = {
   preferredName: "Adib",
   title: "AI Architect • Co-Founder of Green D • Creative Technologist",
   mission: "I build cinematic 3D visuals, AI-powered automation, and creative tools that feel futuristic, clean, and usable.",
-  email: "hello@adibx.me",
+  email: "adibx@icloud.com",
   phone: "+8801303031080",
   location: "Bangladesh",
   social: {
@@ -12,7 +12,7 @@ export const personalInfo = {
     instagram: "https://www.instagram.com/md_rakibujjaman_adib/",
     github: "https://github.com/MdRakibujjamanAdib/",
     facebook: "https://www.facebook.com/100004915484562",
-    youtube: "https://www.youtube.com/@adib",
+    tiktok: "https://www.tiktok.com/@md_rakibujjaman_adib",
   },
   stats: [
     { label: "Role", value: "Co-Founder @ Green D" },

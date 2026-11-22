@@ -3,14 +3,11 @@ import { motion } from 'motion/react';
 import {
   Mail,
   Phone,
-  MapPin,
-  Send,
-  CheckCircle,
   Copy,
   Check,
-  Calendar,
-  Sparkles,
-  ArrowUpRight,
+  ArrowRight,
+  CheckCircle,
+  ExternalLink,
 } from 'lucide-react';
 import { personalInfo } from '../data/content';
 import VisbeyondLayout from '../components/layout/VisbeyondLayout';
@@ -22,10 +19,18 @@ export default function Contact() {
     email: '',
     message: '',
   });
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,10 +55,10 @@ export default function Contact() {
         setIsSubmitted(true);
         setFormState({ name: '', email: '', message: '' });
       } else {
-        setError(data.message || 'Something went wrong. Please try again.');
+        setError(data.message || 'Something went wrong. Please reach out directly to adibx@icloud.com.');
       }
     } catch {
-      setError('Network error. Please try again later.');
+      setError('Network connection error. Please email directly at adibx@icloud.com.');
     } finally {
       setIsSubmitting(false);
     }
@@ -68,246 +73,193 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact"
-        description="Get in touch with Md Rakibujjaman Adib for AI architecture, 3D design, or full-stack web development projects."
+        title="Contact | Md Rakibujjaman Adib"
+        description="Get in touch with Md Rakibujjaman Adib for AI architectures, full-stack web platforms, 3D CGI visuals, or Unity serious game development."
       />
+
       <VisbeyondLayout
-        pageLabel="Contact us"
-        showcaseImage="/images/visbeyond/EImFqIXTq1f40jZpM4XT7MbqCh4.png"
-        showcaseAlt="Contact Showcase"
+        pageLabel="Contact"
+        hideShowcaseOnMobile={false}
+        footerSocialMode="all"
+        showcaseChildren={
+          <div className="relative w-full h-full overflow-hidden select-none bg-[var(--vb-bg)]">
+            <img
+              src="/MdRakibujamanAdib.jpg?v=3"
+              alt="Md Rakibujjaman Adib"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'center 45%' }}
+            />
+          </div>
+        }
       >
-        {/* Header & Quick Actions Card */}
-        <section className="vb-card p-6 md:p-8" aria-label="Contact Header">
-          {/* Status Indicator */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium mb-4">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Currently Onboarding New Projects
-          </div>
-
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-3 leading-[1.1]">
-            Let&apos;s Get in Touch!
-          </h1>
-
-          <p className="text-base md:text-lg text-[#a1a1aa] leading-relaxed mb-6 font-sans">
-            Ready to build a distinctive digital presence, photorealistic 3D visuals, or an AI-powered system? Let&apos;s discuss your vision.
-          </p>
-
-          {/* Quick Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#e62e05] text-white font-semibold text-xs tracking-wider uppercase hover:brightness-110 transition-all shadow-lg shadow-[#e62e05]/20"
-            >
-              <Calendar size={15} /> Book a Call
-            </a>
-
-            <span className="text-xs font-mono text-[#71717a] uppercase">or</span>
-
-            <button
-              type="button"
-              onClick={handleCopyEmail}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#141414] border border-white/10 text-white font-semibold text-xs tracking-wider uppercase hover:border-white/30 transition-all"
-            >
-              {copied ? (
-                <>
-                  <Check size={14} className="text-emerald-400" />
-                  <span className="text-emerald-400">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy size={14} />
-                  <span>Copy Email</span>
-                </>
-              )}
-            </button>
-          </div>
-        </section>
-
-        {/* Contact Form Card */}
-        <section className="vb-card p-6 md:p-8" aria-label="Send a message">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#e62e05]">
-              Direct Inquiry
+        {/* ========================================================
+            MAIN CONTACT CARD (Ultra-Clean Minimalist Aesthetic)
+           ======================================================== */}
+        <div className="bg-[var(--vb-panel)] border border-[var(--vb-border)] rounded-[var(--vb-radius)] p-6 sm:p-10 md:p-14 transition-colors">
+          {/* Header Info */}
+          <div className="mb-12">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#e62e05] block mb-3 font-semibold">
+              Get in Touch
             </span>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[var(--vb-text)] mb-4 leading-[1.05]">
+              Let&apos;s Talk.
+            </h1>
+
+            <p className="text-base sm:text-lg text-[var(--vb-text-muted)] max-w-xl font-sans leading-relaxed mb-6">
+              Have a project in mind, an autonomous AI system to architect, or an interactive digital experience to build? Send a note below or reach out directly.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 text-sm font-sans pt-2">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="font-bold text-[var(--vb-text)] hover:text-[#e62e05] transition-colors"
+              >
+                {personalInfo.email}
+              </a>
+
+              <span className="text-[var(--vb-border)]">&bull;</span>
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="text-xs font-mono uppercase tracking-wider text-[var(--vb-text-muted)] hover:text-[#e62e05] transition-colors cursor-pointer inline-flex items-center gap-1.5"
+              >
+                {copied ? (
+                  <>
+                    <Check size={12} className="text-emerald-500" />
+                    <span className="text-emerald-500">Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={12} />
+                    <span>Copy Email</span>
+                  </>
+                )}
+              </button>
+
+              <span className="text-[var(--vb-border)]">&bull;</span>
+
+              <a
+                href={`tel:${personalInfo.phone}`}
+                className="text-xs font-mono text-[var(--vb-text-muted)] hover:text-[#e62e05] transition-colors"
+              >
+                (+880) 1303031080
+              </a>
+            </div>
           </div>
 
-          <h2 className="text-2xl font-bold tracking-tight text-white mb-6">
-            Send a Message
-          </h2>
-
+          {/* Minimal Underline Contact Form (Matching Exact User Reference) */}
           {isSubmitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="p-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"
+              transition={{ duration: 0.25 }}
+              className="py-12 text-center border-t border-[var(--vb-border)]"
             >
-              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle size={28} />
+              <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto mb-4 border border-emerald-500/20">
+                <CheckCircle size={32} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Message Delivered</h3>
-              <p className="text-sm text-[#a1a1aa] mb-6 font-sans">
-                Thank you for reaching out. I will respond to your message within 24 hours.
+              <h2 className="text-2xl sm:text-3xl font-bold text-[var(--vb-text)] mb-2">
+                Message Sent.
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--vb-text-muted)] mb-8 font-sans max-w-md mx-auto">
+                Thank you for reaching out. I&apos;ll get back to you within 24 hours.
               </p>
               <button
                 type="button"
                 onClick={() => setIsSubmitted(false)}
-                className="px-5 py-2 rounded-full bg-[#141414] border border-white/10 text-white text-xs font-semibold hover:border-white/30 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-[var(--vb-text)] hover:text-[#e62e05] transition-colors cursor-pointer"
               >
-                Send Another Note
+                <span>Send another message</span>
+                <ArrowRight size={16} />
               </button>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
+            <form onSubmit={handleSubmit} className="space-y-10 border-t border-[var(--vb-border)] pt-10">
+              {/* Field 1: NAME */}
+              <div className="group">
                 <label
                   htmlFor="contact-name"
-                  className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-2"
+                  className="block text-xs font-mono uppercase tracking-[0.2em] text-[var(--vb-text-muted)] mb-2 font-medium"
                 >
-                  Your Name
+                  Name
                 </label>
                 <input
                   type="text"
                   id="contact-name"
                   name="name"
                   value={formState.name}
-                  onChange={e => setFormState({ ...formState, name: e.target.value })}
+                  onChange={handleChange}
                   required
-                  placeholder="e.g. Alex Morgan"
-                  className="w-full bg-[#141414] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-[#71717a] focus:outline-none focus:border-[#e62e05] transition-colors"
+                  placeholder="John Doe"
+                  className="w-full bg-transparent border-b-2 border-[var(--vb-border)] focus:border-[#e62e05] pb-4 pt-1 text-xl sm:text-2xl md:text-3xl font-bold text-[var(--vb-text)] placeholder-[var(--vb-text-muted)]/30 focus:outline-none transition-colors"
                 />
               </div>
 
-              <div>
+              {/* Field 2: EMAIL */}
+              <div className="group">
                 <label
                   htmlFor="contact-email"
-                  className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-2"
+                  className="block text-xs font-mono uppercase tracking-[0.2em] text-[var(--vb-text-muted)] mb-2 font-medium"
                 >
-                  Email Address
+                  Email
                 </label>
                 <input
                   type="email"
                   id="contact-email"
                   name="email"
                   value={formState.email}
-                  onChange={e => setFormState({ ...formState, email: e.target.value })}
+                  onChange={handleChange}
                   required
-                  placeholder="alex@company.com"
-                  className="w-full bg-[#141414] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-[#71717a] focus:outline-none focus:border-[#e62e05] transition-colors"
+                  placeholder="john@example.com"
+                  className="w-full bg-transparent border-b-2 border-[var(--vb-border)] focus:border-[#e62e05] pb-4 pt-1 text-xl sm:text-2xl md:text-3xl font-bold text-[var(--vb-text)] placeholder-[var(--vb-text-muted)]/30 focus:outline-none transition-colors"
                 />
               </div>
 
-              <div>
+              {/* Field 3: MESSAGE */}
+              <div className="group">
                 <label
                   htmlFor="contact-message"
-                  className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-2"
+                  className="block text-xs font-mono uppercase tracking-[0.2em] text-[var(--vb-text-muted)] mb-2 font-medium"
                 >
-                  Project Details
+                  Message
                 </label>
                 <textarea
                   id="contact-message"
                   name="message"
                   rows={4}
                   value={formState.message}
-                  onChange={e => setFormState({ ...formState, message: e.target.value })}
+                  onChange={handleChange}
                   required
-                  placeholder="Tell me about your goals, timeline, and deliverables..."
-                  className="w-full bg-[#141414] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-[#71717a] focus:outline-none focus:border-[#e62e05] transition-colors resize-none"
+                  placeholder="Tell me about your project..."
+                  className="w-full bg-transparent border-b-2 border-[var(--vb-border)] focus:border-[#e62e05] pb-4 pt-1 text-xl sm:text-2xl md:text-3xl font-bold text-[var(--vb-text)] placeholder-[var(--vb-text-muted)]/30 focus:outline-none transition-colors resize-none leading-relaxed"
                 />
               </div>
 
               {error && (
-                <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-500 font-sans">
                   {error}
                 </div>
               )}
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-3.5 px-6 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-[#e62e05] hover:text-white transition-all duration-300 shadow-md flex items-center justify-center gap-2 group disabled:opacity-50"
-              >
-                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-                <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
-              </button>
+              {/* Action Button */}
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center gap-3 text-xl sm:text-2xl md:text-3xl font-bold text-[var(--vb-text)] hover:text-[#e62e05] transition-colors cursor-pointer disabled:opacity-50 group select-none"
+                >
+                  <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                  <ArrowRight
+                    size={28}
+                    className="group-hover:translate-x-2 transition-transform text-[#e62e05]"
+                  />
+                </button>
+              </div>
             </form>
           )}
-        </section>
-
-        {/* Studio Info Card */}
-        <section className="vb-card p-6 md:p-8" aria-label="Studio contact information">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#e62e05]">
-              Connect
-            </span>
-          </div>
-
-          <h2 className="text-xl font-bold tracking-tight text-white mb-6">
-            Adib Studio &bull; Creative Lab
-          </h2>
-
-          <div className="space-y-4 text-sm font-sans">
-            <div className="flex items-start gap-3">
-              <MapPin size={16} className="text-[#e62e05] shrink-0 mt-0.5" />
-              <span className="text-[#a1a1aa]">{personalInfo.location}</span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Mail size={16} className="text-[#e62e05] shrink-0" />
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="text-white hover:text-[#e62e05] transition-colors"
-              >
-                {personalInfo.email}
-              </a>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Phone size={16} className="text-[#e62e05] shrink-0" />
-              <a
-                href={`tel:${personalInfo.phone}`}
-                className="text-white hover:text-[#e62e05] transition-colors"
-              >
-                {personalInfo.phone}
-              </a>
-            </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex flex-wrap gap-2 pt-6 mt-6 border-t border-white/5">
-            <a
-              href={personalInfo.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={personalInfo.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href={personalInfo.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
-            >
-              Instagram
-            </a>
-            <a
-              href={personalInfo.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
-            >
-              Facebook
-            </a>
-          </div>
-        </section>
+        </div>
       </VisbeyondLayout>
     </>
   );

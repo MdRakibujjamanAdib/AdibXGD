@@ -26,7 +26,6 @@ import { projects } from '../data/projects';
 import HomeSections from './HomeSections';
 import { usePortfolioTheme } from '../hooks/usePortfolioTheme';
 import {
-  VBLogo,
   InvertedCornerTopRight,
   InvertedCornerBottomLeft,
   InvertedCornerBottomRightLeft,
@@ -163,7 +162,8 @@ export default function HomeHero() {
               exit={{ opacity: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.55, ease: [0.16, 1, 0.3, 1] }}
               fetchPriority="high"
-              className={`w-full h-full object-cover ${active.type === 'profile' ? 'object-top' : 'object-center'}`}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: active.type === 'profile' ? 'center 50%' : 'center' }}
             />
           </AnimatePresence>
         </motion.div>
@@ -238,15 +238,13 @@ export default function HomeHero() {
         >
           <ArrowUpRight className="vb-profile-arrow" size={18} strokeWidth={1.5} aria-hidden="true" />
           <div className="vb-profile-heading">
-            <VBLogo className="w-12 h-9 text-current flex-shrink-0 group-hover:scale-105 transition-transform" />
             <div>
               <h1 className="vb-wordmark">ADIB</h1>
-              <p>Developer &amp; Designer</p>
+              <p>Creative Developer &amp; AI Architect</p>
             </div>
           </div>
           <p className="vb-profile-description">
-            I&apos;m Md Rakibujjaman Adib, a creative technologist and co-founder of Green D. I build
-            websites, distinctive visual identities, and cinematic visuals that bring ideas to life.
+            I&apos;m Md Rakibujjaman Adib, an AI architect, creative developer, and co-founder of Green D. I architect autonomous AI workflows, high-performance web systems, distinctive brand identities, and cinematic visuals.
           </p>
         </Link>
 
@@ -276,7 +274,7 @@ export default function HomeHero() {
             <h2>
               My Services <ArrowDown size={16} strokeWidth={1.8} />
             </h2>
-            <a href="#portfolio-services">View All</a>
+            <Link to="/services">View All</Link>
           </div>
           <div className="vb-service-grid">
             {services.map(({ name, Icon, href }) => (
@@ -296,7 +294,7 @@ export default function HomeHero() {
                 </span>
               </Link>
             ))}
-            <a href="#portfolio-services" className="vb-service vb-service--all group">
+            <Link to="/services" className="vb-service vb-service--all group">
               <span>Explore All</span>
               <span className="relative w-5 h-5 flex items-center justify-center flex-shrink-0">
                 <WandSparkles
@@ -310,7 +308,7 @@ export default function HomeHero() {
                   className="absolute inset-0 transition-all duration-200 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#e62e05] dark:text-[#e62e05]"
                 />
               </span>
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -35,13 +35,13 @@ export default function VisbeyondNav({
       >
         <RolloverText>Projects</RolloverText>
       </Link>
-      <a
-        href="/#portfolio-services"
-        className={location.pathname === '/' && location.hash === '#portfolio-services' ? 'active' : ''}
+      <Link
+        to="/services"
+        className={location.pathname === '/services' ? 'active' : ''}
         onClick={() => setMenuOpen(false)}
       >
         <RolloverText>Services</RolloverText>
-      </a>
+      </Link>
       <Link
         to="/about"
         className={location.pathname === '/about' ? 'active' : ''}

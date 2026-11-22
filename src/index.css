@@ -1223,10 +1223,60 @@ body.dark,
   overflow: hidden;
   border-radius: var(--vb-radius);
   padding: 56px 52px 36px 52px;
-  background: #0e1011 !important;
-  color: #ffffff !important;
+  background: #0e1011;
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, border-color 0.35s ease;
+}
+
+html.dark .vb-footer-card,
+body.dark .vb-footer-card,
+[data-theme="dark"] .vb-footer-card,
+.vb-hero[data-theme="dark"] .vb-footer-card {
+  background: #ffffff !important;
+  color: #0e1011 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+html.dark .vb-footer-stars-svg,
+body.dark .vb-footer-stars-svg,
+[data-theme="dark"] .vb-footer-stars-svg,
+.vb-hero[data-theme="dark"] .vb-footer-stars-svg {
+  color: #0e1011;
+  opacity: 0.15;
+}
+
+html.dark .vb-meteor,
+body.dark .vb-meteor,
+[data-theme="dark"] .vb-meteor,
+.vb-hero[data-theme="dark"] .vb-meteor {
+  color: rgba(14, 16, 17, 0.35);
+}
+
+html.dark .vb-schedule-btn .vb-btn-fill,
+body.dark .vb-schedule-btn .vb-btn-fill,
+[data-theme="dark"] .vb-schedule-btn .vb-btn-fill,
+.vb-hero[data-theme="dark"] .vb-schedule-btn .vb-btn-fill {
+  background: #0e1011;
+}
+
+html.dark .vb-schedule-btn .vb-btn-text,
+html.dark .vb-schedule-btn .vb-btn-icon,
+body.dark .vb-schedule-btn .vb-btn-text,
+body.dark .vb-schedule-btn .vb-btn-icon,
+[data-theme="dark"] .vb-schedule-btn .vb-btn-text,
+[data-theme="dark"] .vb-schedule-btn .vb-btn-icon,
+.vb-hero[data-theme="dark"] .vb-schedule-btn .vb-btn-text,
+.vb-hero[data-theme="dark"] .vb-schedule-btn .vb-btn-icon {
+  color: #ffffff !important;
+}
+
+html.dark .vb-footer-back-to-top,
+body.dark .vb-footer-back-to-top,
+[data-theme="dark"] .vb-footer-back-to-top,
+.vb-hero[data-theme="dark"] .vb-footer-back-to-top {
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* Cosmic Galaxy Stardust & 16 Falling Star Meteors */
@@ -1499,7 +1549,7 @@ body.dark,
   letter-spacing: -0.2px;
   margin-bottom: 14px;
   text-align: center;
-  color: #ffffff;
+  color: inherit;
 }
 
 .vb-footer-mobile-links {
@@ -1510,17 +1560,19 @@ body.dark,
   gap: 20px;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.65);
+  color: inherit;
+  opacity: 0.7;
 }
 
 .vb-footer-mobile-links a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .vb-footer-mobile-links a:hover {
-  color: #ffffff;
+  opacity: 1;
+  color: #e62e05;
 }
 
 .vb-footer-nav-col {
@@ -1757,8 +1809,9 @@ body.dark,
     gap: var(--vb-gap);
   }
   .vb-showcase {
-    height: auto;
-    aspect-ratio: 1;
+    height: 400px;
+    max-height: 420px;
+    aspect-ratio: auto;
   }
   .vb-service-grid, .vb-recent-grid {
     grid-template-columns: minmax(0, 1fr);

@@ -3,7 +3,6 @@ import PortfolioFooter from './PortfolioFooter';
 import VisbeyondNav from './VisbeyondNav';
 import { usePortfolioTheme } from '../../hooks/usePortfolioTheme';
 import {
-  VBLogo,
   InvertedCornerBottomRightLeft,
   InvertedCornerBottomRightTop,
 } from '../ui/VisbeyondIcons';
@@ -15,6 +14,7 @@ interface VisbeyondLayoutProps {
   showcaseAlt?: string;
   showcaseChildren?: React.ReactNode;
   hideShowcaseOnMobile?: boolean;
+  footerSocialMode?: 'all' | 'contact-only' | 'none';
   headerCard?: React.ReactNode;
   children: React.ReactNode;
 }
@@ -25,6 +25,7 @@ export default function VisbeyondLayout({
   showcaseAlt = 'Showcase',
   showcaseChildren,
   hideShowcaseOnMobile = false,
+  footerSocialMode = 'all',
   headerCard,
   children,
 }: VisbeyondLayoutProps) {
@@ -57,15 +58,11 @@ export default function VisbeyondLayout({
             <div className="relative w-full h-full flex flex-col items-center justify-center p-8 text-center bg-black overflow-hidden">
               <VisbeyondStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
               <div className="relative z-10 flex flex-col items-center justify-center">
-                <div className="relative mb-6 group cursor-default">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-red-600/20 via-orange-500/10 to-red-600/20 rounded-full blur-2xl opacity-40 group-hover:opacity-75 transition duration-700" />
-                  <VBLogo className="relative w-28 h-20 text-white drop-shadow-[0_12px_30px_rgba(0,0,0,0.9)]" />
-                </div>
-                <h2 className="vb-wordmark text-2xl md:text-3xl tracking-[0.25em] text-white font-extrabold mb-2">
+                <h2 className="vb-wordmark text-3xl md:text-4xl tracking-[0.25em] text-white font-extrabold mb-2.5">
                   ADIB
                 </h2>
                 <p className="text-[11px] uppercase tracking-[0.28em] text-[#a1a1aa] font-mono">
-                  Creative Technologist &bull; Designer
+                  Creative Developer &bull; AI Architect &bull; Designer
                 </p>
               </div>
             </div>
@@ -95,7 +92,7 @@ export default function VisbeyondLayout({
 
         {children}
 
-        <PortfolioFooter />
+        <PortfolioFooter socialMode={footerSocialMode} />
       </div>
     </div>
   );

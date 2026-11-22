@@ -1,16 +1,36 @@
 import React from 'react';
 
-// Exact VB shield logo extracted from visbeyond.com
-export function VBLogo({ className = "w-12 h-10" }: { className?: string }) {
+// Lucide-family matching TikTok stroke icon (24x24 grid, geometric line weight)
+export function TiktokIcon({
+  size = 18,
+  strokeWidth = 1.5,
+  className = "",
+  ...props
+}: {
+  size?: number | string;
+  strokeWidth?: number | string;
+  className?: string;
+} & React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 65 47" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
-      <path d="M 17.437 0 L 65 0 L 59.431 4.406 L 59.431 10.281 L 53.223 15.697 L 59.431 21.297 L 33.869 47 L 33.869 14.229 L 38.251 9.822 L 42.451 9.822 L 42.451 14.229 L 48.841 7.803 L 17.437 7.803 Z" />
-      <path d="M 0 0 L 14.607 0 L 14.607 18.451 L 23.188 26.07 L 23.188 9.822 L 34.691 9.822 L 31.496 13.035 L 31.496 46.541 L 5.751 21.297 L 5.751 4.406 Z" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      {...props}
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
     </svg>
   );
 }
 
-// Stylized Barcode for pricing ticket cards
+// Stylized Barcode component
 export function Barcode({ className = "w-44 h-8" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 160 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

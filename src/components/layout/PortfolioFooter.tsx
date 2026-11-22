@@ -6,7 +6,7 @@ import {
   Instagram,
   Linkedin,
   Facebook,
-  Youtube,
+  Github,
   ArrowUpRight,
 } from 'lucide-react';
 import { personalInfo } from '../../data/content';
@@ -68,85 +68,109 @@ function RollingLink({
   );
 }
 
-export default function PortfolioFooter() {
+export default function PortfolioFooter({
+  socialMode = 'all',
+}: {
+  socialMode?: 'all' | 'contact-only' | 'none';
+}) {
   return (
     <footer className="vb-footer-wrapper" aria-label="Site footer">
-      {/* 1. Visbeyond 5-Button Social & Contact Stack with Rolling Icon -> ArrowUpRight Animation */}
-      <div className="vb-footer-social-stack" aria-label="Social and contact links">
-        <a
-          href={personalInfo.social.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="vb-social-pill group"
-          aria-label="Instagram"
-        >
-          <span>Instagram</span>
-          <span className="vb-social-icon" aria-hidden="true">
-            <span className="vb-social-icon-track">
-              <Instagram size={18} strokeWidth={1.5} />
-              <ArrowUpRight size={18} strokeWidth={2} />
+      {/* 1. Visbeyond Social & Contact Stack */}
+      {socialMode === 'all' && (
+        <div className="vb-footer-social-stack" aria-label="Social and contact links">
+          <a
+            href={personalInfo.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vb-social-pill group"
+            aria-label="Instagram"
+          >
+            <span>Instagram</span>
+            <span className="vb-social-icon" aria-hidden="true">
+              <span className="vb-social-icon-track">
+                <Instagram size={18} strokeWidth={1.5} />
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </span>
             </span>
-          </span>
-        </a>
-        <a
-          href={personalInfo.social.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="vb-social-pill group"
-          aria-label="LinkedIn"
-        >
-          <span>LinkedIn</span>
-          <span className="vb-social-icon" aria-hidden="true">
-            <span className="vb-social-icon-track">
-              <Linkedin size={18} strokeWidth={1.5} />
-              <ArrowUpRight size={18} strokeWidth={2} />
+          </a>
+          <a
+            href={personalInfo.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vb-social-pill group"
+            aria-label="LinkedIn"
+          >
+            <span>LinkedIn</span>
+            <span className="vb-social-icon" aria-hidden="true">
+              <span className="vb-social-icon-track">
+                <Linkedin size={18} strokeWidth={1.5} />
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </span>
             </span>
-          </span>
-        </a>
-        <a
-          href={personalInfo.social.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="vb-social-pill group"
-          aria-label="Facebook"
-        >
-          <span>Facebook</span>
-          <span className="vb-social-icon" aria-hidden="true">
-            <span className="vb-social-icon-track">
-              <Facebook size={18} strokeWidth={1.5} />
-              <ArrowUpRight size={18} strokeWidth={2} />
+          </a>
+          <a
+            href={personalInfo.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vb-social-pill group"
+            aria-label="Facebook"
+          >
+            <span>Facebook</span>
+            <span className="vb-social-icon" aria-hidden="true">
+              <span className="vb-social-icon-track">
+                <Facebook size={18} strokeWidth={1.5} />
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </span>
             </span>
-          </span>
-        </a>
-        <a
-          href={(personalInfo.social as any).youtube || "https://www.youtube.com/@adib"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="vb-social-pill group"
-          aria-label="YouTube"
-        >
-          <span>YouTube</span>
-          <span className="vb-social-icon" aria-hidden="true">
-            <span className="vb-social-icon-track">
-              <Youtube size={18} strokeWidth={1.5} />
-              <ArrowUpRight size={18} strokeWidth={2} />
+          </a>
+          <a
+            href={personalInfo.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vb-social-pill group"
+            aria-label="GitHub"
+          >
+            <span>GitHub</span>
+            <span className="vb-social-icon" aria-hidden="true">
+              <span className="vb-social-icon-track">
+                <Github size={18} strokeWidth={1.5} />
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </span>
             </span>
-          </span>
-        </a>
-        <Link
-          to="/contact"
-          className="vb-social-pill vb-contact-pill group"
-          aria-label="Contact Us"
-        >
-          <span>Contact Us</span>
-          <span className="vb-social-icon" aria-hidden="true">
-            <span className="vb-social-icon-track">
-              <Mail size={18} strokeWidth={1.5} />
-              <ArrowUpRight size={18} strokeWidth={2} />
+          </a>
+          <Link
+            to="/contact"
+            className="vb-social-pill vb-contact-pill group"
+            aria-label="Contact Us"
+          >
+            <span>Contact Us</span>
+            <span className="vb-social-icon" aria-hidden="true">
+              <span className="vb-social-icon-track">
+                <Mail size={18} strokeWidth={1.5} />
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </span>
             </span>
-          </span>
-        </Link>
-      </div>
+          </Link>
+        </div>
+      )}
+
+      {socialMode === 'contact-only' && (
+        <div className="w-full">
+          <Link
+            to="/contact"
+            className="vb-social-pill vb-contact-pill group w-full"
+            aria-label="Contact Us"
+          >
+            <span>Contact Us</span>
+            <span className="vb-social-icon" aria-hidden="true">
+              <span className="vb-social-icon-track">
+                <Mail size={18} strokeWidth={1.5} />
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </span>
+            </span>
+          </Link>
+        </div>
+      )}
 
       {/* 2. Main Signature Cosmic Footer Card */}
       <div className="vb-footer-card">
@@ -172,11 +196,11 @@ export default function PortfolioFooter() {
         <div className="vb-footer-top-row">
           <Link to="/" className="vb-footer-brand group">
             <div className="vb-footer-brand-text">
-              <span className="vb-wordmark text-3xl sm:text-4xl font-extrabold tracking-tight leading-none text-white">
+              <span className="vb-wordmark text-3xl sm:text-4xl font-extrabold tracking-tight leading-none text-white dark:text-[#0e1011] transition-colors">
                 ADIB
               </span>
-              <span className="text-xs sm:text-sm font-medium tracking-wide text-white/60 mt-1.5 font-sans">
-                Creative Developer &bull; UI Architect &bull; Designer
+              <span className="text-xs sm:text-sm font-medium tracking-wide text-white/60 dark:text-[#0e1011]/60 mt-1.5 font-sans transition-colors">
+                Creative Developer &bull; AI Architect &bull; Designer
               </span>
             </div>
           </Link>
@@ -201,16 +225,16 @@ export default function PortfolioFooter() {
             <h3 className="vb-footer-col-heading">Pages</h3>
             <ul className="vb-footer-col-list">
               <li>
-                <RollingLink to="/contact">Pricing</RollingLink>
-              </li>
-              <li>
-                <RollingLink href="/#portfolio-services">Services</RollingLink>
+                <RollingLink to="/services">Services</RollingLink>
               </li>
               <li>
                 <RollingLink to="/projects">Projects</RollingLink>
               </li>
               <li>
-                <RollingLink to="/about">About Us</RollingLink>
+                <RollingLink to="/about">About</RollingLink>
+              </li>
+              <li>
+                <RollingLink to="/contact">Contact</RollingLink>
               </li>
             </ul>
           </div>
@@ -236,10 +260,10 @@ export default function PortfolioFooter() {
           <div className="vb-footer-mobile-group">
             <h3 className="vb-footer-col-heading">Pages</h3>
             <div className="vb-footer-mobile-links">
-              <RollingLink to="/contact">Pricing</RollingLink>
-              <RollingLink href="/#portfolio-services">Services</RollingLink>
+              <RollingLink to="/services">Services</RollingLink>
               <RollingLink to="/projects">Projects</RollingLink>
-              <RollingLink to="/about">About Us</RollingLink>
+              <RollingLink to="/about">About</RollingLink>
+              <RollingLink to="/contact">Contact</RollingLink>
             </div>
           </div>
 
@@ -253,13 +277,10 @@ export default function PortfolioFooter() {
           </div>
         </div>
 
-        {/* Bottom Row: Copyright & Policy */}
+        {/* Bottom Row: Copyright */}
         <div className="vb-footer-bottom-row">
           <p className="vb-footer-copyright">
-            © {new Date().getFullYear()} {personalInfo.name}.{' '}
-            <RollingLink to="/contact" className="ml-1 text-white/80 underline underline-offset-2">
-              Privacy Policy
-            </RollingLink>
+            © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
           </p>
         </div>
       </div>

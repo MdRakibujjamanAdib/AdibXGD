@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Download,
-  MapPin,
-  Mail,
-  Phone,
-  GraduationCap,
   ExternalLink,
   ChevronDown,
   ArrowRight,
+  ArrowUpRight,
   ChevronRight,
   ChevronsUpDown,
 } from 'lucide-react';
@@ -155,7 +153,7 @@ export default function About() {
       title: 'Champion - AI Expo, Project Development',
       date: '21/08/2025',
       dept: 'Dept. of Multimedia & Creative Technology (MCT), DIU',
-      desc: '1st Place for innovative AI-driven creative application architecture and real-time generation systems.',
+      desc: 'Recognized for innovative AI-driven creative application architecture and real-time generation systems.',
       isGold: true,
       link: 'https://daffodilvarsity.edu.bd/events-detail/406',
     },
@@ -163,7 +161,7 @@ export default function About() {
       title: 'Champion - Byte Battle Programming Contest',
       date: '02/08/2025',
       dept: 'Dept. of Information Technology & Management (ITM), DIU',
-      desc: '1st Place in competitive programming, algorithmic optimization, and data structures.',
+      desc: 'Top finish in competitive programming, algorithmic optimization, and data structures.',
       isGold: true,
       link: 'https://tinyurl.com/AdibBB',
     },
@@ -171,7 +169,7 @@ export default function About() {
       title: 'Champion – Pixel to Program: MCT Programming Contest',
       date: '12/12/2024',
       dept: 'Dept. of Multimedia & Creative Technology (MCT), DIU',
-      desc: '1st Place bridging software logic with interactive computer graphics and digital design.',
+      desc: 'First place bridging software logic with interactive computer graphics and digital design.',
       isGold: true,
       link: 'https://daffodilvarsity.edu.bd/events-detail/413',
     },
@@ -179,7 +177,7 @@ export default function About() {
       title: '1st Runner-up - AI Fest 2025 Project Showcase',
       date: '01/12/2025',
       dept: 'Dept. of Computing & Information System (CIS), DIU',
-      desc: '2nd Place for full-stack AI creative platform showcasing multimodal generation tools.',
+      desc: 'Full-stack AI creative platform showcasing multimodal generation tools.',
       isGold: false,
       link: 'https://daffodilvarsity.edu.bd/events-detail/451',
     },
@@ -187,7 +185,7 @@ export default function About() {
       title: '1st Runner-up - AI Prompt to Blueprint Challenge',
       date: '21/08/2025',
       dept: 'Dept. of Multimedia & Creative Technology (MCT), DIU',
-      desc: '2nd Place for advanced generative prompt engineering, system design, and blueprint synthesis.',
+      desc: 'Advanced generative prompt engineering, system design, and blueprint synthesis.',
       isGold: false,
       link: 'https://daffodilvarsity.edu.bd/events-detail/406',
     },
@@ -195,7 +193,7 @@ export default function About() {
       title: '1st Runner-up - BrainMagneto IT Case Competition',
       date: '05/08/2025',
       dept: 'Dept. of Information Technology & Management (ITM), DIU',
-      desc: '2nd Place for IT project management strategy, scalable roadmapping, and agile execution.',
+      desc: 'IT project management strategy, scalable roadmapping, and agile execution.',
       isGold: false,
       link: 'https://daffodilvarsity.edu.bd/events-detail/435',
     },
@@ -418,66 +416,37 @@ export default function About() {
             About Me
           </h1>
 
-          <div className="text-base md:text-lg text-[var(--vb-text-muted)] space-y-4 leading-relaxed font-sans mb-8">
+          <div className="text-base md:text-lg text-[var(--vb-text-muted)] space-y-5 leading-relaxed font-sans mb-8">
             <p>
-              I’m <strong className="text-[var(--vb-text)]">Md Rakibujjaman Adib</strong> — a Creative Technologist with a background in Multimedia and Creative Technology, combining design, 3D CGI, programming, and AI to build interactive digital experiences.
+              I’m <strong className="text-[var(--vb-text)]">Md Rakibujjaman Adib</strong>, a Creative Technologist and <strong className="text-[var(--vb-text)]">Erasmus+ Scholar</strong> with hands-on international experience across Europe and Asia, working with global teams and clients in game development, graphic design, and digital innovation.
             </p>
             <p>
-              Experienced in serious game development with Unity (C#) through an <strong className="text-[var(--vb-text)]">Erasmus+ exchange at Windesheim University of Applied Sciences</strong> in the Netherlands, freelance graphic design for international clients, and building end-to-end AI and IoT platforms.
+              From collaborating on real-world game development projects in the Netherlands to delivering creative solutions for international clients, I combine technical expertise with a global perspective. My work spans AI-powered applications, software development, and interactive digital experiences.
             </p>
             <p>
-              Recognized as a <strong className="text-[var(--vb-text)]">3-time champion and 3-time runner-up</strong> in university and national competitions covering programming, AI, and IT projects. Motivated by interdisciplinary teamwork and open to global opportunities in creative technology.
+              I thrive in multicultural environments, turning ambitious ideas into practical solutions and bringing creativity, adaptability, and problem-solving to every collaboration.
             </p>
-          </div>
-
-          {/* Contact / Specs Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-6 border-t border-[var(--vb-border)] mb-8">
-            <div className="bg-[var(--vb-card-inset)] p-4 rounded-xl border border-[var(--vb-border)]">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--vb-text-muted)] mb-1">
-                <MapPin size={13} className="text-[#e62e05]" /> Location
-              </div>
-              <p className="text-sm font-semibold text-[var(--vb-text)]">Dhaka &amp; Zwolle</p>
-            </div>
-
-            <div className="bg-[var(--vb-card-inset)] p-4 rounded-xl border border-[var(--vb-border)]">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--vb-text-muted)] mb-1">
-                <GraduationCap size={13} className="text-[#e62e05]" /> Degree
-              </div>
-              <p className="text-sm font-semibold text-[var(--vb-text)]">BSc in MCT</p>
-            </div>
-
-            <div className="bg-[var(--vb-card-inset)] p-4 rounded-xl border border-[var(--vb-border)]">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--vb-text-muted)] mb-1">
-                <Mail size={13} className="text-[#e62e05]" /> Email
-              </div>
-              <p className="text-sm font-semibold text-[var(--vb-text)] truncate">adizaman71@gmail.com</p>
-            </div>
-
-            <div className="bg-[var(--vb-card-inset)] p-4 rounded-xl border border-[var(--vb-border)]">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--vb-text-muted)] mb-1">
-                <Phone size={13} className="text-[#e62e05]" /> Phone
-              </div>
-              <p className="text-sm font-semibold text-[var(--vb-text)] truncate">(+880) 1303031080</p>
-            </div>
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-[var(--vb-border)]">
             <a
               href="/Md_Rakibujjaman_Adib_CV.pdf"
               download="Md_Rakibujjaman_Adib_CV.pdf"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[var(--vb-inverse)] text-[var(--vb-inverse-text)] font-semibold text-sm hover:bg-[#e62e05] hover:text-white transition-all duration-300 shadow-md group"
+              className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[var(--vb-text)] text-[var(--vb-bg)] font-semibold text-sm hover:bg-[#e62e05] hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 select-none"
             >
-              <span>Download Official CV (.PDF)</span>
-              <Download size={15} className="group-hover:translate-y-0.5 transition-transform" />
+              <span>Download CV</span>
+              <span className="w-6 h-6 rounded-full bg-[var(--vb-bg)]/15 group-hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Download size={13} className="group-hover:translate-y-0.5 transition-transform" />
+              </span>
             </a>
-            <a
-              href="mailto:adizaman71@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[var(--vb-border)] text-[var(--vb-text)] font-semibold text-sm hover:border-[#e62e05] hover:text-[#e62e05] transition-all duration-300"
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[var(--vb-border)] bg-[var(--vb-card-inset)] text-[var(--vb-text)] font-semibold text-sm hover:border-[var(--vb-text)] hover:-translate-y-0.5 transition-all duration-300"
             >
-              <span>Get in Touch</span>
-              <ChevronRight size={15} />
-            </a>
+              <span>Chat Now</span>
+              <ArrowUpRight size={15} />
+            </Link>
           </div>
         </section>
 
@@ -513,8 +482,8 @@ export default function About() {
 
             <div className="vb-feature-card">
               <VisbeyondLottieIcon name="trophy" />
-              <h3>Award-Winning Standards</h3>
-              <p>Leave your audience in awe with 6 podium finishes across programming contests, AI expos, and systems development.</p>
+              <h3>International Recognition</h3>
+              <p>Proven global perspective shaped by an Erasmus+ scholarship in the Netherlands, cross-border client collaborations, and 6 podium finishes across programming, AI, and digital innovation.</p>
             </div>
           </div>
         </section>
@@ -582,11 +551,8 @@ export default function About() {
                       className="vb-award-card"
                     >
                       <div>
-                        {/* Clean header: Place and Date without pill wrappers */}
-                        <div className="flex items-center justify-between gap-2 mb-3 text-xs font-mono text-[var(--vb-text-muted)]">
-                          <span className="text-[#e62e05] font-semibold">
-                            {award.isGold ? '1st Place' : '2nd Place'}
-                          </span>
+                        {/* Clean header: Date */}
+                        <div className="flex items-center justify-between gap-2 mb-2 text-xs font-mono text-[var(--vb-text-muted)]">
                           <span>{award.date}</span>
                         </div>
 
@@ -597,8 +563,7 @@ export default function About() {
                         <p className="text-sm text-[var(--vb-text-muted)] leading-relaxed">{award.desc}</p>
                       </div>
 
-                      <div className="pt-3 border-t border-[var(--vb-border)] flex items-center justify-between">
-                        <span className="text-xs text-[var(--vb-text-muted)] font-mono">Verified Event Record</span>
+                      <div className="pt-3 border-t border-[var(--vb-border)] flex items-center justify-end">
                         <a
                           href={award.link}
                           target="_blank"
@@ -849,8 +814,7 @@ export default function About() {
                         </ul>
                       </div>
 
-                      <div className="pt-3 border-t border-[var(--vb-border)] flex items-center justify-between">
-                        <span className="text-xs text-[var(--vb-text-muted)] font-mono">Platform</span>
+                      <div className="pt-3 border-t border-[var(--vb-border)] flex items-center justify-end">
                         <a
                           href={proj.link}
                           target="_blank"
@@ -929,8 +893,7 @@ export default function About() {
                         <p className="text-xs text-[var(--vb-text-muted)] font-mono mb-4">{vol.dept}</p>
                       </div>
 
-                      <div className="pt-3 border-t border-[var(--vb-border)] flex items-center justify-between">
-                        <span className="text-xs text-[var(--vb-text-muted)] font-mono">Event Documentation</span>
+                      <div className="pt-3 border-t border-[var(--vb-border)] flex items-center justify-end">
                         <a
                           href={vol.link}
                           target="_blank"

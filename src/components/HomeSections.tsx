@@ -4,8 +4,8 @@ import { ArrowUpRight, Plus } from 'lucide-react';
 
 const questions = [
   [
-    'What does Adib / Visbeyond do?',
-    'We build high-impact websites, brand identities, AI-powered automation, and cinematic 3D visuals designed for maximum ROI and seamless digital experiences.',
+    'What does Adib do?',
+    'I build high-impact websites, distinctive brand identities, autonomous AI systems, and cinematic 3D visuals designed for maximum ROI and seamless digital experiences.',
   ],
   [
     'How do we get started?',

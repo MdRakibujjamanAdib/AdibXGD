@@ -10,6 +10,7 @@ import Blogs from './pages/Update/Blogs';
 import BlogDetails from './pages/BlogDetails';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Services from './pages/Services';
 import Achievements from './pages/Achievements';
 import { AnimatePresence } from 'motion/react';
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/projects/:id" element={<ProjectDetails />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:slug" element={<BlogDetails />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/achievements" element={<Achievements />} />
