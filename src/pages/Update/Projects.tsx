@@ -1,116 +1,116 @@
-
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { projects } from '../../data/projects';
-import { ArrowUpRight } from 'lucide-react';
-import PageTransition from '../../components/layout/PageTransition';
+import { ArrowRight } from 'lucide-react';
+import { projects, Project } from '../../data/projects';
+import VisbeyondLayout from '../../components/layout/VisbeyondLayout';
 import SEO from '../../components/SEO';
+import { InvertedCornerTopRight, InvertedCornerBottomLeft } from '../../components/ui/VisbeyondIcons';
 
-const Projects = () => {
-  const [filter, setFilter] = useState('All');
+export default function Projects() {
+  // Prioritize featured works first
+  const sortedProjects = [...projects].sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return 0;
+  });
 
-  // Define all possible categories
-  const allCategories = [
-    'All',
-    '3D',
-    'Web & Automation',
-    'Brand Identity',
-    'Video Editing'
-  ];
-
-  const filteredProjects = filter === 'All'
-    ? projects
-    : projects.filter(p => p.category === filter);
+  const [activeProject, setActiveProject] = useState<Project>(sortedProjects[0]);
 
   return (
-    <PageTransition>
+    <>
       <SEO
-        title="Selected Work"
-        description="Explore the selected projects of Md Rakibujjaman Adib. Includes work in 3D modeling, brand identity, and web automation with AI integrations."
+        title="Projects | Md Rakibujjaman Adib"
+        description="Explore the selected projects of Md Rakibujjaman Adib across 3D CGI rendering, interactive systems, and brand design."
       />
-      <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-20">
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter text-black dark:text-white">Selected Work</h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed">
-              A curated collection of projects exploring the intersection of design, artificial intelligence, and interactive experiences.
+      <VisbeyondLayout
+        pageLabel={activeProject?.title || 'Projects'}
+        hideShowcaseOnMobile={true}
+        headerCard={
+          <div className="flex flex-col justify-between min-h-[130px] md:min-h-[150px] xl:min-h-[192px] p-6 md:p-10 xl:p-12">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--vb-text)] leading-[1.1]">
+              Projects
+            </h1>
+
+            <p className="text-sm md:text-[15px] text-[var(--vb-text-muted)] leading-relaxed max-w-xl font-sans mt-6 md:mt-8">
+              Explore the portfolio. Discover selected projects across 3D CGI, interactive systems, and brand architecture.
             </p>
           </div>
-
-          {/* Dynamic Filters */}
-          <div className="flex flex-wrap gap-8 mb-20 border-b border-gray-100 dark:border-zinc-900 pb-4">
-            {allCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`text-lg font-bold transition-colors relative pb-4 ${filter === cat
-                  ? 'text-black dark:text-white'
-                  : 'text-gray-400 hover:text-black dark:hover:text-white'
-                  }`}
-              >
-                {cat}
-                {filter === cat && (
-                  <motion.div
-                    layoutId="activeFilter"
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-blue-600 dark:bg-blue-500"
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Grid */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
-            <AnimatePresence mode='popLayout'>
-              {filteredProjects.map((project) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5 }}
-                  key={project.id}
-                  className="group"
-                >
-                  <Link to={`/projects/${project.id}`} className="block overflow-hidden rounded-2xl mb-8 relative aspect-[4/3]">
-                    <img
-                      src={project.thumbnail}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/90 backdrop-blur px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-sm font-bold flex items-center gap-2">View Case Study <ArrowUpRight size={14} /></span>
-                    </div>
-                  </Link>
-
-                  <div>
-                    <h3 className="text-3xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors mb-2">
-                      <Link to={`/projects/${project.id}`}>{project.title}</Link>
-                    </h3>
-                    <span className="text-sm font-mono text-gray-400 dark:text-zinc-600 uppercase tracking-widest mb-3 block">{project.category}</span>
-                  </div>
-
-                  <div
-                    className="text-lg text-gray-600 dark:text-gray-400 line-clamp-2 mb-6 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                  />
-
-                  <div className="flex flex-wrap gap-3">
-                    {project.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-sm font-medium text-gray-500 dark:text-gray-500 border border-gray-200 dark:border-zinc-800 px-3 py-1 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+        }
+        showcaseChildren={
+          <div className="relative w-full h-full overflow-hidden select-none bg-[var(--vb-bg)]">
+            {/* Smooth opacity crossfade on hover */}
+            <AnimatePresence initial={false}>
+              {activeProject && (
+                <motion.img
+                  key={activeProject.id}
+                  src={activeProject.thumbnail}
+                  alt={activeProject.title}
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              )}
             </AnimatePresence>
-          </motion.div>
-        </div>
-      </div>
-    </PageTransition>
-  );
-};
+          </div>
+        }
+      >
+        {/* Mobile & Tablet Visual Project Cards (1-col on mobile <=809px, 2-col on tablet 810-1199px) */}
+        <section className="vb-projects-grid" aria-label="Project cards list mobile">
+          {sortedProjects.map(project => (
+            <Link
+              to={`/projects/${project.id}`}
+              key={`mobile-${project.id}`}
+              className="vb-mobile-card group"
+            >
+              {/* Top-Left Inverted Cutout Tab */}
+              <div className="vb-mobile-card-tab">
+                <h2 className="vb-mobile-card-title">{project.title}</h2>
+                <span className="vb-project-arrow" aria-hidden="true">
+                  <ArrowRight size={15} strokeWidth={2} />
+                </span>
+                <InvertedCornerTopRight className="vb-mobile-tab-corner-right" />
+                <InvertedCornerBottomLeft className="vb-mobile-tab-corner-bottom" />
+              </div>
 
-export default Projects;
+              {/* Card Full-bleed Image */}
+              <div className="vb-mobile-card-img-wrap">
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+              </div>
+            </Link>
+          ))}
+        </section>
+
+        {/* Desktop Project Title Rows (Visbeyond desktop list layout) */}
+        <section className="hidden xl:flex xl:flex-col xl:gap-3" aria-label="Project list desktop">
+          {sortedProjects.map(project => (
+            <Link
+              to={`/projects/${project.id}`}
+              key={`desktop-${project.id}`}
+              className={`vb-project-link-row group ${activeProject?.id === project.id ? 'is-active' : ''}`}
+              onMouseEnter={() => setActiveProject(project)}
+              onFocus={() => setActiveProject(project)}
+            >
+              <div className="flex items-center min-w-0 pr-3">
+                <h2 className="vb-project-row-title truncate">{project.title}</h2>
+                <span className="vb-project-arrow" aria-hidden="true">
+                  <ArrowRight size={16} strokeWidth={2} />
+                </span>
+              </div>
+              <div className="vb-project-row-meta">
+                <span className="vb-project-row-tag">{project.category}</span>
+              </div>
+            </Link>
+          ))}
+        </section>
+      </VisbeyondLayout>
+    </>
+  );
+}

@@ -1,19 +1,30 @@
-
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle,
+  Copy,
+  Check,
+  Calendar,
+  Sparkles,
+  ArrowUpRight,
+} from 'lucide-react';
 import { personalInfo } from '../data/content';
-import PageTransition from '../components/layout/PageTransition';
+import VisbeyondLayout from '../components/layout/VisbeyondLayout';
 import SEO from '../components/SEO';
 
-const Contact = () => {
+export default function Contact() {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,14 +34,14 @@ const Contact = () => {
 
     try {
       const formData = new FormData();
-      formData.append("access_key", "fc1e1fb5-3901-4624-8fae-419df20514b2");
-      formData.append("name", formState.name);
-      formData.append("email", formState.email);
-      formData.append("message", formState.message);
+      formData.append('access_key', 'fc1e1fb5-3901-4624-8fae-419df20514b2');
+      formData.append('name', formState.name);
+      formData.append('email', formState.email);
+      formData.append('message', formState.message);
 
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
       });
 
       const data = await response.json();
@@ -41,148 +52,263 @@ const Contact = () => {
       } else {
         setError(data.message || 'Something went wrong. Please try again.');
       }
-    } catch (err) {
+    } catch {
       setError('Network error. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personalInfo.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <PageTransition>
+    <>
       <SEO
         title="Contact"
         description="Get in touch with Md Rakibujjaman Adib for AI architecture, 3D design, or full-stack web development projects."
       />
-      <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <VisbeyondLayout
+        pageLabel="Contact us"
+        showcaseImage="/images/visbeyond/EImFqIXTq1f40jZpM4XT7MbqCh4.png"
+        showcaseAlt="Contact Showcase"
+      >
+        {/* Header & Quick Actions Card */}
+        <section className="vb-card p-6 md:p-8" aria-label="Contact Header">
+          {/* Status Indicator */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium mb-4">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            Currently Onboarding New Projects
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            {/* Left Column */}
-            <div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-6xl md:text-8xl font-bold mb-12 tracking-tighter text-black dark:text-white leading-[0.9]"
-              >
-                Let's <br />
-                <span className="text-blue-600 dark:text-blue-500">Talk.</span>
-              </motion.h1>
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-3 leading-[1.1]">
+            Let&apos;s Get in Touch!
+          </h1>
 
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-16 leading-relaxed max-w-lg">
-                Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or just having a chat.
-              </p>
+          <p className="text-base md:text-lg text-[#a1a1aa] leading-relaxed mb-6 font-sans">
+            Ready to build a distinctive digital presence, photorealistic 3D visuals, or an AI-powered system? Let&apos;s discuss your vision.
+          </p>
 
-              <div className="space-y-10">
-                <div>
-                  <h3 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-2">Email</h3>
-                  <a href={`mailto:${personalInfo.email}`} className="text-2xl md:text-3xl font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
-                    {personalInfo.email}
-                  </a>
-                </div>
+          {/* Quick Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#e62e05] text-white font-semibold text-xs tracking-wider uppercase hover:brightness-110 transition-all shadow-lg shadow-[#e62e05]/20"
+            >
+              <Calendar size={15} /> Book a Call
+            </a>
 
-                <div>
-                  <h3 className="text-sm font-mono uppercase tracking-widest text-gray-500 mb-2">Socials</h3>
-                  <div className="flex gap-6">
-                    <a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">LinkedIn</a>
-                    <a href={personalInfo.social.github} target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">GitHub</a>
-                    <a href={(personalInfo.social as any).instagram} target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-blue-600 dark:hover:text-blue-500 transition-colors">Instagram</a>
-                  </div>
-                </div>
+            <span className="text-xs font-mono text-[#71717a] uppercase">or</span>
+
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#141414] border border-white/10 text-white font-semibold text-xs tracking-wider uppercase hover:border-white/30 transition-all"
+            >
+              {copied ? (
+                <>
+                  <Check size={14} className="text-emerald-400" />
+                  <span className="text-emerald-400">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={14} />
+                  <span>Copy Email</span>
+                </>
+              )}
+            </button>
+          </div>
+        </section>
+
+        {/* Contact Form Card */}
+        <section className="vb-card p-6 md:p-8" aria-label="Send a message">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#e62e05]">
+              Direct Inquiry
+            </span>
+          </div>
+
+          <h2 className="text-2xl font-bold tracking-tight text-white mb-6">
+            Send a Message
+          </h2>
+
+          {isSubmitted ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="p-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"
+            >
+              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4">
+                <CheckCircle size={28} />
               </div>
+              <h3 className="text-xl font-bold text-white mb-2">Message Delivered</h3>
+              <p className="text-sm text-[#a1a1aa] mb-6 font-sans">
+                Thank you for reaching out. I will respond to your message within 24 hours.
+              </p>
+              <button
+                type="button"
+                onClick={() => setIsSubmitted(false)}
+                className="px-5 py-2 rounded-full bg-[#141414] border border-white/10 text-white text-xs font-semibold hover:border-white/30 transition-colors"
+              >
+                Send Another Note
+              </button>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label
+                  htmlFor="contact-name"
+                  className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-2"
+                >
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  value={formState.name}
+                  onChange={e => setFormState({ ...formState, name: e.target.value })}
+                  required
+                  placeholder="e.g. Alex Morgan"
+                  className="w-full bg-[#141414] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-[#71717a] focus:outline-none focus:border-[#e62e05] transition-colors"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="contact-email"
+                  className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-2"
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  value={formState.email}
+                  onChange={e => setFormState({ ...formState, email: e.target.value })}
+                  required
+                  placeholder="alex@company.com"
+                  className="w-full bg-[#141414] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-[#71717a] focus:outline-none focus:border-[#e62e05] transition-colors"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="contact-message"
+                  className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-2"
+                >
+                  Project Details
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows={4}
+                  value={formState.message}
+                  onChange={e => setFormState({ ...formState, message: e.target.value })}
+                  required
+                  placeholder="Tell me about your goals, timeline, and deliverables..."
+                  className="w-full bg-[#141414] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-[#71717a] focus:outline-none focus:border-[#e62e05] transition-colors resize-none"
+                />
+              </div>
+
+              {error && (
+                <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-3.5 px-6 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-[#e62e05] hover:text-white transition-all duration-300 shadow-md flex items-center justify-center gap-2 group disabled:opacity-50"
+              >
+                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
+              </button>
+            </form>
+          )}
+        </section>
+
+        {/* Studio Info Card */}
+        <section className="vb-card p-6 md:p-8" aria-label="Studio contact information">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#e62e05]">
+              Connect
+            </span>
+          </div>
+
+          <h2 className="text-xl font-bold tracking-tight text-white mb-6">
+            Adib Studio &bull; Creative Lab
+          </h2>
+
+          <div className="space-y-4 text-sm font-sans">
+            <div className="flex items-start gap-3">
+              <MapPin size={16} className="text-[#e62e05] shrink-0 mt-0.5" />
+              <span className="text-[#a1a1aa]">{personalInfo.location}</span>
             </div>
 
-            {/* Right Column - Minimal Form */}
-            <div className="lg:pt-8">
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="bg-gray-50 dark:bg-zinc-900 p-12 rounded-3xl text-center"
-                >
-                  <div className="w-20 h-20 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-500 mb-6 mx-auto">
-                    <CheckCircle size={40} />
-                  </div>
-                  <h3 className="text-3xl font-bold mb-4 text-black dark:text-white">Message Sent</h3>
-                  <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">I'll get back to you within 24 hours.</p>
-                  <button
-                    onClick={() => setIsSubmitted(false)}
-                    className="text-blue-600 hover:text-blue-500 font-bold text-lg"
-                  >
-                    Send another message
-                  </button>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="group">
-                    <label htmlFor="name" className="block text-sm font-mono uppercase tracking-widest text-gray-500 mb-2">Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-transparent border-b-2 border-gray-200 dark:border-zinc-800 py-4 text-xl md:text-2xl font-bold text-black dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 transition-colors placeholder-gray-300 dark:placeholder-zinc-700"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="email" className="block text-sm font-mono uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-transparent border-b-2 border-gray-200 dark:border-zinc-800 py-4 text-xl md:text-2xl font-bold text-black dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 transition-colors placeholder-gray-300 dark:placeholder-zinc-700"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="message" className="block text-sm font-mono uppercase tracking-widest text-gray-500 mb-2">Message</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formState.message}
-                      onChange={handleChange}
-                      required
-                      rows={4}
-                      className="w-full bg-transparent border-b-2 border-gray-200 dark:border-zinc-800 py-4 text-xl md:text-2xl font-bold text-black dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 transition-colors placeholder-gray-300 dark:placeholder-zinc-700 resize-none"
-                      placeholder="Tell me about your project..."
-                    />
-                  </div>
+            <div className="flex items-center gap-3">
+              <Mail size={16} className="text-[#e62e05] shrink-0" />
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="text-white hover:text-[#e62e05] transition-colors"
+              >
+                {personalInfo.email}
+              </a>
+            </div>
 
-                  {error && (
-                    <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg text-sm font-medium">
-                      {error}
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="inline-flex items-center gap-3 text-2xl font-bold text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-500 transition-colors mt-8 group disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                    {!isSubmitting && <ArrowRight className="group-hover:translate-x-2 transition-transform" size={28} />}
-                  </button>
-                </form>
-              )}
+            <div className="flex items-center gap-3">
+              <Phone size={16} className="text-[#e62e05] shrink-0" />
+              <a
+                href={`tel:${personalInfo.phone}`}
+                className="text-white hover:text-[#e62e05] transition-colors"
+              >
+                {personalInfo.phone}
+              </a>
             </div>
           </div>
-        </div>
-      </div>
-    </PageTransition>
-  );
-};
 
-export default Contact;
+          {/* Social Links */}
+          <div className="flex flex-wrap gap-2 pt-6 mt-6 border-t border-white/5">
+            <a
+              href={personalInfo.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={personalInfo.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href={personalInfo.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
+            >
+              Instagram
+            </a>
+            <a
+              href={personalInfo.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#141414] border border-white/10 text-white/90 hover:border-[#e62e05] hover:text-white transition-colors"
+            >
+              Facebook
+            </a>
+          </div>
+        </section>
+      </VisbeyondLayout>
+    </>
+  );
+}

@@ -1,101 +1,107 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Tag, ArrowUpRight, Share2 } from 'lucide-react';
 import { blogs } from '../data/blogs';
-import PageTransition from '../components/layout/PageTransition';
+import VisbeyondLayout from '../components/layout/VisbeyondLayout';
 import SEO from '../components/SEO';
 
-const BlogDetails = () => {
-    const { slug } = useParams<{ slug: string }>();
+export default function BlogDetails() {
+  const { slug } = useParams<{ slug: string }>();
+  const blog = blogs.find(b => b.slug === slug);
 
-    // Find the blog post based on the slug
-    const blog = blogs.find(b => b.slug === slug);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [slug]);
-
-    if (!blog) {
-        return (
-            <PageTransition>
-                <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20 flex flex-col items-center justify-center">
-                    <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
-                    <p className="text-gray-600 dark:text-gray-400 mb-8">The article you are looking for doesn't exist or has been moved.</p>
-                    <Link to="/blogs" className="flex items-center gap-2 text-blue-600 dark:text-blue-500 hover:underline">
-                        <ArrowLeft size={20} /> Back to Insights
-                    </Link>
-                </div>
-            </PageTransition>
-        );
-    }
-
+  if (!blog) {
     return (
-        <PageTransition>
-            <SEO
-                title={blog.title}
-                description={blog.summary}
-                image={blog.image}
-                type="article"
-                customKeywords={blog.seo?.keywords}
-                customMeta={blog.seo?.meta}
-            />
-            <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-                    <Link to="/blogs" className="inline-flex items-center gap-2 text-gray-500 hover:text-black dark:hover:text-white mb-12 transition-colors font-medium">
-                        <ArrowLeft size={20} /> Back to Insights
-                    </Link>
-
-                    <div className="mb-12">
-                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6 font-mono">
-                            <span className="flex items-center gap-1"><Calendar size={16} /> {blog.date}</span>
-                            <span className="flex items-center gap-1"><Tag size={16} /> {blog.category}</span>
-                        </div>
-
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter leading-tight"
-                        >
-                            {blog.title}
-                        </motion.h1>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed mb-12"
-                        >
-                            {blog.summary}
-                        </motion.p>
-                    </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="rounded-2xl overflow-hidden mb-16 aspect-[21/9]"
-                    >
-                        <img
-                            src={blog.image}
-                            alt={blog.title}
-                            className="w-full h-full object-cover"
-                        />
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="prose prose-lg dark:prose-invert prose-blue max-w-none prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-headings:font-bold prose-headings:mt-12 prose-headings:mb-4 prose-a:text-blue-600 hover:prose-a:text-blue-500"
-                        dangerouslySetInnerHTML={{ __html: blog.content }}
-                    />
-
-                </div>
-            </div>
-        </PageTransition>
+      <VisbeyondLayout pageLabel="Not Found">
+        <div className="vb-card p-12 text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">Article Not Found</h1>
+          <p className="text-[#a1a1aa] mb-6">The article you requested could not be located.</p>
+          <Link
+            to="/blogs"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e62e05] text-white font-medium text-sm hover:brightness-110 transition-all"
+          >
+            <ArrowLeft size={16} /> Back to Insights
+          </Link>
+        </div>
+      </VisbeyondLayout>
     );
-};
+  }
 
-export default BlogDetails;
+  return (
+    <>
+      <SEO
+        title={blog.title}
+        description={blog.summary}
+        image={blog.image}
+        type="article"
+        customKeywords={blog.seo?.keywords}
+        customMeta={blog.seo?.meta}
+      />
+      <VisbeyondLayout
+        pageLabel={blog.category}
+        showcaseImage={blog.image}
+        showcaseAlt={blog.title}
+      >
+        {/* Header Card */}
+        <section className="vb-card p-6 md:p-8" aria-label="Article header">
+          <div className="flex items-center justify-between gap-4 mb-6">
+            <Link
+              to="/blogs"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#a1a1aa] hover:text-white transition-colors group"
+            >
+              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+              <span>Back to Insights</span>
+            </Link>
+
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#e62e05] bg-[#e62e05]/10 px-2.5 py-1 rounded">
+              {blog.category}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 text-xs font-mono text-[#71717a] mb-3">
+            <Calendar size={13} className="text-[#e62e05]" />
+            <span>{blog.date}</span>
+          </div>
+
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6 leading-[1.15]">
+            {blog.title}
+          </h1>
+
+          <p className="text-base md:text-lg text-[#a1a1aa] leading-relaxed font-sans border-l-2 border-[#e62e05] pl-4">
+            {blog.summary}
+          </p>
+        </section>
+
+        {/* Featured Image Card */}
+        <section className="vb-card overflow-hidden p-2" aria-label="Article hero visual">
+          <div className="aspect-[21/9] w-full rounded-lg overflow-hidden bg-[#090909]">
+            <img
+              src={blog.image}
+              alt={blog.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </section>
+
+        {/* Full Article Content Card */}
+        <section className="vb-card p-6 md:p-8" aria-label="Article content">
+          <div
+            className="prose prose-invert max-w-none text-sm md:text-base text-[#d4d4d8] leading-relaxed font-sans space-y-4
+              prose-headings:text-white prose-headings:font-bold prose-headings:tracking-tight
+              prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
+              prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
+              prose-a:text-[#e62e05] prose-a:underline hover:prose-a:brightness-125
+              prose-p:leading-relaxed
+              prose-code:text-[#e62e05] prose-code:bg-[#141414] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+              prose-blockquote:border-l-[#e62e05] prose-blockquote:text-[#a1a1aa]"
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+          />
+        </section>
+      </VisbeyondLayout>
+    </>
+  );
+}

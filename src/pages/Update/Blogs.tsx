@@ -1,69 +1,111 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Calendar, Tag } from 'lucide-react';
+import { ArrowUpRight, Calendar, Tag, Sparkles } from 'lucide-react';
 import { blogs } from '../../data/blogs';
-import PageTransition from '../../components/layout/PageTransition';
+import VisbeyondLayout from '../../components/layout/VisbeyondLayout';
 import SEO from '../../components/SEO';
 
-const MotionLink = motion(Link);
-
-const Blogs = () => {
+export default function Blogs() {
   return (
-    <PageTransition>
+    <>
       <SEO
         title="Insights & Articles"
         description="Read the latest insights and articles from Md Rakibujjaman Adib on AI, sustainable tech, and the future of creative industries."
       />
-      <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-20">
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter text-black dark:text-white">Insights</h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed">
-              Thoughts on AI, design, and the future of technology.
-            </p>
+      <VisbeyondLayout
+        pageLabel="Insights"
+        showcaseImage="/images/visbeyond/m0fsnMH14U4pPOavXf6o8bIjA.png"
+        showcaseAlt="Blogs Showcase"
+      >
+        {/* Header Card */}
+        <section className="vb-card p-6 md:p-8" aria-label="Insights Header">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#e62e05] bg-[#e62e05]/10 px-2.5 py-1 rounded">
+              Knowledge &bull; Thought
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {blogs.map((blog, index) => (
-              <MotionLink
-                to={blog.link}
-                key={blog.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group block"
-              >
-                <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
+            Insights &amp; Articles
+          </h1>
+
+          <p className="text-base md:text-lg text-[#a1a1aa] leading-relaxed font-sans max-w-2xl">
+            Technical deep dives, creative engineering strategies, and reflections on the evolving role of AI in 3D art and design.
+          </p>
+        </section>
+
+        {/* Blog Posts Grid */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Articles list">
+          {blogs.map((blog, idx) => (
+            <motion.article
+              key={blog.id}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: idx * 0.08 }}
+              className="vb-card overflow-hidden group flex flex-col justify-between"
+            >
+              <div>
+                {/* Thumbnail */}
+                <Link
+                  to={blog.link}
+                  className="block relative aspect-[16/10] overflow-hidden rounded-t-xl bg-[#090909]"
+                >
                   <img
                     src={blog.image}
                     alt={blog.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    loading="lazy"
                   />
-                  <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/90 backdrop-blur px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowUpRight size={18} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+
+                  {/* Category Badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/90 bg-black/60 backdrop-blur px-2.5 py-1 rounded-full border border-white/10">
+                      {blog.category}
+                    </span>
                   </div>
+
+                  {/* Read Article Pill */}
+                  <div className="absolute bottom-3 right-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-black text-xs font-semibold shadow-lg">
+                      Read <ArrowUpRight size={13} />
+                    </span>
+                  </div>
+                </Link>
+
+                {/* Content */}
+                <div className="p-5">
+                  <div className="flex items-center gap-3 text-[11px] font-mono text-[#71717a] mb-2.5">
+                    <span className="flex items-center gap-1">
+                      <Calendar size={12} className="text-[#e62e05]" /> {blog.date}
+                    </span>
+                  </div>
+
+                  <h2 className="text-lg font-bold text-white mb-2 group-hover:text-[#e62e05] transition-colors leading-snug">
+                    <Link to={blog.link}>{blog.title}</Link>
+                  </h2>
+
+                  <p className="text-xs text-[#a1a1aa] line-clamp-2 leading-relaxed font-sans">
+                    {blog.summary}
+                  </p>
                 </div>
+              </div>
 
-                <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3 font-mono">
-                  <span className="flex items-center gap-1"><Calendar size={14} /> {blog.date}</span>
-                  <span className="flex items-center gap-1"><Tag size={14} /> {blog.category}</span>
-                </div>
-
-                <h3 className="text-2xl font-bold mb-3 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors leading-tight">
-                  {blog.title}
-                </h3>
-
-                <p className="text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed">
-                  {blog.summary}
-                </p>
-              </MotionLink>
-            ))}
-          </div>
-        </div>
-      </div>
-    </PageTransition>
+              {/* Bottom Card Border Accent */}
+              <div className="px-5 pb-5 pt-0">
+                <Link
+                  to={blog.link}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#e62e05] group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Explore article</span>
+                  <ArrowUpRight size={13} />
+                </Link>
+              </div>
+            </motion.article>
+          ))}
+        </section>
+      </VisbeyondLayout>
+    </>
   );
-};
-
-export default Blogs;
+}

@@ -12,6 +12,7 @@ export const personalInfo = {
     instagram: "https://www.instagram.com/md_rakibujjaman_adib/",
     github: "https://github.com/MdRakibujjamanAdib/",
     facebook: "https://www.facebook.com/100004915484562",
+    youtube: "https://www.youtube.com/@adib",
   },
   stats: [
     { label: "Role", value: "Co-Founder @ Green D" },

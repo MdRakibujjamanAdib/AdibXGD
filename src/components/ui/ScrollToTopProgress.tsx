@@ -60,7 +60,7 @@ const ScrollToTopProgress = () => {
                     exit={{ opacity: 0, scale: 0.5, y: 20 }}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
                     onClick={scrollToTop}
-                    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-zinc-800 shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all outline-none group"
+                    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#0d0d0d] text-white border border-white/10 shadow-2xl hover:border-[#e62e05]/50 hover:scale-105 active:scale-95 transition-all outline-none group backdrop-blur"
                     aria-label="Scroll to top"
                 >
                     {/* SVG Progress Circle */}
@@ -77,11 +77,11 @@ const ScrollToTopProgress = () => {
                             r={normalizedRadius}
                             cx={radius}
                             cy={radius}
-                            className="text-gray-200 dark:text-zinc-700"
+                            className="text-white/10"
                         />
                         {/* Progress Stroke */}
                         <circle
-                            stroke="currentColor"
+                            stroke="#e62e05"
                             fill="transparent"
                             strokeWidth={stroke}
                             strokeDasharray={circumference + ' ' + circumference}
@@ -90,13 +90,13 @@ const ScrollToTopProgress = () => {
                             r={normalizedRadius}
                             cx={radius}
                             cy={radius}
-                            className="text-blue-500 transition-all duration-150 ease-out"
+                            className="transition-all duration-150 ease-out"
                         />
                     </svg>
 
                     {/* Centered Icon */}
-                    <div className="flex h-full w-full items-center justify-center text-zinc-600 dark:text-zinc-300 group-hover:text-blue-500 transition-colors">
-                        <ArrowUp size={20} strokeWidth={2.5} />
+                    <div className="flex h-full w-full items-center justify-center text-white/70 group-hover:text-[#e62e05] transition-colors">
+                        <ArrowUp size={18} strokeWidth={2.5} />
                     </div>
                 </motion.button>
             )}

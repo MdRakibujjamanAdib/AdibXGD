@@ -24,8 +24,10 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-black dark:bg-black dark:text-white font-sans selection:bg-emerald-500/30 selection:text-emerald-800 dark:selection:text-emerald-200">
-      <Navbar />
+    <div
+      className="flex flex-col min-h-screen font-sans selection:bg-[#e62e05]/30 selection:text-white transition-colors duration-300"
+      style={{ backgroundColor: 'var(--vb-bg, #000000)', color: 'var(--vb-text, #ffffff)' }}
+    >
       <main className="flex-grow">
         <AnimatePresence mode="wait">
           {/* @ts-expect-error: Routes key prop is required for AnimatePresence to work correctly */}
@@ -42,7 +44,6 @@ function App() {
         </AnimatePresence>
       </main>
       <ScrollToTopProgress />
-      <Footer />
     </div>
   );
 }
