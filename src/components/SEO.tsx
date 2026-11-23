@@ -1,15 +1,24 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-interface SEOProps {
+export interface ArticleMetadata {
+    publishedTime?: string;
+    modifiedTime?: string;
+    section?: string;
+    tags?: string[];
+    author?: string;
+}
+
+export interface SEOProps {
     title: string;
     description: string;
     name?: string;
-    type?: string;
+    type?: 'website' | 'article';
     image?: string;
     url?: string;
     customKeywords?: string[];
     customMeta?: Array<{ name?: string; property?: string; content: string }>;
+    article?: ArticleMetadata;
 }
 
 export default function SEO({
@@ -20,106 +29,223 @@ export default function SEO({
     image = "https://adibx.me/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg",
     url = "https://adibx.me",
     customKeywords = [],
-    customMeta = []
+    customMeta = [],
+    article
 }: SEOProps) {
     const baseUrl = "https://adibx.me";
-    const currentUrl = (typeof window !== 'undefined'
-        ? window.location.href.replace(/^https?:\/\/www\./, 'https://').split('?')[0].split('#')[0].replace(/\/+$/, '')
-        : url.replace(/\/+$/, '')) || baseUrl;
+
+    // URL resolution — always canonical production domain
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
+    const currentUrl = (url !== baseUrl ? url : `${baseUrl}${currentPath === '/' ? '' : currentPath}`).replace(/\/+$/, '') || baseUrl;
+
+    // Absolute image resolution
     const absoluteImage = image.startsWith('http') ? image : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
 
-    // Keep title under 60 characters to prevent Google truncation
-    const siteTitle = title === "Home"
-        ? `${name} | Web Developer & Brand Designer`
-        : `${title} | ${name}`;
+    // Defensive title sanitization: remove any redundant brand suffix
+    const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\s*\\|\\s*(${escapedName}|Md Rakibujjaman Adib)`, 'gi');
+    const cleanTitle = (title || '').replace(regex, '').trim();
 
-    // High-impact keywords — Google ASD suggestions + local Dhaka/Bangladesh search
+    const siteTitle = cleanTitle === "Home" || cleanTitle === ""
+        ? `${name} | Web Developer & Brand Designer`
+        : `${cleanTitle} | ${name}`;
+
+    // Keywords
     const keywordArray = [
-        // Identity
         "Md Rakibujjaman Adib",
         "Adib",
-        // Graphic Design keywords (Google ASD)
         "graphic designer in bangladesh",
         "top graphic designer",
-        "menu card designer",
-        "graphic designer",
-        "graphic artist",
-        "find a graphic designer",
-        "graphic design artist",
-        "professional graphic designer",
-        "gfx designer",
-        "artwork designer",
-        "graphics and design",
-        "graphic art designer",
-        "graphic design artwork",
-        "graphic design specialist",
-        "graphic designer art",
-        "graphic art and design",
-        "it graphic design",
-        "designer graphics",
-        "dtp design",
-        "graphic specialist",
-        "publication graphic design",
-        "digital graphic designer",
-        "graphic design pro",
-        "hire freelance graphic designer",
-        "graphic design for hire",
-        "find freelance designers",
-        "hire freelance designers",
-        "find a graphic artist",
-        "hire a graphic designer freelance",
-        "best place to hire graphic designers",
-        "best place to find graphic designers",
-        // Web Design / Dev keywords (Google ASD)
         "web designer",
         "web developer",
-        "web developer and designer",
-        "web developer designer",
-        "web developer near me",
-        "websites designer",
-        "brand and web designer",
-        "web and brand designer",
-        "web developer web designer",
-        "web page design",
-        "design a website",
-        "website developers",
-        "designer for website",
-        "designer website",
-        "web developers",
-        "web designer near me",
-        "web design services",
-        "professional website designer",
-        "website design services",
-        // Local SEO
-        "Web Developer in Dhaka",
-        "Graphic Designer in Dhaka",
-        "Video Editor in Dhaka",
-        "Top Web Developer Bangladesh",
-        "Graphic Designer Bangladesh",
-        "Web Developer Bangladesh",
-        "Web designer Bangladesh",
-        "3D Artist Dhaka",
-        // Niche / Brand
         "AI Architect",
         "Creative Technologist",
-        "Brand identity designer",
-        "Visual design",
-        "Automation developer",
+        "Serious Games Development",
+        "Unity Game Engine",
         "MCT Labs Founder",
         "Green D co-founder",
         ...customKeywords
     ];
     const keywords = keywordArray.join(", ");
 
+    // Structured JSON-LD Schemas
+    const schemas: any[] = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": `${baseUrl}/#website`,
+            "name": name,
+            "url": baseUrl,
+            "description": "Portfolio of Md Rakibujjaman Adib — Creative Technologist, AI Architect, Game Developer, and Brand Designer.",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": `${baseUrl}/projects?q={search_term_string}`
+                },
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": `${baseUrl}/#person`,
+            "name": name,
+            "alternateName": ["Adib", "Rakibujjaman Adib"],
+            "givenName": "Md Rakibujjaman",
+            "familyName": "Adib",
+            "url": baseUrl,
+            "image": absoluteImage,
+            "jobTitle": [
+                "Creative Technologist",
+                "AI Architect",
+                "Web Developer",
+                "Game Developer",
+                "3D Artist",
+                "Brand Designer"
+            ],
+            "description": "Creative Technologist and AI Architect with expertise in serious game development at Windesheim UAS, autonomous AI architectures, co-founder of Green D, and full-stack digital systems.",
+            "email": "contact@adibx.me",
+            "telephone": "+8801303031080",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Dhaka",
+                "addressRegion": "Dhaka Division",
+                "addressCountry": "Bangladesh",
+                "postalCode": "1229"
+            },
+            "alumniOf": [
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "Windesheim University of Applied Sciences",
+                    "alternateName": "Windesheim UAS",
+                    "url": "https://www.windesheim.nl/",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Zwolle",
+                        "addressCountry": "Netherlands"
+                    }
+                },
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "Daffodil International University",
+                    "alternateName": "DIU",
+                    "url": "https://daffodilvarsity.edu.bd/",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Dhaka",
+                        "addressCountry": "Bangladesh"
+                    }
+                }
+            ],
+            "affiliation": [
+                {
+                    "@type": "Organization",
+                    "name": "038GAMES, Windesheim UAS",
+                    "url": "https://038games.nl/"
+                }
+            ],
+            "founder": [
+                {
+                    "@type": "Organization",
+                    "name": "Green D",
+                    "url": `${baseUrl}/projects/green-d-website`
+                },
+                {
+                    "@type": "Organization",
+                    "name": "MCT Labs"
+                }
+            ],
+            "sameAs": [
+                "https://www.linkedin.com/in/md-rakibujjaman-adib/",
+                "https://github.com/MdRakibujjamanAdib/",
+                "https://www.instagram.com/md_rakibujjaman_adib/",
+                "https://www.facebook.com/100004915484562"
+            ],
+            "knowsAbout": [
+                "Creative Technology",
+                "Artificial Intelligence",
+                "AI Architecture",
+                "Serious Games Development",
+                "Unity Game Engine",
+                "C# Programming",
+                "Web Development",
+                "React",
+                "TypeScript",
+                "Sustainable Technology & Green D",
+                "3D CGI Rendering & V-Ray",
+                "Visual Brand Identity"
+            ]
+        }
+    ];
+
+    if (type === 'article') {
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "@id": `${currentUrl}#article`,
+            "isPartOf": {
+                "@id": `${baseUrl}/#website`
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": currentUrl
+            },
+            "headline": cleanTitle,
+            "description": description,
+            "image": [absoluteImage],
+            "datePublished": article?.publishedTime || new Date().toISOString(),
+            "dateModified": article?.modifiedTime || article?.publishedTime || new Date().toISOString(),
+            "author": {
+                "@type": "Person",
+                "@id": `${baseUrl}/#person`,
+                "name": article?.author || name,
+                "url": `${baseUrl}/about`,
+                "jobTitle": "Creative Technologist & AI Architect"
+            },
+            "publisher": {
+                "@type": "Person",
+                "@id": `${baseUrl}/#person`,
+                "name": name,
+                "url": baseUrl,
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": `${baseUrl}/favicon.svg`
+                }
+            },
+            "articleSection": article?.section || "Insights",
+            "keywords": (article?.tags && article.tags.length > 0)
+                ? article.tags.join(', ')
+                : (customKeywords.length > 0 ? customKeywords.join(', ') : undefined),
+            "inLanguage": "en-US"
+        });
+    }
+
+    // Synchronize JSON-LD script directly in DOM head to ensure availability across all React 19 / helmet lifecycle stages
+    React.useEffect(() => {
+        const id = 'seo-jsonld-schema';
+        let script = document.getElementById(id) as HTMLScriptElement | null;
+        if (!script) {
+            script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.id = id;
+            document.head.appendChild(script);
+        }
+        script.textContent = JSON.stringify(schemas);
+        return () => {
+            // cleanup on unmount if needed
+        };
+    }, [JSON.stringify(schemas)]);
+
     return (
         <Helmet>
-            {/* Standard metadata tags */}
+            {/* Standard metadata */}
             <title>{siteTitle}</title>
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
             <meta name="robots" content="index, follow" />
             <meta name="language" content="en" />
-            <meta name="author" content="Md Rakibujjaman Adib" />
+            <meta name="author" content={name} />
 
             {/* Geo / Local SEO */}
             <meta name="geo.region" content="BD-13" />
@@ -127,10 +253,10 @@ export default function SEO({
             <meta name="geo.position" content="23.8103;90.4125" />
             <meta name="ICBM" content="23.8103, 90.4125" />
 
-            {/* Canonical Tag — always non-www, no trailing slash */}
+            {/* Canonical URL */}
             <link rel="canonical" href={currentUrl} />
 
-            {/* OpenGraph tags */}
+            {/* OpenGraph metadata */}
             <meta property="og:type" content={type} />
             <meta property="og:title" content={siteTitle} />
             <meta property="og:description" content={description} />
@@ -141,7 +267,25 @@ export default function SEO({
             <meta property="og:site_name" content={name} />
             <meta property="og:locale" content="en_US" />
 
-            {/* Twitter tags */}
+            {/* Dynamic OpenGraph article tags */}
+            {type === 'article' && article?.publishedTime && (
+                <meta property="article:published_time" content={article.publishedTime} />
+            )}
+            {type === 'article' && (article?.modifiedTime || article?.publishedTime) && (
+                <meta property="article:modified_time" content={article.modifiedTime || article.publishedTime} />
+            )}
+            {type === 'article' && (
+                <meta property="article:author" content={article?.author || name} />
+            )}
+            {type === 'article' && article?.section && (
+                <meta property="article:section" content={article.section} />
+            )}
+            {type === 'article' && article?.tags?.map((tag, idx) => (
+                <meta key={`article-tag-${idx}`} property="article:tag" content={tag} />
+            ))}
+
+            {/* Twitter Card tags */}
+            <meta name="twitter:site" content="@MdRakibujjamanAdib" />
             <meta name="twitter:creator" content="@MdRakibujjamanAdib" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={siteTitle} />
@@ -153,129 +297,11 @@ export default function SEO({
                 <meta key={i} {...meta} />
             ))}
 
-            {/* JSON-LD — Person + LocalBusiness + WebSite + ProfessionalService */}
-            <script type="application/ld+json">
-                {JSON.stringify([
-                    {
-                        "@context": "https://schema.org",
-                        "@type": "WebSite",
-                        "name": "Md Rakibujjaman Adib",
-                        "url": "https://adibx.me",
-                        "description": "Portfolio of Md Rakibujjaman Adib — Web Developer, Graphic Designer, Brand Designer, and 3D Artist based in Dhaka, Bangladesh.",
-                        "potentialAction": {
-                            "@type": "SearchAction",
-                            "target": {
-                                "@type": "EntryPoint",
-                                "urlTemplate": "https://adibx.me/projects"
-                            },
-                            "query-input": "required name=search_term_string"
-                        }
-                    },
-                    {
-                        "@context": "https://schema.org",
-                        "@type": ["Person", "LocalBusiness", "ProfessionalService"],
-                        "name": "Md Rakibujjaman Adib",
-                        "alternateName": ["Adib", "Rakibujjaman Adib"],
-                        "url": "https://adibx.me",
-                        "image": absoluteImage,
-                        "logo": "https://adibx.me/favicon.svg",
-                        "jobTitle": [
-                            "Web Developer",
-                            "Web Designer",
-                            "Graphic Designer",
-                            "Brand Designer",
-                            "Video Editor",
-                            "3D Artist",
-                            "AI Architect",
-                            "Creative Technologist"
-                        ],
-                        "description": "Md Rakibujjaman Adib is a professional Web Developer, Graphic Designer, Brand Designer, and AI Architect based in Dhaka, Bangladesh. Available for freelance and professional hire.",
-                        "telephone": "+8801303031080",
-                        "email": "contact@adibx.me",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Dhaka",
-                            "addressRegion": "Dhaka Division",
-                            "addressCountry": "Bangladesh",
-                            "postalCode": "1229"
-                        },
-                        "geo": {
-                            "@type": "GeoCoordinates",
-                            "latitude": "23.8103",
-                            "longitude": "90.4125"
-                        },
-                        "openingHours": "Mo-Su 09:00-20:00",
-                        "sameAs": [
-                            "https://www.linkedin.com/in/md-rakibujjaman-adib",
-                            "https://github.com/MdRakibujjamanAdib"
-                        ],
-                        "areaServed": [
-                            {
-                                "@type": "Country",
-                                "name": "Bangladesh"
-                            },
-                            "Worldwide"
-                        ],
-                        "hasOfferCatalog": {
-                            "@type": "OfferCatalog",
-                            "name": "Design & Development Services",
-                            "itemListElement": [
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Web Development & Design",
-                                        "description": "Professional website design and development services including landing pages, portfolios, and web applications."
-                                    }
-                                },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Graphic Design",
-                                        "description": "Logo design, brand identity, menu card design, poster design, and publication graphic design."
-                                    }
-                                },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Brand Identity Design",
-                                        "description": "Complete brand identity packages including logo, color palette, typography, and brand guidelines."
-                                    }
-                                },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "3D Visualization & Animation",
-                                        "description": "3D product rendering, architectural visualization, and animation using Cinema 4D, 3ds Max, and V-Ray."
-                                    }
-                                }
-                            ]
-                        },
-                        "knowsAbout": [
-                            "Web Development",
-                            "Web Design",
-                            "Graphic Design",
-                            "Brand Identity Design",
-                            "Menu Card Design",
-                            "DTP Design",
-                            "Publication Design",
-                            "Logo Design",
-                            "Video Editing",
-                            "3D Animation",
-                            "3D Rendering",
-                            "Artificial Intelligence",
-                            "UI/UX Design",
-                            "React",
-                            "TypeScript",
-                            "MCT Labs",
-                            "Green D"
-                        ]
-                    }
-                ])}
-            </script>
+            {/* Structured JSON-LD */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+            />
         </Helmet>
     );
 }

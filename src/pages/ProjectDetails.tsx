@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
+  ArrowLeft,
   ArrowUpRight,
   Github,
   X,
@@ -102,10 +103,16 @@ export default function ProjectDetails() {
   return (
     <>
       <SEO
-        title={`${project.title} - Case Study | Md Rakibujjaman Adib`}
+        title={`${project.title} - Case Study`}
         description={project.summary}
         image={project.thumbnail}
         type="article"
+        article={{
+          publishedTime: project.date ? (isNaN(new Date(project.date).getTime()) ? undefined : new Date(project.date).toISOString()) : undefined,
+          section: project.category,
+          tags: project.tags,
+          author: "Md Rakibujjaman Adib"
+        }}
         customKeywords={project.seo?.keywords}
         customMeta={project.seo?.meta}
       />

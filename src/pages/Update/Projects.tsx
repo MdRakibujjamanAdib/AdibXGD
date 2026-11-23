@@ -20,7 +20,7 @@ export default function Projects() {
   return (
     <>
       <SEO
-        title="Projects | Md Rakibujjaman Adib"
+        title="Projects"
         description="Explore the selected projects of Md Rakibujjaman Adib across 3D CGI rendering, interactive systems, and brand design."
       />
       <VisbeyondLayout

@@ -83,7 +83,7 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Services | Md Rakibujjaman Adib"
+        title="Services"
         description="Explore services across Autonomous AI Systems, Web & App Development, UI/UX Design, 3D Animation, and Brand Identity."
       />
 

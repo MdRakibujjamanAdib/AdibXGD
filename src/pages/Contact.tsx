@@ -73,7 +73,7 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact | Md Rakibujjaman Adib"
+        title="Contact"
         description="Get in touch with Md Rakibujjaman Adib for AI architectures, full-stack web platforms, 3D CGI visuals, or Unity serious game development."
       />
 

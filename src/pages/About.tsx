@@ -364,7 +364,7 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Adib | Creative Technologist"
+        title="About"
         description="Learn about Md Rakibujjaman Adib, Erasmus+ Game Developer, 3-time Champion, and Co-Founder of GREEN D."
       />
 
