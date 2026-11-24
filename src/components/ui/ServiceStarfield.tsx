@@ -24,7 +24,8 @@ export default function ServiceStarfield() {
       const count = Math.min(stars.length, Math.round(width * height / 900));
       for (let i = 0; i < count; i++) {
         const star = stars[i];
-        const speed = 0.5 + star.depth * 1.2;
+        // CSS pixels per second: keep movement perceptible even on a small screen.
+        const speed = 10 + star.depth * 18;
         const x = (star.x * width + time * speed) % width;
         const y = (star.y * height + time * speed * 0.3) % height;
         const alpha = 0.18 + star.depth * 0.35 + Math.sin(time * 0.4 + star.phase) * 0.06;
