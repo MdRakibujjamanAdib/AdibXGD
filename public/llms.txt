@@ -1,46 +1,28 @@
 # Md Rakibujjaman Adib (ADIB X ME)
-> Creative Developer & AI Architect | Erasmus+ Scholar (Windesheim UAS) | Full-Stack & 3D Specialist
 
-## Summary
-Md Rakibujjaman Adib is an international creative technologist, full-stack web developer, AI systems architect, and 3D visual artist based in Dhaka, Bangladesh, with extensive academic and professional experience in the Netherlands and the United Kingdom. He is an Erasmus+ European Union Scholar at Windesheim University of Applied Sciences (Zwolle, Netherlands), Founder of MCT Labs, and Co-Founder of Green D (an IoT power-metering and AI carbon telemetry platform).
+> Portfolio of Md Rakibujjaman Adib, a freelance web developer and designer who builds business websites, custom web apps, and brand identities.
 
-He builds high-performance digital products, responsive web architectures, autonomous AI pipelines, interactive 3D visualizations, and serious games for clients across Bangladesh, the Netherlands, the UK, Europe, and globally.
+## Portfolio
 
-- Full Name: Md Rakibujjaman Adib
-- Brand: ADIB X ME
-- Official Domain: https://adibx.me
-- Canonical Person ID: https://adibx.me/#person
-- Email: contact@adibx.me
-- Phone / WhatsApp: +8801303031080
-- Location: Dhaka, Bangladesh (Operating Globally: Netherlands, UK, EU, Remote)
+- [Homepage](https://adibx.me/): Introduction and selected work.
+- [Services](https://adibx.me/services): Web development, UI/UX design, brand identity, AI automation, and 3D visualization.
+- [Projects](https://adibx.me/projects): Browse portfolio case studies.
+- [Green D website](https://adibx.me/projects/green-d-website): Web development case study.
+- [Green D brand identity](https://adibx.me/projects/green-d-brand-identity): Brand design case study.
+- [About](https://adibx.me/about): Professional background and education.
+- [Contact](https://adibx.me/contact): Project inquiries.
 
-## Core Capabilities & Services
-1. **Full-Stack Web Development**: High-performance static and dynamic web applications built with React, TypeScript, Next.js, Vite, and Tailwind CSS. Responsive bento layouts, micro-interactions, Core Web Vitals optimization, and static build prerendering.
-2. **Graphic Design & Brand Architecture**: Complete visual brand identity systems, typography systems, vector iconography, marketing collateral, restaurant menu design (UK/EU market), and digital design systems.
-3. **AI Architecture & Workflow Automation**: Edge sensing telemetry, computer vision / receipt OCR pipelines, autonomous LLM agent systems, multimodal data ingestion, and predictive emission modeling.
-4. **3D CGI, Visualization & Motion Design**: Photorealistic product rendering, architectural visualization, lighting projection & volumetric fog simulation (V-Ray, 3ds Max), motion design, and video production.
-5. **Game Development & Simulation**: Serious game engineering using Unity and C# with the 038GAMES studio at Windesheim UAS.
+## Articles
 
-## Key Public Routes & Navigation
-- **Homepage**: https://adibx.me (Interactive showcase, bento grid portfolio, and engineering introduction)
-- **About**: https://adibx.me/about (Academic credentials, Windesheim UAS Erasmus+ scholarship, Daffodil International University, leadership history)
-- **Services**: https://adibx.me/services (Web engineering, 3D rendering, brand identity, AI automation, and interactive systems)
-- **Projects**: https://adibx.me/projects (Index of 34+ production case studies across software, 3D CGI, and brand design)
-- **Technical Articles & Insights**: https://adibx.me/blogs (Architectural write-ups on edge telemetry, autonomous AI agents, physics-based rendering, and game engineering)
-- **Achievements**: https://adibx.me/achievements (Competitive programming podium finishes, Erasmus+ European Union award, university honors)
-- **Contact**: https://adibx.me/contact (Direct engineering inquiries, project briefs, and communication channels)
-- **Terms & Privacy**: https://adibx.me/terms (Startup free prototype terms, milestone payment schedules, white-label NDA buyouts, and privacy commitments)
+- [Blog](https://adibx.me/blogs): Articles on web development, design, and creative technology.
+- [Hiring a freelance web developer in Bangladesh](https://adibx.me/blogs/hire-freelance-web-developer-bangladesh): How to evaluate freelance developers.
+- [Hiring a freelance web developer in the Netherlands](https://adibx.me/blogs/hire-web-developer-netherlands): How to assess experience, communication, and delivery.
+- [Logo design vs. brand identity](https://adibx.me/blogs/logo-design-vs-brand-identity): How a logo fits into a broader visual identity.
 
-## Verified Public Profiles
-- GitHub: https://github.com/MdRakibujjamanAdib
-- LinkedIn: https://www.linkedin.com/in/md-rakibujjaman-adib/
-- Instagram: https://www.instagram.com/md_rakibujjaman_adib/
-- Facebook: https://www.facebook.com/100004915484562
+## Optional
 
-## Target Search Intents
-- Best web developer in Bangladesh & Dhaka
-- Freelance web developer Netherlands (Amsterdam, Zwolle, Rotterdam, Utrecht)
-- International creative developer & full-stack engineer
-- Brand identity designer & commercial packaging specialist
-- AI systems architect & telemetry developer
-- 3D product CGI artist & architectural visualizer
+- [Achievements](https://adibx.me/achievements): Awards and milestones.
+- [Privacy policy](https://adibx.me/privacy)
+- [Terms](https://adibx.me/terms)
+- [GitHub](https://github.com/MdRakibujjamanAdib)
+- [LinkedIn](https://www.linkedin.com/in/md-rakibujjaman-adib/)
