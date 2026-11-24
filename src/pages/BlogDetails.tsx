@@ -418,10 +418,10 @@ export default function BlogDetails() {
           </section>
         )}
 
-        {/* Full Article Content (Uncontainerized, sits cleanly on page background) */}
+        {/* Full Article Content Card */}
         <section
           id="article-content"
-          className="py-6 sm:py-8 md:py-10 px-2 sm:px-4 md:px-6 bg-transparent text-[var(--vb-text)] scroll-mt-20 border-none shadow-none"
+          className="vb-card p-6 md:p-10 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)] scroll-mt-20"
           aria-label="Article content"
         >
           {/* Main Article Prose Content */}
