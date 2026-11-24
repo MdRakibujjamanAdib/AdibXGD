@@ -24,14 +24,14 @@ export default function DayNightToggle({
   className = '',
   size = 'md',
 }: DayNightToggleProps) {
-  // Sizing configurations
-  const width = size === 'sm' ? 46 : size === 'lg' ? 64 : 54;
-  const height = size === 'sm' ? 19 : size === 'lg' ? 26 : 22;
+  // Sizing configurations - compact, refined proportions matching 41px nav bar
+  const width = size === 'sm' ? 36 : size === 'lg' ? 50 : 44;
+  const height = size === 'sm' ? 15 : size === 'lg' ? 20 : 18;
 
   return (
     <button
       type="button"
-      className={`vb-theme vb-daynight-toggle relative inline-flex items-center justify-center p-0 border-0 bg-transparent cursor-pointer outline-none select-none shrink-0 transition-transform duration-200 active:scale-95 hover:scale-105 ${className}`}
+      className={`vb-theme vb-daynight-toggle relative inline-flex items-center justify-center p-0 border-0 bg-transparent cursor-pointer outline-none select-none shrink-0 transition-opacity duration-200 active:scale-95 ${className}`}
       style={{ width: `${width}px`, height: `${height}px` }}
       aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
       aria-pressed={dark}

@@ -256,8 +256,8 @@ body.dark,
 
 .vb-theme {
   position: relative;
-  width: 54px;
-  height: 22px;
+  width: 44px;
+  height: 18px;
   border-radius: 9999px;
   cursor: pointer;
   flex-shrink: 0;
@@ -268,8 +268,8 @@ body.dark,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
+  transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
 .vb-daynight-toggle,
@@ -282,11 +282,11 @@ body.dark,
 }
 
 .vb-theme:hover {
-  transform: scale(1.06);
+  opacity: 0.9;
 }
 
 .vb-theme:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
 /* Night state (dark mode: aria-pressed="true") */

@@ -3,8 +3,11 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "green-d-web",
     title: "Green D – AI Carbon Footprint Tracker",
+    shortTitle: "Green D Home",
     category: "Web & Automation",
     role: "Full Stack Developer",
+    featured: true,
+    featuredOrder: 2,
     summary: "A full-stack sustainability platform combining carbon tracking, smart home optimization, receipt-based emission analysis, and AI-powered eco insights.",
     description: "<p style='text-align: justify;'>Green D is a full-stack carbon footprint tracking web application designed to help individuals measure, understand, and reduce their environmental impact. The platform combines real-time dashboards, AI-based forecasting, smart home simulation, and automated emission analysis into a unified sustainability ecosystem.</p>\
 \
@@ -43,7 +46,6 @@ const project: Project = {
         "Dashboard Architecture"
     ],
     date: "2024-02-23",
-    featured: false,
     seo: {
         keywords: [
             "Md Rakibujjaman Adib",

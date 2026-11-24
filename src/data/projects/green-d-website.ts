@@ -3,11 +3,8 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "green-d-website",
     title: "Green D – Software & Automation Website",
-    shortTitle: "Green D Web",
     category: "Web & Automation",
     role: "Frontend Developer & AI Architect",
-    featured: true,
-    featuredOrder: 2,
     summary: "A modern corporate website for Green D, showcasing software engineering, automation, AI workflows, and multimedia services.",
     description: "<p style='text-align: justify;'>The Green D website is a modern corporate platform built to present software engineering, automation, AI workflows, and creative services in a bold and scalable digital experience. Designed with a performance-first mindset, the site combines dark-themed minimalism with dynamic motion and structured service presentation.</p>\
 \
