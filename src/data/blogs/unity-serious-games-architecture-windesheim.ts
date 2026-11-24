@@ -1,4 +1,4 @@
-import { Blog } from '../blogs';
+import type { Blog } from '../blogs.ts';
 
 const blog: Blog = {
   id: "unity-serious-games-architecture-windesheim",
@@ -7,7 +7,7 @@ const blog: Blog = {
   subtitle: "Lessons from 038GAMES at Windesheim UAS on building decoupled game architecture for real-world client simulations.",
   summary: "A deep architectural breakdown of engineering serious games at 038GAMES in Zwolle, Netherlands. Learn how ScriptableObject event channels, decoupled state machines, and real-time telemetry bridge clinical heuristics with engaging gameplay in Unity.",
   category: "Game Development",
-  tags: ["Unity 3D", "C#", "Serious Games", "Game Architecture", "Windesheim UAS", "Erasmus+"],
+  tags: ["Unity 3D", "C#", "Serious Games", "Game Architecture", "Windesheim UAS", "Erasmus+", "Game Developer"],
   date: "January 18, 2026",
   isoDate: "2026-01-18T00:00:00Z",
   readTime: "8 min read",
@@ -30,7 +30,7 @@ const blog: Blog = {
   ],
   content: `
 <p class="lead">
-  When people imagine game development, they picture expansive fantasy worlds, weapon tuning, and combat loops. But at <strong>038GAMES</strong>—the serious games development studio embedded within <strong>Windesheim University of Applied Sciences</strong> in Zwolle, Netherlands—our primary design constraints are not combat mechanics or monetized engagement. Instead, our goal is behavioral change, cognitive rehabilitation, and tangible pedagogical feedback.
+  When people imagine game development, they picture expansive fantasy worlds, weapon tuning, and combat loops. But at <strong>038GAMES</strong> &mdash; the serious games development studio embedded within <strong>Windesheim University of Applied Sciences</strong> in Zwolle, Netherlands &mdash; our primary design constraints are not combat mechanics or monetized engagement. Instead, our goal is behavioral change, cognitive rehabilitation, and tangible pedagogical feedback.
 </p>
 
 <p>
@@ -98,6 +98,7 @@ public class IntEventChannelSO : ScriptableObject
 public class SimulationStateMachine
 {
     private IState currentState;
+
     public IState CurrentState =&gt; currentState;
 
     public void TransitionTo(IState nextState)
@@ -131,7 +132,7 @@ public class SimulationStateMachine
 </ul>
 
 <p>
-  These three metrics are compiled into an in-memory frame buffer and evaluated against dynamic baseline thresholds. When performance drifts outside therapeutic limits, the game dynamically adjusts its subtle affordances—widening collision bounds, easing friction, or intensifying audio-visual cues—without the user ever feeling penalized.
+  These three metrics are compiled into an in-memory frame buffer and evaluated against dynamic baseline thresholds. When performance drifts outside therapeutic limits, the game dynamically adjusts its subtle affordances &mdash; widening collision bounds, easing friction, or intensifying audio-visual cues &mdash; without the user ever feeling penalized.
 </p>
 
 <h2 id="interdisciplinary-synthesis">Cross-Disciplinary Engineering: From Therapists to Code</h2>
@@ -146,7 +147,7 @@ public class SimulationStateMachine
 </p>
 
 <blockquote class="border-l-4 border-[#e62e05] pl-4 italic my-6 text-[var(--vb-text-muted)]">
-  "Clean architecture is not merely an engineering aesthetic—in serious games, it is the bridge that allows medical intent to be executed with software reliability."
+  "Clean architecture is not merely an engineering aesthetic &mdash; in serious games, it is the bridge that allows medical intent to be executed with software reliability."
 </blockquote>
 
 <p>
@@ -156,7 +157,7 @@ public class SimulationStateMachine
   image: "/images/hero-canal.jpg",
   link: "/blogs/unity-serious-games-architecture-windesheim",
   seo: {
-    keywords: ["Unity 3D", "C# Architecture", "Serious Games", "038GAMES", "Windesheim UAS", "Erasmus+ Netherland", "ScriptableObjects", "State Machine"],
+    keywords: ["Unity 3D", "C# Architecture", "Serious Games", "038GAMES", "Windesheim UAS", "Erasmus+ Netherlands", "ScriptableObjects", "State Machine", "Md Rakibujjaman Adib"],
     meta: [
       { name: "description", content: "Architecting serious games in Unity at Windesheim UAS: ScriptableObject event channels, clean state machines, and heuristic telemetry." },
       { property: "og:title", content: "Architecting Serious Games in Unity: Clean Systems, Heuristic Feedback, and Applied C#" },

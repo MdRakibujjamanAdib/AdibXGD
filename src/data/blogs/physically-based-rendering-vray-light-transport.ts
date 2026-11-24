@@ -1,4 +1,4 @@
-import { Blog } from '../blogs';
+import type { Blog } from '../blogs.ts';
 
 const blog: Blog = {
   id: "physically-based-rendering-vray-light-transport",
@@ -7,10 +7,10 @@ const blog: Blog = {
   subtitle: "A mathematical and aesthetic breakdown of participating media, photometric inverse square decay, and aperture optics.",
   summary: "An in-depth technical exploration into simulating physical light transport using Chaos V-Ray and Autodesk Maya. Dive into participating media equations, Rayleigh phase functions, photometric IES profiles, and optical circle of confusion.",
   category: "3D & Computer Graphics",
-  tags: ["Chaos V-Ray", "Autodesk Maya", "Physically Based Rendering", "Volumetric Lighting", "Optics", "CGI"],
+  tags: ["Chaos V-Ray", "Autodesk Maya", "Physically Based Rendering", "Volumetric Lighting", "Optics", "CGI", "3D Rendering"],
   date: "September 20, 2025",
   isoDate: "2025-09-20T00:00:00Z",
-  readTime: "7 min read",
+  readTime: "8 min read",
   author: {
     name: "Md Rakibujjaman Adib",
     role: "3D CGI Artist & Technical Director",
@@ -34,12 +34,12 @@ const blog: Blog = {
 </p>
 
 <p>
-  During my research into physically based rendering (PBR)—culminating in extensive volumetric lighting studies and procedural material simulations—I set out to dissect the core mathematics behind light transport and translate academic physics into repeatable production workflows.
+  During my research into physically based rendering (PBR) &mdash; culminating in extensive volumetric lighting studies and procedural material simulations &mdash; I set out to dissect the core physics behind light transport and translate academic optics into repeatable production workflows.
 </p>
 
 <h2 id="radiometry-vs-photometry">Radiometry vs. Photometry in Physically Based Rendering</h2>
 <p>
-  To achieve cinematic realism, an artist must understand the distinction between <em>radiometry</em> (the physical measurement of electromagnetic radiation) and <em>photometry</em> (light measured through the spectral sensitivity curve of human ocular cone cells, the CIE $V(\\lambda)$ luminosity function).
+  To achieve cinematic realism, an artist must understand the distinction between <em>radiometry</em> (the physical measurement of electromagnetic radiation) and <em>photometry</em> (light measured through the spectral sensitivity curve of human ocular cone cells, the CIE V(&lambda;) luminosity function).
 </p>
 <p>
   In V-Ray, light emitters should never be calibrated with arbitrary unitless intensity multipliers. By switching emitter units to <strong>Lumens</strong> (for total luminous flux) or <strong>Candela / Lux</strong> (for directional luminous intensity and illuminance), we anchor the rendering equation directly to real-world illumination standards. When an outdoor sun emitter delivers 100,000 Lux and an indoor desk lamp yields 500 Lumens, exposure values (EV) across virtual camera apertures behave with 100% optical fidelity.
@@ -47,16 +47,18 @@ const blog: Blog = {
 
 <h2 id="participating-media-rayleigh-scattering">Participating Media &amp; Rayleigh Scattering in V-Ray Fog</h2>
 <p>
-  In vacuum or clear air, light travels in straight lines until it strikes an opaque surface. But when air contains microscopic particulates—dust, moisture droplets, or smoke—it becomes a <strong>participating medium</strong>. Photons undergo absorption, in-scattering, and out-scattering along the ray path.
+  In a vacuum or clear air, light travels in straight lines until it strikes an opaque surface. But when air contains microscopic particulates &mdash; dust, moisture droplets, or smoke &mdash; it becomes a <strong>participating medium</strong>. Photons undergo absorption, in-scattering, and out-scattering along the ray path.
 </p>
 <p>
   The radiative transfer equation governs this phenomenon:
 </p>
+
+<div class="my-5 p-4 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-center font-mono text-xs sm:text-sm text-[var(--vb-text)] leading-relaxed overflow-x-auto">
+  dL(x, &omega;) / ds = &minus;&sigma;<sub>t</sub>(x) &middot; L(x, &omega;) + &sigma;<sub>s</sub>(x) &int;<sub>4&pi;</sub> p(x, &omega;', &omega;) &middot; L(x, &omega;') d&omega;'
+</div>
+
 <p>
-  $$\\frac{dL(x, \\omega)}{ds} = -\\sigma_t(x) L(x, \\omega) + \\sigma_s(x) \\int_{4\\pi} p(x, \\omega', \\omega) L(x, \\omega') d\\omega'$$
-</p>
-<p>
-  Where $\\sigma_t = \\sigma_a + \\sigma_s$ represents total extinction (absorption plus scattering), and $p(x, \\omega', \\omega)$ is the scattering phase function (such as Henyey-Greenstein).
+  Where total extinction <code>&sigma;<sub>t</sub> = &sigma;<sub>a</sub> + &sigma;<sub>s</sub></code> represents combined absorption plus scattering, and <code>p(x, &omega;', &omega;)</code> is the scattering phase function (such as Henyey-Greenstein).
 </p>
 
 <div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
@@ -71,18 +73,20 @@ const blog: Blog = {
 </div>
 
 <p>
-  By configuring <code>VRayEnvironmentFog</code> with an anisotropy coefficient $g \\approx 0.7$, we produce realistic forward-peaked Mie scattering (god rays breaking through window blinds). The light beams maintain sharp volumetric edge definition without excessive noise, allowing subtle shadow casters to slice through the atmospheric volume.
+  By configuring <code>VRayEnvironmentFog</code> with an anisotropy coefficient of <code>g &approx; 0.7</code>, we produce realistic forward-peaked Mie scattering (god rays breaking through window blinds). The light beams maintain sharp volumetric edge definition without excessive noise, allowing subtle shadow casters to slice through the atmospheric volume.
 </p>
 
 <h2 id="inverse-square-decay-and-ies-profiles">Inverse Square Decay &amp; Photometric IES Luminaire Profiles</h2>
 <p>
   A hallmark of amateur 3D rendering is linear or non-decaying light falloff. Point light sources in reality obey the <strong>inverse square law</strong>:
 </p>
+
+<div class="my-5 p-4 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-center font-mono text-sm sm:text-base text-[var(--vb-text)]">
+  Illuminance (E) = Intensity (I) / Distance&sup2; (d&sup2;)
+</div>
+
 <p>
-  $$E = \\frac{I}{d^2}$$
-</p>
-<p>
-  Where illuminance $E$ falls off exponentially with the square of distance $d$. In V-Ray, enforcing strict inverse-square falloff prevents unnatural hot spots while naturally deepening ambient shadows.
+  Where illuminance <code>E</code> falls off exponentially with the square of distance <code>d</code>. In V-Ray, enforcing strict inverse-square falloff prevents unnatural hot spots while naturally deepening ambient shadows.
 </p>
 <p>
   Furthermore, physical luminaires do not emit uniform spherical light due to bulb filaments, reflective housings, and plastic lens caps. By importing manufacturer <strong>IES (Illuminating Engineering Society) photometric profiles</strong>, our V-Ray lights accurately reproduce the complex photometric web, candela curves, and asymmetric spill patterns of architectural fixtures.
@@ -121,7 +125,7 @@ const blog: Blog = {
   Nowhere is light transport more captivating than inside translucent materials. In our 3D Chess Board study in Maya, the white chess pieces were modeled as polished Carrara marble.
 </p>
 <p>
-  Marble is not purely opaque; photons enter the surface, undergo thousands of internal scattering collisions against mineral micro-crystals, and exit at adjacent coordinates. Using the <code>VRayFastSSS2</code> shader with a phase-function driven Random Walk subsurface model, we achieved the soft, lifelike translucency of authentic hand-carved stone, complete with deep specular reflections governed by the Fresnel dielectric equation ($IOR \\approx 1.54$).
+  Marble is not purely opaque; photons enter the surface, undergo thousands of internal scattering collisions against mineral micro-crystals, and exit at adjacent coordinates. Using the <code>VRayFastSSS2</code> shader with a phase-function driven Random Walk subsurface model, we achieved the soft, lifelike translucency of authentic hand-carved stone, complete with deep specular reflections governed by the Fresnel dielectric equation (Index of Refraction <code>IOR &approx; 1.54</code>).
 </p>
 
 <blockquote class="border-l-4 border-[#e62e05] pl-4 italic my-6 text-[var(--vb-text-muted)]">
@@ -135,7 +139,7 @@ const blog: Blog = {
   image: "/images/projects/vray-god-rays.jpg",
   link: "/blogs/physically-based-rendering-vray-light-transport",
   seo: {
-    keywords: ["Chaos V-Ray", "Autodesk Maya", "Physically Based Rendering", "Volumetric Lighting", "God Rays", "Optics", "Bokeh", "IES Profiles", "Subsurface Scattering"],
+    keywords: ["Chaos V-Ray", "Autodesk Maya", "Physically Based Rendering", "Volumetric Lighting", "God Rays", "Optics", "Bokeh", "IES Profiles", "Subsurface Scattering", "CGI Artist Bangladesh", "Md Rakibujjaman Adib"],
     meta: [
       { name: "description", content: "A deep dive into physically based light transport in Chaos V-Ray: Participating media, volumetric fog, IES photometric profiles, and optical camera bokeh." },
       { property: "og:title", content: "Demystifying Physically Based Light Transport: Volumetric Fog, Gobo Projections, and Optical Bokeh in V-Ray" },

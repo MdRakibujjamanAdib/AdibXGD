@@ -237,6 +237,13 @@ export default function SEO({
         };
     }, [JSON.stringify(schemas)]);
 
+    // Direct document.title update for immediate, 100% reliable React 19 title synchronization
+    React.useEffect(() => {
+        if (typeof document !== 'undefined') {
+            document.title = siteTitle;
+        }
+    }, [siteTitle]);
+
     return (
         <Helmet>
             {/* Standard metadata */}

@@ -1,4 +1,4 @@
-import { Project } from '../projects';
+import type { Project } from '../projects.ts';
 
 const project: Project = {
     id: "green-d-website",
@@ -33,7 +33,7 @@ const project: Project = {
         "Conversion Optimization"
     ],
     date: "2024-03-05",
-    featured: true,
+    featured: false,
     seo: {
         keywords: [
             "Md Rakibujjaman Adib",

@@ -1,4 +1,4 @@
-import { Project } from '../projects';
+import type { Project } from '../projects.ts';
 
 const project: Project = {
     id: "green-d-brand-identity",

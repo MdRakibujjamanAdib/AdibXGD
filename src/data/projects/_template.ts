@@ -1,4 +1,4 @@
-import { Project } from '../projects';
+import type { Project } from '../projects.ts';
 
 /**
  * PROJECT TEMPLATE:

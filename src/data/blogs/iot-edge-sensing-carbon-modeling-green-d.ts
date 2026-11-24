@@ -1,4 +1,4 @@
-import { Blog } from '../blogs';
+import type { Blog } from '../blogs.ts';
 
 const blog: Blog = {
   id: "iot-edge-sensing-carbon-modeling-green-d",
@@ -7,7 +7,7 @@ const blog: Blog = {
   subtitle: "How we merged physical hardware sensors, computer vision OCR, and predictive carbon analytics into a full-stack SaaS.",
   summary: "A technical architectural review of Green D, an end-to-end carbon management platform. Learn how IoT smart plug telemetry, computer vision document parsing, and grid-specific CO2e algorithms transform abstract emissions into actionable conservation metrics.",
   category: "Sustainable Tech",
-  tags: ["Sustainability", "IoT Telemetry", "Computer Vision OCR", "Full-Stack Development", "Green D", "React"],
+  tags: ["Sustainability", "IoT Telemetry", "Computer Vision OCR", "Full-Stack Development", "Green D", "React", "TypeScript", "Node.js"],
   date: "December 05, 2025",
   isoDate: "2025-12-05T00:00:00Z",
   readTime: "8 min read",
@@ -34,7 +34,7 @@ const blog: Blog = {
 </p>
 
 <p>
-  When my team and I set out to engineer <strong>Green D</strong>, we envisioned an intelligent SaaS platform capable of turning abstract ecological debt into concrete, real-time data streams. By unifying edge IoT power metering, optical character recognition (OCR) of utility receipts, and dynamic emission factor math, we transformed static carbon estimates into an actionable engineering feedback loop.
+  When my team and I set out to engineer <strong>Green D</strong>, we envisioned an intelligent SaaS platform capable of turning abstract ecological debt into concrete, real-time data streams. By unifying edge IoT power metering, optical character recognition (OCR) of utility receipts, and dynamic emission factor calculations, we transformed static carbon estimates into an actionable engineering feedback loop.
 </p>
 
 <h2 id="the-intangibility-of-carbon-accounting">The Intangibility Dilemma in Personal Carbon Accounting</h2>
@@ -47,7 +47,7 @@ const blog: Blog = {
 <ol>
   <li><strong>Immediacy:</strong> The telemetry feedback must arrive within seconds of power consumption.</li>
   <li><strong>Granularity:</strong> Users must be able to isolate emissions down to individual appliances or routes.</li>
-  <li><strong>Effortless Ingestion:</strong> Data capture must be automated—either via passive IoT sensors or one-click camera scanning of existing physical receipts.</li>
+  <li><strong>Effortless Ingestion:</strong> Data capture must be automated &mdash; either via passive IoT sensors or one-click camera scanning of existing physical receipts.</li>
 </ol>
 
 <h2 id="iot-telemetry-pipeline">Edge Telemetry Architecture: Streaming Plug Wattage to Cloud</h2>
@@ -67,7 +67,7 @@ const blog: Blog = {
 </div>
 
 <p>
-  The edge firmware runs an embedded FreeRTOS loop sampling instantaneous power ($P = V_{rms} \\times I_{rms} \\times \\cos\\theta$) at 10 Hz, calculating 5-second energy integrals in Watt-hours ($Wh$), and publishing encrypted payloads over lightweight MQTT to our broker:
+  The edge firmware runs an embedded FreeRTOS loop sampling instantaneous power (<code>P = V<sub>rms</sub> &times; I<sub>rms</sub> &times; cos(&theta;)</code>) at 10 Hz, calculating 5-second energy integrals in Watt-hours (Wh), and publishing encrypted payloads over lightweight MQTT to our broker:
 </p>
 
 <pre><code class="language-typescript">// TypeScript Telemetry Ingestion Worker Sample
@@ -117,27 +117,29 @@ export class TelemetryAggregator {
 </p>
 <ul>
   <li><strong>Bilateral Filtering &amp; Perspective Correction:</strong> The user snaps a smartphone photo of a paper receipt. The canvas worker detects receipt quadrilaterals, performs homography warping to flatten wrinkles, and enhances contrast via adaptive thresholding.</li>
-  <li><strong>Tesseract &amp; Regex Entity Extraction:</strong> Our vision model identifies key alphanumeric patterns: fuel volumes in liters, electricity units in kilowatt-hours (kWh), natural gas in cubic meters ($m^3$), and total billing amounts.</li>
+  <li><strong>Tesseract &amp; Regex Entity Extraction:</strong> Our vision model identifies key alphanumeric patterns: fuel volumes in liters, electricity units in kilowatt-hours (kWh), natural gas in cubic meters (m&sup3;), and total billing amounts.</li>
   <li><strong>Fuzzy Match Verification:</strong> Extracted merchant names and dates are cross-referenced with regional fuel price APIs to catch OCR hallucination errors before committing to the carbon ledger.</li>
 </ul>
 
 <h2 id="carbon-emission-factors-mathematics">Mathematical Modeling of Grid Emission Factors and CO2e</h2>
 <p>
-  Translating raw kilowatt-hours into carbon dioxide equivalent ($CO_2e$) is not a static scalar multiplication. Electricity generation mixes fluctuate hour-by-hour based on solar irradiation, wind speeds, and coal peaker plant activations.
+  Translating raw kilowatt-hours into carbon dioxide equivalent (CO<sub>2</sub>e) is not a static scalar multiplication. Electricity generation mixes fluctuate hour-by-hour based on solar irradiation, wind speeds, and coal peaker plant activations.
 </p>
 <p>
   Green D connects with regional electricity grid APIs (such as Entso-E and National Grid ESO) to pull marginal carbon intensity factors:
 </p>
+
+<div class="my-5 p-4 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-center font-mono text-sm sm:text-base text-[var(--vb-text)]">
+  Total Emissions (E<sub>total</sub>) = &sum; [ Power(t) &times; &Delta;t &times; CarbonIntensity<sub>grid</sub>(t) ]
+</div>
+
 <p>
-  $$E_{total} = \\sum_{t=0}^{T} P(t) \\times \\Delta t \\times CIF_{grid}(t)$$
-</p>
-<p>
-  If a user runs their laundry during a midday solar peak, their footprint is quantified at 80g $CO_2e$/kWh. If run during an evening fossil surge, the exact same cycle is accurately tracked at 420g $CO_2e$/kWh.
+  If a user runs their laundry during a midday solar peak, their footprint is quantified at 80g CO<sub>2</sub>e/kWh. If run during an evening fossil surge, the exact same cycle is accurately tracked at 420g CO<sub>2</sub>e/kWh.
 </p>
 
 <h2 id="behavioral-ux-gamification">Behavioral Engineering: Designing Actionable Sustainability UX</h2>
 <p>
-  Raw statistics can induce climate doomism rather than productive action. Our frontend was engineered with Visbeyond-inspired clarity: pure black aesthetic, vibrant emerald and vermilion accents, and predictive progress rings.
+  Raw statistics can induce climate doomism rather than productive action. Our frontend was engineered with clean clarity: pure dark aesthetic, vibrant emerald and vermilion accents, and predictive progress rings.
 </p>
 <p>
   Instead of generic warnings, Green D delivers micro-nudges: <em>"Delaying your electric vehicle charge by 2 hours will save 3.4kg CO2e based on tonight's wind forecast."</em> By gamifying conservation through streaks, community milestones, and verifiable impact badges, we observed a 22% average reduction in peak household energy usage during our closed beta cohorts.
@@ -154,7 +156,7 @@ export class TelemetryAggregator {
   image: "/images/projects/greend-dashboard.png",
   link: "/blogs/iot-edge-sensing-carbon-modeling-green-d",
   seo: {
-    keywords: ["Green D", "Carbon Accounting", "IoT Telemetry", "Sustainability Tech", "Computer Vision OCR", "Smart Energy", "React", "TypeScript", "Node.js"],
+    keywords: ["Green D", "Carbon Accounting", "IoT Telemetry", "Sustainability Tech", "Computer Vision OCR", "Smart Energy", "React", "TypeScript", "Node.js", "Md Rakibujjaman Adib"],
     meta: [
       { name: "description", content: "Inside Green D: How we combined real-time IoT smart plug telemetry, computer vision receipt OCR, and grid carbon algorithms into a full-stack sustainability SaaS." },
       { property: "og:title", content: "Engineering Green D: Real-Time IoT Power Telemetry, Receipt OCR Parsing, and Predictive Carbon Modeling" },

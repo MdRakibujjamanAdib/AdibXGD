@@ -19,10 +19,19 @@ import ScrollToTopProgress from './components/ui/ScrollToTopProgress';
 function App() {
   const location = useLocation();
 
-  // Scroll to top on route change
+  // Scroll to top and track pageview on route change
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+
+    // Dynamic Google Analytics 4 page view tracking for client-side SPA routing
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+        page_title: document.title,
+        page_location: window.location.href,
+      });
+    }
+  }, [location.pathname, location.search]);
 
   return (
     <div

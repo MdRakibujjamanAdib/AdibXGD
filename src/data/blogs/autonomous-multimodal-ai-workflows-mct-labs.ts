@@ -1,4 +1,4 @@
-import { Blog } from '../blogs';
+import type { Blog } from '../blogs.ts';
 
 const blog: Blog = {
   id: "autonomous-multimodal-ai-workflows-mct-labs",
@@ -7,7 +7,7 @@ const blog: Blog = {
   subtitle: "Architecting MCT Labs — combining LLM orchestration, Stable Diffusion pipelines, and live in-browser sandboxing.",
   summary: "An inside look into the engineering behind MCT Labs, the AI creative suite that won Champion honors at the DIU AI Expo. Discover how we combined streaming LLM token parsers, headless Stable Diffusion workers, and secure sandbox execution in React.",
   category: "AI & Systems",
-  tags: ["Multimodal AI", "LLM Orchestration", "React", "Node.js", "MCT Labs", "AI Architecture"],
+  tags: ["Multimodal AI", "LLM Orchestration", "React", "Node.js", "MCT Labs", "AI Architecture", "FastAPI", "Python"],
   date: "November 14, 2025",
   isoDate: "2025-11-14T00:00:00Z",
   readTime: "9 min read",
@@ -105,7 +105,7 @@ export class SandboxedRuntimeBridge {
 
   public resetSandbox() {
     this.buffer = '';
-    this.targetFrame.srcdoc = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><div id="root"></div></body></html>';
+    this.targetFrame.srcdoc = '&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="root"&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;';
   }
 }
 </code></pre>
@@ -141,7 +141,7 @@ export class SandboxedRuntimeBridge {
   image: "/images/projects/mctlabs.png",
   link: "/blogs/autonomous-multimodal-ai-workflows-mct-labs",
   seo: {
-    keywords: ["MCT Labs", "Multimodal AI", "LLM Orchestration", "Prompt to Code", "React Sandboxing", "AI Expo Champion", "Vite", "Node.js"],
+    keywords: ["MCT Labs", "Multimodal AI", "LLM Orchestration", "Prompt to Code", "React Sandboxing", "AI Expo Champion", "Vite", "Node.js", "AI Architect", "Md Rakibujjaman Adib"],
     meta: [
       { name: "description", content: "Inside MCT Labs: Combining LLM orchestration, Stable Diffusion pipelines, and secure in-browser sandboxing for autonomous prompt-to-code workflows." },
       { property: "og:title", content: "Building Autonomous Multimodal AI Workflows: From Natural Language to Real-Time Code Execution" },
