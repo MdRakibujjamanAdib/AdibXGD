@@ -1380,6 +1380,75 @@ body.dark .vb-footer-back-to-top,
   }
 }
 
+/* ========================================================
+   ROTATING STARS CELESTIAL BACKGROUND (.vb-rotating-stars-orbit)
+   Continuous, GPU-Accelerated 360-Degree Cosmic Starfield Rotation
+   ======================================================== */
+.vb-rotating-stars-orbit {
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  transform-origin: 50% 50%;
+  animation: vb-stars-spin 80s linear infinite, vb-stars-twinkle 6s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.vb-rotating-stars-orbit-reverse {
+  position: absolute;
+  top: -70%;
+  left: -70%;
+  width: 240%;
+  height: 240%;
+  transform-origin: 50% 50%;
+  animation: vb-stars-spin-reverse 130s linear infinite;
+  will-change: transform;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+@keyframes vb-stars-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes vb-stars-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes vb-stars-twinkle {
+  0% {
+    opacity: 0.35;
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 0.65;
+    filter: brightness(1.25);
+  }
+  100% {
+    opacity: 0.45;
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vb-rotating-stars-orbit,
+  .vb-rotating-stars-orbit-reverse {
+    animation: none !important;
+  }
+}
+
 /* Top Row: Brand & CTA */
 .vb-footer-top-row {
   position: relative;

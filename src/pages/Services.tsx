@@ -61,7 +61,24 @@ function ShowcaseTypewriter() {
 
   return (
     <div className="relative w-full h-full flex items-center justify-center p-8 select-none bg-black overflow-hidden">
-      <StudioStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
+      {/* Primary Slow-Rotating Celestial Starfield */}
+      <div className="vb-rotating-stars-orbit" aria-hidden="true">
+        <StudioStars className="w-full h-full text-white/45" />
+      </div>
+
+      {/* Secondary Counter-Rotating Deep Nebula Starfield */}
+      <div className="vb-rotating-stars-orbit-reverse" aria-hidden="true">
+        <StudioStars className="w-full h-full text-white/25" />
+      </div>
+
+      {/* Radial Vignette: Atmospheric Depth behind Typography */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%)',
+        }}
+        aria-hidden="true"
+      />
 
       <div className="relative z-10 flex items-center justify-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight flex items-center justify-center font-sans">
