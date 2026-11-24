@@ -171,6 +171,15 @@ export default function Blogs() {
                 </div>
               )}
             </AnimatePresence>
+
+            {/* Bottom Showcase Information Overlay with Blog Title */}
+            {currentDisplayBlog && (
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 pb-14 flex flex-col justify-end pointer-events-none">
+                <h3 className="text-xl md:text-2xl font-bold font-sans text-white tracking-tight leading-snug line-clamp-2 drop-shadow-md">
+                  {currentDisplayBlog.title}
+                </h3>
+              </div>
+            )}
           </div>
         }
       >

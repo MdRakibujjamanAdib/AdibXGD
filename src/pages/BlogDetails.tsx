@@ -227,19 +227,20 @@ export default function BlogDetails() {
 
   // Sticky Left Showcase Component (Desktop >= 1200px)
   const blogShowcase = (
-    <div className="relative w-full h-full overflow-y-auto p-4 md:p-6 flex flex-col gap-4 bg-[var(--vb-bg)] pb-16 select-text">
-      {/* Featured Cover Image Display */}
-      <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-subpanel)] group shrink-0">
+    <div className="relative w-full h-full flex flex-col justify-between overflow-hidden bg-[var(--vb-bg)] select-text">
+      {/* Featured Cover Image Display - flush with container and navbar curves */}
+      <div className="relative w-full h-[45%] min-h-[220px] overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
         <img
           src={blog.coverImage || blog.image}
           alt={blog.coverImageAlt || blog.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
 
-      {/* Floating Table of Contents with Scroll Spy */}
+      {/* Floating Table of Contents filling full width down to bottom-right label curve */}
       {blog.tableOfContents && blog.tableOfContents.length > 0 && (
-        <div className="vb-card p-5 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] flex-1 min-h-[220px] flex flex-col gap-3">
+        <div className="relative w-full flex-1 flex flex-col p-5 pb-14 overflow-hidden bg-[var(--vb-panel)] border-t border-[var(--vb-border)]">
           <div className="flex items-center justify-between pb-2 border-b border-[var(--vb-border)]">
             <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-[var(--vb-text)] font-semibold">
               <List size={14} className="text-[#e62e05]" />
@@ -323,36 +324,9 @@ export default function BlogDetails() {
           </div>
 
           {/* Clean Subtitle / Description */}
-          <p className="text-base sm:text-lg text-[var(--vb-text-muted)] leading-relaxed font-sans mb-8 max-w-3xl">
+          <p className="text-base sm:text-lg text-[var(--vb-text-muted)] leading-relaxed font-sans max-w-3xl">
             {blog.subtitle || blog.summary}
           </p>
-
-          {/* Action Row: Read Article CTA and Share matching twin buttons */}
-          <div className="flex items-center justify-between gap-4">
-            <button
-              type="button"
-              onClick={scrollToArticle}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--vb-subpanel)] hover:bg-[var(--vb-card-inset)] text-[var(--vb-text)] font-sans font-semibold text-xs sm:text-sm border border-[var(--vb-border)] hover:border-[var(--vb-text)]/40 transition-all cursor-pointer shadow-sm select-none"
-              aria-label="Read full article"
-            >
-              <span>Read Article</span>
-              <ArrowDown size={14} className="text-[var(--vb-text)]" />
-            </button>
-
-            <button
-              type="button"
-              onClick={handleShare}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--vb-subpanel)] hover:bg-[var(--vb-card-inset)] text-[var(--vb-text)] font-sans font-semibold text-xs sm:text-sm border border-[var(--vb-border)] hover:border-[var(--vb-text)]/40 transition-all cursor-pointer shadow-sm select-none"
-              aria-label="Share article"
-            >
-              <span>{copied ? 'Link Copied!' : 'Share Article'}</span>
-              {copied ? (
-                <Check size={14} className="text-green-500" />
-              ) : (
-                <Share2 size={14} className="text-[var(--vb-text)]" />
-              )}
-            </button>
-          </div>
         </section>
 
         {/* Three Separate Full-Width Metadata Cards: Category, Reading Time, Date (Visbeyond aesthetic) */}
@@ -511,25 +485,23 @@ export default function BlogDetails() {
           </Link>
         </div>
 
-        {/* Next Article Preview Card */}
+        {/* Visbeyond Orion Bottom Transition: Up Next Teaser Bento & Next Article Preview Card */}
         {nextBlog && (
-          <section
-            className="vb-card p-6 md:p-8 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 overflow-hidden"
-            aria-label="Next article"
-          >
-            <div className="flex-1 min-w-0 max-w-xl">
-              <span className="text-xs font-sans uppercase tracking-widest text-[#e62e05] mb-2 block font-semibold">
-                Next Insight &amp; Article
-              </span>
-              <h3 className="text-xl md:text-2xl font-bold font-sans tracking-tight text-[var(--vb-text)] mb-2">
+          <section className="flex flex-col gap-3" aria-label="Next article transition">
+            {/* Up Next Bento Teaser */}
+            <div className="vb-card p-6 md:p-8 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)]">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] text-xs font-semibold border border-[#e62e05] text-[#e62e05] mb-4">
+                <span>Next Insight &amp; Article &darr;</span>
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold font-sans tracking-tight text-[var(--vb-text)] mb-3">
                 {nextBlog.title}
               </h3>
-              <p className="text-sm text-[var(--vb-text-muted)] font-sans line-clamp-2 mb-4 leading-relaxed">
+              <p className="text-sm md:text-[15px] text-[var(--vb-text-muted)] font-sans line-clamp-3 leading-relaxed mb-6 max-w-2xl">
                 {nextBlog.summary}
               </p>
               <Link
                 to={`/blogs/${nextBlog.slug}`}
-                className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[var(--vb-text)] underline underline-offset-4 decoration-1 hover:text-[#e62e05] transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--vb-text)] underline underline-offset-4 decoration-1 hover:text-[#e62e05] transition-colors"
               >
                 <span>Read Next Article</span>
                 <ArrowUpRight size={15} />
@@ -539,12 +511,12 @@ export default function BlogDetails() {
             {/* Next Article Preview Card with Top-Left Inverted Cutout Tab */}
             <Link
               to={`/blogs/${nextBlog.slug}`}
-              className="vb-next-preview-card group w-full lg:w-[280px] xl:w-[320px] max-w-full shrink-0 overflow-hidden"
+              className="vb-next-preview-card group"
               aria-label={`Next article: ${nextBlog.title}`}
             >
               <div className="vb-next-tab">
-                <span className="font-semibold text-xs text-[var(--vb-text)] tracking-tight truncate max-w-[200px] font-sans">
-                  {nextBlog.category}
+                <span className="font-semibold text-xs sm:text-sm text-[var(--vb-text)] tracking-tight truncate max-w-[280px] font-sans">
+                  {nextBlog.title}
                 </span>
                 <InvertedCornerTopRight className="vb-mobile-tab-corner-right" />
                 <InvertedCornerBottomLeft className="vb-mobile-tab-corner-bottom" />
