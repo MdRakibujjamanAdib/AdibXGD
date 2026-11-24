@@ -3,6 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "Vray-Lighting-Study",
     title: "V-Ray Lighting Study",
+    shortTitle: "V-Ray Light Study",
     category: "3D",
     featured: false,
     role: "Lighting & Rendering Artist",

@@ -18,8 +18,8 @@ const blog: Blog = {
     bio: "Erasmus+ Scholar at Windesheim UAS (Zwolle, Netherlands) and Game Developer at 038GAMES, engineering serious games and simulation systems.",
     url: "https://adibx.me/about"
   },
-  coverImage: "/images/hero-canal.jpg",
-  coverImageAlt: "Zwolle canal and Windesheim campus setting",
+  coverImage: "/images/projects/atmospheric-3d-game-environment-3ds-max-vray.webp",
+  coverImageAlt: "3D Game Environment Architecture and Simulation World",
   featured: true,
   tableOfContents: [
     { id: "the-paradox-of-serious-games", title: "The Paradox of Serious Games: Utility vs. Immersion", level: 2 },
@@ -136,6 +136,17 @@ public class SimulationStateMachine
 </p>
 
 <h2 id="interdisciplinary-synthesis">Cross-Disciplinary Engineering: From Therapists to Code</h2>
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
+  <img
+    src="/images/hero-canal.jpg"
+    alt="Field research setting at Windesheim UAS campus in Zwolle, Netherlands"
+    class="w-full object-cover rounded-[18px] max-h-[440px]"
+  />
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+    Figure 3: Field research and studio environment at Windesheim UAS in Zwolle, Netherlands.
+  </p>
+</div>
+
 <p>
   Perhaps the most formative takeaway from my time in Zwolle was bridging the communication gap between non-technical stakeholders (physiotherapists, educators, psychologists) and software engineers.
 </p>
@@ -154,14 +165,14 @@ public class SimulationStateMachine
   The lessons learned at Windesheim continue to influence everything I build today: prioritizing modular event pipelines, respecting separation of concerns, and always building empathetic, user-centered feedback loops into complex software systems.
 </p>
 `,
-  image: "/images/hero-canal.jpg",
+  image: "/images/projects/atmospheric-3d-game-environment-3ds-max-vray.webp",
   link: "/blogs/unity-serious-games-architecture-windesheim",
   seo: {
     keywords: ["Unity 3D", "C# Architecture", "Serious Games", "038GAMES", "Windesheim UAS", "Erasmus+ Netherlands", "ScriptableObjects", "State Machine", "Md Rakibujjaman Adib"],
     meta: [
       { name: "description", content: "Architecting serious games in Unity at Windesheim UAS: ScriptableObject event channels, clean state machines, and heuristic telemetry." },
       { property: "og:title", content: "Architecting Serious Games in Unity: Clean Systems, Heuristic Feedback, and Applied C#" },
-      { property: "og:image", content: "https://adibx.me/images/hero-canal.jpg" }
+      { property: "og:image", content: "https://adibx.me/images/projects/atmospheric-3d-game-environment-3ds-max-vray.webp" }
     ]
   }
 };

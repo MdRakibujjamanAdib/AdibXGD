@@ -3,6 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "The-Fading-Heartbeat",
     title: "The Fading Heartbeat",
+    shortTitle: "Tangail Saree",
     category: "Video Editing",
     role: "Director & Editor",
     summary: "A short documentary exploring the heritage and economic struggle behind the handwoven Tangail saree industry.",

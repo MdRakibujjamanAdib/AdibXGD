@@ -3,7 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
   id: "underwater-life-motion-graphics",
   title: "Underwater Life – First Motion Graphics in After Effects",
-  shortTitle: "Underwater Motion Graphics",
+  shortTitle: "Underwater Motion",
   category: "Animation & Motion",
   featured: false,
   role: "Motion Graphics Designer & Animator",

@@ -18,8 +18,8 @@ const blog: Blog = {
     bio: "Champion of Byte Battle Programming Contest 2025 and 6x podium winner in software engineering and competitive algorithmic challenges.",
     url: "https://adibx.me/about"
   },
-  coverImage: "/images/visbeyond/FLGzcv8zFbjfvUIC7ezsCAJg128.png",
-  coverImageAlt: "Byte Battle championship code and optimization study",
+  coverImage: "/images/byte-battle-championship-honours.webp",
+  coverImageAlt: "Md Rakibujjaman Adib celebrating Byte Battle Programming Contest championship victory",
   featured: false,
   tableOfContents: [
     { id: "inside-the-competitive-arena", title: "Inside the Pressure Cooker: The Byte Battle Arena", level: 2 },
@@ -140,14 +140,14 @@ int solveTSP(int mask, int u, int n, const std::vector&lt;std::vector&lt;int&gt;
   Whether optimizing a React Virtual DOM reconciliation tree, speeding up a 3D ray caster, or querying a distributed database, the mental models forged in competitive arenas remain our greatest engineering asset.
 </p>
 `,
-  image: "/images/visbeyond/FLGzcv8zFbjfvUIC7ezsCAJg128.png",
+  image: "/images/byte-battle-championship-honours.webp",
   link: "/blogs/competitive-programming-algorithmic-optimization-byte-battle",
   seo: {
     keywords: ["Byte Battle", "Competitive Programming", "Algorithms", "Dynamic Programming", "Bitmask", "Cache Locality", "Graph Theory", "Optimization", "C++", "Md Rakibujjaman Adib"],
     meta: [
       { name: "description", content: "Lessons from winning the Byte Battle Championship: Time-space complexity, dynamic programming state compression, cache locality, and algorithmic discipline." },
       { property: "og:title", content: "Algorithmic Optimization Under Pressure: Lessons from Winning the Byte Battle Championship" },
-      { property: "og:image", content: "https://adibx.me/images/visbeyond/FLGzcv8zFbjfvUIC7ezsCAJg128.png" }
+      { property: "og:image", content: "https://adibx.me/images/byte-battle-championship-honours.webp" }
     ]
   }
 };

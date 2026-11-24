@@ -3,7 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
   id: "massfx-physics-ball-simulation",
   title: "MassFX Rigid-Body Dynamics & Natural Flow Simulation",
-  shortTitle: "MassFX Physics Simulation",
+  shortTitle: "MassFX Physics",
   category: "Animation & Motion",
   featured: false,
   role: "3D Technical Artist & Simulation Specialist",

@@ -3,7 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
   id: "robotic-arm-ball-pickup-3d-animation",
   title: "Robotic Arm Ball Pickup – First 3D Keyframe Animation",
-  shortTitle: "Robotic Arm 3D Animation",
+  shortTitle: "Robotic Arm 3D",
   category: "Animation & Motion",
   featured: false,
   role: "3D Modeler & Animator",

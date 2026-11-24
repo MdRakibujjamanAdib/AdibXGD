@@ -3,6 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "green-d-website",
     title: "Green D – Software & Automation Website",
+    shortTitle: "Green D Web",
     category: "Web & Automation",
     role: "Frontend Developer & AI Architect",
     summary: "A modern corporate website for Green D, showcasing software engineering, automation, AI workflows, and multimedia services.",

@@ -118,7 +118,7 @@ export default function ProjectDetails() {
         customMeta={project.seo?.meta}
       />
       <VisbeyondLayout
-        pageLabel={project.title}
+        pageLabel={project.shortTitle || project.title}
         showcaseImage={project.thumbnails && project.thumbnails.length > 1 ? undefined : project.thumbnail}
         showcaseChildren={
           project.thumbnails && project.thumbnails.length > 1 ? (

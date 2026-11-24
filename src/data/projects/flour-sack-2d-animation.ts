@@ -3,7 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
   id: "flour-sack-2d-animation",
   title: "Flour Sack Character Study – 2D Animation Principles",
-  shortTitle: "2D Flour Sack Animation",
+  shortTitle: "Flour Sack 2D",
   category: "Animation & Motion",
   featured: false,
   role: "Solo 2D Animator",

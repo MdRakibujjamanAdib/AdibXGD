@@ -3,6 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "Walton-Trade-Fair-Stall",
     title: "Walton Trade Fair Stall Concept",
+    shortTitle: "Walton Stall Design",
     category: "3D",
     featured: false,
     role: "3D Designer & Visualizer",

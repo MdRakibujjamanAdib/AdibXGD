@@ -3,6 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "mct-labs-web",
     title: "MCT Labs Platform",
+    shortTitle: "MCT Labs",
     category: "Web & Automation",
     featured: false,
     role: "Full Stack Developer",

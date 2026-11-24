@@ -3,6 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "Vray-Light-Projection-Fog",
     title: "V-Ray Light Projection & Fog",
+    shortTitle: "V-Ray Projection & Fog",
     category: "3D",
     featured: false,
     role: "Lighting & Rendering Artist",

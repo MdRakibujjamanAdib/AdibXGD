@@ -626,7 +626,7 @@ body.dark,
   font-weight: 600;
   color: var(--vb-text);
   transition: color 0.35s ease;
-  max-width: 420px;
+  max-width: min(320px, calc(100vw - 110px));
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

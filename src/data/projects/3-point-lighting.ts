@@ -3,6 +3,7 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "3-Point-Lighting",
     title: "3-Point Lighting Study",
+    shortTitle: "3-Point Lighting",
     category: "3D",
     featured: false,
     role: "3D Artist",
