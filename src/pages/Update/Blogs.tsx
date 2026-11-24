@@ -198,8 +198,8 @@ export default function Blogs() {
       >
         {/* Sticky Search & Category Filter Section (Sticks to top, matches UI theme) */}
         <section
-          style={{ position: 'sticky', top: '12px', zIndex: 20 }}
-          className="rounded-[20px] p-4 sm:p-6 bg-[var(--vb-panel)]/95 backdrop-blur-md border border-[var(--vb-border)] shadow-lg mb-6 md:mb-8 transition-colors"
+          style={{ position: 'sticky', top: '16px', zIndex: 20 }}
+          className="rounded-[24px] overflow-hidden p-5 sm:p-6 bg-[var(--vb-panel)] border border-[var(--vb-border)] shadow-xl mb-6 md:mb-8 transition-colors"
           aria-label="Filter blog articles"
         >
           {/* Centered Header Row */}

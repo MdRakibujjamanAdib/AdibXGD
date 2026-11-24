@@ -2697,6 +2697,25 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
   border-color: var(--vb-accent);
 }
 
+/* Blog Article Images & Figures - Generously rounded to match Visbeyond aesthetic */
+.vb-prose img {
+  border-radius: 18px !important;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.vb-prose figure,
+.vb-prose .my-6 {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+.vb-prose figure img,
+.vb-prose .my-6 img {
+  border-radius: 18px !important;
+}
+
 /* ========================================================
    VISBEYOND INDIVIDUAL PROJECT CASE STUDY STYLING
    ======================================================== */

@@ -55,13 +55,13 @@ const blog: Blog = {
   At the edge layer, Green D interfaces with ESP32-based smart plugs and Zigbee current clamps measuring true root-mean-square (RMS) current, AC voltage, and real power factor:
 </p>
 
-<div class="my-6 rounded-xl overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)]">
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
     src="/images/projects/greend-smart-home.png"
     alt="Green D Smart Home IoT Sensor Integration Overview"
-    class="w-full object-cover max-h-[440px]"
+    class="w-full object-cover rounded-[18px] max-h-[440px]"
   />
-  <p class="p-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
     Figure 1: Smart Home appliance telemetry mapping and edge current distribution.
   </p>
 </div>
@@ -101,13 +101,13 @@ export class TelemetryAggregator {
   IoT meters address active home appliances, but what about transport fuel, heating gas, and historical electric utility bills? Users are not going to manually type 20 line-items from a printed invoice.
 </p>
 
-<div class="my-6 rounded-xl overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)]">
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
     src="/images/projects/greend-receipt.png"
     alt="Computer Vision OCR Receipt Extraction in Green D"
-    class="w-full object-cover max-h-[440px]"
+    class="w-full object-cover rounded-[18px] max-h-[440px]"
   />
-  <p class="p-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
     Figure 2: Computer vision receipt processing pipeline parsing fuel liters and utility billing values.
   </p>
 </div>

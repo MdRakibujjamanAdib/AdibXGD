@@ -59,13 +59,13 @@ const blog: Blog = {
   Where $\\sigma_t = \\sigma_a + \\sigma_s$ represents total extinction (absorption plus scattering), and $p(x, \\omega', \\omega)$ is the scattering phase function (such as Henyey-Greenstein).
 </p>
 
-<div class="my-6 rounded-xl overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)]">
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
     src="/images/projects/vray-light-projection.png"
     alt="V-Ray Textured Gobo Light Projection and Fog Interaction"
-    class="w-full object-cover max-h-[440px]"
+    class="w-full object-cover rounded-[18px] max-h-[440px]"
   />
-  <p class="p-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
     Figure 1: High-frequency textured Gobo projection through participating media in Chaos V-Ray.
   </p>
 </div>
@@ -93,13 +93,13 @@ const blog: Blog = {
   Depth of field is frequently applied as a cheap post-processing 2D Gaussian blur in compositing. However, optical depth of field in a real camera is a physical consequence of ray convergence through curved lens elements onto a camera sensor plane.
 </p>
 
-<div class="my-6 rounded-xl overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)]">
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
     src="/images/projects/vray-dof-final.png"
     alt="V-Ray Physical Camera Bokeh and Circle of Confusion Study"
-    class="w-full object-cover max-h-[440px]"
+    class="w-full object-cover rounded-[18px] max-h-[440px]"
   />
-  <p class="p-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
     Figure 2: Physical camera optical bokeh showing circle of confusion and polygonal aperture blade characteristics.
   </p>
 </div>
