@@ -282,4 +282,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://adibx.me/blogs/vray-light-projection-gobo-textures</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/vray-physical-camera-cinematic-depth-of-field</loc>
+    <lastmod>2025-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
