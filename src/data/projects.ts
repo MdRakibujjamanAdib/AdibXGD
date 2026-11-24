@@ -3,7 +3,7 @@ export interface Project {
   id: string;
   title: string;
   shortTitle?: string; // Short label displayed on homepage recent cards (e.g. 'Gadget N Gadget')
-  category: '3D' | 'Web & Automation' | 'Brand Identity' | 'Video Editing';
+  category: '3D' | 'Web & Automation' | 'Brand Identity' | 'Video Editing' | 'UI/UX Design';
   role?: string;
   summary: string;
   description: string;
