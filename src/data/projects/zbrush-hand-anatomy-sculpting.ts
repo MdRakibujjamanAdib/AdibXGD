@@ -11,18 +11,18 @@ const project: Project = {
   description: "<p style='text-align: justify;'>The human hand is universally acknowledged as one of the most demanding anatomical structures to capture accurately in digital sculpture. Created as an intensive coursework assignment in Pixologic ZBrush, this project focused on developing realistic proportions, bone landmarks, tendon dynamics, and organic skin fold wrinkles from a raw digital clay base.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Anatomical Landmarks & Skeletal Foundations:</b> The sculpt establishes core anatomical milestones: the distal, middle, and proximal phalanges, metacarpal heads forming the knuckles, and the underlying carpal bridge. Careful attention was paid to the tension of the extensor tendons running along the dorsal surface, producing natural variations in skin stretching and compression when the fingers are posed in dynamic rest.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>DynaMesh to ZRemesher Pipeline:</b> The primary anatomical volume was established using DynaMesh to allow unrestricted form manipulation and finger blocking without polygon pinching. Once proportions and muscle mass were locked, automatic retopology via ZRemesher generated an optimized quad flow following the natural contours of the fingers and palm. Multi-resolution subdivision levels then enabled ultra-fine secondary detailing including fingernail beds, palmar crease lines, and micro-surface dermal folds.</p>",
-  thumbnail: "/images/projects/Zbrush Hand Sculpting (1).png",
+  thumbnail: "/images/projects/zbrush-hand-anatomy-gesture-sculpt-01.png",
   thumbnails: [
-    "/images/projects/Zbrush Hand Sculpting (1).png",
-    "/images/projects/Zbrush Hand Sculpting (2).png",
-    "/images/projects/Zbrush Hand Sculpting (3).png",
-    "/images/projects/Zbrush Hand Sculpting (4).png"
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-01.png",
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-02.png",
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-03.png",
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-04.png"
   ],
   images: [
-    "/images/projects/Zbrush Hand Sculpting (1).png",
-    "/images/projects/Zbrush Hand Sculpting (2).png",
-    "/images/projects/Zbrush Hand Sculpting (3).png",
-    "/images/projects/Zbrush Hand Sculpting (4).png"
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-01.png",
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-02.png",
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-03.png",
+    "/images/projects/zbrush-hand-anatomy-gesture-sculpt-04.png"
   ],
   tags: [
     "ZBrush",
@@ -55,7 +55,7 @@ const project: Project = {
       },
       {
         property: "og:image",
-        content: "/images/projects/Zbrush Hand Sculpting (1).png"
+        content: "/images/projects/zbrush-hand-anatomy-gesture-sculpt-01.png"
       }
     ]
   }

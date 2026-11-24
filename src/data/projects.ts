@@ -17,6 +17,7 @@ export interface Project {
   date: string;
   featured?: boolean;
   featuredOrder?: number; // 1-based order for display on home screen (1 is top/first)
+  cardRatio?: 'landscape' | 'square'; // Visual ratio on project grids ('landscape' 16:10 default, or 'square' 1:1)
   seo?: {
     keywords?: string[];
     meta?: Array<{ name?: string; property?: string; content: string }>;

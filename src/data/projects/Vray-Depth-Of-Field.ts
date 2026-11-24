@@ -16,9 +16,9 @@ const project: Project = {
 <img src='/images/projects/vray-dof-final.png' alt='Final cinematic V-Ray depth of field render with realistic lens blur' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 20px;'>The study demonstrates how depth of field enhances realism, guides visual storytelling, and adds a professional cinematic finish to product and environment renders.</p>",
     thumbnail: "/images/projects/vray-dof-final.png",
-    videoUrl: "/images/projects/vray DOF video.mp4",
+    videoUrl: "/images/projects/vray-cinematic-depth-of-field-video.mp4",
     images: [
-        "/images/projects/Vray Animation Thumbnail.png",
+        "/images/projects/vray-cinematic-dof-thumbnail.png",
         "/images/projects/vray-dof-setup.png",
         "/images/projects/vray-dof-focus.png",
         "/images/projects/vray-dof-final.png",

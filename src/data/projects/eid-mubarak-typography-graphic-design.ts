@@ -6,17 +6,18 @@ const project: Project = {
   shortTitle: "Eid Typography Design",
   category: "Brand Identity",
   featured: false,
+  cardRatio: "square",
   role: "Typography & Graphic Designer",
   summary: "Debut typography milestone created in Adobe Illustrator fusing elegant Arabic calligraphy styling, modern Bengali lettering, and celebratory Islamic geometric aesthetic balance.",
   description: "<p style='text-align: justify;'>Marking the artist's first official typography task, this design piece was authored in Adobe Illustrator to celebrate the sacred festival of Eid. The composition explores cross-cultural letterform design, balancing ornamental Islamic calligraphy traditions with modern geometric graphic layout.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Vector Typography & Letterform Craft:</b> The primary title combines handcrafted curves, sweeping descenders, and tailored swashes engineered directly on the vector Bézier grid. Stroke weights and kerning relationships were rigorously refined to achieve visual equilibrium between the bold festive greeting and intricate decorative accents.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Festive Color Harmony & Composition:</b> The artwork utilizes an evocative color palette of deep festive greens, luminous gold highlights, and clean negative space. Intricate crescent motifs, starlight geometry, and subtle arabesque patterns frame the typography, producing an elegant visual identity suitable for digital and print distribution.</p>",
-  thumbnail: "/images/projects/Eid Mubarak Design TypoGraphy.jpg",
+  thumbnail: "/images/projects/eid-mubarak-typography-festive-poster.jpg",
   thumbnails: [
-    "/images/projects/Eid Mubarak Design TypoGraphy.jpg"
+    "/images/projects/eid-mubarak-typography-festive-poster.jpg"
   ],
   images: [
-    "/images/projects/Eid Mubarak Design TypoGraphy.jpg"
+    "/images/projects/eid-mubarak-typography-festive-poster.jpg"
   ],
   tags: [
     "Adobe Illustrator",
@@ -49,7 +50,7 @@ const project: Project = {
       },
       {
         property: "og:image",
-        content: "/images/projects/Eid Mubarak Design TypoGraphy.jpg"
+        content: "/images/projects/eid-mubarak-typography-festive-poster.jpg"
       }
     ]
   }

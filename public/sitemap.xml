@@ -193,6 +193,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/vray-atmospheric-environment-fog</loc>
+    <lastmod>2024-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/Vray-Depth-Of-Field</loc>
     <lastmod>2025-10-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -213,12 +219,6 @@
   <url>
     <loc>https://adibx.me/projects/vray-shoe-commercial-animation</loc>
     <lastmod>2024-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/vray-volumetric-godray-flower-vase</loc>
-    <lastmod>2024-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

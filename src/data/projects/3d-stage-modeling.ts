@@ -11,12 +11,12 @@ const project: Project = {
     description: "<p style='text-align: justify;'>This project was created as an advanced Autodesk 3ds Max assignment exploring spatial scale, architectural event staging, and optical camera realism. The objective was to design a clean, modern keynote presentation stage equipped for high-profile conferences and live broadcasts.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Cinematic Optical Depth of Field:</b> A key technical standout of this project is the deliberate use of physical camera depth-of-field (DoF). By calibrating a wide aperture, the camera renders a subtle, photorealistic blur across the foreground podium and structural perimeter, drawing viewer focus deeply into the illuminated presentation center.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Stage Lighting & Material Dynamics:</b> The spatial setup incorporates overhead lighting trusses, directional spotlights, and high-contrast ambient backdrops. Materials include glossy stage flooring that accurately captures reflections of the overhead spotlights, backdrop graphics, and speaker stands, delivering an authentic live venue aesthetic.</p>",
-    thumbnail: "/images/projects/3D Stage Designing (1).png",
+    thumbnail: "/images/projects/3d-stage-design-podium-modeling-01.png",
     images: [
-        "/images/projects/3D Stage Designing (1).png",
-        "/images/projects/3D Stage Designing (2).png",
-        "/images/projects/3D Stage Designing (3).png",
-        "/images/projects/3D Stage Designing (4).png"
+        "/images/projects/3d-stage-design-podium-modeling-01.png",
+        "/images/projects/3d-stage-design-podium-modeling-02.png",
+        "/images/projects/3d-stage-design-podium-modeling-03.png",
+        "/images/projects/3d-stage-design-podium-modeling-04.png"
     ],
     tags: [
         "3ds Max",

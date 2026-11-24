@@ -8,33 +8,34 @@ const project: Project = {
     role: "Lead UI/UX Designer & Web Lead",
     featured: true,
     featuredOrder: 1,
+    cardRatio: 'square',
     summary: "A high-performance e-commerce platform designed for Gadget N Gadget, one of Bangladesh's recognized mobile and gadget retail chains.",
     description: `<p style='text-align: justify;'><b>Gadget N Gadget (GnG)</b> is one of the most recognized and trusted tech gadget and smartphone retailers in Bangladesh. Operating prominent physical showrooms in prime tech hubs across Dhaka—including Bashundhara City Shopping Complex, Jamuna Future Park, and their flagship store & GNG Care service center at Shah Ali Plaza in Mirpur-10—Gadget N Gadget bridges global technology with local consumers through 100% genuine products, official warranties, and nationwide delivery across all 64 districts.</p>
 
 <p style='text-align: justify; margin-top: 30px;'><b>Design Strategy & Collaborative Vision:</b> Working alongside my design and engineering team, I led the user experience and interface design for their flagship e-commerce platform (<a href="https://gadgetngadgetbd.com/" target="_blank" rel="noopener noreferrer" style="color: #e62e05; text-decoration: underline;">gadgetngadgetbd.com</a>). The core objective was to architect a modern, tech-forward digital storefront that translates the premium in-store retail experience into a frictionless, conversion-focused online shopping journey.</p>
-<img src='/images/projects/gadgetngadgetbd.com screenshot.png' alt='Gadget N Gadget desktop e-commerce website design and product catalog overview' style='width:100%; margin:20px 0 30px 0;' />
+<img src='/images/projects/gadget-n-gadget-ecommerce-desktop.png' alt='Gadget N Gadget desktop e-commerce website design and product catalog overview' style='width:100%; margin:20px 0 30px 0;' />
 
 <p style='text-align: justify; margin-top: 30px;'><b>Interactive Product Discovery & "Clip to Cart":</b> To serve tech enthusiasts and mainstream shoppers alike, we engineered an intuitive product discovery flow. The platform features dynamic multi-parameter filtering (by brand, price range, stock availability, and popularity) across major international flagships like Apple, Samsung, Google Pixel, Xiaomi, OnePlus, and leading audio/wearable brands like Anker, JBL, and Amazfit. In addition, an innovative <i>'Clip to Cart'</i> feature allows users to watch interactive video unboxings and quick reviews, adding products straight to checkout with a single tap.</p>
 
 <p style='text-align: justify; margin-top: 30px;'><b>Multi-Device Responsive Architecture:</b> Modern tech consumers in Bangladesh predominantly browse and purchase on mobile and tablet devices. We crafted custom responsive layouts engineered to deliver flawless performance across all screen sizes. From dense product grids on desktop monitors to ergonomic one-hand shopping interactions on smartphones, every UI component was stress-tested for speed and usability.</p>
 <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 30px 0;'>
-  <img src='/images/projects/gng tablet view.png' alt='Gadget N Gadget responsive tablet interface mockup' style='width:100%; border-radius: 12px;' />
-  <img src='/images/projects/gng phone view.png' alt='Gadget N Gadget smartphone UI and mobile layout mockup' style='width:100%; border-radius: 12px;' />
+  <img src='/images/projects/gadget-n-gadget-tablet-storefront-view.png' alt='Gadget N Gadget responsive tablet interface mockup' style='width:100%; border-radius: 12px;' />
+  <img src='/images/projects/gadget-n-gadget-phone-storefront-view.png' alt='Gadget N Gadget smartphone UI and mobile layout mockup' style='width:100%; border-radius: 12px;' />
 </div>
 
 <p style='text-align: justify; margin-top: 30px;'><b>Local Payment Ecosystem & Streamlined Checkout:</b> Addressing the specific needs of Bangladeshi e-commerce, the checkout flow was structured for transparency and minimal friction. The platform seamlessly integrates local Mobile Financial Services (bKash, Nagad, Rocket), major credit/debit card gateways (Visa, Mastercard, Amex), Cash on Delivery (COD), flexible EMI calculation models, and an automated pre-order reservation engine for highly anticipated global smartphone releases.</p>
 
 <p style='text-align: justify; margin-top: 30px;'><b>Engineering Excellence & Impact:</b> The website combines clean component modularity, optimized asset delivery, SEO-optimized product pages, and resilient state management. As a result, the platform established a robust digital presence for Gadget N Gadget, boosting online conversions, streamlining nationwide logistics dispatch, and reinforcing their reputation as an authorized and premier tech destination in Bangladesh.</p>`,
-    thumbnail: "/images/projects/gng tablet view.png",
+    thumbnail: "/images/projects/gadget-n-gadget-tablet-storefront-view.png",
     thumbnails: [
-        "/images/projects/gng tablet view.png",
-        "/images/projects/gng phone view.png"
+        "/images/projects/gadget-n-gadget-tablet-storefront-view.png",
+        "/images/projects/gadget-n-gadget-phone-storefront-view.png"
     ],
     images: [
-        "/images/projects/gng tablet view.png",
-        "/images/projects/gng phone view.png",
-        "/images/projects/gadgetngadgetbd.com screenshot.png",
-        "/images/projects/gadgetngadgetbd.com_(iPhone 16 Pro Max).png"
+        "/images/projects/gadget-n-gadget-tablet-storefront-view.png",
+        "/images/projects/gadget-n-gadget-phone-storefront-view.png",
+        "/images/projects/gadget-n-gadget-ecommerce-desktop.png",
+        "/images/projects/gadget-n-gadget-iphone-mobile-mockup.png"
     ],
     demoUrl: "https://gadgetngadgetbd.com/",
     tags: [

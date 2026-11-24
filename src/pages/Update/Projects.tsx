@@ -74,7 +74,7 @@ export default function Projects() {
             <Link
               to={`/projects/${project.id}`}
               key={`mobile-${project.id}`}
-              className="vb-mobile-card group"
+              className={`vb-mobile-card group ${project.cardRatio === 'square' ? 'is-square' : ''}`}
             >
               {/* Top-Left Inverted Cutout Tab */}
               <div className="vb-mobile-card-tab">

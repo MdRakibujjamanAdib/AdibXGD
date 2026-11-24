@@ -2312,6 +2312,10 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.vb-mobile-card.is-square {
+  aspect-ratio: 1 / 1;
+}
+
 .vb-mobile-card:hover,
 .vb-mobile-card:active,
 .vb-mobile-card:focus-visible {

@@ -29,9 +29,9 @@ const blog: Blog = {
     bio: "Technical Artist and 3D Visualizer specializing in Chaos V-Ray light transport algorithms, Maya production pipelines, and architectural CGI.",
     url: "https://adibx.me/about"
   },
-  coverImage: "/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/hdri.png",
+  coverImage: "/images/projects/vray-lighting-guide/vray-hdri-environment-dome-contact.png",
   coverImageAlt: "Chaos V-Ray Complete Visual Lighting Guide - Comparative study across Sun, HDRI, IES, Mesh, and Rectangular lights",
-  image: "/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/hdri.png",
+  image: "/images/projects/vray-lighting-guide/vray-hdri-environment-dome-contact.png",
   link: "/blogs/mastering-vray-lighting-complete-visual-guide",
   featured: true,
   seo: {
@@ -57,7 +57,7 @@ const blog: Blog = {
       },
       {
         property: "og:image",
-        content: "https://adibx.me/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/hdri.png"
+        content: "https://adibx.me/images/projects/vray-lighting-guide/vray-hdri-environment-dome-contact.png"
       }
     ]
   },
@@ -96,7 +96,7 @@ const blog: Blog = {
 
 <figure style="margin: 32px 0;">
   <img 
-    src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light.png" 
+    src="/images/projects/vray-lighting-guide/vray-rect-light-standard-planar.png" 
     alt="Standard V-Ray Rectangular Area Light baseline render" 
     style="width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);" 
   />
@@ -113,7 +113,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%20size%20intencity.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-size-intensity.png" 
         alt="V-Ray Rectangular light size and intensity calibration" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -121,7 +121,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%202.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-fill-balance.png" 
         alt="V-Ray Rectangular light variation test" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -141,7 +141,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20invisiable.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-invisible-mode.png" 
         alt="V-Ray Rectangular Light with Invisible toggle enabled" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -149,7 +149,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%202%20sided.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-double-sided.png" 
         alt="V-Ray Rectangular Light Double-Sided emission mode" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -173,7 +173,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%2025%20doirectional.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-25-directional.png" 
         alt="V-Ray Rectangular Light with 25% Directionality" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -181,7 +181,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%2050%20doirectional.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-50-directional.png" 
         alt="V-Ray Rectangular Light with 50% Directionality" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -189,7 +189,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%2075%20doirectional.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-75-directional.png" 
         alt="V-Ray Rectangular Light with 75% Directionality" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -197,7 +197,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%20100%20doirectional.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-100-directional.png" 
         alt="V-Ray Rectangular Light with 100% Directionality" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -222,7 +222,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%20color%204500.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-kelvin-4500k-warm.png" 
         alt="V-Ray Light set to 4500 Kelvin warm white" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -230,7 +230,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%20color%207500.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-kelvin-7500k-cool.png" 
         alt="V-Ray Light set to 7500 Kelvin cool daylight" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -238,7 +238,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/normal%20rect%20light%20color%20green.png" 
+        src="/images/projects/vray-lighting-guide/vray-rect-light-color-tint-green.png" 
         alt="V-Ray Light with chromatic green filter" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -262,7 +262,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/mesh.png" 
+        src="/images/projects/vray-lighting-guide/vray-mesh-light-geometric-base.png" 
         alt="V-Ray Mesh Light on 3D geometric prop" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -270,7 +270,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/mesh%20logo.png" 
+        src="/images/projects/vray-lighting-guide/vray-mesh-light-3d-logo.png" 
         alt="V-Ray Mesh Light applied to complex logo lettering" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -278,7 +278,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/mesh%20logo%20A.png" 
+        src="/images/projects/vray-lighting-guide/vray-mesh-light-logo-perspective.png" 
         alt="V-Ray Mesh Light logo perspective detail" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -302,7 +302,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/ies%20light.png" 
+        src="/images/projects/vray-lighting-guide/vray-ies-photometric-profile-01.png" 
         alt="V-Ray IES Photometric Profile 1: Narrow downlight scallop" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -310,7 +310,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/ies%20light2.png" 
+        src="/images/projects/vray-lighting-guide/vray-ies-photometric-profile-02.png" 
         alt="V-Ray IES Photometric Profile 2: Medium wall wash" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -318,7 +318,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/ies%20light3.png" 
+        src="/images/projects/vray-lighting-guide/vray-ies-photometric-profile-03.png" 
         alt="V-Ray IES Photometric Profile 3: Multi-lobe decorative accent" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -342,7 +342,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/sun%20light.jpg" 
+        src="/images/projects/vray-lighting-guide/vray-sun-sky-direct-daylight.jpg" 
         alt="V-Ray Sun high elevation daylight" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -350,7 +350,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/sun%20light%202.jpg" 
+        src="/images/projects/vray-lighting-guide/vray-sun-sky-low-angle.jpg" 
         alt="V-Ray Sun angled low elevation" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -358,11 +358,19 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/sun%20light%203.jpg" 
+        src="/images/projects/vray-lighting-guide/vray-sun-sky-atmospheric-haze.jpg" 
         alt="V-Ray Sun atmospheric haze and soft illumination" 
         style="width: 100%; border-radius: 8px;" 
       />
       <p style="font-size: 12px; color: #aaa; margin-top: 6px; text-align: center;">Atmospheric Turbidity &amp; Soft Ground Shadows</p>
+    </div>
+    <div>
+      <img 
+        src="/images/projects/vray-lighting-guide/vray-sun-sky-ray-diagram.png" 
+        alt="V-Ray Sun analytical illumination diagram" 
+        style="width: 100%; border-radius: 8px;" 
+      />
+      <p style="font-size: 12px; color: #aaa; margin-top: 6px; text-align: center;">Analytical Solar Ray Directionality Diagram</p>
     </div>
   </div>
   <figcaption style="font-size: 13px; color: #888; margin-top: 8px; text-align: center;">
@@ -382,7 +390,7 @@ const blog: Blog = {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/hdri.jpg" 
+        src="/images/projects/vray-lighting-guide/vray-hdri-environment-dome-panorama.jpg" 
         alt="V-Ray Dome Light with 360 HDRI environment map" 
         style="width: 100%; border-radius: 8px;" 
       />
@@ -390,7 +398,7 @@ const blog: Blog = {
     </div>
     <div>
       <img 
-        src="/images/projects/Vray%20All%20Types%20of%20LIghting%20Blog/hdri.png" 
+        src="/images/projects/vray-lighting-guide/vray-hdri-environment-dome-contact.png" 
         alt="High-detail HDRI lighting render with ground shadow catchment" 
         style="width: 100%; border-radius: 8px;" 
       />

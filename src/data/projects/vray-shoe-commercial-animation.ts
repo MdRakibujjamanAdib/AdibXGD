@@ -6,19 +6,22 @@ const project: Project = {
   shortTitle: "V-Ray Shoe Animation",
   category: "3D",
   featured: false,
+  cardRatio: "square",
   role: "3D Product Modeler, Lighting & Rendering Artist",
   summary: "Debut academic milestone in commercial 3D footwear product visualization, modeling, and studio turntable lighting authored in 3ds Max and rendered with Chaos V-Ray.",
   description: "<p style='text-align: justify;'>Marking the artist's first official assignment in commercial 3D product visualization and lighting, this project showcases high-end athletic footwear modeled with industrial design accuracy. The goal was to replicate commercial advertising standards by combining millimeter-accurate geometry with multi-point studio lighting and turntable camera motion.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Product Geometry & Multi-Material Construction:</b> The sneaker assembly was constructed across multiple functional components: the sculpted foam midsole with ergonomic shock pods, textured rubber tread outsole, breathable mesh vamp, synthetic leather overlays, and laced eyelet stays. Subdivided topology ensures smooth, artifact-free highlights across tight bevels and flowing organic stitch lines.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Studio Lighting & Turntable Animation:</b> The asset is illuminated using a three-point studio lighting rig in Chaos V-Ray—balancing a dominant high-key keylight, soft fill bounce, and a razor-sharp rim/edge light to accentuate the silhouette against a clean dark backdrop. The turntable animation highlights material anisotropy, fabric roughness, and specular sheen as the footwear rotates in space.</p>",
-  thumbnail: "/images/projects/hVray Shoe Animation Thumbnail.png",
+  thumbnail: "/images/projects/vray-shoe-commercial-animation-thumbnail.png",
   thumbnails: [
-    "/images/projects/hVray Shoe Animation Thumbnail.png"
+    "/images/projects/vray-shoe-commercial-animation-thumbnail.png",
+    "/images/projects/vray-shoe-commercial-turntable-preview.png"
   ],
   images: [
-    "/images/projects/hVray Shoe Animation Thumbnail.png"
+    "/images/projects/vray-shoe-commercial-animation-thumbnail.png",
+    "/images/projects/vray-shoe-commercial-turntable-preview.png"
   ],
-  videoUrl: "/images/projects/Vray Shoe Animation.mp4",
+  videoUrl: "/images/projects/vray-shoe-commercial-product-animation.mp4",
   tags: [
     "3ds Max",
     "Chaos V-Ray",
@@ -50,7 +53,7 @@ const project: Project = {
       },
       {
         property: "og:image",
-        content: "/images/projects/hVray Shoe Animation Thumbnail.png"
+        content: "/images/projects/vray-shoe-commercial-turntable-preview.png"
       }
     ]
   }
