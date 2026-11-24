@@ -11,7 +11,6 @@ import {
   InvertedCornerTopRightFrame,
   InvertedCornerBottomLeftFrame,
   InvertedCornerBottomRightFrame,
-  InvertedCornerTopLeftFrame,
 } from '../ui/VisbeyondIcons';
 
 interface VisbeyondNavProps {
@@ -76,8 +75,6 @@ export default function VisbeyondNav({
         <InvertedCornerTopRightFrame className="vb-viewport-corner-tr" />
         <InvertedCornerBottomLeftFrame className="vb-viewport-corner-bl" />
         <InvertedCornerBottomRightFrame className="vb-viewport-corner-br" />
-        <InvertedCornerTopLeftFrame className="vb-viewport-corner-content-tl" />
-        <InvertedCornerBottomLeftFrame className="vb-viewport-corner-content-bl" />
       </div>
 
       {/* Top-Left Inverted Cutout Nav Tab (Fixed Overlay across all pages) */}

@@ -198,7 +198,7 @@ export default function Blogs() {
       >
         {/* Sticky Search & Category Filter Section (Exact Services Pattern: Centered in notch on <810px, left-aligned on desktop) */}
         <section
-          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-8 pb-5 px-4 sm:px-6 md:px-8 bg-white dark:bg-[#0e1011] text-[#0e1011] dark:text-white border border-black/10 dark:border-white/10 shadow-none backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
+          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-8 pb-5 px-4 sm:px-6 md:px-8 bg-[var(--vb-panel)] text-[var(--vb-text)] border border-[var(--vb-border)] shadow-none backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
           aria-label="Filter blog articles"
         >
           {/* Top Notch Row:
@@ -207,7 +207,7 @@ export default function Blogs() {
               - Desktop (>=810px): left-aligned cleanly
           */}
           <div className="relative w-full min-h-[37px] flex items-center justify-center min-[810px]:justify-start mb-2 sm:mb-4">
-            <h2 className="text-sm min-[440px]:text-base sm:text-lg xl:text-2xl font-bold tracking-tight text-[#0e1011] dark:text-white whitespace-nowrap text-center min-[810px]:text-left px-2 transition-colors duration-300">
+            <h2 className="text-sm min-[440px]:text-base sm:text-lg xl:text-2xl font-bold tracking-tight text-[var(--vb-text)] whitespace-nowrap text-center min-[810px]:text-left px-2 transition-colors duration-300">
               Search by Category
             </h2>
             {isFiltered && (
@@ -226,21 +226,21 @@ export default function Blogs() {
           <div className="relative mb-3.5">
             <Search
               size={15}
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-black/45 dark:text-white/45 pointer-events-none"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--vb-text-muted)] pointer-events-none"
             />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search articles by title, topic, or keyword..."
-              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20 text-xs sm:text-sm text-[#0e1011] dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-[#e62e05] transition-all font-sans"
+              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-xs sm:text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] transition-all font-sans"
               aria-label="Search articles"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => handleSearchChange('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] cursor-pointer"
                 aria-label="Clear search"
               >
                 <X size={14} />
@@ -261,7 +261,7 @@ export default function Blogs() {
                   className={`vb-tag-pill px-3.5 py-1.5 rounded-[8px] text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none ${
                     isActive
                       ? 'active bg-[#e62e05] text-white border-transparent shadow-md shadow-[#e62e05]/30 font-semibold'
-                      : 'bg-transparent text-[#0e1011] dark:text-white border border-dashed border-black/25 dark:border-white/30 hover:border-[#0e1011] dark:hover:border-white'
+                      : 'bg-transparent text-[var(--vb-text)] border border-dashed border-[var(--vb-border)] hover:border-[var(--vb-text)]'
                   }`}
                   aria-pressed={isActive}
                 >
