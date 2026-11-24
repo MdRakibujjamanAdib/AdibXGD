@@ -12,6 +12,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
 import Achievements from './pages/Achievements';
+import Terms from './pages/Terms';
 import { AnimatePresence } from 'motion/react';
 
 import ScrollToTopProgress from './components/ui/ScrollToTopProgress';
@@ -51,6 +52,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/achievements" element={<Achievements />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Terms />} />
           </Routes>
         </AnimatePresence>
       </main>

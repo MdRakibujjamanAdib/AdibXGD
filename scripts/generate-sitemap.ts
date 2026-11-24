@@ -143,6 +143,8 @@ const generateSitemap = () => {
         { url: `${siteUrl}/blogs`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
         { url: `${siteUrl}/achievements`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
         { url: `${siteUrl}/contact`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+        { url: `${siteUrl}/terms`, lastmod: today, changefreq: 'monthly', priority: '0.5' },
+        { url: `${siteUrl}/privacy`, lastmod: today, changefreq: 'monthly', priority: '0.5' },
     ];
 
     const allEntries: SitemapEntry[] = [...staticPages, ...projectEntries, ...blogEntries];

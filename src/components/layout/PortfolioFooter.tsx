@@ -246,10 +246,10 @@ export default function PortfolioFooter({
                 <RollingLink to="/blogs">Blogs</RollingLink>
               </li>
               <li>
-                <RollingLink to="/contact">Terms &amp; Conditions</RollingLink>
+                <RollingLink to="/terms">Terms &amp; Conditions</RollingLink>
               </li>
               <li>
-                <RollingLink to="/contact">Privacy Policy</RollingLink>
+                <RollingLink to="/privacy">Privacy Policy</RollingLink>
               </li>
             </ul>
           </div>
@@ -271,8 +271,8 @@ export default function PortfolioFooter({
             <h3 className="vb-footer-col-heading">Quick Links</h3>
             <div className="vb-footer-mobile-links">
               <RollingLink to="/blogs">Blogs</RollingLink>
-              <RollingLink to="/contact">Terms &amp; Conditions</RollingLink>
-              <RollingLink to="/contact">Privacy Policy</RollingLink>
+              <RollingLink to="/terms">Terms &amp; Conditions</RollingLink>
+              <RollingLink to="/privacy">Privacy Policy</RollingLink>
             </div>
           </div>
         </div>

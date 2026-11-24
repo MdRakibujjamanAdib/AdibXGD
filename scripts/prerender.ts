@@ -253,6 +253,20 @@ function getStaticRoutes(): RouteMeta[] {
       image: resolveAbsoluteUrl('/MdRakibujamanAdib.jpg'),
       type: 'website',
     },
+    {
+      path: 'terms',
+      title: 'Terms & Conditions | Md Rakibujjaman Adib',
+      description: 'Terms of Service, Copyright and Originality Protections, Startup Free Prototype Initiative, and Milestone Payment Policies by Md Rakibujjaman Adib.',
+      image: resolveAbsoluteUrl('/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg'),
+      type: 'website',
+    },
+    {
+      path: 'privacy',
+      title: 'Privacy Policy & NDA | Md Rakibujjaman Adib',
+      description: 'Data Privacy Policy, Mutual Non-Disclosure, and Portfolio Showcase Rights by Md Rakibujjaman Adib.',
+      image: resolveAbsoluteUrl('/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg'),
+      type: 'website',
+    },
   ];
 }
 
