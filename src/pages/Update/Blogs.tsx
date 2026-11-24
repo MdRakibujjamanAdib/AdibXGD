@@ -174,8 +174,8 @@ export default function Blogs() {
 
             {/* Bottom Showcase Information Overlay with Blog Title */}
             {currentDisplayBlog && (
-              <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 pb-14 flex flex-col justify-end pointer-events-none">
-                <h3 className="text-xl md:text-2xl font-bold font-sans text-white tracking-tight leading-snug line-clamp-2 drop-shadow-md">
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 pb-16 md:pb-20 flex flex-col justify-end pointer-events-none">
+                <h3 className="text-xl md:text-2xl font-bold font-sans text-white tracking-tight leading-snug line-clamp-2 drop-shadow-md max-w-[62%] mb-2">
                   {currentDisplayBlog.title}
                 </h3>
               </div>
@@ -183,30 +183,47 @@ export default function Blogs() {
           </div>
         }
       >
-        {/* Sticky Search & Category Filter Section (Always on top like Services page) */}
+        {/* Sticky Search & Category Filter Section (Designed like Services page) */}
         <section
-          className="sticky top-3 z-20 vb-card p-4 sm:p-5 bg-[var(--vb-panel)]/95 backdrop-blur-md border border-[var(--vb-border)] rounded-[var(--vb-radius)] shadow-lg transition-colors"
+          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-8 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-xl backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
           aria-label="Filter blog articles"
         >
-          {/* Sleek Search Bar */}
-          <div className="relative mb-4">
+          {/* Header Row: Title & Optional Reset Button */}
+          <div className="w-full min-h-[37px] flex items-center justify-between mb-3 sm:mb-4">
+            <h2 className="text-sm min-[440px]:text-base sm:text-lg xl:text-2xl font-bold tracking-tight text-white dark:text-[#0e1011] whitespace-nowrap text-center min-[810px]:text-left px-2 transition-colors duration-300">
+              Search by Category
+            </h2>
+            {isFiltered && (
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="inline-flex items-center gap-1.5 text-xs text-[#e62e05] hover:underline cursor-pointer font-medium ml-auto"
+              >
+                <X size={12} />
+                <span>Reset ({filteredBlogs.length})</span>
+              </button>
+            )}
+          </div>
+
+          {/* Sleek Integrated Search Bar */}
+          <div className="relative mb-3.5">
             <Search
-              size={16}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--vb-text-muted)] pointer-events-none"
+              size={15}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/50 dark:text-black/50 pointer-events-none"
             />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search articles by title, topic, or keyword..."
-              className="w-full pl-11 pr-10 py-3 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] focus:ring-1 focus:ring-[#e62e05] transition-all font-sans"
+              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-white/10 dark:bg-black/5 border border-white/15 dark:border-black/15 text-xs sm:text-sm text-white dark:text-[#0e1011] placeholder:text-white/40 dark:placeholder:text-black/40 focus:outline-none focus:border-[#e62e05] transition-all font-sans"
               aria-label="Search articles"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => handleSearchChange('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-full text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] hover:bg-[var(--vb-card-inset)] transition-colors cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/60 dark:text-black/60 hover:text-white dark:hover:text-black cursor-pointer"
                 aria-label="Clear search"
               >
                 <X size={14} />
@@ -214,40 +231,27 @@ export default function Blogs() {
             )}
           </div>
 
-          {/* Category Filter Pills & Reset Action */}
-          <div className="flex flex-wrap items-center justify-between gap-2.5">
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Categories">
-              {categories.map((category) => {
-                const isActive = selectedCategory === category;
-                return (
-                  <button
-                    key={category}
-                    type="button"
-                    data-tag={category}
-                    onClick={() => handleCategorySelect(category)}
-                    className={`vb-tag-pill px-3.5 py-1.5 rounded-[8px] text-xs sm:text-[13px] font-sans font-medium transition-all duration-200 cursor-pointer select-none ${
-                      isActive
-                        ? 'active bg-[#e62e05] text-white shadow-md shadow-[#e62e05]/30 font-semibold'
-                        : 'bg-[var(--vb-subpanel)] text-[var(--vb-text-muted)] border border-[var(--vb-border)] hover:border-[var(--vb-text)]/40 hover:text-[var(--vb-text)]'
-                    }`}
-                    aria-pressed={isActive}
-                  >
-                    {category}
-                  </button>
-                );
-              })}
-            </div>
-
-            {isFiltered && (
-              <button
-                type="button"
-                onClick={clearFilters}
-                className="inline-flex items-center gap-1.5 text-xs font-sans text-[#e62e05] hover:underline cursor-pointer font-medium ml-auto"
-              >
-                <X size={12} />
-                <span>Reset ({filteredBlogs.length} results)</span>
-              </button>
-            )}
+          {/* Category Filter Pills (Exact Services Page dashed-border aesthetic) */}
+          <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center min-[810px]:justify-start" role="group" aria-label="Categories">
+            {categories.map((category) => {
+              const isActive = selectedCategory === category;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  data-tag={category}
+                  onClick={() => handleCategorySelect(category)}
+                  className={`vb-tag-pill px-3.5 py-1.5 rounded-[8px] text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none ${
+                    isActive
+                      ? 'active bg-[#e62e05] text-white border-transparent shadow-md shadow-[#e62e05]/30'
+                      : 'bg-transparent text-white dark:text-[#0e1011] border border-dashed border-white/40 dark:border-black/30 hover:border-white dark:hover:border-[#0e1011]'
+                  }`}
+                  aria-pressed={isActive}
+                >
+                  {category}
+                </button>
+              );
+            })}
           </div>
         </section>
 
