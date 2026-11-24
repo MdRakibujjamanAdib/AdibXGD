@@ -256,19 +256,33 @@ body.dark,
 
 .vb-theme {
   position: relative;
-  width: 44px;
+  width: 54px;
   height: 22px;
   border-radius: 9999px;
   cursor: pointer;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow: visible;
   outline: none;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  transition: background-color 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.35s ease, box-shadow 0.25s ease;
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vb-daynight-toggle,
+.vb-theme.vb-daynight-toggle,
+.vb-theme.vb-daynight-toggle[aria-pressed="true"],
+.vb-theme.vb-daynight-toggle[aria-pressed="false"] {
+  background: transparent !important;
+  border: none !important;
+  overflow: visible !important;
 }
 
 .vb-theme:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .vb-theme:active {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import RolloverText from '../ui/RolloverText';
 import VisbeyondMobileMenu from './VisbeyondMobileMenu';
+import DayNightToggle from '../ui/DayNightToggle';
 import {
   InvertedCornerTopRight,
   InvertedCornerBottomLeft,
@@ -84,25 +85,10 @@ export default function VisbeyondNav({
         <div className="vb-nav-links">{navigation}</div>
 
         {/* Celestial Day / Night Switch */}
-        <button
-          className="vb-theme"
-          type="button"
-          aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
-          aria-pressed={dark}
-          onClick={() => setDark(value => !value)}
-        >
-          <span className="vb-theme-thumb" />
-          <span className="vb-theme-cloud">
-            <svg viewBox="0 0 20 12" fill="currentColor">
-              <path d="M16 5.5a3.5 3.5 0 0 0-6.8-1.1A4.5 4.5 0 0 0 1 8.5C1 10.4 2.6 12 4.5 12h11c2.5 0 4.5-2 4.5-4.5 0-2.3-1.8-4.2-4-4.4v0.4z" />
-            </svg>
-          </span>
-          <span className="vb-theme-stars">
-            <i className="vb-star vb-star-1" />
-            <i className="vb-star vb-star-2" />
-            <i className="vb-star vb-star-3" />
-          </span>
-        </button>
+        <DayNightToggle
+          dark={dark}
+          onToggle={() => setDark(value => !value)}
+        />
 
         {/* Mathematical Inverted Vector Corners matching visbeyond.com */}
         <InvertedCornerTopRight className="vb-nav-corner-right" />
