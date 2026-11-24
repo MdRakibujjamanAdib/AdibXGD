@@ -121,6 +121,52 @@ export async function isAdibxServer(url = serverUrl, timeoutMs = 1500): Promise<
   return probe.isAdibx;
 }
 
+export interface HttpResponseData {
+  statusCode: number;
+  headers: Record<string, string | string[] | undefined>;
+  body: string;
+}
+
+export function httpRequest(url: string, method: 'GET' | 'HEAD' = 'GET', timeoutMs = 5000): Promise<HttpResponseData> {
+  return new Promise((resolve, reject) => {
+    try {
+      const u = new URL(url);
+      const req = http.request(
+        {
+          hostname: u.hostname,
+          port: u.port || 80,
+          path: `${u.pathname || '/'}${u.search || ''}`,
+          method,
+          agent: false,
+          headers: { Connection: 'close' },
+          timeout: timeoutMs,
+        },
+        (res) => {
+          let body = '';
+          res.setEncoding('utf8');
+          res.on('data', (chunk) => {
+            body += chunk;
+          });
+          res.on('end', () => {
+            resolve({
+              statusCode: res.statusCode || 0,
+              headers: res.headers as Record<string, string | string[] | undefined>,
+              body,
+            });
+          });
+        }
+      );
+      req.on('error', reject);
+      req.on('timeout', () => {
+        req.destroy(new Error(`HTTP ${method} request timed out for ${url}`));
+      });
+      req.end();
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 export async function ensureServer(port = 3000, maxWaitMs = 30000): Promise<string> {
   serverUrl = `http://localhost:${port}`;
 
@@ -134,17 +180,25 @@ export async function ensureServer(port = 3000, maxWaitMs = 30000): Promise<stri
     return serverUrl;
   }
 
-  // Launch Vite dev server on the specified port
-  const cmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';
-  serverProc = spawn(cmd, ['vite', '--port', String(port), '--host', '127.0.0.1', '--strictPort'], {
-    cwd: process.cwd(),
-    shell: process.platform === 'win32',
-    stdio: 'ignore',
-  });
+  // Launch Vite dev server directly via node binary when available to avoid cmd.exe wrapper orphans on Windows
+  const viteBin = path.join(process.cwd(), 'node_modules', 'vite', 'bin', 'vite.js');
+  if (fs.existsSync(viteBin)) {
+    serverProc = spawn(process.execPath, [viteBin, '--port', String(port), '--host', '127.0.0.1', '--strictPort'], {
+      cwd: process.cwd(),
+      stdio: 'ignore',
+    });
+  } else {
+    const cmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+    serverProc = spawn(cmd, ['vite', '--port', String(port), '--host', '127.0.0.1', '--strictPort'], {
+      cwd: process.cwd(),
+      shell: process.platform === 'win32',
+      stdio: 'ignore',
+    });
+  }
 
   const startTime = Date.now();
   while (Date.now() - startTime < maxWaitMs) {
-    await new Promise((r) => setTimeout(r, 400));
+    await new Promise((r) => setTimeout(r, 250));
     const probe = await probeServer(serverUrl, 1000);
     if (probe.isAdibx) {
       return serverUrl;
@@ -212,6 +266,10 @@ export async function ensureDistServer(port = 4173, maxWaitMs = 15000): Promise<
     throw new Error(`Static build directory not found at ${distDir}. Run 'npm run build' first.`);
   }
 
+  if (distHttpServer && distHttpServer.listening) {
+    return distServerUrl;
+  }
+
   const existing = await probeServer(distServerUrl, 1000);
   if (existing.up) {
     if (!existing.isAdibx) {
@@ -226,8 +284,15 @@ export async function ensureDistServer(port = 4173, maxWaitMs = 15000): Promise<
   const notFoundPath = path.join(distDir, '404.html');
 
   distHttpServer = http.createServer((req, res) => {
-    const parsedUrl = new URL(req.url || '/', distServerUrl);
-    const pathname = parsedUrl.pathname;
+    let pathname = '/';
+    try {
+      const parsedUrl = new URL(req.url || '/', distServerUrl);
+      pathname = parsedUrl.pathname;
+    } catch {
+      res.statusCode = 400;
+      res.end('Bad Request');
+      return;
+    }
 
     // Apply matching vercel.json headers
     for (const rule of headerRules) {
@@ -291,6 +356,9 @@ export async function ensureDistServer(port = 4173, maxWaitMs = 15000): Promise<
 export function stopDistServer(): void {
   if (distHttpServer) {
     try {
+      if (typeof distHttpServer.closeAllConnections === 'function') {
+        distHttpServer.closeAllConnections();
+      }
       distHttpServer.close();
     } catch {}
     distHttpServer = null;

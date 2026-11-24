@@ -1,24 +1,82 @@
-export default {
-  id: "building-applications-with-ai-assisted-coding",
-  slug: "building-applications-with-ai-assisted-coding",
-  title: "Can You Build Real Applications Without Being an Expert Programmer?",
-  summary: "AI-assisted application development makes it easier to move from an idea to a working prototype.",
-  description: "Explore how AI-assisted coding makes application development more accessible while understanding the importance of testing and technical knowledge.",
-  category: "Artificial Intelligence",
-  tags: ["AI-assisted application development", "Vibe coding", "AI-powered software development", "AI app development Bangladesh", "AI programming tools"],
-  date: "November 24, 2026",
-  isoDate: "2026-11-24T00:00:00+01:00",
-  readTime: "5 min read",
-  wordCount: 893,
-  author: {"name": "Md Rakibujjaman Adib", "role": "Creative Technologist & Designer", "avatar": "/MdRakibujamanAdib.jpg", "url": "/about"},
-  coverImage: "/images/blog/building-applications-with-ai-assisted-coding-cover.webp",
-  coverImageSmall: "/images/blog/building-applications-with-ai-assisted-coding-cover-800.webp",
-  coverImageAlt: "Hands typing software code on a laptop",
-  imageSource: "https://www.pexels.com/photo/crop-faceless-developer-working-on-software-code-on-laptop-5926382/",
-  imageCredit: "Sora Shimazaki / Pexels",
-  imageLicense: "Pexels License: https://www.pexels.com/license/",
-  tableOfContents: [{"id": "yes-but-the-responsibility-stays-with-the-builder", "title": "Yes, but the responsibility stays with the builder", "level": 2}, {"id": "turn-the-idea-into-observable-requirements", "title": "Turn the idea into observable requirements", "level": 2}, {"id": "learn-the-frontend-and-backend-boundary", "title": "Learn the frontend and backend boundary", "level": 2}, {"id": "use-ai-to-explain-and-debug-in-small-steps", "title": "Use AI to explain and debug in small steps", "level": 2}, {"id": "test-behavior-rather-than-trusting-a-demonstration", "title": "Test behavior rather than trusting a demonstration", "level": 2}, {"id": "know-when-you-need-specialist-help", "title": "Know when you need specialist help", "level": 2}, {"id": "follow-a-roadmap-from-prototype-to-maintained-application", "title": "Follow a roadmap from prototype to maintained application", "level": 2}],
-  content: "<h2 id=\"yes-but-the-responsibility-stays-with-the-builder\">Yes, but the responsibility stays with the builder</h2>\n<p>AI-assisted application development makes it easier to move from an idea to a working prototype. A beginner can ask for a form, a data display, or an explanation of an error and receive a useful starting point. That changes the learning process. It does not remove the need to understand what the software does, who can access it, or how it behaves when something goes wrong.</p>\n<p>The useful distinction is between producing code and operating a dependable application. A prototype might demonstrate a concept with sample information. A real product must handle actual users, failures, updates, and sometimes private data. You do not need to know every programming concept before starting, but you need a plan for reviewing the parts you do not yet understand.</p>\n<h2 id=\"turn-the-idea-into-observable-requirements\">Turn the idea into observable requirements</h2>\n<p>Start by describing the user and one concrete task. Instead of asking for a complete business platform, describe how a staff member records a request, reviews it, and marks it complete. List the fields, validation rules, and expected messages. Define what should happen if a required field is empty or the same action is submitted twice.</p>\n<p>Ask AI to help identify missing requirements before asking it to generate implementation. Keep the initial scope small enough that you can check every important path yourself. A simple application with a clear purpose teaches more than a large collection of partially connected features. Write acceptance criteria in ordinary language so that success is not defined only by whether the program starts without an error.</p>\n<h2 id=\"learn-the-frontend-and-backend-boundary\">Learn the frontend and backend boundary</h2>\n<p>The frontend is the part users interact with. The backend performs server-side work such as enforcing permissions, accessing protected records, or coordinating integrations. Some websites can be delivered as static files and do not need a custom backend. Other applications require one. Understanding that distinction helps you avoid placing secrets or sensitive operations in code that every visitor can inspect.</p>\n<p>Learn basic HTML, CSS, JavaScript, HTTP requests, and data structures alongside your project. You do not need mastery before building a first form, but you should understand where submitted information goes. Ask the assistant to draw the data flow and explain each step. Verify that explanation against the actual implementation rather than accepting a plausible description as proof.</p>\n<h2 id=\"use-ai-to-explain-and-debug-in-small-steps\">Use AI to explain and debug in small steps</h2>\n<p>When something fails, provide the error message, the relevant code, the expected behavior, and what actually happened. Ask for the likely cause and a minimal change. Avoid replacing large files repeatedly without understanding the effect. A working change can accidentally remove accessibility, validation, or functionality that you already had. Small patches are easier to review and reverse.</p>\n<p>Use version control from the beginning. Save a known working state before a substantial change and inspect the difference afterward. Ask the assistant to explain the changed lines, dependencies, and assumptions. My <a href=\"/projects/mct-labs-web\">MCT Labs platform</a> and <a href=\"/projects/green-d-web\">Green D project</a> provide context for the kinds of creative software I build, but every new feature still needs review within its own application.</p>\n<h2 id=\"test-behavior-rather-than-trusting-a-demonstration\">Test behavior rather than trusting a demonstration</h2>\n<p>A convincing screen is not enough. Check empty values, long text, duplicate submissions, slow requests, and unavailable services. If the application has accounts, verify that one user cannot read or modify another user's information simply by changing a URL or request. For calculations, use examples with known answers. For file uploads, check expected types, limits, and failure messages.</p>\n<p>Automated tests can help preserve important behavior, but generated tests also need judgment. A test that repeats the same mistaken assumption as the implementation may pass while the product is still wrong. Start with independent examples from the requirements. The <a href=\"https://docs.github.com/en/copilot/responsible-use/copilot-code-completion\">GitHub responsible-use documentation</a> provides context on reviewing AI suggestions and understanding their limitations. Treat generated code as a proposal to inspect, not a completed guarantee.</p>\n<h2 id=\"know-when-you-need-specialist-help\">Know when you need specialist help</h2>\n<p>Authentication, payments, sensitive records, and complex permissions deserve particular attention. A beginner can learn the concepts, but a public launch may need experienced review. Use established services where appropriate and understand the responsibilities they do not cover. Connecting a payment provider, for example, does not automatically solve order handling, refunds, access control, or customer support.</p>\n<p>AI can suggest obsolete APIs, unsuitable packages, or insecure shortcuts. Check official documentation and dependency sources before adopting a recommendation. Avoid copying secrets into chat or committing them to a repository. If you cannot explain a critical part of the system, pause that feature and obtain help. Reducing scope is often a responsible way to make a first release dependable while continuing to learn.</p>\n<h2 id=\"follow-a-roadmap-from-prototype-to-maintained-application\">Follow a roadmap from prototype to maintained application</h2>\n<p>Build one complete flow first: input, validation, processing, result, and a useful failure state. Then add persistence if the task requires it. Introduce access control before exposing private data. Test the deployment environment, record required configuration, and make sure you can recover from a failed release. Keep a short guide for updating the project and troubleshooting common problems.</p>\n<p>After launch, review errors, dependency changes, and user feedback. Maintenance is part of application development, including when AI helped write the first version. Read the <a href=\"/blogs/ai-automation-for-small-businesses\">small business automation guide</a> for selecting a practical use case. If you need help moving a prototype toward a reviewed product, explore my <a href=\"/services\">development services</a> and <a href=\"/contact\">share the current scope and the parts you need assessed</a>.</p>",
-  featured: false,
-  relatedPosts: ["website-development-cost-bangladesh", "hire-freelance-web-developer-bangladesh"]
+import type { Blog } from '../blogs.ts';
+
+const blog: Blog = {
+  "id": "building-applications-with-ai-assisted-coding",
+  "slug": "building-applications-with-ai-assisted-coding",
+  "title": "Can You Build Real Applications Without Being an Expert Programmer?",
+  "summary": "AI-assisted application development makes it easier to move from an idea to a working prototype.",
+  "description": "Explore how AI-assisted coding makes application development more accessible while understanding the importance of testing and technical knowledge.",
+  "category": "Artificial Intelligence",
+  "tags": [
+    "AI-assisted application development",
+    "Vibe coding",
+    "AI-powered software development",
+    "AI app development Bangladesh",
+    "AI programming tools"
+  ],
+  "date": "November 24, 2026",
+  "isoDate": "2026-11-24T00:00:00+01:00",
+  "readTime": "5 min read",
+  "wordCount": 893,
+  "author": {
+    "name": "Md Rakibujjaman Adib",
+    "role": "Creative Technologist & Designer",
+    "avatar": "/MdRakibujamanAdib.jpg",
+    "url": "/about",
+    "bio": "Creative Technologist, AI Architect, and Erasmus+ Scholar building full-stack web systems, 3D CGI visuals, and brand identities across Bangladesh, the Netherlands, and international markets."
+  },
+  "coverImage": "/images/blog/building-applications-with-ai-assisted-coding-cover.webp",
+  "coverImageSmall": "/images/blog/building-applications-with-ai-assisted-coding-cover-800.webp",
+  "coverImageAlt": "Hands typing software code on a laptop",
+  "imageSource": "https://www.pexels.com/photo/crop-faceless-developer-working-on-software-code-on-laptop-5926382/",
+  "imageCredit": "Sora Shimazaki / Pexels",
+  "imageLicense": "Pexels License: https://www.pexels.com/license/",
+  "tableOfContents": [
+    {
+      "id": "yes-but-the-responsibility-stays-with-the-builder",
+      "title": "Yes, but the responsibility stays with the builder",
+      "level": 2
+    },
+    {
+      "id": "turn-the-idea-into-observable-requirements",
+      "title": "Turn the idea into observable requirements",
+      "level": 2
+    },
+    {
+      "id": "learn-the-frontend-and-backend-boundary",
+      "title": "Learn the frontend and backend boundary",
+      "level": 2
+    },
+    {
+      "id": "use-ai-to-explain-and-debug-in-small-steps",
+      "title": "Use AI to explain and debug in small steps",
+      "level": 2
+    },
+    {
+      "id": "test-behavior-rather-than-trusting-a-demonstration",
+      "title": "Test behavior rather than trusting a demonstration",
+      "level": 2
+    },
+    {
+      "id": "know-when-you-need-specialist-help",
+      "title": "Know when you need specialist help",
+      "level": 2
+    },
+    {
+      "id": "follow-a-roadmap-from-prototype-to-maintained-application",
+      "title": "Follow a roadmap from prototype to maintained application",
+      "level": 2
+    }
+  ],
+  "content": "<h2 id=\"yes-but-the-responsibility-stays-with-the-builder\">Yes, but the responsibility stays with the builder</h2>\n<p class=\"lead\">AI-assisted application development makes it easier to move from an idea to a working prototype. A beginner can ask for a form, a data display, or an explanation of an error and receive a useful starting point. That changes the learning process. It does not remove the need to understand what the software does, who can access it, or how it behaves when something goes wrong.</p>\n<p>The useful distinction is between producing code and operating a dependable application. A prototype might demonstrate a concept with sample information. A real product must handle actual users, failures, updates, and sometimes private data. You do not need to know every programming concept before starting, but you need a plan for reviewing the parts you do not yet understand.</p>\n\n<div class=\"my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2\">\n  <img\n    src=\"/images/blog/building-applications-with-ai-assisted-coding-cover.webp\"\n    alt=\"Hands typing software code on a laptop\"\n    class=\"w-full object-cover rounded-[18px] max-h-[460px]\"\n  />\n  <p class=\"py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center\">\n    Figure 1: Hands typing software code on a laptop\n  </p>\n</div>\n<h2 id=\"turn-the-idea-into-observable-requirements\">Turn the idea into observable requirements</h2>\n<p>Start by describing the user and one concrete task. Instead of asking for a complete business platform, describe how a staff member records a request, reviews it, and marks it complete. List the fields, validation rules, and expected messages. Define what should happen if a required field is empty or the same action is submitted twice.</p>\n<p>Ask AI to help identify missing requirements before asking it to generate implementation. Keep the initial scope small enough that you can check every important path yourself. A simple application with a clear purpose teaches more than a large collection of partially connected features. Write acceptance criteria in ordinary language so that success is not defined only by whether the program starts without an error.</p>\n<h2 id=\"learn-the-frontend-and-backend-boundary\">Learn the frontend and backend boundary</h2>\n<p>The frontend is the part users interact with. The backend performs server-side work such as enforcing permissions, accessing protected records, or coordinating integrations. Some websites can be delivered as static files and do not need a custom backend. Other applications require one. Understanding that distinction helps you avoid placing secrets or sensitive operations in code that every visitor can inspect.</p>\n<p>Learn basic HTML, CSS, JavaScript, HTTP requests, and data structures alongside your project. You do not need mastery before building a first form, but you should understand where submitted information goes. Ask the assistant to draw the data flow and explain each step.</p>\n<blockquote><p><strong>Key Principle:</strong> Verify that explanation against the actual implementation rather than accepting a plausible description as proof.</p></blockquote>\n<h2 id=\"use-ai-to-explain-and-debug-in-small-steps\">Use AI to explain and debug in small steps</h2>\n<p>When something fails, provide the error message, the relevant code, the expected behavior, and what actually happened. Ask for the likely cause and a minimal change. Avoid replacing large files repeatedly without understanding the effect. A working change can accidentally remove accessibility, validation, or functionality that you already had. Small patches are easier to review and reverse.</p>\n<p>Use version control from the beginning. Save a known working state before a substantial change and inspect the difference afterward. Ask the assistant to explain the changed lines, dependencies, and assumptions. My <a href=\"/projects/mct-labs-web\">MCT Labs platform</a> and <a href=\"/projects/green-d-web\">Green D project</a> provide context for the kinds of creative software I build, but every new feature still needs review within its own application.</p>\n<h2 id=\"test-behavior-rather-than-trusting-a-demonstration\">Test behavior rather than trusting a demonstration</h2>\n<p>A convincing screen is not enough. Check empty values, long text, duplicate submissions, slow requests, and unavailable services. If the application has accounts, verify that one user cannot read or modify another user's information simply by changing a URL or request. For calculations, use examples with known answers. For file uploads, check expected types, limits, and failure messages.</p>\n<p>Automated tests can help preserve important behavior, but generated tests also need judgment. A test that repeats the same mistaken assumption as the implementation may pass while the product is still wrong. Start with independent examples from the requirements. The <a href=\"https://docs.github.com/en/copilot/responsible-use/copilot-code-completion\">GitHub responsible-use documentation</a> provides context on reviewing AI suggestions and understanding their limitations. Treat generated code as a proposal to inspect, not a completed guarantee.</p>\n<h2 id=\"know-when-you-need-specialist-help\">Know when you need specialist help</h2>\n<p>Authentication, payments, sensitive records, and complex permissions deserve particular attention. A beginner can learn the concepts, but a public launch may need experienced review. Use established services where appropriate and understand the responsibilities they do not cover. Connecting a payment provider, for example, does not automatically solve order handling, refunds, access control, or customer support.</p>\n<p>AI can suggest obsolete APIs, unsuitable packages, or insecure shortcuts. Check official documentation and dependency sources before adopting a recommendation. Avoid copying secrets into chat or committing them to a repository. If you cannot explain a critical part of the system, pause that feature and obtain help. Reducing scope is often a responsible way to make a first release dependable while continuing to learn.</p>\n<h2 id=\"follow-a-roadmap-from-prototype-to-maintained-application\">Follow a roadmap from prototype to maintained application</h2>\n<p>Build one complete flow first: input, validation, processing, result, and a useful failure state. Then add persistence if the task requires it. Introduce access control before exposing private data. Test the deployment environment, record required configuration, and make sure you can recover from a failed release. Keep a short guide for updating the project and troubleshooting common problems.</p>\n<p>After launch, review errors, dependency changes, and user feedback. Maintenance is part of application development, including when AI helped write the first version. Read the <a href=\"/blogs/ai-automation-for-small-businesses\">small business automation guide</a> for selecting a practical use case. If you need help moving a prototype toward a reviewed product, explore my <a href=\"/services\">development services</a> and <a href=\"/contact\">share the current scope and the parts you need assessed</a>.</p>",
+  "featured": false,
+  "relatedPosts": [
+    "website-development-cost-bangladesh",
+    "hire-freelance-web-developer-bangladesh"
+  ],
+  "subtitle": "Explore how AI-assisted coding makes application development more accessible while understanding the importance of testing and technical knowledge.",
+  "image": "/images/blog/building-applications-with-ai-assisted-coding-cover.webp",
+  "link": "/blogs/building-applications-with-ai-assisted-coding"
 };
+
+export default blog;

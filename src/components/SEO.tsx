@@ -276,8 +276,10 @@ export default function SEO({
             <meta name="geo.position" content="23.8103;90.4125" />
             <meta name="ICBM" content="23.8103, 90.4125" />
 
-            {/* Canonical URL */}
-            <link rel="canonical" href={currentUrl} />
+            {/* Canonical URL — omit on noindex pages (e.g., 404) */}
+            {!robots.toLowerCase().includes('noindex') && (
+                <link rel="canonical" href={currentUrl} />
+            )}
 
             {/* OpenGraph metadata */}
             <meta property="og:type" content={type} />

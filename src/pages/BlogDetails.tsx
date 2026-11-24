@@ -229,7 +229,7 @@ export default function BlogDetails() {
   const blogShowcase = (
     <div className="relative w-full h-full flex flex-col justify-between overflow-hidden bg-[var(--vb-bg)] select-text">
       {/* Featured Cover Image Display - 16:9 ratio, anchored to top so extra space is cropped from bottom */}
-      <div className="relative w-full aspect-[16/9] min-h-[260px] max-h-[300px] xl:max-h-[340px] overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
+      <div className="relative w-full h-full overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
         <img
           src={blog.coverImage || blog.image}
           srcSet={blog.coverImageSmall ? `${blog.coverImageSmall} 800w, ${blog.coverImage} 1600w` : undefined}
@@ -240,50 +240,7 @@ export default function BlogDetails() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
 
-      {/* Floating Table of Contents positioned downwards and filling full width */}
-      {blog.tableOfContents && blog.tableOfContents.length > 0 && (
-        <div className="relative w-full flex-1 flex flex-col p-5 pt-6 pb-14 overflow-hidden bg-[var(--vb-panel)] border-t border-[var(--vb-border)]">
-          <div className="flex items-center justify-between pb-2 border-b border-[var(--vb-border)]">
-            <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-[var(--vb-text)] font-semibold">
-              <List size={14} className="text-[#e62e05]" />
-              <span>Table of Contents</span>
-            </div>
-            <span className="text-[11px] font-sans text-[var(--vb-text-muted)]">
-              {blog.tableOfContents.length} sections
-            </span>
-          </div>
 
-          <nav
-            aria-label="Table of contents"
-            className="vb-toc flex flex-col gap-1 overflow-y-auto pr-1"
-          >
-            {blog.tableOfContents.map((item) => {
-              const isActive = activeSectionId === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => handleTocClick(e, item.id)}
-                  className={`group flex items-start gap-2 text-xs py-2 px-3 rounded-lg transition-all duration-200 font-sans ${
-                    isActive
-                      ? 'bg-[#e62e05]/10 text-[#e62e05] font-semibold border-l-2 border-[#e62e05]'
-                      : 'text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] hover:bg-[var(--vb-subpanel)]'
-                  } ${item.level === 3 ? 'ml-4 text-[11px]' : ''}`}
-                >
-                  <span
-                    className={`inline-block w-1.5 h-1.5 rounded-full mt-1.5 transition-colors shrink-0 ${
-                      isActive
-                        ? 'bg-[#e62e05]'
-                        : 'bg-[var(--vb-border)] group-hover:bg-[#e62e05]/50'
-                    }`}
-                  />
-                  <span className="leading-snug">{item.title}</span>
-                </a>
-              );
-            })}
-          </nav>
-        </div>
-      )}
     </div>
   );
 
@@ -375,14 +332,16 @@ export default function BlogDetails() {
           </div>
         </section>
 
-        {/* Mobile-only Table of Contents Dropdown */}
+        {/* Article chapter navigation, alongside the reading content on every screen. */}
         {blog.tableOfContents && blog.tableOfContents.length > 0 && (
           <section
-            className="xl:hidden vb-card p-4 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)]"
-            aria-label="Mobile table of contents"
+            className="vb-card p-5 sm:p-6 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)]"
+            aria-label="Article table of contents"
           >
             <button
               type="button"
+              aria-expanded={mobileTocOpen}
+              aria-controls="article-chapter-links"
               onClick={() => setMobileTocOpen(!mobileTocOpen)}
               className="w-full flex items-center justify-between text-xs font-sans uppercase tracking-wider text-[var(--vb-text)] font-semibold cursor-pointer"
             >
@@ -394,13 +353,12 @@ export default function BlogDetails() {
               </div>
               <ChevronDown
                 size={14}
-                className={`transition-transform duration-200 ${
+                className={`sm:hidden transition-transform duration-200 ${
                   mobileTocOpen ? 'rotate-180' : ''
                 }`}
               />
             </button>
-            {mobileTocOpen && (
-              <div className="mt-3 pt-3 border-t border-[var(--vb-border)] flex flex-col gap-1 font-sans">
+            <nav id="article-chapter-links" aria-label="Article chapters" className={`${mobileTocOpen ? 'flex' : 'hidden sm:flex'} mt-3 pt-3 border-t border-[var(--vb-border)] flex-col gap-1 font-sans`}>
                 {blog.tableOfContents.map((item) => (
                   <a
                     key={item.id}
@@ -418,8 +376,7 @@ export default function BlogDetails() {
                     {item.title}
                   </a>
                 ))}
-              </div>
-            )}
+            </nav>
           </section>
         )}
 

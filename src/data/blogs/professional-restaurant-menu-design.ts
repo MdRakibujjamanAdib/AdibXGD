@@ -1,24 +1,82 @@
-export default {
-  id: "professional-restaurant-menu-design",
-  slug: "professional-restaurant-menu-design",
-  title: "Why Professional Restaurant Menu Design Matters",
-  summary: "A restaurant menu helps people decide what to order.",
-  description: "Learn how professional restaurant menu design improves readability, customer experience and brand consistency.",
-  category: "Graphic Design",
-  tags: ["Professional restaurant menu designer", "Restaurant menu designer UK", "takeaway menu design UK", "restaurant graphic designer", "menu design services"],
-  date: "November 24, 2026",
-  isoDate: "2026-11-24T00:00:00+01:00",
-  readTime: "5 min read",
-  wordCount: 891,
-  author: {"name": "Md Rakibujjaman Adib", "role": "Creative Technologist & Designer", "avatar": "/MdRakibujamanAdib.jpg", "url": "/about"},
-  coverImage: "/images/blog/professional-restaurant-menu-design.webp",
-  coverImageSmall: "/images/blog/professional-restaurant-menu-design-800.webp",
-  coverImageAlt: "Green D stationery identity design, illustrating print layout work",
-  imageSource: "/images/projects/green-d-id-card.webp",
-  imageCredit: "Md Rakibujjaman Adib / ADIBX.ME portfolio",
-  imageLicense: "Existing author-supplied portfolio asset, reused for this site. No third-party redistribution license asserted.",
-  tableOfContents: [{"id": "a-menu-is-a-working-document", "title": "A menu is a working document", "level": 2}, {"id": "organize-categories-before-decorating-pages", "title": "Organize categories before decorating pages", "level": 2}, {"id": "choose-type-for-real-reading-conditions", "title": "Choose type for real reading conditions", "level": 2}, {"id": "use-photography-and-branding-with-restraint", "title": "Use photography and branding with restraint", "level": 2}, {"id": "treat-allergen-information-as-essential-content", "title": "Treat allergen information as essential content", "level": 2}, {"id": "prepare-separate-print-and-digital-deliverables", "title": "Prepare separate print and digital deliverables", "level": 2}, {"id": "brief-a-designer-with-the-complete-operation-in-mind", "title": "Brief a designer with the complete operation in mind", "level": 2}],
-  content: "<h2 id=\"a-menu-is-a-working-document\">A menu is a working document</h2>\n<p>A restaurant menu helps people decide what to order. That sounds obvious, but it is easy to lose the task beneath decorative typography, crowded layouts, and too many photographs. Professional restaurant menu design begins with reading conditions: where the menu will be used, how much information it contains, and how customers compare choices. A printed dining menu, a folded takeaway leaflet, and a phone screen do not need identical layouts.</p>\n<p>Good design can improve clarity and consistency, but it cannot guarantee increased sales. Food quality, service, pricing, location, and customer expectations all matter. The useful promise of design is more specific: make the information easier to find, understand, and maintain. That gives the restaurant a practical basis for evaluating the work instead of relying on unsupported revenue claims.</p>\n<h2 id=\"organize-categories-before-decorating-pages\">Organize categories before decorating pages</h2>\n<p>Start with a clean content list. Group dishes into categories that make sense to customers, then decide the order in which those categories appear. Keep names, descriptions, prices, and optional choices consistent. If some items have several sizes or add-ons, define a pattern for showing them. Customers should not have to decode a different pricing structure in each section.</p>\n<p>A takeaway business might separate meals, sides, drinks, and set offers. A dining restaurant might need clear distinctions between starters, mains, and desserts. Neither structure is automatically correct for every business. Test the organization against the questions staff regularly answer. If customers repeatedly ask where a familiar item is listed, the hierarchy may need attention before the color palette does.</p>\n<h2 id=\"choose-type-for-real-reading-conditions\">Choose type for real reading conditions</h2>\n<p>Review the design at its actual printed size. Text that looks comfortable on a large monitor may become difficult when reduced to a folded leaflet. Dish names need to stand apart from descriptions, and prices should be associated with the correct items. Decorative type can support the restaurant's character in a heading, but long descriptions usually need a more readable treatment.</p>\n<p>Consider contrast, spacing, and the lighting where customers will read. Do not squeeze essential information into a tiny footer simply to preserve an attractive composition. A menu also needs enough room for legitimate content changes. If adding one dish forces the entire page to be compressed, the layout may be too fragile for normal restaurant operations.</p>\n<h2 id=\"use-photography-and-branding-with-restraint\">Use photography and branding with restraint</h2>\n<p>Food photographs should represent the actual offer or be clearly understood as illustrative. Inconsistent lighting, mismatched crops, and unrelated stock images can weaken trust. A few strong images may work better than a crowded collage. If suitable photography is unavailable, a carefully organized text-led menu can still feel professional and appropriate to the business.</p>\n<p>Use the restaurant's identity consistently across the menu, website, takeaway packaging, and social graphics. That does not require identical layouts everywhere. It means related typography, colors, and tone. A customer should recognize the business when moving between a printed leaflet and a digital menu. See the <a href=\"/blogs/logo-design-vs-brand-identity\">brand identity guide</a> for the difference between placing a logo on materials and building a coherent visual system.</p>\n<h2 id=\"treat-allergen-information-as-essential-content\">Treat allergen information as essential content</h2>\n<p>Designers should create a clear place for approved allergen information and instructions. They should not guess ingredients or label dishes from photographs. The restaurant must provide and verify the relevant details, and the design needs a dependable process for updates. A visually discreet symbol system is not helpful if customers cannot understand it or staff cannot keep it accurate.</p>\n<p>UK restaurants and takeaway businesses should check current guidance applicable to their location and service model. The <a href=\"https://www.food.gov.uk/business-guidance/allergen-guidance-for-food-businesses\">Food Standards Agency's allergen guidance</a> is an appropriate starting point. Requirements can differ with how food is sold and packaged. This article is about presenting information clearly; it is not a substitute for checking the restaurant's specific responsibilities with an appropriate authority.</p>\n<h2 id=\"prepare-separate-print-and-digital-deliverables\">Prepare separate print and digital deliverables</h2>\n<p>Ask the printer for specifications before final artwork is exported. Confirm finished size, folds, bleed, safe margins, color requirements, and the proofing process. Read every price and contact detail on the final proof. A restaurant should approve the content separately from approving the appearance. A printing error can become costly when hundreds of copies are produced from an unchecked file.</p>\n<p>For digital use, avoid making a large print PDF the only menu experience. Customers should be able to read comfortably on a phone without excessive zooming. A QR code is only an entry point; the page it opens must work and stay current. Test it on several devices, keep the destination stable, and assign someone to update prices and availability across every version.</p>\n<h2 id=\"brief-a-designer-with-the-complete-operation-in-mind\">Brief a designer with the complete operation in mind</h2>\n<p>Supply a current dish list, prices, descriptions, brand assets, intended formats, and approved dietary information. Identify who signs off changes and how often the menu is revised. Ask for editable files or an agreed update service so that a small price correction does not become an unnecessary redesign. Keep dated copies and remove obsolete menus from public channels.</p>\n<p>Common mistakes include inconsistent prices, too many competing highlights, unreadable descriptions, and images that promise something different from the dish served. A professional review should catch these issues through a structured proofing process. Browse my <a href=\"/projects\">graphic design portfolio</a> and <a href=\"/services\">design services</a>. UK restaurant and takeaway owners can <a href=\"/contact\">send their current menu and required print or digital formats</a> to discuss a clearer, more consistent menu system.</p>",
-  featured: false,
-  relatedPosts: ["hire-graphic-designer-bangladesh", "graphic-design-for-small-businesses"]
+import type { Blog } from '../blogs.ts';
+
+const blog: Blog = {
+  "id": "professional-restaurant-menu-design",
+  "slug": "professional-restaurant-menu-design",
+  "title": "Why Professional Restaurant Menu Design Matters",
+  "summary": "A restaurant menu helps people decide what to order.",
+  "description": "Learn how professional restaurant menu design improves readability, customer experience and brand consistency.",
+  "category": "Graphic Design",
+  "tags": [
+    "Professional restaurant menu designer",
+    "Restaurant menu designer UK",
+    "takeaway menu design UK",
+    "restaurant graphic designer",
+    "menu design services"
+  ],
+  "date": "November 24, 2026",
+  "isoDate": "2026-11-24T00:00:00+01:00",
+  "readTime": "5 min read",
+  "wordCount": 891,
+  "author": {
+    "name": "Md Rakibujjaman Adib",
+    "role": "Creative Technologist & Designer",
+    "avatar": "/MdRakibujamanAdib.jpg",
+    "url": "/about",
+    "bio": "Creative Technologist, AI Architect, and Erasmus+ Scholar building full-stack web systems, 3D CGI visuals, and brand identities across Bangladesh, the Netherlands, and international markets."
+  },
+  "coverImage": "/images/blog/professional-restaurant-menu-design.webp",
+  "coverImageSmall": "/images/blog/professional-restaurant-menu-design-800.webp",
+  "coverImageAlt": "Green D stationery identity design, illustrating print layout work",
+  "imageSource": "/images/projects/green-d-id-card.webp",
+  "imageCredit": "Md Rakibujjaman Adib / ADIBX.ME portfolio",
+  "imageLicense": "Existing author-supplied portfolio asset, reused for this site. No third-party redistribution license asserted.",
+  "tableOfContents": [
+    {
+      "id": "a-menu-is-a-working-document",
+      "title": "A menu is a working document",
+      "level": 2
+    },
+    {
+      "id": "organize-categories-before-decorating-pages",
+      "title": "Organize categories before decorating pages",
+      "level": 2
+    },
+    {
+      "id": "choose-type-for-real-reading-conditions",
+      "title": "Choose type for real reading conditions",
+      "level": 2
+    },
+    {
+      "id": "use-photography-and-branding-with-restraint",
+      "title": "Use photography and branding with restraint",
+      "level": 2
+    },
+    {
+      "id": "treat-allergen-information-as-essential-content",
+      "title": "Treat allergen information as essential content",
+      "level": 2
+    },
+    {
+      "id": "prepare-separate-print-and-digital-deliverables",
+      "title": "Prepare separate print and digital deliverables",
+      "level": 2
+    },
+    {
+      "id": "brief-a-designer-with-the-complete-operation-in-mind",
+      "title": "Brief a designer with the complete operation in mind",
+      "level": 2
+    }
+  ],
+  "content": "<h2 id=\"a-menu-is-a-working-document\">A menu is a working document</h2>\n<p class=\"lead\">A restaurant menu helps people decide what to order. That sounds obvious, but it is easy to lose the task beneath decorative typography, crowded layouts, and too many photographs. Professional restaurant menu design begins with reading conditions: where the menu will be used, how much information it contains, and how customers compare choices. A printed dining menu, a folded takeaway leaflet, and a phone screen do not need identical layouts.</p>\n<p>Good design can improve clarity and consistency, but it cannot guarantee increased sales. Food quality, service, pricing, location, and customer expectations all matter. The useful promise of design is more specific: make the information easier to find, understand, and maintain. That gives the restaurant a practical basis for evaluating the work instead of relying on unsupported revenue claims.</p>\n\n<div class=\"my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2\">\n  <img\n    src=\"/images/blog/professional-restaurant-menu-design.webp\"\n    alt=\"Green D stationery identity design, illustrating print layout work\"\n    class=\"w-full object-cover rounded-[18px] max-h-[460px]\"\n  />\n  <p class=\"py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center\">\n    Figure 1: Green D stationery identity design, illustrating print layout work\n  </p>\n</div>\n<h2 id=\"organize-categories-before-decorating-pages\">Organize categories before decorating pages</h2>\n<p>Start with a clean content list. Group dishes into categories that make sense to customers, then decide the order in which those categories appear. Keep names, descriptions, prices, and optional choices consistent. If some items have several sizes or add-ons, define a pattern for showing them. Customers should not have to decode a different pricing structure in each section.</p>\n<p>A takeaway business might separate meals, sides, drinks, and set offers. A dining restaurant might need clear distinctions between starters, mains, and desserts. Neither structure is automatically correct for every business. Test the organization against the questions staff regularly answer. If customers repeatedly ask where a familiar item is listed, the hierarchy may need attention before the color palette does.</p>\n<h2 id=\"choose-type-for-real-reading-conditions\">Choose type for real reading conditions</h2>\n<p>Review the design at its actual printed size. Text that looks comfortable on a large monitor may become difficult when reduced to a folded leaflet. Dish names need to stand apart from descriptions, and prices should be associated with the correct items. Decorative type can support the restaurant's character in a heading, but long descriptions usually need a more readable treatment.</p>\n<p>Consider contrast, spacing, and the lighting where customers will read. Do not squeeze essential information into a tiny footer simply to preserve an attractive composition. A menu also needs enough room for legitimate content changes.</p>\n<blockquote><p><strong>Key Principle:</strong> If adding one dish forces the entire page to be compressed, the layout may be too fragile for normal restaurant operations.</p></blockquote>\n<h2 id=\"use-photography-and-branding-with-restraint\">Use photography and branding with restraint</h2>\n<p>Food photographs should represent the actual offer or be clearly understood as illustrative. Inconsistent lighting, mismatched crops, and unrelated stock images can weaken trust. A few strong images may work better than a crowded collage. If suitable photography is unavailable, a carefully organized text-led menu can still feel professional and appropriate to the business.</p>\n<p>Use the restaurant's identity consistently across the menu, website, takeaway packaging, and social graphics. That does not require identical layouts everywhere. It means related typography, colors, and tone. A customer should recognize the business when moving between a printed leaflet and a digital menu. See the <a href=\"/blogs/logo-design-vs-brand-identity\">brand identity guide</a> for the difference between placing a logo on materials and building a coherent visual system.</p>\n<h2 id=\"treat-allergen-information-as-essential-content\">Treat allergen information as essential content</h2>\n<p>Designers should create a clear place for approved allergen information and instructions. They should not guess ingredients or label dishes from photographs. The restaurant must provide and verify the relevant details, and the design needs a dependable process for updates. A visually discreet symbol system is not helpful if customers cannot understand it or staff cannot keep it accurate.</p>\n<p>UK restaurants and takeaway businesses should check current guidance applicable to their location and service model. The <a href=\"https://www.food.gov.uk/business-guidance/allergen-guidance-for-food-businesses\">Food Standards Agency's allergen guidance</a> is an appropriate starting point. Requirements can differ with how food is sold and packaged. This article is about presenting information clearly; it is not a substitute for checking the restaurant's specific responsibilities with an appropriate authority.</p>\n<h2 id=\"prepare-separate-print-and-digital-deliverables\">Prepare separate print and digital deliverables</h2>\n<p>Ask the printer for specifications before final artwork is exported. Confirm finished size, folds, bleed, safe margins, color requirements, and the proofing process. Read every price and contact detail on the final proof. A restaurant should approve the content separately from approving the appearance. A printing error can become costly when hundreds of copies are produced from an unchecked file.</p>\n<p>For digital use, avoid making a large print PDF the only menu experience. Customers should be able to read comfortably on a phone without excessive zooming. A QR code is only an entry point; the page it opens must work and stay current. Test it on several devices, keep the destination stable, and assign someone to update prices and availability across every version.</p>\n<h2 id=\"brief-a-designer-with-the-complete-operation-in-mind\">Brief a designer with the complete operation in mind</h2>\n<p>Supply a current dish list, prices, descriptions, brand assets, intended formats, and approved dietary information. Identify who signs off changes and how often the menu is revised. Ask for editable files or an agreed update service so that a small price correction does not become an unnecessary redesign. Keep dated copies and remove obsolete menus from public channels.</p>\n<p>Common mistakes include inconsistent prices, too many competing highlights, unreadable descriptions, and images that promise something different from the dish served. A professional review should catch these issues through a structured proofing process. Browse my <a href=\"/projects\">graphic design portfolio</a> and <a href=\"/services\">design services</a>. UK restaurant and takeaway owners can <a href=\"/contact\">send their current menu and required print or digital formats</a> to discuss a clearer, more consistent menu system.</p>",
+  "featured": false,
+  "relatedPosts": [
+    "hire-graphic-designer-bangladesh",
+    "graphic-design-for-small-businesses"
+  ],
+  "subtitle": "Learn how professional restaurant menu design improves readability, customer experience and brand consistency.",
+  "image": "/images/blog/professional-restaurant-menu-design.webp",
+  "link": "/blogs/professional-restaurant-menu-design"
 };
+
+export default blog;

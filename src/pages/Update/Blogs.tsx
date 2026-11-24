@@ -194,15 +194,14 @@ export default function Blogs() {
                 >
                   <img
                     src={
+                      (currentDisplayBlog.imageSource?.startsWith('/images/') ? currentDisplayBlog.imageSource : null) ||
                       currentDisplayBlog.coverImage ||
                       currentDisplayBlog.image ||
                       '/images/hero-canal.jpg'
                     }
                     alt={currentDisplayBlog.coverImageAlt || currentDisplayBlog.title}
-                    className="w-full h-full object-cover object-center"
+                    className={`w-full h-full object-center ${currentDisplayBlog.imageSource?.startsWith('/images/travel/') ? 'object-contain' : 'object-cover'}`}
                   />
-                  {/* High-fidelity gradient vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15 pointer-events-none" />
                 </motion.div>
               ) : (
                 <div className="relative w-full h-full flex flex-col items-center justify-center p-8 text-center bg-black overflow-hidden">
@@ -219,27 +218,7 @@ export default function Blogs() {
               )}
             </AnimatePresence>
 
-            {/* Bottom Showcase Information Overlay with Blog Title: Line 1 spans full width, Line 2 stops before corner tab */}
-            {currentDisplayBlog && (() => {
-              const colonIndex = currentDisplayBlog.title.indexOf(':');
-              const line1 = colonIndex !== -1 ? currentDisplayBlog.title.slice(0, colonIndex + 1) : currentDisplayBlog.title;
-              const line2 = colonIndex !== -1 ? currentDisplayBlog.title.slice(colonIndex + 1).trim() : null;
 
-              return (
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 pb-5 md:pb-6 flex flex-col justify-end pointer-events-none drop-shadow-md">
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold font-sans tracking-tight leading-snug flex flex-col">
-                    <span className="text-white block w-full truncate">
-                      {line1}
-                    </span>
-                    {line2 && (
-                      <span className="text-white/95 block max-w-[58%] truncate font-semibold text-sm md:text-base mt-0.5">
-                        {line2}
-                      </span>
-                    )}
-                  </h3>
-                </div>
-              );
-            })()}
           </div>
         }
       >

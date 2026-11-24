@@ -1,5 +1,6 @@
 import { spawn, spawnSync, ChildProcess } from 'child_process';
 import http from 'http';
+import net from 'net';
 import fs from 'fs';
 import path from 'path';
 
@@ -54,6 +55,8 @@ export type NamedKey =
   | 'Enter'
   | 'ArrowDown'
   | 'ArrowUp'
+  | 'ArrowLeft'
+  | 'ArrowRight'
   | 'Space';
 
 export interface NetworkEntry {
@@ -113,6 +116,31 @@ function findBrowserBinary(preferredPath?: string): string {
   );
 }
 
+function isPortFree(port: number): Promise<boolean> {
+  return new Promise((resolve) => {
+    const server = net.createServer();
+    server.unref();
+    server.once('error', () => resolve(false));
+    server.once('listening', () => {
+      server.close(() => resolve(true));
+    });
+    server.listen(port, '127.0.0.1');
+  });
+}
+
+function findFreePort(): Promise<number> {
+  return new Promise((resolve, reject) => {
+    const server = net.createServer();
+    server.unref();
+    server.once('error', reject);
+    server.listen(0, '127.0.0.1', () => {
+      const addr = server.address();
+      const port = typeof addr === 'object' && addr ? addr.port : 9227;
+      server.close(() => resolve(port));
+    });
+  });
+}
+
 export class BrowserController {
   private browserProc: ChildProcess | null = null;
   private ws: WebSocket | null = null;
@@ -121,17 +149,32 @@ export class BrowserController {
   private eventListeners = new Map<string, Set<(params: any) => void>>();
   private networkEntries: NetworkEntry[] = [];
   private networkIndex = new Map<string, NetworkEntry>();
+  private pageErrors: string[] = [];
   private lastNavigationStartIdx = 0;
   private userDataDir: string;
   private port: number;
+  private isClosing = false;
+  private unhealthy = false;
+  private browserPath?: string;
 
   constructor(port = 9226, userDataDir?: string) {
     this.port = port;
-    this.userDataDir = userDataDir || path.join(process.env.TEMP || 'C:\\temp', `cdp_test_${Date.now()}_${Math.floor(Math.random() * 10000)}`);
+    this.userDataDir = userDataDir || path.join(process.env.TEMP || 'C:\\temp', `cdp_test_${Date.now()}_${Math.floor(Math.random() * 100000)}`);
+  }
+
+  public isConnected(): boolean {
+    return Boolean(this.ws && this.ws.readyState === WebSocket.OPEN && !this.isClosing && !this.unhealthy);
   }
 
   public async launch(browserPath?: string): Promise<void> {
+    this.isClosing = false;
+    this.unhealthy = false;
+    this.browserPath = browserPath;
     const binary = findBrowserBinary(browserPath);
+
+    if (!(await isPortFree(this.port))) {
+      this.port = await findFreePort();
+    }
 
     this.browserProc = spawn(binary, [
       '--headless=new',
@@ -141,6 +184,9 @@ export class BrowserController {
       '--disable-gpu',
       '--disable-extensions',
       '--disable-background-networking',
+      '--disable-background-timer-throttling',
+      '--disable-backgrounding-occluded-windows',
+      '--disable-renderer-backgrounding',
       '--disable-sync',
       '--disable-default-apps',
       '--mute-audio',
@@ -152,8 +198,8 @@ export class BrowserController {
 
     // Wait for CDP endpoint to become available
     let connected = false;
-    for (let i = 0; i < 30; i++) {
-      await new Promise(r => setTimeout(r, 200));
+    for (let i = 0; i < 40; i++) {
+      await new Promise(r => setTimeout(r, 150));
       try {
         const version = await getJson(`http://127.0.0.1:${this.port}/json/version`);
         if (version?.webSocketDebuggerUrl) {
@@ -166,7 +212,7 @@ export class BrowserController {
     }
 
     if (!connected) {
-      this.browserProc.kill();
+      await this.close();
       throw new Error(`Failed to connect to CDP endpoint on port ${this.port}`);
     }
 
@@ -178,11 +224,17 @@ export class BrowserController {
     }
 
     if (!pageTarget?.webSocketDebuggerUrl) {
+      await this.close();
       throw new Error('No page target available via CDP');
     }
 
     await this.connectWs(pageTarget.webSocketDebuggerUrl);
     this.setupNetworkListeners();
+
+    this.on('Runtime.exceptionThrown', (params) => {
+      const desc = params?.exceptionDetails?.exception?.description || params?.exceptionDetails?.text || 'Uncaught exception';
+      this.pageErrors.push(desc);
+    });
 
     await this.send('Page.enable');
     await this.send('DOM.enable');
@@ -247,8 +299,14 @@ export class BrowserController {
       this.ws = new WebSocket(wsUrl);
       this.ws.onopen = () => resolve();
       this.ws.onclose = () => {
-        for (const [, cb] of this.callbacks.entries()) {
-          cb.reject(new Error('CDP WebSocket connection closed unexpectedly'));
+        if (!this.isClosing) {
+          for (const [, cb] of this.callbacks.entries()) {
+            cb.reject(new Error('CDP WebSocket connection closed unexpectedly'));
+          }
+        } else {
+          for (const [, cb] of this.callbacks.entries()) {
+            cb.resolve(undefined);
+          }
         }
         this.callbacks.clear();
       };
@@ -336,6 +394,7 @@ export class BrowserController {
       const timer = setTimeout(() => {
         if (this.callbacks.has(id)) {
           this.callbacks.delete(id);
+          this.unhealthy = true;
           reject(new Error(`CDP command '${method}' timed out after ${timeoutMs}ms`));
         }
       }, timeoutMs);
@@ -361,15 +420,112 @@ export class BrowserController {
     return res?.result?.value as T;
   }
 
+  public async relaunch(): Promise<void> {
+    await this.close();
+    this.id = 1;
+    this.callbacks.clear();
+    this.networkEntries = [];
+    this.networkIndex.clear();
+    this.pageErrors = [];
+    this.lastNavigationStartIdx = 0;
+    this.userDataDir = path.join(process.env.TEMP || 'C:\\temp', `cdp_test_${Date.now()}_${Math.floor(Math.random() * 100000)}`);
+    await this.launch(this.browserPath);
+  }
+
   public async navigate(url: string, waitMsOrOptions?: number | NavigateOptions): Promise<void> {
-    const waitMs =
+    if (!this.isConnected()) {
+      await this.relaunch();
+    }
+
+    const opts: NavigateOptions =
       typeof waitMsOrOptions === 'number'
-        ? waitMsOrOptions
-        : (waitMsOrOptions?.settleMs ?? 1200);
+        ? { settleMs: waitMsOrOptions }
+        : (waitMsOrOptions ?? {});
+
+    const timeoutMs = opts.timeoutMs ?? 15000;
+    const shouldWaitHydration = opts.waitForHydration !== false;
 
     this.lastNavigationStartIdx = this.networkEntries.length;
-    await this.send('Page.navigate', { url });
-    await new Promise(r => setTimeout(r, Math.max(waitMs, 1000)));
+
+    const domPromise = this.once('Page.domContentEventFired', Math.min(timeoutMs, 5000)).catch(() => null);
+    const loadPromise = this.once('Page.loadEventFired', Math.min(timeoutMs, 5000)).catch(() => null);
+    const navRes = await this.send('Page.navigate', { url }, timeoutMs);
+
+    if (navRes?.loaderId) {
+      await Promise.race([loadPromise, domPromise]);
+    }
+
+    await this.waitForCondition(`document.readyState === 'complete' || document.readyState === 'interactive'`, timeoutMs);
+
+    if (shouldWaitHydration) {
+      await this.waitForHydration(timeoutMs);
+      // Allow React post-commit effects (e.g. SEO/Helmet title & JSON-LD sync) to flush
+      await this.evaluate<void>('new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))').catch(() => undefined);
+    }
+
+    if (opts.waitForSelector) {
+      await this.waitForSelector(opts.waitForSelector, timeoutMs);
+    }
+
+    if (opts.waitForCssStability) {
+      await this.waitForCssStability(opts.waitForSelector || '.vb-hero, main, body', Math.min(timeoutMs, 3000));
+    }
+
+    if (opts.settleMs && opts.settleMs > 0) {
+      await new Promise(r => setTimeout(r, opts.settleMs));
+    }
+  }
+
+  public async setScriptExecutionDisabled(disabled: boolean): Promise<void> {
+    await this.send('Emulation.setScriptExecutionDisabled', { value: disabled });
+  }
+
+  public async setUserAgent(userAgent: string): Promise<void> {
+    await this.send('Network.setUserAgentOverride', { userAgent });
+  }
+
+  public clearPageErrors(): void {
+    this.pageErrors = [];
+  }
+
+  public getPageErrors(): string[] {
+    return [...this.pageErrors];
+  }
+
+  public async measureCls(durationMs = 400): Promise<number> {
+    return await this.evaluate<number>(`
+      new Promise(resolve => {
+        if (typeof PerformanceObserver === 'undefined') return resolve(0);
+        let cls = 0;
+        let sessionValue = 0;
+        let sessionEntries = [];
+        try {
+          const observer = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+              if (!entry.hadRecentInput) {
+                const first = sessionEntries[0];
+                const last = sessionEntries[sessionEntries.length - 1];
+                if (sessionValue && entry.startTime - last.startTime < 1000 && entry.startTime - first.startTime < 5000) {
+                  sessionValue += entry.value;
+                  sessionEntries.push(entry);
+                } else {
+                  sessionValue = entry.value;
+                  sessionEntries = [entry];
+                }
+                if (sessionValue > cls) cls = sessionValue;
+              }
+            }
+          });
+          observer.observe({ type: 'layout-shift', buffered: true });
+          setTimeout(() => {
+            try { observer.disconnect(); } catch {}
+            resolve(Number(cls.toFixed(6)));
+          }, ${durationMs});
+        } catch {
+          resolve(0);
+        }
+      })
+    `);
   }
 
   public async waitForHydration(timeoutMs = 10000): Promise<boolean> {
@@ -489,6 +645,8 @@ export class BrowserController {
       Enter: { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r' },
       ArrowDown: { key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 },
       ArrowUp: { key: 'ArrowUp', code: 'ArrowUp', windowsVirtualKeyCode: 38 },
+      ArrowLeft: { key: 'ArrowLeft', code: 'ArrowLeft', windowsVirtualKeyCode: 37 },
+      ArrowRight: { key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39 },
       Space: { key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ' },
     };
 
@@ -698,11 +856,39 @@ export class BrowserController {
   public async getMetaContent(nameOrProperty: string): Promise<string | null> {
     return await this.evaluate<string | null>(`
       (() => {
-        const el = document.querySelector('meta[name="' + ${JSON.stringify(nameOrProperty)} + '"]') ||
-                   document.querySelector('meta[property="' + ${JSON.stringify(nameOrProperty)} + '"]');
+        const key = ${JSON.stringify(nameOrProperty)};
+        const el =
+          document.querySelector('meta[data-rh="true"][name="' + key + '"]') ||
+          document.querySelector('meta[data-rh="true"][property="' + key + '"]') ||
+          document.querySelector('meta[name="' + key + '"]') ||
+          document.querySelector('meta[property="' + key + '"]');
         return el ? el.getAttribute('content') : null;
       })()
     `);
+  }
+
+  public async getCanonicalHref(): Promise<string | null> {
+    return await this.evaluate<string | null>(`
+      (() => {
+        const el =
+          document.querySelector('link[data-rh="true"][rel="canonical"]') ||
+          document.querySelector('link[rel="canonical"]');
+        return el ? el.getAttribute('href') : null;
+      })()
+    `);
+  }
+
+  public async ensureTheme(theme: 'dark' | 'light'): Promise<void> {
+    const current = await this.evaluate<string | null>(`
+      (() => {
+        try { localStorage.setItem('vb-theme', ${JSON.stringify(theme)}); } catch {}
+        return document.documentElement.dataset.theme || null;
+      })()
+    `);
+    if (current !== theme) {
+      await this.click('.vb-theme, button[aria-label*="theme"]', 0);
+      await this.waitForCondition(`document.documentElement.dataset.theme === ${JSON.stringify(theme)}`, 3000);
+    }
   }
 
   public async getJsonLdScripts(): Promise<any[]> {
@@ -752,6 +938,7 @@ export class BrowserController {
   }
 
   public async close(): Promise<void> {
+    this.isClosing = true;
     if (this.ws) {
       try {
         this.ws.close();
@@ -775,7 +962,7 @@ export class BrowserController {
     // Clean up temporary user data directory
     try {
       if (fs.existsSync(this.userDataDir)) {
-        fs.rmSync(this.userDataDir, { recursive: true, force: true });
+        fs.rmSync(this.userDataDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
       }
     } catch {}
   }
@@ -785,6 +972,10 @@ export class BrowserController {
 let sharedBrowser: BrowserController | null = null;
 
 export async function getSharedBrowser(port = 9226): Promise<BrowserController> {
+  if (sharedBrowser && !sharedBrowser.isConnected()) {
+    await sharedBrowser.close();
+    sharedBrowser = null;
+  }
   if (!sharedBrowser) {
     sharedBrowser = new BrowserController(port);
     await sharedBrowser.launch();

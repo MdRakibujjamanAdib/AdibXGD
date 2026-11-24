@@ -3,15 +3,33 @@ import assert from 'node:assert/strict';
 import fs from 'fs';
 import path from 'path';
 import { getSharedBrowser, closeSharedBrowser, BrowserController } from './helpers/browser.ts';
-import { ensureServer } from './helpers/server.ts';
+import { ensureServer, ensureDistServer, stopDistServer, stopServer, httpRequest } from './helpers/server.ts';
 import { validateSitemapFile } from './helpers/xml-validator.ts';
+import {
+  DIST_DIR,
+  PUBLIC_DIR,
+  getProjectIds,
+  getBlogSlugs,
+  getDistHtmlPath,
+  extractHtmlTitle,
+  extractMetaContent,
+  extractCanonicalHref,
+  extractJsonLdFromHtml,
+  flattenGraphNodes,
+  hasType,
+  getImageDimensions,
+  findAuditReportFiles,
+} from './helpers/test-utils.ts';
+import { allServices } from '../src/data/services.ts';
 
-describe('Tier 4: Real-World Application Scenarios (5 Workflows: TC-T4-WF-A to TC-T4-WF-E)', () => {
+describe('Tier 4: Real-World Application Scenarios (13 Workflows: TC-T4-WF-01 to TC-T4-WF-13)', () => {
   let browser: BrowserController;
   let baseUrl: string;
+  let distUrl: string;
 
   before(async () => {
     baseUrl = await ensureServer(3000);
+    distUrl = await ensureDistServer(4173);
     browser = await getSharedBrowser(9226);
     await browser.navigate(`${baseUrl}/`);
     await browser.evaluate(`(() => { localStorage.clear(); localStorage.setItem('vb-theme', 'dark'); })()`);
@@ -19,237 +37,351 @@ describe('Tier 4: Real-World Application Scenarios (5 Workflows: TC-T4-WF-A to T
 
   after(async () => {
     await closeSharedBrowser();
+    stopDistServer();
+    stopServer();
   });
 
-  function getAvailableBlogSlugs(): string[] {
-    const dir = path.join(process.cwd(), 'src/data/blogs');
-    if (!fs.existsSync(dir)) return [];
-    return fs.readdirSync(dir)
-      .filter(f => f.endsWith('.ts') && !f.startsWith('_') && !f.includes('types') && !f.includes('index'))
-      .map(f => f.replace('.ts', ''));
-  }
+  // ==========================================================================
+  // TC-T4-WF-01: Googlebot Static Cold Crawl (F1, F7, F8, F9, F10, F13)
+  // ==========================================================================
+  it('TC-T4-WF-01: Googlebot Static Cold Crawl (raw HTML without JS across /, /services, /projects/green-d-website)', async () => {
+    const projectRoute = getProjectIds().includes('green-d-website')
+      ? '/projects/green-d-website'
+      : `/projects/${getProjectIds()[0]}`;
 
-  // --------------------------------------------------------------------------
-  // Workflow A: Search Engine Crawler (Googlebot/Bingbot) Indexing & Schema Verification
-  // --------------------------------------------------------------------------
-  it('TC-T4-WF-A: Search Engine Crawler Indexing & Schema Verification', async () => {
-    // Step 1: Robots Discovery
-    const robotsPath = path.join(process.cwd(), 'public/robots.txt');
-    assert.ok(fs.existsSync(robotsPath), 'public/robots.txt must exist');
-    const robotsContent = fs.readFileSync(robotsPath, 'utf-8');
-    assert.ok(/User-agent:\s*\*\s+Allow:\s*\//i.test(robotsContent), 'Wildcard crawler must be allowed');
-    assert.ok(robotsContent.includes('Sitemap: https://adibx.me/sitemap.xml'), 'Sitemap directive must be declared');
+    const targets = [
+      { route: '/', expectedCanonical: 'https://adibx.me' },
+      { route: '/services', expectedCanonical: 'https://adibx.me/services' },
+      { route: projectRoute, expectedCanonical: `https://adibx.me${projectRoute}` },
+    ];
 
-    // Step 2: Sitemap Crawl
-    const sitemapPath = path.join(process.cwd(), 'public/sitemap.xml');
-    const validation = validateSitemapFile(sitemapPath);
-    assert.strictEqual(validation.isValid, true, 'Sitemap XML must be valid');
-    const locs = validation.urls.map(u => u.loc);
-    assert.ok(locs.includes('https://adibx.me') || locs.includes('https://adibx.me/'));
-    assert.ok(locs.includes('https://adibx.me/projects'));
-    assert.ok(locs.includes('https://adibx.me/blogs'));
+    for (const target of targets) {
+      const res = await httpRequest(`${distUrl}${target.route}`);
+      assert.strictEqual(res.statusCode, 200, `Cold crawl ${target.route} returned ${res.statusCode}`);
+      assert.ok(!res.body.includes('<div id="root"></div>'), `${target.route} must serve populated SSG HTML`);
 
-    // Step 3: Blog Page Metadata Audit
-    const slugs = getAvailableBlogSlugs();
-    const targetSlug = slugs[0] || 'autonomous-multimodal-ai-workflows-mct-labs';
-    await browser.navigate(`${baseUrl}/blogs/${targetSlug}`);
+      const title = extractHtmlTitle(res.body);
+      const desc = extractMetaContent(res.body, 'description');
+      const canonical = extractCanonicalHref(res.body);
+      assert.ok(title.includes('Md Rakibujjaman Adib'), `${target.route} title missing author: ${title}`);
+      assert.ok(desc && desc.length >= 40, `${target.route} meta description missing/short`);
+      assert.strictEqual(canonical, target.expectedCanonical, `${target.route} canonical mismatch`);
 
-    const title = await browser.getTitle();
-    assert.ok(title.includes('Md Rakibujjaman Adib'));
-    const count = (title.match(/Md Rakibujjaman Adib/g) || []).length;
-    assert.strictEqual(count, 1, 'No duplicate brand suffix');
-
-    const desc = await browser.getMetaContent('description');
-    assert.ok(desc && desc.length >= 30, 'Meta description must be at least 30 chars');
-
-    const canonical = await browser.getAttribute('link[rel="canonical"]', 'href');
-    assert.ok(canonical?.startsWith('https://adibx.me'), 'Canonical link starts with https://adibx.me');
-
-    const twitterCard = await browser.getMetaContent('twitter:card');
-    assert.strictEqual(twitterCard, 'summary_large_image');
+      const rawJsonLd = extractJsonLdFromHtml(res.body);
+      assert.ok(rawJsonLd.some((obj) => Array.isArray(obj['@graph'])), `${target.route} must emit unified @graph JSON-LD in initial HTML`);
+      const nodes = flattenGraphNodes(rawJsonLd);
+      assert.ok(nodes.some((n) => n['@id'] === 'https://adibx.me/#person'), `${target.route} missing #person in @graph`);
+    }
   });
 
-  // --------------------------------------------------------------------------
-  // Workflow B: AI Crawler (GPTBot, ClaudeBot, PerplexityBot) Semantic Parsing & Knowledge Discovery
-  // --------------------------------------------------------------------------
-  it('TC-T4-WF-B: AI Crawler Semantic Parsing & Knowledge Discovery', async () => {
-    // Step 1: AI crawler access check in robots.txt
-    const robotsPath = path.join(process.cwd(), 'public/robots.txt');
-    const robotsContent = fs.readFileSync(robotsPath, 'utf-8');
-    assert.ok(/User-agent:\s*GPTBot/i.test(robotsContent), 'GPTBot allowed');
-    assert.ok(/User-agent:\s*ClaudeBot/i.test(robotsContent), 'ClaudeBot allowed');
-    assert.ok(/User-agent:\s*PerplexityBot/i.test(robotsContent), 'PerplexityBot allowed');
+  // ==========================================================================
+  // TC-T4-WF-02: AI Agent Knowledge Retrieval (F6, F8, F9, F13)
+  // ==========================================================================
+  it('TC-T4-WF-02: AI Agent Knowledge Retrieval (llms.txt, robots.txt, sitemap.xml, /services)', async () => {
+    const llmsRes = await httpRequest(`${distUrl}/llms.txt`);
+    assert.strictEqual(llmsRes.statusCode, 200);
+    assert.ok(llmsRes.body.includes('Md Rakibujjaman Adib'));
+    assert.ok(llmsRes.body.includes('https://adibx.me/#person'));
+    assert.ok(llmsRes.body.includes('https://adibx.me/services'));
 
-    // Step 2: Semantic Article Traversal
-    const slugs = getAvailableBlogSlugs();
-    const targetSlug = slugs[0] || 'autonomous-multimodal-ai-workflows-mct-labs';
-    await browser.navigate(`${baseUrl}/blogs/${targetSlug}`);
+    const robotsRes = await httpRequest(`${distUrl}/robots.txt`);
+    assert.strictEqual(robotsRes.statusCode, 200);
+    assert.match(robotsRes.body, /User-agent:\s*OAI-SearchBot[\s\S]*?Allow:\s*\//i);
+    assert.match(robotsRes.body, /User-agent:\s*GPTBot[\s\S]*?Disallow:\s*\//i);
 
-    const semanticReport = await browser.evaluate<{ h1Count: number; hasContent: boolean; textLength: number }>(`
+    const sitemapValidation = validateSitemapFile(path.join(DIST_DIR, 'sitemap.xml'));
+    assert.strictEqual(sitemapValidation.isValid, true);
+    assert.ok(sitemapValidation.urls.some((u) => u.loc === 'https://adibx.me/services'));
+
+    const svcRes = await httpRequest(`${distUrl}/services`);
+    assert.strictEqual(svcRes.statusCode, 200);
+    const nodes = flattenGraphNodes(extractJsonLdFromHtml(svcRes.body));
+    const hasServiceGraph = nodes.some((n) => hasType(n, 'Service') || hasType(n, 'OfferCatalog') || Boolean(n.hasOfferCatalog));
+    assert.strictEqual(hasServiceGraph, true, '/services must expose Service/OfferCatalog entities for AI retrieval');
+    const serialized = JSON.stringify(nodes);
+    assert.ok(allServices.every((s) => serialized.includes(s.title)), 'All services must be discoverable in /services JSON-LD');
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-03: Social Media Share Unfurler (F10, F12, F13, F15)
+  // ==========================================================================
+  it('TC-T4-WF-03: Social Media Share Unfurler (OG & Twitter Cards on /, /projects/:id, /blogs/:slug)', async () => {
+    const ogPreviewPath = path.join(PUBLIC_DIR, 'images/og-preview.jpg');
+    assert.ok(fs.existsSync(ogPreviewPath), 'public/images/og-preview.jpg must exist');
+    assert.ok(fs.statSync(ogPreviewPath).size < 250 * 1024, 'og-preview.jpg must be < 250 KB');
+    assert.deepStrictEqual(getImageDimensions(ogPreviewPath), { width: 1200, height: 630 });
+
+    const projectRoute = `/projects/${getProjectIds()[0]}`;
+    const blogRoute = `/blogs/${getBlogSlugs()[0]}`;
+    for (const route of ['/', projectRoute, blogRoute]) {
+      const res = await httpRequest(`${distUrl}${route}`);
+      assert.strictEqual(res.statusCode, 200);
+      const ogTitle = extractMetaContent(res.body, 'og:title');
+      const ogDesc = extractMetaContent(res.body, 'og:description');
+      const ogImage = extractMetaContent(res.body, 'og:image');
+      const twCard = extractMetaContent(res.body, 'twitter:card');
+      const twImage = extractMetaContent(res.body, 'twitter:image');
+
+      assert.ok(ogTitle && ogTitle.length > 5, `Missing og:title on ${route}`);
+      assert.ok(ogDesc && ogDesc.length > 20, `Missing og:description on ${route}`);
+      assert.ok(ogImage?.startsWith('https://adibx.me/'), `og:image must be absolute on ${route}, got ${ogImage}`);
+      assert.strictEqual(twCard, 'summary_large_image');
+      assert.ok(twImage?.startsWith('https://adibx.me/'), `twitter:image must be absolute on ${route}`);
+    }
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-04: Core Web Vitals & Image Audit (F15, F16, F17, F18)
+  // ==========================================================================
+  it('TC-T4-WF-04: Core Web Vitals & Image Audit (CLS <= 0.1, hero priority, lazy slides, explicit dims, font preloads)', async () => {
+    await browser.navigate(`${distUrl}/`);
+
+    const audit = await browser.evaluate<{
+      heroSrc: string;
+      heroFetchPriority: string | null;
+      heroLoading: string | null;
+      heroWidth: string | null;
+      heroHeight: string | null;
+      recentCount: number;
+      recentLazyCount: number;
+      recentMissingDims: number;
+      preloadImgCount: number;
+      preloadFontCount: number;
+    }>(`
       (() => {
-        const h1s = document.querySelectorAll('h1');
-        const container = document.querySelector('main, article, .vb-card');
+        const heroImg = document.querySelector('.vb-showcase img');
+        const recentImgs = Array.from(document.querySelectorAll('.vb-recent-card img'));
         return {
-          h1Count: h1s.length,
-          hasContent: !!container,
-          textLength: container ? (container.textContent || '').trim().length : 0
+          heroSrc: heroImg?.currentSrc || heroImg?.getAttribute('src') || '',
+          heroFetchPriority: heroImg?.getAttribute('fetchpriority') || null,
+          heroLoading: heroImg?.getAttribute('loading') || null,
+          heroWidth: heroImg?.getAttribute('width') || null,
+          heroHeight: heroImg?.getAttribute('height') || null,
+          recentCount: recentImgs.length,
+          recentLazyCount: recentImgs.filter(i => i.getAttribute('loading') === 'lazy').length,
+          recentMissingDims: recentImgs.filter(i => !(Number(i.getAttribute('width')) > 0 && Number(i.getAttribute('height')) > 0)).length,
+          preloadImgCount: document.querySelectorAll('link[rel="preload"][as="image"]').length,
+          preloadFontCount: document.querySelectorAll('link[rel="preload"][as="font"]').length,
         };
       })()
     `);
 
-    assert.ok(semanticReport.h1Count >= 1, 'Main heading h1 present');
-    assert.strictEqual(semanticReport.hasContent, true, 'Article content container present');
-    assert.ok(semanticReport.textLength > 100, 'Article has substantive textual density');
+    assert.ok(/\.(webp|avif)(\?|$)/i.test(audit.heroSrc), `Hero image must be WebP/AVIF, got ${audit.heroSrc}`);
+    assert.strictEqual(audit.heroFetchPriority, 'high');
+    assert.notStrictEqual(audit.heroLoading, 'lazy');
+    assert.ok(Number(audit.heroWidth) > 0 && Number(audit.heroHeight) > 0, 'Hero image must have explicit width & height');
+    assert.ok(audit.recentCount > 0 && audit.recentLazyCount === audit.recentCount, 'Latest Projects images must use loading="lazy"');
+    assert.strictEqual(audit.recentMissingDims, 0, 'Latest Projects images must have explicit dimensions');
+    assert.ok(audit.preloadImgCount >= 1, 'Expected <link rel="preload" as="image">');
+    assert.ok(audit.preloadFontCount >= 2, 'Expected <link rel="preload" as="font">');
 
-    // Step 3: Image alt hygiene
-    const imagesHygiene = await browser.evaluate<boolean>(`
-      (() => {
-        const imgs = Array.from(document.querySelectorAll('img'));
-        return imgs.every(img => {
-          const alt = img.getAttribute('alt');
-          return alt !== null && alt.trim().length > 0;
-        });
-      })()
-    `);
-    assert.strictEqual(imagesHygiene, true, '100% of rendered images have non-empty alt attributes');
+    const cls = await browser.measureCls(450);
+    assert.ok(cls <= 0.1, `Measured CLS ${cls} exceeded 0.1`);
   });
 
-  // --------------------------------------------------------------------------
-  // Workflow C: Visitor /blogs Journey (Dark/Light Mode, Aesthetics, Tag Filtering)
-  // --------------------------------------------------------------------------
-  it('TC-T4-WF-C: Visitor /blogs Journey (Dark/Light Mode, Aesthetics, Tag Filtering)', async () => {
-    // Step 1: Landing on /blogs in Dark Mode
-    await browser.navigate(`${baseUrl}/blogs`);
-    await browser.evaluate(`(() => {
-      localStorage.setItem('vb-theme', 'dark');
-      document.documentElement.classList.add('dark');
-      document.documentElement.dataset.theme = 'dark';
-      document.body.classList.add('dark');
-      document.body.dataset.theme = 'dark';
-      document.body.style.backgroundColor = '#000000';
-    })()`);
-    const darkBg = await browser.getComputedStyle('body', 'background-color');
-    assert.strictEqual(darkBg, 'rgb(0, 0, 0)', 'Dark mode background is pure black');
+  // ==========================================================================
+  // TC-T4-WF-05: Accessible Keyboard Navigation (F19, F20, F21)
+  // ==========================================================================
+  it('TC-T4-WF-05: Accessible Keyboard Navigation (header Tab, mobile drawer focus trap, Escape focus restore)', async () => {
+    await browser.setViewport({ width: 1440, height: 900, mobile: false });
+    await browser.navigate(`${baseUrl}/`);
+    await browser.pressKey('Tab');
+    const desktopOutline = await browser.evaluate<number>(`parseFloat(window.getComputedStyle(document.activeElement).outlineWidth) || 0`);
+    assert.ok(desktopOutline >= 2, 'Header focusable controls must have visible focus ring');
 
-    const badgeText = await browser.getText('body');
-    assert.ok(badgeText?.includes('Knowledge') || badgeText?.includes('Thought'), 'Header badge rendered');
+    await browser.setViewport({ width: 390, height: 844, mobile: true });
+    try {
+      await browser.navigate(`${baseUrl}/`);
+      await browser.evaluate(`document.querySelector('.vb-menu').focus()`);
+      await browser.pressKey('Enter');
+      const hasDialog = await browser.waitForSelector('[role="dialog"][aria-modal="true"]', 3000);
+      assert.strictEqual(hasDialog, true, 'Mobile drawer must open with role="dialog" and aria-modal="true"');
 
-    // Step 2: Light Mode Inversion
-    await browser.click('.vb-theme, button[aria-label*="theme"]', 400);
-    await new Promise(r => setTimeout(r, 400));
-    const lightTheme = await browser.getAttribute('html', 'data-theme');
-    assert.strictEqual(lightTheme, 'light');
+      for (let i = 0; i < 6; i++) {
+        await browser.pressKey('Tab');
+        const inside = await browser.evaluate<boolean>(`document.querySelector('[role="dialog"]').contains(document.activeElement)`);
+        assert.strictEqual(inside, true, `Focus escaped mobile drawer on Tab ${i + 1}`);
+      }
 
-    const lightBg = await browser.getComputedStyle('body', 'background-color');
-    const isLight = (c: string) => {
-      const m = c.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-      return m ? Number(m[1]) >= 230 && Number(m[2]) >= 230 && Number(m[3]) >= 230 : c.includes('255');
-    };
-    assert.ok(
-      isLight(lightBg),
-      `Light mode body background inverted, got: ${lightBg}`
+      await browser.pressKey('Escape');
+      await browser.waitForCondition(`!document.querySelector('[role="dialog"]')`);
+      const restored = await browser.evaluate<boolean>(`document.activeElement === document.querySelector('.vb-menu')`);
+      assert.strictEqual(restored, true, 'Escape must restore focus to .vb-menu');
+    } finally {
+      await browser.setViewport({ width: 1440, height: 900, mobile: false });
+    }
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-06: Reduced Motion Accessibility (F21, F22, F23)
+  // ==========================================================================
+  it('TC-T4-WF-06: Reduced Motion Accessibility (timer suspended, CSS animations paused, manual controls work)', async () => {
+    await browser.setEmulatedMedia({ features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+    try {
+      await browser.navigate(`${baseUrl}/`);
+      const initialAlt = await browser.getAttribute('.vb-showcase img', 'alt');
+      await new Promise((r) => setTimeout(r, 5200));
+      assert.strictEqual(await browser.getAttribute('.vb-showcase img', 'alt'), initialAlt, 'Auto-timer must be halted under reduced motion');
+
+      const anim = await browser.getComputedStyle('.vb-hero', 'transition-duration');
+      assert.ok(anim === '0s' || anim === '0ms', `Expected 0s transition under reduced motion, got ${anim}`);
+
+      await browser.click('.vb-arrow--next', 0);
+      await browser.waitForCondition(`document.querySelector('.vb-showcase img')?.getAttribute('alt') !== ${JSON.stringify(initialAlt)}`);
+    } finally {
+      await browser.setEmulatedMedia({ features: [] });
+    }
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-07: Static 404 Recovery Journey (F2, F5, F13, F23)
+  // ==========================================================================
+  it('TC-T4-WF-07: Static 404 Recovery Journey (HTTP 404, dist/404.html, noindex, Return Home)', async () => {
+    const res = await httpRequest(`${distUrl}/unknown-route-xyz`);
+    assert.strictEqual(res.statusCode, 404);
+    assert.ok(res.body.includes('Page Not Found'));
+    assert.match(res.body, /<meta\b[^>]*name=["']robots["'][^>]*noindex/i);
+
+    await browser.navigate(`${distUrl}/unknown-route-xyz`);
+    const docStatus = browser.getLastResponseStatus();
+    assert.strictEqual(docStatus, 404, `Browser document load status expected 404, got ${docStatus}`);
+    assert.ok((await browser.getText('h1'))?.includes('Page Not Found'));
+
+    await browser.click('a[href="/"]', 0);
+    await browser.waitForCondition(`window.location.pathname === '/' && !!document.querySelector('.vb-profile')`);
+    assert.strictEqual(await browser.evaluate<string>('window.location.pathname'), '/');
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-08: Dual-Theme Visual Preservation (F14, F21, F23)
+  // ==========================================================================
+  it('TC-T4-WF-08: Dual-Theme Visual Preservation across /, /services, /projects, /about, /blogs', async () => {
+    for (const route of ['/', '/services', '/projects', '/about', '/blogs']) {
+      await browser.navigate(`${baseUrl}${route}`);
+      // Ensure starting in dark mode
+      if ((await browser.getAttribute('html', 'data-theme')) !== 'dark') {
+        await browser.click('.vb-theme', 0);
+        await browser.waitForCondition(`document.documentElement.dataset.theme === 'dark'`);
+      }
+      assert.strictEqual(await browser.getComputedStyle('body', 'background-color'), 'rgb(0, 0, 0)');
+      assert.strictEqual((await browser.getMetaContent('theme-color'))?.toLowerCase(), '#000000');
+      assert.strictEqual(await browser.getComputedStyle('.vb-nav-corner-right', 'color'), 'rgb(0, 0, 0)');
+
+      await browser.click('.vb-theme', 0);
+      await browser.waitForCondition(`document.documentElement.dataset.theme === 'light'`);
+      await browser.waitForCssStability('.vb-nav-corner-right', 1500);
+
+      assert.strictEqual(await browser.getComputedStyle('body', 'background-color'), 'rgb(255, 255, 255)');
+      assert.strictEqual((await browser.getMetaContent('theme-color'))?.toLowerCase(), '#ffffff');
+      assert.strictEqual(await browser.getComputedStyle('.vb-nav-corner-right', 'color'), 'rgb(255, 255, 255)');
+
+      // Restore dark mode
+      await browser.click('.vb-theme', 0);
+      await browser.waitForCondition(`document.documentElement.dataset.theme === 'dark'`);
+    }
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-09: Client-Side Hydration Parity (F1, F7, F8, F10, F13)
+  // ==========================================================================
+  it('TC-T4-WF-09: Client-Side Hydration Parity (SSG head/JSON-LD matches hydrated DOM & SPA transitions)', async () => {
+    const blogRoute = `/blogs/${getBlogSlugs()[0]}`;
+    const staticHtml = fs.readFileSync(getDistHtmlPath(blogRoute), 'utf-8');
+    const staticTitle = extractHtmlTitle(staticHtml);
+    const staticCanonical = extractCanonicalHref(staticHtml);
+    const staticNodes = flattenGraphNodes(extractJsonLdFromHtml(staticHtml));
+
+    await browser.navigate(`${distUrl}${blogRoute}`);
+    const hydratedTitle = await browser.getTitle();
+    const hydratedCanonical = await browser.getAttribute('link[rel="canonical"]', 'href');
+    const hydratedNodes = flattenGraphNodes(await browser.getJsonLdScripts());
+
+    assert.strictEqual(hydratedTitle, staticTitle);
+    assert.strictEqual(hydratedCanonical, staticCanonical);
+    assert.deepStrictEqual(
+      hydratedNodes.map((n) => n['@type']).sort(),
+      staticNodes.map((n) => n['@type']).sort()
     );
 
-    // Step 3: Card interaction and navigation
-    const targetSlug = await browser.evaluate<string | null>(`
-      (() => {
-        const link = document.querySelector('section[aria-label="Articles list"] a[href^="/blogs/"]');
-        return link ? link.getAttribute('href') : null;
-      })()
-    `);
-
-    if (targetSlug) {
-      await browser.navigate(`${baseUrl}${targetSlug}`);
-      const scrollY = await browser.evaluate<number>('window.scrollY');
-      assert.strictEqual(scrollY, 0, 'Navigation scrolls window to top');
-    }
-
-    // Step 4: Responsive mobile check
-    await browser.setViewport({ width: 375, height: 812, mobile: true });
-    await browser.navigate(`${baseUrl}/blogs`, 500);
-    const overflow = await browser.evaluate<boolean>('document.documentElement.scrollWidth > window.innerWidth');
-    assert.strictEqual(overflow, false, 'No horizontal overflow on mobile');
-
-    // Revert viewport and theme
-    await browser.setViewport({ width: 1440, height: 900 });
-    const curTheme = await browser.getAttribute('html', 'data-theme');
-    if (curTheme !== 'dark') {
-      await browser.click('.vb-theme, button[aria-label*="theme"]');
-    }
+    // SPA transition to /about
+    await browser.click('.vb-nav-links a[href="/about"]', 0);
+    await browser.waitForCondition(`window.location.pathname === '/about' && document.title.includes('About')`, 5000);
+    assert.strictEqual(await browser.getCanonicalHref(), 'https://adibx.me/about');
   });
 
-  // --------------------------------------------------------------------------
-  // Workflow D: Reader Deep Technical Reading Experience (TOC, Code, Next Nav)
-  // --------------------------------------------------------------------------
-  it('TC-T4-WF-D: Reader Deep Technical Reading Experience', async () => {
-    const slugs = getAvailableBlogSlugs();
-    const targetSlug = slugs[0] || 'autonomous-multimodal-ai-workflows-mct-labs';
-    await browser.navigate(`${baseUrl}/blogs/${targetSlug}`);
-
-    // Step 1: Article Header & Hero Visual
-    const title = await browser.getText('h1');
-    assert.ok(title && title.length > 5, 'Article title rendered');
-
-    const heroImagePresent = await browser.evaluate<boolean>(`
-      (() => {
-        const img = document.querySelector('img');
-        return !!img;
-      })()
-    `);
-    assert.strictEqual(heroImagePresent, true, 'Hero visual image is rendered');
-
-    // Step 2: Table of Contents & Scroll
-    await browser.evaluate('window.scrollTo({ top: 300, behavior: "instant" })');
-    await new Promise(r => setTimeout(r, 200));
-    const scrolledY = await browser.evaluate<number>('window.scrollY');
-    assert.ok(scrolledY >= 200, 'Reading scroll tracking functional');
-    await browser.evaluate('window.scrollTo({ top: 0, behavior: "instant" })');
-
-    // Step 3: Back to insights navigation
-    const hasBackLink = await browser.evaluate<boolean>(`
-      (() => {
-        const link = document.querySelector('a[href="/blogs"]');
-        return !!link;
-      })()
-    `);
-    assert.strictEqual(hasBackLink, true, 'Back to Insights link is available');
-  });
-
-  // --------------------------------------------------------------------------
-  // Workflow E: Full Build & Production Deployment Artifact Validation
-  // --------------------------------------------------------------------------
-  it('TC-T4-WF-E: Full Build & Production Deployment Artifact Validation', () => {
-    // Step 1: Static SEO & crawler files exist
-    assert.ok(fs.existsSync(path.join(process.cwd(), 'public/robots.txt')));
-    assert.ok(fs.existsSync(path.join(process.cwd(), 'public/sitemap.xml')));
-    assert.ok(fs.existsSync(path.join(process.cwd(), 'public/favicon.svg')));
-
-    // Step 2: Sitemap contains required routes
-    const validation = validateSitemapFile(path.join(process.cwd(), 'public/sitemap.xml'));
-    assert.strictEqual(validation.isValid, true);
-    assert.ok(validation.urls.length >= 10, 'Sitemap indexes required routes');
-
-    // Step 3: Local Image Asset Integrity Audit
-    const verifiedImages = [
-      'public/images/hero-canal.jpg',
-      'public/images/projects/mctlabs.png',
-      'public/images/projects/vray-god-rays.jpg',
-      'public/images/projects/greend-dashboard.png',
-      'public/images/studio/FLGzcv8zFbjfvUIC7ezsCAJg128.png',
-    ];
-
-    for (const imgPath of verifiedImages) {
-      assert.ok(
-        fs.existsSync(path.join(process.cwd(), imgPath)),
-        `Curated project asset ${imgPath} must physically exist on disk`
-      );
-      const stats = fs.statSync(path.join(process.cwd(), imgPath));
-      assert.ok(stats.size > 100, `Asset ${imgPath} must have non-zero file size`);
+  // ==========================================================================
+  // TC-T4-WF-10: Production Bundle & Security Gate (F3, F4, F5, F26)
+  // ==========================================================================
+  it('TC-T4-WF-10: Production Bundle & Security Gate (chunks < 500 KB, zero dev artifacts, vercel.json headers)', async () => {
+    const assetsDir = path.join(DIST_DIR, 'assets');
+    const jsFiles = fs.readdirSync(assetsDir).filter((f) => f.endsWith('.js'));
+    assert.ok(jsFiles.length >= 5);
+    for (const file of jsFiles) {
+      assert.ok(fs.statSync(path.join(assetsDir, file)).size < 500 * 1024, `Oversized chunk: ${file}`);
     }
 
-    // Step 4: No broken or undefined internal links
-    const blogsDir = path.join(process.cwd(), 'src/data/blogs');
-    const blogFiles = fs.readdirSync(blogsDir).filter(f => f.endsWith('.ts'));
-    assert.ok(blogFiles.length >= 3, 'Must have at least 3 authored blog files');
+    const res = await httpRequest(`${distUrl}/`);
+    assert.strictEqual(res.headers['x-content-type-options'], 'nosniff');
+    assert.strictEqual(res.headers['x-frame-options'], 'DENY');
+    assert.ok(String(res.headers['strict-transport-security'] || '').includes('max-age=63072000'));
+    assert.ok(String(res.headers['content-security-policy'] || '').includes("default-src 'self'"));
+
+    assert.strictEqual(fs.existsSync(path.join(DIST_DIR, '.env')), false);
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-11: Project Search Typo Tolerance & Filter Workflow
+  // ==========================================================================
+  it('TC-T4-WF-11: Project Search Typo Tolerance & Category Filter Workflow on /projects', async () => {
+    await browser.navigate(`${baseUrl}/projects`);
+    await browser.waitForSelector('input[type="search"], input[placeholder*="Search" i]', 3000);
+
+    // Type typo query "moniter"
+    await browser.evaluate(`
+      (() => {
+        const input = document.querySelector('input[type="search"], input[placeholder*="Search" i]');
+        const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+        setter.call(input, 'moniter');
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      })()
+    `);
+    const matched = await browser.waitForCondition(`(document.body.textContent || '').toLowerCase().includes('walton')`, 3000);
+    assert.strictEqual(matched, true, 'Fuzzy search for "moniter" should match Walton 3D Monitor project');
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-12: Reader Deep Technical Blog Journey
+  // ==========================================================================
+  it('TC-T4-WF-12: Reader Deep Technical Blog Journey (listing -> article -> TOC -> code copy -> next nav)', async () => {
+    await browser.navigate(`${baseUrl}/blogs`);
+    const firstSlugHref = await browser.evaluate<string | null>(`
+      document.querySelector('section[aria-label="Articles list"] a[href^="/blogs/"]')?.getAttribute('href') || null
+    `);
+    assert.ok(firstSlugHref?.startsWith('/blogs/'));
+    await browser.navigate(`${baseUrl}${firstSlugHref}`);
+    const h1 = await browser.getText('h1');
+    assert.ok(h1 && h1.length > 5);
+    await browser.waitForSelector('pre', 3000);
+    const hasToc = await browser.evaluate<boolean>(`document.querySelectorAll('nav[aria-label*="Table of contents"] a, .vb-toc a').length > 0`);
+    assert.strictEqual(hasToc, true);
+    const hasBack = await browser.evaluate<boolean>(`!!document.querySelector('a[href="/blogs"]')`);
+    assert.strictEqual(hasBack, true);
+  });
+
+  // ==========================================================================
+  // TC-T4-WF-13: Visitor Contact, CV Assets & Deliverable Verification (F26)
+  // ==========================================================================
+  it('TC-T4-WF-13: Visitor Contact, CV Assets & Final Deliverable Audit Report Verification', async () => {
+    await browser.navigate(`${baseUrl}/contact`);
+    const hasForm = await browser.evaluate<boolean>(`!!document.querySelector('form') && !!document.querySelector('a[href^="mailto:"]')`);
+    assert.strictEqual(hasForm, true, 'Contact page must render inquiry form and mailto link');
+
+    const cvRes = await httpRequest(`${distUrl}/MdRakibujamanAdib_CV.pdf`, 'HEAD');
+    assert.strictEqual(cvRes.statusCode, 200, 'CV PDF must be served cleanly from static dist');
+
+    const reports = findAuditReportFiles();
+    assert.ok(reports.length > 0, 'Final comprehensive audit report must be delivered in codebase');
+    const reportContent = fs.readFileSync(reports[0], 'utf-8');
+    assert.ok(reportContent.includes('https://adibx.me') && reportContent.length >= 1500);
   });
 });

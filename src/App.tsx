@@ -15,6 +15,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Services = lazy(() => import('./pages/Services'));
 const Achievements = lazy(() => import('./pages/Achievements'));
 const Terms = lazy(() => import('./pages/Terms'));
+const Privacy = lazy(() => import('./pages/Privacy'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/achievements" element={<Achievements />} />
               <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
