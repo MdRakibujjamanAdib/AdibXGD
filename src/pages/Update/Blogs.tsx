@@ -252,7 +252,7 @@ export default function Blogs() {
         >
           {/* Top gap mask: seamlessly covers any blog content scrolling into the top 12px viewport gap */}
           <div
-            className="absolute -top-4 left-0 right-0 h-4 bg-[var(--vb-bg)] pointer-events-none z-30 transition-colors duration-300"
+            className="absolute -top-3 left-0 right-0 h-3 bg-[var(--vb-bg)] pointer-events-none z-30 transition-colors duration-300"
             aria-hidden="true"
           />
 

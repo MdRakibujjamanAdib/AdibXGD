@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
-import { StudioStars } from '../components/ui/StudioStars';
+import ServiceStarfield from '../components/ui/ServiceStarfield';
 import {
   allServices,
   SERVICE_CATEGORIES,
@@ -25,11 +25,13 @@ const SHOWCASE_ROTATING_TITLES = [
 ];
 
 function ShowcaseTypewriter() {
+  const reducedMotion = useReducedMotion();
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (reducedMotion) return;
     const currentWord = SHOWCASE_ROTATING_TITLES[wordIndex];
     let timeout: NodeJS.Timeout;
 
@@ -57,33 +59,16 @@ function ShowcaseTypewriter() {
     }
 
     return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIndex]);
+  }, [text, isDeleting, wordIndex, reducedMotion]);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-8 select-none bg-black overflow-hidden">
-      {/* Primary Slow-Rotating Celestial Starfield */}
-      <div className="vb-rotating-stars-orbit" aria-hidden="true">
-        <StudioStars className="w-full h-full text-white/45" />
-      </div>
-
-      {/* Secondary Counter-Rotating Deep Nebula Starfield */}
-      <div className="vb-rotating-stars-orbit-reverse" aria-hidden="true">
-        <StudioStars className="w-full h-full text-white/25" />
-      </div>
-
-      {/* Radial Vignette: Atmospheric Depth behind Typography */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%)',
-        }}
-        aria-hidden="true"
-      />
+    <div className="relative w-full h-full flex items-center justify-center p-6 select-none bg-[#0d0d0d] overflow-hidden">
+      <ServiceStarfield />
 
       <div className="relative z-10 flex items-center justify-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight flex items-center justify-center font-sans">
-          <span>{text}</span>
-          <span className="inline-block w-[3px] h-[0.9em] ml-1.5 bg-[#e62e05] animate-pulse" />
+        <h2 aria-label="Design, development and AI services" className="text-[22px] sm:text-2xl min-[1200px]:text-[32px] font-bold tracking-tight text-[#f5f5f5] leading-tight flex items-center justify-center font-sans text-center">
+          <span aria-hidden="true">{reducedMotion ? 'UI/UX Design' : text}</span>
+          {!reducedMotion && <span aria-hidden="true" className="inline-block w-[2px] h-[1.2em] ml-1.5 bg-[#e62e05] animate-pulse" />}
         </h2>
       </div>
     </div>
