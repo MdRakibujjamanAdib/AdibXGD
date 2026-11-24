@@ -12,29 +12,29 @@ const project: Project = {
     description: "<p style='text-align: justify;'>Green D is a full-stack carbon footprint tracking web application designed to help individuals measure, understand, and reduce their environmental impact. The platform combines real-time dashboards, AI-based forecasting, smart home simulation, and automated emission analysis into a unified sustainability ecosystem.</p>\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Personalized Sustainability Dashboard:</b> The main dashboard calculates a sustainability score, displays AI-powered carbon forecasts, and visualizes historical emission data. Weather integration and smart insights enhance contextual awareness for daily decision-making.</p>\
-<img src='/images/projects/greend-dashboard.png' alt='Green D carbon footprint dashboard with sustainability score and AI carbon forecast' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/greend-dashboard.webp' alt='Green D carbon footprint dashboard with sustainability score and AI carbon forecast' style='width:100%; margin:20px 0 30px 0;' />\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Smart Receipt Analysis:</b> Users can upload electricity bills, fuel receipts, transport tickets, or shopping invoices. The system analyzes consumption patterns and estimates associated carbon emissions, converting everyday expenses into measurable environmental impact metrics.</p>\
-<img src='/images/projects/greend-receipt.png' alt='Green D receipt upload interface for carbon emission analysis' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/greend-receipt.webp' alt='Green D receipt upload interface for carbon emission analysis' style='width:100%; margin:20px 0 30px 0;' />\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Smart Home Energy Monitoring:</b> The Smart Home module simulates device-level control, enabling users to manage lights, fans, and energy usage states. Real-time carbon emission history visualization helps identify inefficiencies and optimize electricity consumption.</p>\
-<img src='/images/projects/greend-smart-home.png' alt='Green D smart home interface with device control and carbon emission tracking' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/greend-smart-home.webp' alt='Green D smart home interface with device control and carbon emission tracking' style='width:100%; margin:20px 0 30px 0;' />\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Green Maps & Route Optimization:</b> Integrated map tools allow users to compare transport options and choose lower carbon-emitting routes. The system supports eco-friendly route planning and highlights sustainable travel practices.</p>\
-<img src='/images/projects/greend-maps.png' alt='Green D green maps route planner for low carbon travel options' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/greend-maps.webp' alt='Green D green maps route planner for low carbon travel options' style='width:100%; margin:20px 0 30px 0;' />\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Technical Architecture:</b> The application is built with a modern full-stack architecture, emphasizing performance, modular design, and scalability. It features dynamic state management, reusable UI components, API-driven data handling, and responsive design optimized for cross-device accessibility. The structured dashboard system ensures maintainable growth for future feature expansion, including AI integrations and IoT connectivity.</p>\
 \
 <p style='text-align: justify; margin-top: 20px;'>Green D demonstrates expertise in frontend engineering, backend logic design, dashboard UI architecture, sustainability data modeling, and real-world problem-solving through technology. The platform merges environmental awareness with modern web application development to create a scalable digital sustainability solution.</p>",
-    thumbnail: "/images/projects/green-d-carbon-tracker-home.png",
+    thumbnail: "/images/projects/green-d-carbon-tracker-home.webp",
     images: [
-        "/images/projects/green-d-carbon-tracker-home.png",
-        "/images/projects/green-d-web-home.png",
-        "/images/projects/green-d-branding-hero-showcase.jpg",
-        "/images/projects/greend-dashboard.png",
-        "/images/projects/greend-receipt.png",
-        "/images/projects/greend-smart-home.png",
-        "/images/projects/greend-maps.png"
+        "/images/projects/green-d-carbon-tracker-home.webp",
+        "/images/projects/green-d-web-home.webp",
+        "/images/projects/green-d-branding-hero-showcase.webp",
+        "/images/projects/greend-dashboard.webp",
+        "/images/projects/greend-receipt.webp",
+        "/images/projects/greend-smart-home.webp",
+        "/images/projects/greend-maps.webp"
     ],
     demoUrl: "https://greend.vercel.app/",
     tags: [

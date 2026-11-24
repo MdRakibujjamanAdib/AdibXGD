@@ -9,20 +9,20 @@ const project: Project = {
     summary: "A cinematic depth of field study using the V-Ray Physical Camera to control focus, blur intensity, and realistic lens behavior in 3D scenes.",
     description: "<p style='text-align: justify;'>This project explores the implementation of Depth of Field (DOF) using the V-Ray Physical Camera in Autodesk Maya. The objective was to replicate real-world camera behavior by controlling focus distance, F-Number, and lens settings to create realistic foreground and background blur.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Camera Setup:</b> A controlled scene with objects placed at varying distances was created to test how focus shifts across depth. The V-Ray Physical Camera was positioned to establish a clear focal hierarchy.</p>\
-<img src='/images/projects/vray-dof-setup.png' alt='Scene setup for V-Ray Physical Camera depth of field test' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/vray-dof-setup.webp' alt='Scene setup for V-Ray Physical Camera depth of field test' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 30px;'><b>F-Number & Focus Control:</b> A low F-Number was used to create shallow depth of field, producing strong background and foreground blur. Adjusting focus distance allowed selective emphasis on specific objects within the composition.</p>\
-<img src='/images/projects/vray-dof-focus.png' alt='V-Ray depth of field showing focused object with blurred foreground and background' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/vray-dof-focus.webp' alt='V-Ray depth of field showing focused object with blurred foreground and background' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 30px;'><b>Bokeh & Cinematic Effect:</b> Bokeh was enabled to replicate natural lens blur characteristics. Animating the focus distance created a cinematic focus-pull effect, shifting viewer attention dynamically between subjects.</p>\
-<img src='/images/projects/vray-dof-final.png' alt='Final cinematic V-Ray depth of field render with realistic lens blur' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/vray-dof-final.webp' alt='Final cinematic V-Ray depth of field render with realistic lens blur' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 20px;'>The study demonstrates how depth of field enhances realism, guides visual storytelling, and adds a professional cinematic finish to product and environment renders.</p>",
-    thumbnail: "/images/projects/vray-dof-final.png",
+    thumbnail: "/images/projects/vray-dof-final.webp",
     videoUrl: "/images/projects/vray-cinematic-depth-of-field-video.mp4",
     images: [
-        "/images/projects/vray-cinematic-dof-thumbnail.png",
-        "/images/projects/vray-dof-setup.png",
-        "/images/projects/vray-dof-focus.png",
-        "/images/projects/vray-dof-final.png",
-        "/images/projects/vray-dof-yellow.png"
+        "/images/projects/vray-cinematic-dof-thumbnail.webp",
+        "/images/projects/vray-dof-setup.webp",
+        "/images/projects/vray-dof-focus.webp",
+        "/images/projects/vray-dof-final.webp",
+        "/images/projects/vray-dof-yellow.webp"
     ],
     tags: [
         "V-Ray DOF",

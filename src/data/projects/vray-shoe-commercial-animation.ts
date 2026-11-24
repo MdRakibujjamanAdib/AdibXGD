@@ -12,14 +12,14 @@ const project: Project = {
   description: "<p style='text-align: justify;'>Marking the artist's first official assignment in commercial 3D product visualization and lighting, this project showcases high-end athletic footwear modeled with industrial design accuracy. The goal was to replicate commercial advertising standards by combining millimeter-accurate geometry with multi-point studio lighting and turntable camera motion.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Product Geometry & Multi-Material Construction:</b> The sneaker assembly was constructed across multiple functional components: the sculpted foam midsole with ergonomic shock pods, textured rubber tread outsole, breathable mesh vamp, synthetic leather overlays, and laced eyelet stays. Subdivided topology ensures smooth, artifact-free highlights across tight bevels and flowing organic stitch lines.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Studio Lighting & Turntable Animation:</b> The asset is illuminated using a three-point studio lighting rig in Chaos V-Ray—balancing a dominant high-key keylight, soft fill bounce, and a razor-sharp rim/edge light to accentuate the silhouette against a clean dark backdrop. The turntable animation highlights material anisotropy, fabric roughness, and specular sheen as the footwear rotates in space.</p>",
-  thumbnail: "/images/projects/vray-shoe-commercial-animation-thumbnail.png",
+  thumbnail: "/images/projects/vray-shoe-commercial-animation-thumbnail.webp",
   thumbnails: [
-    "/images/projects/vray-shoe-commercial-animation-thumbnail.png",
-    "/images/projects/vray-shoe-commercial-turntable-preview.png"
+    "/images/projects/vray-shoe-commercial-animation-thumbnail.webp",
+    "/images/projects/vray-shoe-commercial-turntable-preview.webp"
   ],
   images: [
-    "/images/projects/vray-shoe-commercial-animation-thumbnail.png",
-    "/images/projects/vray-shoe-commercial-turntable-preview.png"
+    "/images/projects/vray-shoe-commercial-animation-thumbnail.webp",
+    "/images/projects/vray-shoe-commercial-turntable-preview.webp"
   ],
   videoUrl: "/images/projects/vray-shoe-commercial-product-animation.mp4",
   tags: [
@@ -53,7 +53,7 @@ const project: Project = {
       },
       {
         property: "og:image",
-        content: "/images/projects/vray-shoe-commercial-turntable-preview.png"
+        content: "/images/projects/vray-shoe-commercial-turntable-preview.webp"
       }
     ]
   }

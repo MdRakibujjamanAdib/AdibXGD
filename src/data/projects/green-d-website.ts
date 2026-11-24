@@ -9,7 +9,7 @@ const project: Project = {
     description: "<p style='text-align: justify;'>The Green D website is a modern corporate platform built to present software engineering, automation, AI workflows, and creative services in a bold and scalable digital experience. Designed with a performance-first mindset, the site combines dark-themed minimalism with dynamic motion and structured service presentation.</p>\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Hero & Visual Identity:</b> The landing section features a high-impact headline with animated background particles and network-style visual effects, reinforcing the brand’s technology-focused identity. The typography hierarchy emphasizes clarity, authority, and conversion-focused messaging.</p>\
-<img src='/images/projects/greend-hero.png' alt='Green D corporate website hero section with dark UI and animated background' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/greend-hero.webp' alt='Green D corporate website hero section with dark UI and animated background' style='width:100%; margin:20px 0 30px 0;' />\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Service Architecture:</b> The platform highlights structured service categories including Software Development, Automation & AI Workflows, UI/UX & Brand Design, and Creative & Motion Content. Each section is modularly designed to allow scalable expansion while maintaining visual consistency.</p>\
 \
@@ -18,9 +18,9 @@ const project: Project = {
 <p style='text-align: justify; margin-top: 30px;'><b>Technical Implementation:</b> The project demonstrates modern frontend engineering practices including component-based architecture, scalable layout systems, animation layering, responsive grid design, and deployment optimization. The design system ensures maintainability and consistent branding across all sections.</p>\
 \
 <p style='text-align: justify; margin-top: 20px;'>This website showcases expertise in high-end corporate web design, animation-driven UI presentation, structured service positioning, and scalable frontend development. It positions Green D as a modern software and automation studio ready to deliver enterprise-grade solutions.</p>",
-    thumbnail: "/images/projects/greend-hero.png",
+    thumbnail: "/images/projects/greend-hero.webp",
     images: [
-        "/images/projects/greend-hero.png"
+        "/images/projects/greend-hero.webp"
     ],
     demoUrl: "https://www.greend.tech/",
     tags: [

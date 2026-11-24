@@ -11,19 +11,19 @@ const project: Project = {
     description: "<p style='text-align: justify;'>Created as an intensive study in topology, subdivision surfaces, and edge-flow control, this project highlights a vintage 1980s cathode ray tube (CRT) television. Modeled and textured in Autodesk 3ds Max, the core goal was mastering clean quad-dominant geometry that subdivides without shading artifacts.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Geometry & Topology Discipline:</b> The television features complex compound curves—from the convex glass screen to the molded plastic front fascia, rotary tuning dials, and side vent grilles. Edge loops were carefully weighted and beveled to preserve crisp mechanical seams while maintaining clean smoothing groups across high-curvature surfaces.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Period-Accurate Texturing:</b> Material definition includes aged faux-wood laminate along the body cabinet, textured injection-molded plastic on the front panel, metallic rotary knobs with micro-knurling, and a reflective glass screen with interior phosphor depth.</p>",
-    thumbnail: "/images/projects/retro-crt-tv-3d-asset-thumbnail.png",
+    thumbnail: "/images/projects/retro-crt-tv-3d-asset-thumbnail.webp",
     images: [
-        "/images/projects/retro-crt-tv-3d-asset-thumbnail.png",
-        "/images/projects/retro-crt-tv-3d-asset-render-01.png",
-        "/images/projects/retro-crt-tv-3d-asset-render-03.png",
-        "/images/projects/retro-crt-tv-3d-asset-01.jpg",
-        "/images/projects/retro-crt-tv-3d-asset-02.jpg",
-        "/images/projects/retro-crt-tv-3d-asset-03.jpg",
-        "/images/projects/retro-crt-tv-3d-asset-04.jpg",
-        "/images/projects/retro-crt-tv-3d-asset-05.jpg",
-        "/images/projects/retro-crt-tv-3d-asset-06.jpg",
-        "/images/projects/retro-crt-tv-3d-asset-07.jpg",
-        "/images/projects/retro-crt-tv-3d-asset-08.jpg"
+        "/images/projects/retro-crt-tv-3d-asset-thumbnail.webp",
+        "/images/projects/retro-crt-tv-3d-asset-render-01.webp",
+        "/images/projects/retro-crt-tv-3d-asset-render-03.webp",
+        "/images/projects/retro-crt-tv-3d-asset-01.webp",
+        "/images/projects/retro-crt-tv-3d-asset-02.webp",
+        "/images/projects/retro-crt-tv-3d-asset-03.webp",
+        "/images/projects/retro-crt-tv-3d-asset-04.webp",
+        "/images/projects/retro-crt-tv-3d-asset-05.webp",
+        "/images/projects/retro-crt-tv-3d-asset-06.webp",
+        "/images/projects/retro-crt-tv-3d-asset-07.webp",
+        "/images/projects/retro-crt-tv-3d-asset-08.webp"
     ],
     tags: [
         "3ds Max",

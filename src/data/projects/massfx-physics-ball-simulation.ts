@@ -11,12 +11,12 @@ const project: Project = {
   description: "<p style='text-align: justify;'>Bridging procedural mathematics and visual arts, this project explored real-time computational dynamics in Autodesk 3ds Max utilizing the integrated MassFX physics engine. The core objective was simulating the natural, unscripted trajectory of a rigid sphere traversing an intricate multi-tiered wooden run with exact physical laws.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Rigid-Body Setup & Collision Mesh Calibration:</b> The scene was architected using distinct rigid-body property assignments: the polished wooden tracks, inclined ramps, and bumper barriers were configured as Static Rigid Bodies with precise convex/concave mesh collision boundaries, while the rolling ball operated as a Dynamic Rigid Body with accurate mass density and rotational inertia.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Friction, Restitution & Kinetic Dissipation:</b> Simulation parameters were fine-tuned through iterative test bakes—adjusting static and dynamic friction coefficients alongside restitution (bounciness) to capture the authentic dampening of kinetic energy as the ball collides with wood grains. Once the organic path was finalized, the simulation was baked into standard transform animation curves for reproducible camera rendering.</p>",
-  thumbnail: "/images/projects/massfx-physics-ball-simulation-thumbnail.png",
+  thumbnail: "/images/projects/massfx-physics-ball-simulation-thumbnail.webp",
   thumbnails: [
-    "/images/projects/massfx-physics-ball-simulation-thumbnail.png"
+    "/images/projects/massfx-physics-ball-simulation-thumbnail.webp"
   ],
   images: [
-    "/images/projects/massfx-physics-ball-simulation-thumbnail.png"
+    "/images/projects/massfx-physics-ball-simulation-thumbnail.webp"
   ],
   videoUrl: "/images/projects/massfx-physics-rigid-body-ball-simulation.mp4",
   tags: [
@@ -50,7 +50,7 @@ const project: Project = {
       },
       {
         property: "og:image",
-        content: "/images/projects/massfx-physics-ball-simulation-thumbnail.png"
+        content: "/images/projects/massfx-physics-ball-simulation-thumbnail.webp"
       }
     ]
   }

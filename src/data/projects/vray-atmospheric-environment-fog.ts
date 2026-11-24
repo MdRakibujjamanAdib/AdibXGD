@@ -11,14 +11,12 @@ const project: Project = {
     description: "<p style='text-align: justify;'>Atmospheric depth in computer graphics relies on participating media to soften distant silhouettes and scatter directional moonlight. This dedicated CGI study in Chaos V-Ray investigates large-scale outdoor fog simulation, centering on a rustic stone well situated within an overgrown misty forest.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Volumetric Density & Height Falloff:</b> Using VRayEnvironmentFog calibrated with custom height limits and distance attenuation, the mist clusters heavily near the damp forest floor while feathering into the tree canopies above. This produces layered atmospheric perspective, enhancing the sense of scale and spatial depth across deep tree lines.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Foliage Distribution & Moody Chiaroscuro:</b> Organic vegetation, grass clumps, and mossy ground details were distributed using procedural surface scattering. A cool, low-angle directional key light cuts through the dense forest canopy, highlighting the stone masonry of the well and water bucket while preserving rich, mysterious shadow contrast throughout the surrounding wilderness.</p>",
-    thumbnail: "/images/projects/vray-environment-fog.jpg",
+    thumbnail: "/images/projects/vray-environment-fog.webp",
     thumbnails: [
-        "/images/projects/vray-environment-fog.jpg",
-        "/images/projects/vray-chaos-scatter-vegetation-terrain.jpg"
+        "/images/projects/vray-environment-fog.webp"
     ],
     images: [
-        "/images/projects/vray-environment-fog.jpg",
-        "/images/projects/vray-chaos-scatter-vegetation-terrain.jpg"
+        "/images/projects/vray-environment-fog.webp"
     ],
     tags: [
         "Chaos V-Ray",
@@ -51,7 +49,7 @@ const project: Project = {
             },
             {
                 property: "og:image",
-                content: "/images/projects/vray-environment-fog.jpg"
+                content: "/images/projects/vray-environment-fog.webp"
             }
         ]
     }

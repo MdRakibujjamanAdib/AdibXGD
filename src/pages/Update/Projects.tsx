@@ -6,7 +6,6 @@ import { projects, Project } from '../../data/projects';
 import VisbeyondLayout from '../../components/layout/VisbeyondLayout';
 import SEO from '../../components/SEO';
 import { InvertedCornerTopRight, InvertedCornerBottomLeft } from '../../components/ui/VisbeyondIcons';
-import ProjectThumbnailSlideshow from '../../components/ui/ProjectThumbnailSlideshow';
 
 export default function Projects() {
   // Prioritize featured works first
@@ -41,29 +40,18 @@ export default function Projects() {
         showcaseChildren={
           <div className="relative w-full h-full overflow-hidden select-none bg-[var(--vb-bg)]">
             {activeProject && (
-              activeProject.thumbnails && activeProject.thumbnails.length > 1 ? (
-                <ProjectThumbnailSlideshow
+              <AnimatePresence initial={false}>
+                <motion.img
                   key={activeProject.id}
-                  thumbnails={activeProject.thumbnails}
-                  fallback={activeProject.thumbnail}
+                  src={activeProject.thumbnail}
                   alt={activeProject.title}
-                  className="absolute inset-0 w-full h-full"
-                  showIndicators={true}
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                 />
-              ) : (
-                <AnimatePresence initial={false}>
-                  <motion.img
-                    key={activeProject.id}
-                    src={activeProject.thumbnail}
-                    alt={activeProject.title}
-                    initial={{ opacity: 0, scale: 1.03 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                </AnimatePresence>
-              )
+              </AnimatePresence>
             )}
           </div>
         }
@@ -88,13 +76,12 @@ export default function Projects() {
 
               {/* Card Full-bleed Image */}
               <div className="vb-mobile-card-img-wrap">
-                <ProjectThumbnailSlideshow
-                  thumbnails={project.thumbnails}
-                  fallback={project.thumbnail}
+                <img
+                  src={project.thumbnail}
                   alt={project.title}
-                  className="w-full h-full"
-                  imgClassName="transition-transform duration-500 ease-out group-hover:scale-105"
-                  showIndicators={true}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </div>
             </Link>

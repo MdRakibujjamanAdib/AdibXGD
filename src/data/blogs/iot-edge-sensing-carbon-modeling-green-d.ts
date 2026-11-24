@@ -57,7 +57,7 @@ const blog: Blog = {
 
 <div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
-    src="/images/projects/greend-smart-home.png"
+    src="/images/projects/greend-smart-home.webp"
     alt="Green D Smart Home IoT Sensor Integration Overview"
     class="w-full object-cover rounded-[18px] max-h-[440px]"
   />
@@ -103,7 +103,7 @@ export class TelemetryAggregator {
 
 <div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
-    src="/images/projects/greend-receipt.png"
+    src="/images/projects/greend-receipt.webp"
     alt="Computer Vision OCR Receipt Extraction in Green D"
     class="w-full object-cover rounded-[18px] max-h-[440px]"
   />

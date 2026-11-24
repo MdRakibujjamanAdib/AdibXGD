@@ -13,20 +13,20 @@ const project: Project = {
         "<p style='text-align: justify;'>Green D required a cohesive brand identity that represents sustainability, innovation, and technological credibility. The objective was to design a scalable visual system suitable for digital platforms, software products, and corporate communication.</p>\
         \
         <p style='text-align: justify; margin-top: 30px;'><b>Logo Design & Concept:</b> The primary logo merges a leaf-inspired symbol with subtle digital cues, representing the connection between nature and technology. The mark was engineered for clarity across web, app interfaces, and print applications while maintaining strong recognizability.</p>\
-        <img src='/images/projects/green-d-logo.png' alt='Green D sustainable technology logo design combining leaf and digital elements' style='width:100%; margin:20px 0 30px 0;' />\
+        <img src='/images/projects/green-d-logo.webp' alt='Green D sustainable technology logo design combining leaf and digital elements' style='width:100%; margin:20px 0 30px 0;' />\
         \
         <p style='text-align: justify; margin-top: 30px;'><b>Visual Identity & Color Strategy:</b> The brand palette is built around deep green tones paired with clean whites and neutral accents to communicate environmental responsibility and transparency. The identity system ensures visual consistency across marketing assets, dashboards, and promotional materials.</p>\
-        <img src='/images/projects/green-d-branding.png' alt='Green D brand identity application mockup' style='width:100%; margin:20px 0 30px 0;' />\
+        <img src='/images/projects/green-d-branding.webp' alt='Green D brand identity application mockup' style='width:100%; margin:20px 0 30px 0;' />\
         \
         <p style='text-align: justify; margin-top: 30px;'><b>Brand Applications & Implementation:</b> The identity extends into digital interfaces, website layouts, stationery, and presentation materials. A structured typography system and spacing grid were developed to maintain hierarchy and balance across all brand touchpoints.</p>\
-        <img src='/images/projects/green-d-id-card.png' alt='Green D branding mockups and visual system usage' style='width:100%; margin:20px 0 30px 0;' />\
+        <img src='/images/projects/green-d-id-card.webp' alt='Green D branding mockups and visual system usage' style='width:100%; margin:20px 0 30px 0;' />\
         \
         <p style='text-align: justify; margin-top: 20px;'>This project demonstrates expertise in brand strategy, logo development, scalable design systems, and cross-platform visual identity implementation for modern tech startups.</p>",
-    thumbnail: "/images/projects/green-d-id-card.png",
+    thumbnail: "/images/projects/green-d-id-card.webp",
     images: [
-        "/images/projects/green-d-logo.png",
-        "/images/projects/green-d-branding.png",
-        "/images/projects/green-d-id-card.png"
+        "/images/projects/green-d-logo.webp",
+        "/images/projects/green-d-branding.webp",
+        "/images/projects/green-d-id-card.webp"
     ],
     tags: [
         "Brand Identity Design",

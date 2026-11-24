@@ -12,10 +12,10 @@ const project: Project = {
     description: "<p style='text-align: justify;'>This project holds special significance as my very first foray into 3D computer graphics and digital modeling, built in Autodesk Maya. It was designed as an aesthetic exploration of abstract geometry, form relationships, and material color theory.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Primitive Manipulation & Clean Beveling:</b> The composition balances contrasting primitives—fluted cylindrical columns, smooth torus rings with embossed keyways, spherical accents, and intersecting planar sheets. Every edge was beveled to capture clean specular light roll-offs without pinching.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Studio LookDev & Color Harmony:</b> The palette blends soft blush pinks, warm cream tones, and deep terracotta with an emerald green hero torus and a mirror-finish chrome disc. A multi-point studio lighting rig casts crisp directional shadows and soft ambient fill, highlighting surface glossiness and material contrast.</p>",
-    thumbnail: "/images/projects/geometric-shapes-first-3d-maya-project-01.jpg",
+    thumbnail: "/images/projects/geometric-shapes-first-3d-maya-project-01.webp",
     images: [
-        "/images/projects/geometric-shapes-first-3d-maya-project-01.jpg",
-        "/images/projects/geometric-shapes-first-3d-maya-project-02.jpg"
+        "/images/projects/geometric-shapes-first-3d-maya-project-01.webp",
+        "/images/projects/geometric-shapes-first-3d-maya-project-02.webp"
     ],
     tags: [
         "Autodesk Maya",

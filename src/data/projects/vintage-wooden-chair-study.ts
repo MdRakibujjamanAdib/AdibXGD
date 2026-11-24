@@ -12,9 +12,9 @@ const project: Project = {
     description: "<p style='text-align: justify;'>A focused hard-surface and material recreation study centered on an aged mid-century wooden dining chair. Built to explore authentic surface aging, procedural wood grain mapping, and subtle organic imperfections that distinguish real-world craftsmanship from sterile digital models.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Bentwood Curves & Structural Jointing:</b> The curved backrest, steam-bent support bows, and turned legs were drafted with attention to realistic joinery and wood turnings. Subtle asymmetries and softened corners replicate years of functional use.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Material Degradation & Studio Lighting:</b> The texture maps depict a dark stained oak with areas of rubbed-off varnish across the central seat and back crest where hands and clothing naturally contact the surface. Rendered at ultra-high 4000x4000 resolution against a neutral studio backdrop to emphasize micro-surface roughness and light scattering.</p>",
-    thumbnail: "/images/projects/vintage-wooden-chair-3d-study-render.jpg",
+    thumbnail: "/images/projects/vintage-wooden-chair-3d-study-render.webp",
     images: [
-        "/images/projects/vintage-wooden-chair-3d-study-render.jpg"
+        "/images/projects/vintage-wooden-chair-3d-study-render.webp"
     ],
     tags: [
         "3ds Max",

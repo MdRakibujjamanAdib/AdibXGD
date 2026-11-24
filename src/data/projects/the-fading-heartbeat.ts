@@ -8,7 +8,7 @@ const project: Project = {
     summary: "A short documentary exploring the heritage and economic struggle behind the handwoven Tangail saree industry.",
     description: "<p style='text-align: justify;'>The Fading Heartbeat is a short documentary that follows the full journey of a traditional Tangail saree, from dyeing and spinning the thread to the final, precise fold before it reaches the customer. Directed and edited by <b>Md Rakibujjaman Adib</b>, the film focuses not only on the visual beauty of the craft but also on the structural issues that threaten its survival, including the Mahajan-controlled middleman system and the gradual decline of active looms due to inconsistent sales.</p>\
 <p style='text-align: justify; margin-top: 20px;'>The rhythmic <b>khut-khut</b> sound of the handlooms has long been the heartbeat of this community, yet that rhythm is slowly fading. Through on-location sound, visuals, and conversations with weavers, the documentary captures both the pride of generations of artisans and the harsh reality of their economic vulnerability. The film stands as a record of a disappearing tradition and a reminder that every Tangail saree carries labor, memory, and identity woven into every thread.</p>",
-    thumbnail: "/images/projects/the-fading-heartbeat-tangail-saree.png",
+    thumbnail: "/images/projects/the-fading-heartbeat-tangail-saree.webp",
     videoUrl: "https://youtu.be/S2vfwbJhwW4",
     tags: [
         "Documentary",

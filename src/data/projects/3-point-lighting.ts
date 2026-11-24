@@ -9,17 +9,17 @@ const project: Project = {
     summary: "Cinematic 3D watch render demonstrating a structured 3-point lighting setup for balanced shadows and professional product presentation.",
     description: "<p style='text-align: justify;'>This study applies the classic 3-point lighting technique to a detailed 3D watch model using Autodesk Maya and Chaos V-Ray.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Key Light:</b> The primary illumination source defining the watch’s overall form and generating structured shadows.</p>\
-<img src='/images/projects/key-light-render.png' alt='Key light only render of 3D watch model in V-Ray' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/key-light-render.webp' alt='Key light only render of 3D watch model in V-Ray' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 30px;'><b>Fill Light:</b> A softer secondary light reducing harsh contrast while preserving surface detail.</p>\
-<img src='/images/projects/fill-light-render.png' alt='Fill light render softening shadows on 3D watch model' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/fill-light-render.webp' alt='Fill light render softening shadows on 3D watch model' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 30px;'><b>Back (Rim) Light:</b> Positioned behind the subject to create subtle edge separation and enhance depth.</p>\
-<img src='/images/projects/back-light-render.png' alt='Back rim light render creating edge separation on 3D watch' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/back-light-render.webp' alt='Back rim light render creating edge separation on 3D watch' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 20px;'>The final combined setup achieves controlled shadow gradients and a cinematic product presentation suitable for professional visualization.</p>",
-    thumbnail: "/images/projects/full-render.png",
+    thumbnail: "/images/projects/full-render.webp",
     images: [
-        "/images/projects/key-light-render.png",
-        "/images/projects/fill-light-render.png",
-        "/images/projects/back-light-render.png"
+        "/images/projects/key-light-render.webp",
+        "/images/projects/fill-light-render.webp",
+        "/images/projects/back-light-render.webp"
     ],
     tags: [
         "3D Lighting",

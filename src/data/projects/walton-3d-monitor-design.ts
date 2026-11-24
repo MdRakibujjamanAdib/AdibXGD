@@ -11,16 +11,16 @@ const project: Project = {
     description: "<p style='text-align: justify;'>This project was an industrial 3D product modeling assignment centered on creating a millimeter-accurate prototype for Walton, the premier consumer tech and electronics manufacturer in Bangladesh. The design focused on an unreleased commercial monitor concept, with reference photography procured through academic faculty directly from the company.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Millimeter-Accurate Reverse Engineering:</b> Guided by multi-angle reference photos, the monitor chassis, micro-edge bezels, VESA mounting hub, and ergonomic stand were drafted with CAD-level precision. Every bevel radius, port cut-out, and cooling vent was aligned to production specifications.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Photorealistic Product LookDev:</b> Materials were engineered to reflect modern hardware finishes: textured matte polymers for the rear housing, brushed aluminum along the support neck and base, and an anti-glare micro-diffusive glass panel. Rendered in clean studio lighting with soft specular highlights that emphasize the display's slim profile.</p>",
-    thumbnail: "/images/projects/walton-3d-monitor-design-prototype-02.jpg",
+    thumbnail: "/images/projects/walton-3d-monitor-design-prototype-02.webp",
     thumbnails: [
-        "/images/projects/walton-3d-monitor-design-prototype-02.jpg",
-        "/images/projects/walton-3d-monitor-design-prototype-01.jpg",
-        "/images/projects/walton-3d-monitor-design-prototype-03.jpg"
+        "/images/projects/walton-3d-monitor-design-prototype-02.webp",
+        "/images/projects/walton-3d-monitor-design-prototype-01.webp",
+        "/images/projects/walton-3d-monitor-design-prototype-03.webp"
     ],
     images: [
-        "/images/projects/walton-3d-monitor-design-prototype-02.jpg",
-        "/images/projects/walton-3d-monitor-design-prototype-01.jpg",
-        "/images/projects/walton-3d-monitor-design-prototype-03.jpg"
+        "/images/projects/walton-3d-monitor-design-prototype-02.webp",
+        "/images/projects/walton-3d-monitor-design-prototype-01.webp",
+        "/images/projects/walton-3d-monitor-design-prototype-03.webp"
     ],
     tags: [
         "3ds Max",
@@ -52,7 +52,7 @@ const project: Project = {
             },
             {
                 property: "og:image",
-                content: "/images/projects/walton-3d-monitor-design-prototype-02.jpg"
+                content: "/images/projects/walton-3d-monitor-design-prototype-02.webp"
             }
         ]
     }

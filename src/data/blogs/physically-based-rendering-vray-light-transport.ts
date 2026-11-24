@@ -63,7 +63,7 @@ const blog: Blog = {
 
 <div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
-    src="/images/projects/vray-light-projection.png"
+    src="/images/projects/vray-light-projection.webp"
     alt="V-Ray Textured Gobo Light Projection and Fog Interaction"
     class="w-full object-cover rounded-[18px] max-h-[440px]"
   />
@@ -99,7 +99,7 @@ const blog: Blog = {
 
 <div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
   <img
-    src="/images/projects/vray-dof-final.png"
+    src="/images/projects/vray-dof-final.webp"
     alt="V-Ray Physical Camera Bokeh and Circle of Confusion Study"
     class="w-full object-cover rounded-[18px] max-h-[440px]"
   />

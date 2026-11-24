@@ -12,9 +12,9 @@ const project: Project = {
     description: "<p style='text-align: justify;'>This project represents a defining milestone in my 3D journey: my very first texturing project inside Adobe Substance 3D Painter. Stepping into procedural physically based rendering (PBR) workflows unlocked an entirely new standard of surface realism and material fidelity.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Material Layering & Wear Physics:</b> The battle axe features distinct material zones, each built with multi-layered roughness and height maps: a forged carbon steel blade with micro-chipping and sharpened edge highlights, an aged wooden haft with directional grain cracking, and a tight leather grip complete with stitching and palm sweat discoloration.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Environment LookDev & Presentation:</b> The completed asset was staged against an open mountain ridge panoramic HDRI environment. The natural sky and cloud reflections highlight the anisotropic metallic response along the blade curvature and the authentic matte feel of the carved timber shaft.</p>",
-    thumbnail: "/images/projects/battle-axe-substance-3d-painter-texturing.jpg",
+    thumbnail: "/images/projects/battle-axe-substance-3d-painter-texturing.webp",
     images: [
-        "/images/projects/battle-axe-substance-3d-painter-texturing.jpg"
+        "/images/projects/battle-axe-substance-3d-painter-texturing.webp"
     ],
     tags: [
         "Substance 3D Painter",

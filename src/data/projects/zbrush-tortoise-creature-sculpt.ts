@@ -11,20 +11,20 @@ const project: Project = {
   description: "<p style='text-align: justify;'>Completed as an advanced digital sculpting milestone in Pixologic ZBrush, this project explores the organic anatomy and complex shell structures of a land tortoise. The model was conceptualized, blocked, and sculpted entirely within ZBrush, focusing on layered organic textures from rough carapace scutes to soft reptilian neck folds.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Carapace & Plastron Sculpting:</b> The rigid shell was constructed with anatomical fidelity, dividing the carapace into vertebrate, costal, and marginal scutes with realistic growth ring striations. Custom alpha stamps and directional sculpting brushes were used to impart weathered ridges, chips, and micro-fossils consistent with aged reptile armor.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Skin Texture & Turntable Presentation:</b> The head, retractable neck, and clawed extremities exhibit dense reptilian tuberculate scales, sagging skin folds, and skin-membrane transitions sculpted using multi-level subdivision passes. The showcase concludes with an internally captured ZBrush turntable video illustrating silhouette balance, depth lighting, and sculptural volume from every angle.</p>",
-  thumbnail: "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.png",
+  thumbnail: "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.webp",
   thumbnails: [
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-02.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-03.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-04.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-05.png"
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-02.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-03.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-04.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-05.webp"
   ],
   images: [
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-02.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-03.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-04.png",
-    "/images/projects/zbrush-tortoise-creature-sculpt-wip-05.png"
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-02.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-03.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-04.webp",
+    "/images/projects/zbrush-tortoise-creature-sculpt-wip-05.webp"
   ],
   videoUrl: "/images/projects/zbrush-tortoise-creature-turntable.mp4",
   tags: [
@@ -58,7 +58,7 @@ const project: Project = {
       },
       {
         property: "og:image",
-        content: "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.png"
+        content: "/images/projects/zbrush-tortoise-creature-sculpt-wip-01.webp"
       }
     ]
   }

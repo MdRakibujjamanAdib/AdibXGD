@@ -10,14 +10,14 @@ const project: Project = {
     summary: "A stylized low poly village environment created in Autodesk Maya, focusing on simplified geometry, color harmony, and cartoon-inspired world building.",
     description: "<p style='text-align: justify;'>This project is a stylized low poly village environment created in Autodesk Maya as an exploration of simplified modeling and cartoon-style world building. The goal was to focus on form, silhouette, and color rather than high-detail realism, resulting in a clean and playful environment.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Low Poly Modeling Approach:</b> All buildings, barrels, trees, and environmental elements were constructed using simple geometry with minimal subdivisions. The emphasis was placed on strong shapes and readable silhouettes to maintain clarity even from a distance.</p>\
-<img src='/images/projects/low-poly-village-window-view.jpg' alt='Low poly cartoon style village environment modeled in Autodesk Maya' style='width:100%; margin:20px 0 30px 0;' />\
+<img src='/images/projects/low-poly-village-window-view.webp' alt='Low poly cartoon style village environment modeled in Autodesk Maya' style='width:100%; margin:20px 0 30px 0;' />\
 <p style='text-align: justify; margin-top: 30px;'><b>Color & Stylization:</b> A warm desert-inspired palette was used for the buildings, contrasted with bright blue accents and soft sky tones to enhance the cartoon aesthetic. Flat shading and clean lighting reinforce the stylized look without relying on complex textures.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Environment Composition:</b> The scene was arranged to create depth through foreground elements such as stacked barrels and mid-ground architectural layers. Simple stairs, balconies, and palm trees add variation while keeping the scene visually cohesive.</p>\
 <p style='text-align: justify; margin-top: 20px;'>This project demonstrates my ability to work in a stylized 3D pipeline, balancing modeling efficiency with strong visual storytelling. It highlights versatility beyond realistic rendering, showcasing skills in low poly asset creation and environment design.</p>",
-    thumbnail: "/images/projects/low-poly-village-overview.jpg",
+    thumbnail: "/images/projects/low-poly-village-overview.webp",
     images: [
-        "/images/projects/low-poly-village-overview.jpg",
-        "/images/projects/low-poly-village-window-view.jpg"
+        "/images/projects/low-poly-village-overview.webp",
+        "/images/projects/low-poly-village-window-view.webp"
     ],
     tags: [
         "Low Poly",

@@ -11,12 +11,12 @@ const project: Project = {
   description: "<p style='text-align: justify;'>Marking a foundational debut into professional digital motion design, this project was authored as the artist's first official motion graphics assignment in Adobe After Effects. Staged in a tranquil oceanic ecosystem, the piece choreographs layered marine organisms, ambient sea currents, and gentle aquatic flora into a cohesive visual narrative.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Layered Composition & Parallax Depth:</b> Built from custom vector assets, the composition establishes multiple depth planes—foreground coral silhouettes, midground marine fauna, and atmospheric deep-water gradients. By parenting position and scale transforms with subtle speed differentials, the camera movement produces a multiplane parallax depth mimicking real ocean cinematography.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Graph Editor & Timing Discipline:</b> A key technical breakthrough in this debut project was moving beyond linear keyframes into customized Bézier speed and value curves within the After Effects Graph Editor. Non-linear easing imparts organic deceleration and buoyant drift to floating bubbles, undulating seaweeds, and gliding aquatic life.</p>",
-  thumbnail: "/images/projects/underwater-life-motion-graphics-thumbnail.png",
+  thumbnail: "/images/projects/underwater-life-motion-graphics-thumbnail.webp",
   thumbnails: [
-    "/images/projects/underwater-life-motion-graphics-thumbnail.png"
+    "/images/projects/underwater-life-motion-graphics-thumbnail.webp"
   ],
   images: [
-    "/images/projects/underwater-life-motion-graphics-thumbnail.png"
+    "/images/projects/underwater-life-motion-graphics-thumbnail.webp"
   ],
   videoUrl: "/images/projects/underwater-life-motion-graphics-after-effects.mp4",
   tags: [
@@ -50,7 +50,7 @@ const project: Project = {
       },
       {
         property: "og:image",
-        content: "/images/projects/underwater-life-motion-graphics-thumbnail.png"
+        content: "/images/projects/underwater-life-motion-graphics-thumbnail.webp"
       }
     ]
   }
