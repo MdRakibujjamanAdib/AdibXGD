@@ -2,398 +2,257 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://adibx.me</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://adibx.me/about</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adibx.me/services</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adibx.me/achievements</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adibx.me/contact</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adibx.me/terms</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adibx.me/privacy</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/3-Point-Lighting</loc>
     <lastmod>2025-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/3d-stage-modeling</loc>
     <lastmod>2024-04-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/battle-axe-substance-texturing</loc>
-    <lastmod>2024-07-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/Vray-Chess-Board</loc>
     <lastmod>2025-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/eid-mubarak-typography-graphic-design</loc>
-    <lastmod>2024-04-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/evergreen-token-ui-ux</loc>
-    <lastmod>2024-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/flour-sack-2d-animation</loc>
-    <lastmod>2023-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/gadget-n-gadget-website</loc>
-    <lastmod>2024-10-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/game-environment-design-3ds-max-vray</loc>
-    <lastmod>2024-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/geometric-shape-maya-first-project</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/green-d-brand-identity</loc>
-    <lastmod>2024-02-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/green-d-web</loc>
-    <lastmod>2024-02-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/green-d-website</loc>
-    <lastmod>2024-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/Low-Poly-Village</loc>
     <lastmod>2025-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/massfx-physics-ball-simulation</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/mct-labs-web</loc>
-    <lastmod>2023-12-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/realistic-3d-room-environment</loc>
-    <lastmod>2024-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/retro-tv-3d-asset</loc>
-    <lastmod>2024-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/robotic-arm-ball-pickup-3d-animation</loc>
-    <lastmod>2023-12-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/shark-3d-sculpt-and-swim-animation</loc>
-    <lastmod>2024-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/The-Fading-Heartbeat</loc>
-    <lastmod>2022-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/traditional-fabric-substance-texturing</loc>
-    <lastmod>2024-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/underwater-life-motion-graphics</loc>
-    <lastmod>2023-10-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/vintage-wooden-chair-study</loc>
-    <lastmod>2024-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/vray-architectural-environment-design</loc>
-    <lastmod>2024-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/vray-atmospheric-environment-fog</loc>
-    <lastmod>2024-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/Vray-Depth-Of-Field</loc>
     <lastmod>2025-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/Vray-Light-Projection-Fog</loc>
     <lastmod>2025-10-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/Vray-Lighting-Study</loc>
     <lastmod>2025-10-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/vray-shoe-commercial-animation</loc>
-    <lastmod>2024-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/projects/walton-3d-monitor-design</loc>
-    <lastmod>2024-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/Walton-Trade-Fair-Stall</loc>
     <lastmod>2025-12-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/battle-axe-substance-texturing</loc>
+    <lastmod>2024-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/eid-mubarak-typography-graphic-design</loc>
+    <lastmod>2024-04-09</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/evergreen-token-ui-ux</loc>
+    <lastmod>2024-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/flour-sack-2d-animation</loc>
+    <lastmod>2023-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/gadget-n-gadget-website</loc>
+    <lastmod>2024-10-29</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/game-environment-design-3ds-max-vray</loc>
+    <lastmod>2024-05-02</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/geometric-shape-maya-first-project</loc>
+    <lastmod>2024-01-15</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/green-d-brand-identity</loc>
+    <lastmod>2024-02-01</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/green-d-web</loc>
+    <lastmod>2024-02-23</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/green-d-website</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/massfx-physics-ball-simulation</loc>
+    <lastmod>2024-01-15</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/mct-labs-web</loc>
+    <lastmod>2023-12-10</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/realistic-3d-room-environment</loc>
+    <lastmod>2024-03-10</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/retro-tv-3d-asset</loc>
+    <lastmod>2024-06-15</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/robotic-arm-ball-pickup-3d-animation</loc>
+    <lastmod>2023-12-05</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/shark-3d-sculpt-and-swim-animation</loc>
+    <lastmod>2024-05-18</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/The-Fading-Heartbeat</loc>
+    <lastmod>2022-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/traditional-fabric-substance-texturing</loc>
+    <lastmod>2024-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/underwater-life-motion-graphics</loc>
+    <lastmod>2023-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/vintage-wooden-chair-study</loc>
+    <lastmod>2024-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/vray-architectural-environment-design</loc>
+    <lastmod>2024-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/vray-atmospheric-environment-fog</loc>
+    <lastmod>2024-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/vray-shoe-commercial-animation</loc>
+    <lastmod>2024-02-14</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/walton-3d-monitor-design</loc>
+    <lastmod>2024-05-22</lastmod>
   </url>
   <url>
     <loc>https://adibx.me/projects/zbrush-hand-anatomy-sculpting</loc>
     <lastmod>2024-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/projects/zbrush-tortoise-creature-sculpt</loc>
     <lastmod>2024-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/ai-automation-for-small-businesses</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/autonomous-multimodal-ai-workflows-mct-labs</loc>
-    <lastmod>2025-11-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/building-applications-with-ai-assisted-coding</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/competitive-programming-algorithmic-optimization-byte-battle</loc>
-    <lastmod>2025-08-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/graphic-design-for-small-businesses</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/hire-freelance-web-developer-bangladesh</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/hire-graphic-designer-bangladesh</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/hire-web-developer-netherlands</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/international-experience-creative-technology</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/international-game-development-teamwork</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/iot-edge-sensing-carbon-modeling-green-d</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/logo-design-vs-brand-identity</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/mastering-vray-lighting-complete-visual-guide</loc>
-    <lastmod>2025-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/my-erasmus-scholarship-journey-netherlands</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/physically-based-rendering-vray-light-transport</loc>
-    <lastmod>2025-09-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/professional-restaurant-menu-design</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/unity-serious-games-architecture-windesheim</loc>
-    <lastmod>2026-01-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/vray-light-projection-gobo-textures</loc>
-    <lastmod>2025-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://adibx.me/blogs/vray-physical-camera-cinematic-depth-of-field</loc>
-    <lastmod>2025-10-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/website-development-cost-bangladesh</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/what-is-a-creative-technologist</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/why-small-businesses-need-a-website</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adibx.me/blogs/wordpress-vs-nextjs-business-websites</loc>
     <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/unity-serious-games-architecture-windesheim</loc>
+    <lastmod>2026-01-18</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/iot-edge-sensing-carbon-modeling-green-d</loc>
+    <lastmod>2025-12-05</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/autonomous-multimodal-ai-workflows-mct-labs</loc>
+    <lastmod>2025-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/vray-physical-camera-cinematic-depth-of-field</loc>
+    <lastmod>2025-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/mastering-vray-lighting-complete-visual-guide</loc>
+    <lastmod>2025-10-15</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/vray-light-projection-gobo-textures</loc>
+    <lastmod>2025-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/physically-based-rendering-vray-light-transport</loc>
+    <lastmod>2025-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/competitive-programming-algorithmic-optimization-byte-battle</loc>
+    <lastmod>2025-08-12</lastmod>
   </url>
 </urlset>

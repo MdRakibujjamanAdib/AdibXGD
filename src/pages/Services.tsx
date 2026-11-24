@@ -85,8 +85,8 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Services"
-        description="Explore services across Autonomous AI Systems, Web & App Development, UI/UX Design, 3D Animation, and Brand Identity."
+        title="Web Development & AI Automation Services"
+        description="Get help with business websites, custom web apps, and AI workflow automation. Explore additional services in brand design, UI/UX, and 3D animation."
       />
 
       <PortfolioLayout
@@ -97,15 +97,19 @@ export default function Services() {
         headerCard={
           <div className="flex flex-col justify-between min-h-[130px] md:min-h-[160px] xl:min-h-[190px] p-6 md:p-10 xl:p-12">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--vb-text)] leading-[1.1]">
-              Our Services
+              Web Development &amp; AI Automation Services
             </h1>
 
             <p className="text-sm md:text-[15px] text-[var(--vb-text-muted)] leading-relaxed max-w-xl font-sans mt-6 md:mt-8">
-              Transform your brand with future-ready digital craftsmanship. We specialize in autonomous AI architectures, modern fullstack web systems, photorealistic 3D visuals, and cohesive brand design.
+              I build websites and web apps, and automate repetitive workflows with AI. I also offer brand identity, UI/UX design, and 3D visualization.
             </p>
           </div>
         }
       >
+        <ul className="flex flex-wrap gap-x-6 gap-y-2 px-6 text-sm text-[var(--vb-text)]">
+          <li><Link className="underline underline-offset-4" to="/projects/green-d-website">Web development case study: Green D</Link></li>
+          <li><Link className="underline underline-offset-4" to="/projects/mct-labs-web">AI tools case study: MCT Labs</Link></li>
+        </ul>
         {/* Sticky Search by Category Card */}
         <section
           className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-6 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-none backdrop-blur-md transition-colors duration-300"

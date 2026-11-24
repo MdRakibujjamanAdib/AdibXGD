@@ -24,7 +24,7 @@ export interface SEOProps {
 
 export default function SEO({
     title,
-    description,
+    description: defaultDescription,
     name = "Md Rakibujjaman Adib",
     type = "website",
     image = "https://adibx.me/MdRakibujamanAdib.jpg",
@@ -34,6 +34,9 @@ export default function SEO({
     customMeta = [],
     article
 }: SEOProps) {
+    const description = customMeta.find(
+        meta => meta.name?.trim().toLowerCase() === 'description' && meta.content.trim()
+    )?.content.trim() || defaultDescription;
     const baseUrl = "https://adibx.me";
 
     // URL resolution — always canonical production domain
@@ -49,7 +52,7 @@ export default function SEO({
     const cleanTitle = (title || '').replace(regex, '').trim();
 
     const siteTitle = cleanTitle === "Home" || cleanTitle === ""
-        ? `${name} | Web Developer & Graphic Designer`
+        ? `${name} | Web Developer & AI Automation Specialist`
         : `${cleanTitle} | ${name}`;
 
     // Keywords
@@ -313,7 +316,7 @@ export default function SEO({
             <meta name="twitter:image" content={absoluteImage} />
 
             {/* Custom metadata tags */}
-            {customMeta.map((meta, i) => (
+            {customMeta.filter(meta => meta.name?.trim().toLowerCase() !== 'description').map((meta, i) => (
                 <meta key={i} {...meta} />
             ))}
 
