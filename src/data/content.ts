@@ -9,7 +9,7 @@ export const personalInfo = {
   location: "Bangladesh",
   social: {
     linkedin: "https://www.linkedin.com/in/md-rakibujjaman-adib/",
-    instagram: "https://www.instagram.com/md_rakibujjaman_adib/",
+    instagram: "https://www.instagram.com/adibx.me/",
     github: "https://github.com/MdRakibujjamanAdib/",
     facebook: "https://www.facebook.com/100004915484562",
     tiktok: "https://www.tiktok.com/@md_rakibujjaman_adib",

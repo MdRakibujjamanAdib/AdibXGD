@@ -160,7 +160,7 @@ export function getRouteJsonLd(routePath: string): object {
         sameAs: [
           'https://www.linkedin.com/in/md-rakibujjaman-adib/',
           'https://github.com/MdRakibujjamanAdib/',
-          'https://www.instagram.com/md_rakibujjaman_adib/',
+          'https://www.instagram.com/adibx.me/',
           'https://www.facebook.com/100004915484562',
         ],
       },
