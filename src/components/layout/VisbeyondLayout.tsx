@@ -81,7 +81,7 @@ export default function VisbeyondLayout({
       <div className="min-w-0 flex flex-col gap-3">
         {headerCard && (
           <section
-            className={`relative overflow-visible bg-[var(--vb-panel)] rounded-[12px] border border-[var(--vb-border)] ${
+            className={`relative overflow-visible bg-[var(--vb-panel)] rounded-[var(--vb-radius)] border border-[var(--vb-border)] ${
               hideShowcaseOnMobile ? 'pt-16 sm:pt-20 xl:pt-0' : 'p-6 md:p-10 xl:p-12'
             }`}
             aria-label="Page header"

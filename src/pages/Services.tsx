@@ -106,7 +106,7 @@ export default function Services() {
       >
         {/* Sticky Search by Category Card (Exact Visbeyond Pattern) */}
         <section
-          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-8 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-xl backdrop-blur-md transition-colors duration-300"
+          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-8 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-none backdrop-blur-md transition-colors duration-300"
           aria-label="Filter services by category"
         >
           {/* Top Notch Row:
