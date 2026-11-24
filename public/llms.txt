@@ -14,10 +14,31 @@
 
 ## Articles
 
-- [Blog](https://adibx.me/blogs): Articles on web development, design, and creative technology.
-- [Hiring a freelance web developer in Bangladesh](https://adibx.me/blogs/hire-freelance-web-developer-bangladesh): How to evaluate freelance developers.
-- [Hiring a freelance web developer in the Netherlands](https://adibx.me/blogs/hire-web-developer-netherlands): How to assess experience, communication, and delivery.
-- [Logo design vs. brand identity](https://adibx.me/blogs/logo-design-vs-brand-identity): How a logo fits into a broader visual identity.
+- [Blog](https://adibx.me/blogs): Browse all articles.
+- [Finding Design Inspiration Beyond the Screen](https://adibx.me/blogs/finding-design-inspiration-beyond-the-screen)
+- [How AI Automation Can Help Small Businesses Save Time](https://adibx.me/blogs/ai-automation-for-small-businesses)
+- [Can You Build Real Applications Without Being an Expert Programmer?](https://adibx.me/blogs/building-applications-with-ai-assisted-coding)
+- [How Professional Graphic Design Helps Small Businesses Grow](https://adibx.me/blogs/graphic-design-for-small-businesses)
+- [How to Choose the Right Freelance Web Developer in Bangladesh](https://adibx.me/blogs/hire-freelance-web-developer-bangladesh)
+- [How to Choose the Right Graphic Designer for Your Business](https://adibx.me/blogs/hire-graphic-designer-bangladesh)
+- [How to Hire a Freelance Web Developer in the Netherlands](https://adibx.me/blogs/hire-web-developer-netherlands)
+- [Why International Experience Matters in Creative Technology](https://adibx.me/blogs/international-experience-creative-technology)
+- [What International Game Development Taught Me About Teamwork](https://adibx.me/blogs/international-game-development-teamwork)
+- [Logo Design vs Brand Identity: What Does Your Business Actually Need?](https://adibx.me/blogs/logo-design-vs-brand-identity)
+- [My Journey as an Erasmus+ Scholar in the Netherlands](https://adibx.me/blogs/my-erasmus-scholarship-journey-netherlands)
+- [Why Professional Restaurant Menu Design Matters](https://adibx.me/blogs/professional-restaurant-menu-design)
+- [How Much Does Website Development Cost in Bangladesh?](https://adibx.me/blogs/website-development-cost-bangladesh)
+- [What Is a Creative Technologist and Why Do Businesses Need One?](https://adibx.me/blogs/what-is-a-creative-technologist)
+- [Why Every Small Business Needs a Professional Website](https://adibx.me/blogs/why-small-businesses-need-a-website)
+- [WordPress vs Next.js: Which Is Better for Your Business Website?](https://adibx.me/blogs/wordpress-vs-nextjs-business-websites)
+- [Architecting Serious Games in Unity: Clean Systems, Heuristic Feedback, and Applied C#](https://adibx.me/blogs/unity-serious-games-architecture-windesheim)
+- [Engineering Green D: Real-Time IoT Power Telemetry, Receipt OCR Parsing, and Predictive Carbon Modeling](https://adibx.me/blogs/iot-edge-sensing-carbon-modeling-green-d)
+- [Building Autonomous Multimodal AI Workflows: From Natural Language to Real-Time Code Execution](https://adibx.me/blogs/autonomous-multimodal-ai-workflows-mct-labs)
+- [Physical Camera Optics & Cinematic Bokeh in Chaos V-Ray](https://adibx.me/blogs/vray-physical-camera-cinematic-depth-of-field)
+- [Mastering V-Ray Lighting: The Complete Visual Field Guide to Sun, HDRI, IES, Mesh, and Directional Rectangular Lights](https://adibx.me/blogs/mastering-vray-lighting-complete-visual-guide)
+- [Mastering Gobo Projections, Textured Rect Lights & Shadow Cookies in Chaos V-Ray](https://adibx.me/blogs/vray-light-projection-gobo-textures)
+- [Simulating Volumetric Fog & Atmospheric Light Scattering in Chaos V-Ray](https://adibx.me/blogs/physically-based-rendering-vray-light-transport)
+- [Algorithmic Optimization Under Pressure: Lessons from Winning the Byte Battle Championship](https://adibx.me/blogs/competitive-programming-algorithmic-optimization-byte-battle)
 
 ## Optional
 

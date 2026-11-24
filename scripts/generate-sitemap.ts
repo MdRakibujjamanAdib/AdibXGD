@@ -9,6 +9,21 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const siteUrl = 'https://adibx.me';
 const staticPaths = ['/', '/about', '/projects', '/services', '/blogs', '/achievements', '/contact', '/terms', '/privacy'];
 
+function updateLlmsArticles(blogs: Blog[]) {
+  const file = path.join(root, 'public', 'llms.txt');
+  const contents = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  const articlesSection = /^## Articles\n[\s\S]*?(?=^## |(?![\s\S]))/m;
+  if (!articlesSection.test(contents)) throw new Error('llms.txt is missing its Articles section.');
+
+  const links = blogs.map(({ title, slug }) => {
+    const label = title.replace(/[\r\n]+/g, ' ').replace(/[\\[\]]/g, '\\$&');
+    const url = new URL(`/blogs/${encodeURIComponent(slug)}`, siteUrl).href;
+    return `- [${label}](${url})`;
+  });
+  const section = ['## Articles', '', `- [Blog](${siteUrl}/blogs): Browse all articles.`, ...links, '', ''].join('\n');
+  fs.writeFileSync(file, contents.replace(articlesSection, () => section));
+}
+
 function sitemapDate(value: string): string | undefined {
   if (!value || Number.isNaN(Date.parse(value))) return undefined;
   // Preserve the editorial calendar date when the timestamp includes a time zone.
@@ -39,6 +54,7 @@ async function generateSitemap() {
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
 
     fs.writeFileSync(path.join(root, 'public', 'sitemap.xml'), sitemap);
+    updateLlmsArticles(blogs);
     const dist = path.join(root, 'dist');
     if (fs.existsSync(dist)) fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
     console.log(`Generated sitemap with ${entries.length} routes.`);
