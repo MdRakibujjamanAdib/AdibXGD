@@ -135,6 +135,24 @@ export function InvertedCornerBottomLeftFrame({ className = "w-[18px] h-[18px]" 
   );
 }
 
+// For Fixed Viewport Frame: top-right inner concave corner
+export function InvertedCornerTopRightFrame({ className = "w-[18px] h-[18px]" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 18 18" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M 18 0 L 18 18 C 18 8.059 9.941 0 0 0 Z" />
+    </svg>
+  );
+}
+
+// For Fixed Viewport Frame: top-left inner concave corner
+export function InvertedCornerTopLeftFrame({ className = "w-[18px] h-[18px]" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 18 18" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M 0 0 L 0 18 C 0 8.059 8.059 0 18 0 Z" />
+    </svg>
+  );
+}
+
 // For Fixed Viewport Frame: bottom-right inner concave corner
 export function InvertedCornerBottomRightFrame({ className = "w-[18px] h-[18px]" }: { className?: string }) {
   return (

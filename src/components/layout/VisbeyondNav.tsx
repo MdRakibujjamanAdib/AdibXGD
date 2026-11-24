@@ -7,6 +7,7 @@ import {
   InvertedCornerBottomLeft,
   InvertedCornerTopLeft,
   InvertedCornerTopRightBottom,
+  InvertedCornerTopRightFrame,
   InvertedCornerBottomLeftFrame,
   InvertedCornerBottomRightFrame,
 } from '../ui/VisbeyondIcons';
@@ -68,8 +69,9 @@ export default function VisbeyondNav({
 
   return (
     <>
-      {/* Signature Visbeyond Fixed Viewport Border Frame with mathematically curved bottom corners */}
+      {/* Signature Visbeyond Fixed Viewport Border Frame with mathematically curved corners */}
       <div className="vb-viewport-frame" aria-hidden="true">
+        <InvertedCornerTopRightFrame className="vb-viewport-corner-tr" />
         <InvertedCornerBottomLeftFrame className="vb-viewport-corner-bl" />
         <InvertedCornerBottomRightFrame className="vb-viewport-corner-br" />
       </div>

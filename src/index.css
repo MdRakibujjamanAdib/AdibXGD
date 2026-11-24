@@ -118,6 +118,7 @@ body.dark,
   transition: border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.vb-viewport-corner-tr,
 .vb-viewport-corner-bl,
 .vb-viewport-corner-br {
   position: absolute;
@@ -126,6 +127,11 @@ body.dark,
   color: var(--vb-bg);
   pointer-events: none;
   transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vb-viewport-corner-tr {
+  right: 0;
+  top: 0;
 }
 
 .vb-viewport-corner-bl {
