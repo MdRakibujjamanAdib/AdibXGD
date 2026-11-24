@@ -22,7 +22,7 @@ import {
   Zap,
   HelpCircle,
 } from 'lucide-react';
-import VisbeyondLayout from '../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
 import { personalInfo } from '../data/content';
 
@@ -71,7 +71,7 @@ export default function Terms() {
         description="Comprehensive Terms of Service, Copyright and Originality Protections, Startup Free Prototype Initiative, Milestone Payment Policies, and Privacy Protocol by Md Rakibujjaman Adib."
       />
 
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel={location.pathname === '/privacy' ? 'Privacy & NDA' : 'Terms & Conditions'}
         hideShowcaseOnMobile={false}
         footerSocialMode="all"
@@ -688,7 +688,7 @@ export default function Terms() {
             </div>
           </div>
         </section>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }

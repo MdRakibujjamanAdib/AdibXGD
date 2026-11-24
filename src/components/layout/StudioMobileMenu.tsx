@@ -6,14 +6,14 @@ import { ArrowRight } from 'lucide-react';
 import {
   InvertedCornerTopLeft,
   InvertedCornerTopRightBottom,
-} from '../ui/VisbeyondIcons';
+} from '../ui/StudioIcons';
 
-interface VisbeyondMobileMenuProps {
+interface StudioMobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function VisbeyondMobileMenu({ isOpen, onClose }: VisbeyondMobileMenuProps) {
+export default function StudioMobileMenu({ isOpen, onClose }: StudioMobileMenuProps) {
   const location = useLocation();
 
   const links = [
@@ -71,7 +71,7 @@ export default function VisbeyondMobileMenu({ isOpen, onClose }: VisbeyondMobile
               </span>
             </div>
 
-            {/* Bottom Menu Pill Links List matching visbeyond.com */}
+            {/* Bottom Menu Pill Links List matching Studio.com */}
             <div className="flex flex-col gap-2 w-full mt-auto pt-6">
               {links.map(link => {
                 const isActive = location.pathname === link.to;

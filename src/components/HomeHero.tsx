@@ -2,7 +2,7 @@ import RolloverText from './ui/RolloverText';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import VisbeyondNav from './layout/VisbeyondNav';
+import StudioNav from './layout/StudioNav';
 import {
   ArrowDown,
   ArrowRight,
@@ -32,7 +32,7 @@ import {
   InvertedCornerBottomRightTop,
   InvertedCornerTopLeft,
   InvertedCornerTopRightBottom,
-} from './ui/VisbeyondIcons';
+} from './ui/StudioIcons';
 
 // Dynamically feature projects that have `featured: true` in their individual project files, sorted by featuredOrder
 const featuredProjects = projects
@@ -121,7 +121,7 @@ export default function HomeHero() {
   return (
     <section className="vb-hero" data-theme={dark ? 'dark' : 'light'} aria-label="Portfolio">
       {/* Global Fixed Navigation Bar, Mobile Menu, and Viewport Frame */}
-      <VisbeyondNav
+      <StudioNav
         dark={dark}
         setDark={setDark}
         menuOpen={menuOpen}
@@ -192,7 +192,7 @@ export default function HomeHero() {
           <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </Link>
 
-        {/* Pagination Dots (Desktop only, Visbeyond styling) */}
+        {/* Pagination Dots (Desktop only, Studio styling) */}
         <div className="vb-pagination">
           {heroSlides.map((slide, itemIndex) => (
             <button
@@ -264,7 +264,7 @@ export default function HomeHero() {
           </Link>
         </div>
 
-        {/* Services Bento with Exact Visbeyond Arrow Swap Hover Effect */}
+        {/* Services Bento with Exact Studio Arrow Swap Hover Effect */}
         <div className="vb-services" id="portfolio-services">
           <div className="vb-section-heading">
             <h2>

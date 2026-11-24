@@ -225,7 +225,7 @@ describe('Tier 4: Real-World Application Scenarios (5 Workflows: TC-T4-WF-A to T
       'public/images/projects/mctlabs.png',
       'public/images/projects/vray-god-rays.jpg',
       'public/images/projects/greend-dashboard.png',
-      'public/images/visbeyond/FLGzcv8zFbjfvUIC7ezsCAJg128.png',
+      'public/images/studio/FLGzcv8zFbjfvUIC7ezsCAJg128.png',
     ];
 
     for (const imgPath of verifiedImages) {

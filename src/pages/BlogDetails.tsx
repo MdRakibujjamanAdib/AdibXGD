@@ -12,12 +12,12 @@ import {
   ArrowDown,
 } from 'lucide-react';
 import { blogs, Blog } from '../data/blogs';
-import VisbeyondLayout from '../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
 import {
   InvertedCornerTopRight,
   InvertedCornerBottomLeft,
-} from '../components/ui/VisbeyondIcons';
+} from '../components/ui/StudioIcons';
 
 export default function BlogDetails() {
   const { slug } = useParams<{ slug: string }>();
@@ -206,7 +206,7 @@ export default function BlogDetails() {
   // Not Found State
   if (!blog) {
     return (
-      <VisbeyondLayout pageLabel="Article Not Found">
+      <PortfolioLayout pageLabel="Article Not Found">
         <div className="vb-card p-12 text-center bg-[var(--vb-panel)] border border-[var(--vb-border)] rounded-[var(--vb-radius)]">
           <h1 className="text-3xl font-bold font-sans text-[var(--vb-text)] mb-4">
             Article Not Found
@@ -221,7 +221,7 @@ export default function BlogDetails() {
             <ArrowLeft size={16} /> Back to all articles
           </Link>
         </div>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     );
   }
 
@@ -302,12 +302,12 @@ export default function BlogDetails() {
         customKeywords={blog.tags}
         customMeta={blog.seo?.meta}
       />
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel={blog.category}
         showcaseChildren={blogShowcase}
         hideShowcaseOnMobile={true}
       >
-        {/* Top Hero Card (matching Visbeyond reference: Clean Title & Subtitle) */}
+        {/* Top Hero Card (matching Studio reference: Clean Title & Subtitle) */}
         <section
           className="vb-card pt-16 sm:pt-20 xl:pt-10 p-6 sm:p-8 md:p-10 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)]"
           aria-label="Article header"
@@ -323,7 +323,7 @@ export default function BlogDetails() {
           </p>
         </section>
 
-        {/* Three Separate Full-Width Metadata Cards: Category, Reading Time, Date (Visbeyond aesthetic) */}
+        {/* Three Separate Full-Width Metadata Cards: Category, Reading Time, Date (Studio aesthetic) */}
         <div className="flex flex-col gap-2 sm:gap-2.5 my-1" aria-label="Article metadata">
           {/* Row 1: Category */}
           <div className="vb-card flex items-center justify-between px-6 py-4 rounded-[var(--vb-radius)] bg-[var(--vb-panel)] border border-[var(--vb-border)]">
@@ -479,7 +479,7 @@ export default function BlogDetails() {
           </Link>
         </div>
 
-        {/* Visbeyond Orion Bottom Transition: Up Next Teaser Bento & Next Article Preview Card */}
+        {/* Studio Orion Bottom Transition: Up Next Teaser Bento & Next Article Preview Card */}
         {nextBlog && (
           <section className="flex flex-col gap-3" aria-label="Next article transition">
             {/* Up Next Bento Teaser */}
@@ -526,7 +526,7 @@ export default function BlogDetails() {
             </Link>
           </section>
         )}
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }

@@ -8,7 +8,7 @@ interface LottieIconProps {
   autoplay?: boolean;
 }
 
-export const VisbeyondLottieIcon: React.FC<LottieIconProps> = ({
+export const StudioLottieIcon: React.FC<LottieIconProps> = ({
   name,
   className = 'w-[72px] h-[72px]',
   loop = true,

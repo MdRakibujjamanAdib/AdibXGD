@@ -355,9 +355,9 @@ describe('Tier 2: Boundary & Corner Cases (50 Edge Tests across F1-F10)', () => 
   });
 
   // --------------------------------------------------------------------------
-  // Feature 6 (F6): Visbeyond Blog Listing Boundary Cases
+  // Feature 6 (F6): Portfolio Blog Listing Boundary Cases
   // --------------------------------------------------------------------------
-  describe('F6: Visbeyond Blog Listing Boundary Cases', () => {
+  describe('F6: Portfolio Blog Listing Boundary Cases', () => {
     it('E2E-T2-F06-01: Empty Blog Collection Fallback UI', async () => {
       await browser.navigate(`${baseUrl}/blogs`);
       const isAlive = await browser.evaluate<boolean>(`!document.querySelector('.error-boundary, #error-page')`);
@@ -553,9 +553,9 @@ describe('Tier 2: Boundary & Corner Cases (50 Edge Tests across F1-F10)', () => 
   });
 
   // --------------------------------------------------------------------------
-  // Feature 9 (F9): Visbeyond Dual-Theme Boundary Cases
+  // Feature 9 (F9): Portfolio Dual-Theme Boundary Cases
   // --------------------------------------------------------------------------
-  describe('F9: Visbeyond Dual-Theme Boundary Cases', () => {
+  describe('F9: Portfolio Dual-Theme Boundary Cases', () => {
     it('E2E-T2-F09-01: Zero Hardcoded text-white on Inverted Elements', async () => {
       await browser.navigate(`${baseUrl}/blogs`);
       const currentTheme = await browser.evaluate<string>(`document.documentElement.getAttribute('data-theme') || 'dark'`);

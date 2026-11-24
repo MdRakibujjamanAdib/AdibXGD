@@ -10,9 +10,9 @@ import {
   ChevronRight,
   ChevronsUpDown,
 } from 'lucide-react';
-import VisbeyondLayout from '../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
-import { VisbeyondLottieIcon } from '../components/ui/VisbeyondAnimatedIcons';
+import { StudioLottieIcon } from '../components/ui/StudioAnimatedIcons';
 
 // Default portrait photo for Adib (normal mode)
 const NORMAL_MODE_PHOTO = '/MdRakibujamanAdib.jpg?v=3';
@@ -69,7 +69,7 @@ const SECTION_MEDIA: Record<string, { label: string; defaultImg: string; images:
 };
 
 export default function About() {
-  // Main sections: collapsed by default (Visbeyond project-style rows)
+  // Main sections: collapsed by default
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     awards: false,
     experience: false,
@@ -163,7 +163,7 @@ export default function About() {
       dept: 'Dept. of Information Technology & Management (ITM), DIU',
       desc: 'Top finish in competitive programming, algorithmic optimization, and data structures.',
       isGold: true,
-      link: 'https://tinyurl.com/AdibBB',
+      link: 'https://daffodilvarsity.edu.bd/events-detail/406',
     },
     {
       title: 'Champion – Pixel to Program: MCT Programming Contest',
@@ -227,14 +227,14 @@ export default function About() {
       ],
     },
     {
-      role: 'Anti-Hack Associate & Social Media Manager',
+      role: 'Game Security Operations & Community Lead',
       company: 'GARENA FREE FIRE',
       location: 'Delhi, India & Regional',
       period: '14/11/2020 – 22/01/2024',
       website: 'https://ff.garena.com/',
       points: [
-        'Analyzed cheat files, tampered game clients, and potential security vulnerabilities with Garena engineering.',
-        'Supported the identification and banning of unauthorized tool users across Bangladesh, India, and Nepal.',
+        'Conducted game client integrity analysis and security vulnerability triage with Garena engineering teams.',
+        'Supported the detection and moderation of unauthorized exploits across Bangladesh, India, and Nepal.',
         'Managed Free Fire community platforms and player communications in Bangladesh with 100k+ engagement.',
         'Supported localization through in-game translation, copywriting, and coordinated community meetups.',
       ],
@@ -302,7 +302,7 @@ export default function About() {
       role: 'IT Lead',
       dept: 'Daffodil International University (DIU)',
       date: '21/07/2026',
-      link: 'https://tinyurl.com/IT-IALS17',
+      link: 'https://daffodilvarsity.edu.bd/events-detail/558',
     },
     {
       title: 'ITM Summit 2025',
@@ -368,7 +368,7 @@ export default function About() {
         description="Learn about Md Rakibujjaman Adib, Erasmus+ Game Developer, 3-time Champion, and Co-Founder of GREEN D."
       />
 
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel={activeLabel}
         showcaseChildren={
           <div className="relative w-full h-full overflow-hidden select-none bg-[var(--vb-bg)]">
@@ -463,25 +463,25 @@ export default function About() {
 
           <div className="vb-feature-grid">
             <div className="vb-feature-card">
-              <VisbeyondLottieIcon name="loop" />
+              <StudioLottieIcon name="loop" />
               <h3>Agile &amp; Rapid Sprints</h3>
               <p>Scale effortlessly with high-velocity turnaround, clean modular Unity architecture, and rapid prototyping.</p>
             </div>
 
             <div className="vb-feature-card">
-              <VisbeyondLottieIcon name="brush" />
+              <StudioLottieIcon name="brush" />
               <h3>Photorealistic 3D &amp; CGI</h3>
               <p>Endless visual fidelity with Chaos V-Ray, Corona, and Maya for physical lighting, shaders, and cinematic renders.</p>
             </div>
 
             <div className="vb-feature-card">
-              <VisbeyondLottieIcon name="board" />
+              <StudioLottieIcon name="board" />
               <h3>Transparent Collaboration</h3>
               <p>Get a dedicated workflow for all your project requests, milestone reviews, and active technical updates.</p>
             </div>
 
             <div className="vb-feature-card">
-              <VisbeyondLottieIcon name="trophy" />
+              <StudioLottieIcon name="trophy" />
               <h3>International Recognition</h3>
               <p>Proven global perspective shaped by an Erasmus+ scholarship in the Netherlands, cross-border client collaborations, and 6 podium finishes across programming, AI, and digital innovation.</p>
             </div>
@@ -984,7 +984,7 @@ export default function About() {
             )}
           </AnimatePresence>
         </section>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }

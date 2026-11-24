@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   Mail,
@@ -10,7 +11,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { personalInfo } from '../data/content';
-import VisbeyondLayout from '../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
 
 export default function Contact() {
@@ -77,7 +78,7 @@ export default function Contact() {
         description="Get in touch with Md Rakibujjaman Adib for AI architectures, full-stack web platforms, 3D CGI visuals, or Unity serious game development."
       />
 
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel="Contact"
         hideShowcaseOnMobile={false}
         footerSocialMode="all"
@@ -189,6 +190,7 @@ export default function Contact() {
                   type="text"
                   id="contact-name"
                   name="name"
+                  autoComplete="name"
                   value={formState.name}
                   onChange={handleChange}
                   required
@@ -209,6 +211,7 @@ export default function Contact() {
                   type="email"
                   id="contact-email"
                   name="email"
+                  autoComplete="email"
                   value={formState.email}
                   onChange={handleChange}
                   required
@@ -243,7 +246,7 @@ export default function Contact() {
                 </div>
               )}
 
-              {/* Action Button */}
+              {/* Action Button & Privacy Guarantee */}
               <div className="pt-2">
                 <button
                   type="submit"
@@ -256,11 +259,19 @@ export default function Contact() {
                     className="group-hover:translate-x-2 transition-transform text-[#e62e05]"
                   />
                 </button>
+
+                <p className="text-xs text-[var(--vb-text-muted)] font-sans mt-4 max-w-lg leading-relaxed">
+                  Your information is protected. We will only use your details to respond to your project inquiry in accordance with our{' '}
+                  <Link to="/terms#privacy" className="text-[var(--vb-text)] underline hover:text-[#e62e05] transition-colors">
+                    Privacy Policy
+                  </Link>
+                  . Information is kept strictly confidential and never shared with third parties.
+                </p>
               </div>
             </form>
           )}
         </div>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }

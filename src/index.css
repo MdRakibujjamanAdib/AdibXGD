@@ -39,7 +39,7 @@
 }
 
 /* ========================================================
-   VISBEYOND DESIGN SYSTEM - ROOT VARIABLES
+   PORTFOLIO STUDIO DESIGN SYSTEM - ROOT VARIABLES
    ======================================================== */
 
 :root,
@@ -105,7 +105,7 @@ body.dark,
   transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Visbeyond Fixed Viewport Border Frame */
+/* PORTFOLIO STUDIO Fixed Viewport Border Frame */
 .vb-viewport-frame {
   position: fixed;
   inset: 0;
@@ -778,7 +778,7 @@ body.dark,
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
-/* Dotted Border Section Headers (Visbeyond Signature) */
+/* Dotted Border Section Headers (PORTFOLIO STUDIO Signature) */
 .vb-services, .vb-recent, .vb-all-projects, .vb-faq, .vb-bottom-contact, .vb-footer {
   grid-column: 1 / -1;
   min-width: 0;
@@ -875,7 +875,7 @@ body.dark,
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Project Cards with Inverted Corner Badge (exact Visbeyond structure) */
+/* Project Cards with Inverted Corner Badge (exact PORTFOLIO STUDIO structure) */
 .vb-recent-card {
   position: relative;
   border-radius: 12px;
@@ -1119,7 +1119,7 @@ body.dark,
 
 
 /* ========================================================
-   EXACT VISBEYOND SIGNATURE GLOBAL FOOTER
+   EXACT PORTFOLIO STUDIO SIGNATURE GLOBAL FOOTER
    ======================================================== */
 
 .vb-footer-wrapper {
@@ -1131,7 +1131,7 @@ body.dark,
   margin-top: 2px;
 }
 
-/* 1. Visbeyond 5-Button Social & Contact Stack */
+/* 1. PORTFOLIO STUDIO 5-Button Social & Contact Stack */
 .vb-footer-social-stack {
   display: grid;
   grid-template-columns: 1fr;
@@ -1314,7 +1314,7 @@ body.dark .vb-footer-back-to-top,
   z-index: 1;
 }
 
-/* Visbeyond exact stars SVG background */
+/* PORTFOLIO STUDIO exact stars SVG background */
 .vb-footer-stars-svg {
   position: absolute;
   top: 0;
@@ -1411,7 +1411,7 @@ body.dark .vb-footer-back-to-top,
   color: inherit;
 }
 
-/* Schedule a Call Button (Exact Visbeyond multi-layer white pill with rainbow border and ambient glow) */
+/* Schedule a Call Button (Exact PORTFOLIO STUDIO multi-layer white pill with rainbow border and ambient glow) */
 .vb-schedule-btn {
   position: relative;
   display: inline-flex;
@@ -1959,7 +1959,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 }
 
 /* ========================================================
-   VISBEYOND ABOUT PAGE & ANIMATED FEATURE CARDS
+   PORTFOLIO STUDIO ABOUT PAGE & ANIMATED FEATURE CARDS
    ======================================================== */
 .vb-animated-lottie-icon {
   width: 72px;
@@ -2063,7 +2063,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
    ABOUT PAGE COLLAPSIBLE ACCORDION DROPDOWNS
    ======================================================== */
 /* ========================================================
-   ABOUT PAGE COLLAPSIBLE MAIN SECTIONS (Visbeyond Project-Style)
+   ABOUT PAGE COLLAPSIBLE MAIN SECTIONS (PORTFOLIO STUDIO Project-Style)
    ======================================================== */
 .vb-section-accordion {
   display: flex;
@@ -2208,7 +2208,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 }
 
 /* ========================================================
-   VISBEYOND PROJECTS PAGE DIRECT LINK ROWS
+   PORTFOLIO STUDIO PROJECTS PAGE DIRECT LINK ROWS
    ======================================================== */
 .vb-project-link-row {
   display: flex;
@@ -2275,7 +2275,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 }
 
 /* ========================================================
-   VISBEYOND MOBILE & TABLET PROJECT CARDS
+   PORTFOLIO STUDIO MOBILE & TABLET PROJECT CARDS
    ======================================================== */
 .vb-projects-grid {
   display: grid;
@@ -2417,7 +2417,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 }
 
 /* ========================================================
-   VISBEYOND PROJECT-STYLE TITLE ROWS
+   PORTFOLIO STUDIO PROJECT-STYLE TITLE ROWS
    ======================================================== */
 .vb-project-row {
   position: relative;
@@ -2520,7 +2520,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 }
 
 /* ========================================================
-   VISBEYOND GENERIC CARD CONTAINER (.vb-card)
+   PORTFOLIO STUDIO GENERIC CARD CONTAINER (.vb-card)
    ======================================================== */
 .vb-card {
   position: relative;
@@ -2547,7 +2547,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 }
 
 /* ========================================================
-   VISBEYOND ARTICLE PROSE & TYPOGRAPHY SYSTEM (.vb-prose)
+   PORTFOLIO STUDIO ARTICLE PROSE & TYPOGRAPHY SYSTEM (.vb-prose)
    Dual-Theme Semantic Typography for Technical Articles
    ======================================================== */
 .vb-prose {
@@ -2721,7 +2721,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
   border-color: var(--vb-accent);
 }
 
-/* Blog Article Images & Figures - Generously rounded to match Visbeyond aesthetic */
+/* Blog Article Images & Figures - Generously rounded to match PORTFOLIO STUDIO aesthetic */
 .vb-prose img {
   border-radius: 18px !important;
   display: block;
@@ -2741,7 +2741,7 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 }
 
 /* ========================================================
-   VISBEYOND INDIVIDUAL PROJECT CASE STUDY STYLING
+   PORTFOLIO STUDIO INDIVIDUAL PROJECT CASE STUDY STYLING
    ======================================================== */
 .vb-case-card {
   position: relative;

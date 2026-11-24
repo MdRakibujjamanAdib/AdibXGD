@@ -23,7 +23,7 @@ const project: Project = {
     "/images/projects/your-image-1.jpg",
     "/images/projects/your-image-2.jpg"
   ],
-  demoUrl: "https://your-live-demo.com",
+  demoUrl: "https://adibx.me/projects",
   repoUrl: "https://github.com/your-username/your-repo",
   tags: [
     "Tag 1",

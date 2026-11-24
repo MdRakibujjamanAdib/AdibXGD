@@ -26,7 +26,7 @@ export default function SEO({
     description,
     name = "Md Rakibujjaman Adib",
     type = "website",
-    image = "https://adibx.me/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg",
+    image = "https://adibx.me/MdRakibujamanAdib.jpg",
     url = "https://adibx.me",
     customKeywords = [],
     customMeta = [],

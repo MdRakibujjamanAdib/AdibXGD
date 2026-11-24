@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import RolloverText from '../ui/RolloverText';
-import VisbeyondMobileMenu from './VisbeyondMobileMenu';
+import StudioMobileMenu from './StudioMobileMenu';
 import DayNightToggle from '../ui/DayNightToggle';
 import {
   InvertedCornerTopRight,
@@ -11,21 +11,21 @@ import {
   InvertedCornerTopRightFrame,
   InvertedCornerBottomLeftFrame,
   InvertedCornerBottomRightFrame,
-} from '../ui/VisbeyondIcons';
+} from '../ui/StudioIcons';
 
-interface VisbeyondNavProps {
+interface StudioNavProps {
   dark: boolean;
   setDark: React.Dispatch<React.SetStateAction<boolean>>;
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function VisbeyondNav({
+export default function StudioNav({
   dark,
   setDark,
   menuOpen,
   setMenuOpen,
-}: VisbeyondNavProps) {
+}: StudioNavProps) {
   const location = useLocation();
 
   const navigation = (
@@ -70,7 +70,7 @@ export default function VisbeyondNav({
 
   return (
     <>
-      {/* Signature Visbeyond Fixed Viewport Border Frame with mathematically curved corners */}
+      {/* Signature Studio Fixed Viewport Border Frame with mathematically curved corners */}
       <div className="vb-viewport-frame" aria-hidden="true">
         <InvertedCornerTopRightFrame className="vb-viewport-corner-tr" />
         <InvertedCornerBottomLeftFrame className="vb-viewport-corner-bl" />
@@ -90,7 +90,7 @@ export default function VisbeyondNav({
           onToggle={() => setDark(value => !value)}
         />
 
-        {/* Mathematical Inverted Vector Corners matching visbeyond.com */}
+        {/* Mathematical Inverted Vector Corners matching Studio.com */}
         <InvertedCornerTopRight className="vb-nav-corner-right" />
         <InvertedCornerBottomLeft className="vb-nav-corner-bottom" />
       </nav>
@@ -108,8 +108,8 @@ export default function VisbeyondNav({
         <InvertedCornerTopRightBottom className="vb-menu-corner-bottom" />
       </button>
 
-      {/* Full Visbeyond Mobile Menu Sheet */}
-      <VisbeyondMobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      {/* Mobile Menu Sheet */}
+      <StudioMobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

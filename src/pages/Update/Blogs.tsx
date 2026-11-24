@@ -10,9 +10,9 @@ import {
   BookOpen,
 } from 'lucide-react';
 import { blogs, Blog } from '../../data/blogs';
-import VisbeyondLayout from '../../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../../components/layout/PortfolioLayout';
 import SEO from '../../components/SEO';
-import { VisbeyondStars } from '../../components/ui/VisbeyondStars';
+import { StudioStars } from '../../components/ui/StudioStars';
 
 export default function Blogs() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -116,7 +116,7 @@ export default function Blogs() {
         description="Technical deep dives, systems engineering strategies, and reflections by Md Rakibujjaman Adib across autonomous AI agents, serious game physics, IoT carbon telemetry, and physically based rendering."
         type="website"
       />
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel={currentDisplayBlog ? currentDisplayBlog.category : 'Knowledge & Insights'}
         hideShowcaseOnMobile={true}
         headerCard={
@@ -149,17 +149,17 @@ export default function Blogs() {
                     src={
                       currentDisplayBlog.coverImage ||
                       currentDisplayBlog.image ||
-                      '/images/visbeyond/m0fsnMH14U4pPOavXf6o8bIjA.png'
+                      '/images/hero-canal.jpg'
                     }
                     alt={currentDisplayBlog.coverImageAlt || currentDisplayBlog.title}
                     className="w-full h-full object-cover object-center"
                   />
-                  {/* High-fidelity Visbeyond gradient vignette */}
+                  {/* High-fidelity gradient vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15 pointer-events-none" />
                 </motion.div>
               ) : (
                 <div className="relative w-full h-full flex flex-col items-center justify-center p-8 text-center bg-black overflow-hidden">
-                  <VisbeyondStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
+                  <StudioStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
                   <div className="relative z-10 flex flex-col items-center justify-center">
                     <h2 className="vb-wordmark text-3xl md:text-4xl tracking-[0.25em] text-white font-extrabold mb-2.5">
                       ADIB
@@ -389,7 +389,7 @@ export default function Blogs() {
             </div>
           )}
         </section>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PortfolioFooter from './PortfolioFooter';
-import VisbeyondNav from './VisbeyondNav';
+import StudioNav from './StudioNav';
 import { usePortfolioTheme } from '../../hooks/usePortfolioTheme';
 import {
   InvertedCornerBottomRightLeft,
   InvertedCornerBottomRightTop,
-} from '../ui/VisbeyondIcons';
-import { VisbeyondStars } from '../ui/VisbeyondStars';
+} from '../ui/StudioIcons';
+import { StudioStars } from '../ui/StudioStars';
 
-interface VisbeyondLayoutProps {
+interface PortfolioLayoutProps {
   pageLabel: string;
   showcaseImage?: string;
   showcaseAlt?: string;
@@ -19,7 +19,7 @@ interface VisbeyondLayoutProps {
   children: React.ReactNode;
 }
 
-export default function VisbeyondLayout({
+export default function PortfolioLayout({
   pageLabel,
   showcaseImage,
   showcaseAlt = 'Showcase',
@@ -28,14 +28,14 @@ export default function VisbeyondLayout({
   footerSocialMode = 'all',
   headerCard,
   children,
-}: VisbeyondLayoutProps) {
+}: PortfolioLayoutProps) {
   const [dark, setDark] = usePortfolioTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="vb-hero" data-theme={dark ? 'dark' : 'light'}>
       {/* Global Fixed Navigation Bar, Mobile Menu, and Viewport Frame */}
-      <VisbeyondNav
+      <StudioNav
         dark={dark}
         setDark={setDark}
         menuOpen={menuOpen}
@@ -56,7 +56,7 @@ export default function VisbeyondLayout({
             showcaseChildren
           ) : (
             <div className="relative w-full h-full flex flex-col items-center justify-center p-8 text-center bg-black overflow-hidden">
-              <VisbeyondStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
+              <StudioStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
               <div className="relative z-10 flex flex-col items-center justify-center">
                 <h2 className="vb-wordmark text-3xl md:text-4xl tracking-[0.25em] text-white font-extrabold mb-2.5">
                   ADIB

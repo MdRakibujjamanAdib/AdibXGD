@@ -75,7 +75,7 @@ export function Barcode({ className = "w-44 h-8" }: { className?: string }) {
   );
 }
 
-// Exact mathematical cubic-bezier inverted corners extracted from visbeyond.com
+// Exact mathematical cubic-bezier inverted corners extracted from Studio.com
 export function InvertedCornerTopRight({ className = "w-[18px] h-[18px]" }: { className?: string }) {
   return (
     <svg viewBox="0 0 18 18" fill="currentColor" className={className} aria-hidden="true">

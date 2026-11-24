@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowRight, Search, X } from 'lucide-react';
 import { projects, Project } from '../../data/projects';
-import VisbeyondLayout from '../../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../../components/layout/PortfolioLayout';
 import SEO from '../../components/SEO';
-import { InvertedCornerTopRight, InvertedCornerBottomLeft } from '../../components/ui/VisbeyondIcons';
+import { InvertedCornerTopRight, InvertedCornerBottomLeft } from '../../components/ui/StudioIcons';
 import { buildCorpusVocabulary, correctSearchQuery, matchesProject } from '../../utils/fuzzySearch';
 
 export default function Projects() {
@@ -173,7 +173,7 @@ export default function Projects() {
         title="Projects"
         description="Explore the selected projects of Md Rakibujjaman Adib across 3D CGI rendering, interactive systems, and brand design."
       />
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel={activeProject?.shortTitle || activeProject?.title || 'Projects'}
         hideShowcaseOnMobile={true}
         headerCard={
@@ -217,7 +217,7 @@ export default function Projects() {
           </div>
         }
       >
-        {/* Sticky Search & Category Filter Section (Matching Visbeyond Design System) */}
+        {/* Sticky Search & Category Filter Section */}
         <section
           className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-6 pb-5 px-4 sm:px-6 md:px-8 bg-[var(--vb-panel)] text-[var(--vb-text)] border border-[var(--vb-border)] shadow-none backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
           aria-label="Filter projects"
@@ -430,7 +430,7 @@ export default function Projects() {
               ))}
             </section>
 
-            {/* Desktop Project Title Rows (Visbeyond desktop list layout) */}
+            {/* Desktop Project Title Rows */}
             <section className="hidden xl:flex xl:flex-col xl:gap-3" aria-label="Project list desktop">
               {filteredProjects.map((project) => (
                 <Link
@@ -454,7 +454,7 @@ export default function Projects() {
             </section>
           </>
         )}
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }

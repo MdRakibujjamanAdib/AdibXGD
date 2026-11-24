@@ -1,7 +1,7 @@
 import React from 'react';
 import { Award, Trophy, Star, ArrowUpRight } from 'lucide-react';
 import { awards } from '../data/content';
-import VisbeyondLayout from '../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
 
 export default function Achievements() {
@@ -11,9 +11,9 @@ export default function Achievements() {
         title="Achievements & Honors"
         description="Explore the awards and research recognitions of Md Rakibujjaman Adib."
       />
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel="Honors"
-        showcaseImage="/images/visbeyond/nX3taeclTeFa2pvNV9y9RhQxbZc.png"
+        showcaseImage={encodeURI('/images/Honours & Awards.jpg')}
         showcaseAlt="Achievements Showcase"
       >
         {/* Header Card */}
@@ -76,7 +76,7 @@ export default function Achievements() {
             ))}
           </div>
         </section>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }

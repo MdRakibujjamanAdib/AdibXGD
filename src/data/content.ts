@@ -97,11 +97,11 @@ export const experience = [
   },
   {
     company: "Garena Free Fire",
-    role: "Anti-Hack Associate",
+    role: "Game Security Operations Lead",
     period: "2023–2024",
     description: [
-      "Analyzed game client data to identify potential exploits.",
-      "Collaborated with the security team to improve detection systems.",
+      "Analyzed game client telemetry to identify and patch system vulnerabilities.",
+      "Collaborated with engineering teams to improve detection and integrity systems.",
     ],
   },
   {

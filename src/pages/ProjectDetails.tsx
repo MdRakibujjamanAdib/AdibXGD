@@ -11,12 +11,12 @@ import {
   ZoomIn,
 } from 'lucide-react';
 import { projects } from '../data/projects';
-import VisbeyondLayout from '../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
 import {
   InvertedCornerTopRight,
   InvertedCornerBottomLeft,
-} from '../components/ui/VisbeyondIcons';
+} from '../components/ui/StudioIcons';
 import ProjectThumbnailSlideshow from '../components/ui/ProjectThumbnailSlideshow';
 
 export default function ProjectDetails() {
@@ -55,7 +55,7 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <VisbeyondLayout pageLabel="Not Found">
+      <PortfolioLayout pageLabel="Not Found">
         <div className="vb-case-card text-center p-12 my-8">
           <h1 className="text-3xl font-bold text-[var(--vb-text)] mb-4">Project Not Found</h1>
           <p className="text-[var(--vb-text-muted)] mb-6">The project case study you requested does not exist.</p>
@@ -67,7 +67,7 @@ export default function ProjectDetails() {
             <span>Back to Projects</span>
           </Link>
         </div>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     );
   }
 
@@ -117,7 +117,7 @@ export default function ProjectDetails() {
         customKeywords={project.seo?.keywords}
         customMeta={project.seo?.meta}
       />
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel={project.shortTitle || project.title}
         showcaseImage={project.thumbnails && project.thumbnails.length > 1 ? undefined : project.thumbnail}
         showcaseChildren={
@@ -133,7 +133,7 @@ export default function ProjectDetails() {
         }
         showcaseAlt={project.title}
       >
-        {/* Visbeyond Card 1: Overview & Metadata Specs Bento */}
+        {/* Project Card 1: Overview & Metadata Specs Bento */}
         <section className="vb-case-card" aria-label="Project Overview & Specs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <div className="lg:col-span-7 flex flex-col justify-between">
@@ -184,7 +184,7 @@ export default function ProjectDetails() {
           </div>
         </section>
 
-        {/* Visbeyond Card 2: Primary Action Banner */}
+        {/* Project Card 2: Primary Action Banner */}
         {(project.demoUrl || project.repoUrl) && (
           <div className="flex flex-col sm:flex-row gap-3">
             {project.demoUrl && (
@@ -220,7 +220,7 @@ export default function ProjectDetails() {
           </div>
         )}
 
-        {/* Visbeyond Video Showcase Card */}
+        {/* Video Showcase Card */}
         {project.videoUrl && (
           <section className="vb-case-card overflow-hidden p-2" aria-label="Project video">
             <div className="aspect-video w-full rounded-[16px] overflow-hidden bg-black flex items-center justify-center">
@@ -248,7 +248,7 @@ export default function ProjectDetails() {
           </section>
         )}
 
-        {/* Visbeyond Card 3: Narrative Scope */}
+        {/* Project Card 3: Narrative Scope */}
         <section className="vb-case-card" aria-label="Project Narrative">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[var(--vb-text)] mb-6">
             Overview &amp; Architectural Scope
@@ -259,7 +259,7 @@ export default function ProjectDetails() {
           />
         </section>
 
-        {/* Visbeyond Card 4: Technologies & Engineering Tools */}
+        {/* Project Card 4: Technologies & Engineering Tools */}
         <section className="vb-case-card" aria-label="Technologies used">
           <h2 className="text-2xl font-bold tracking-tight text-[var(--vb-text)] mb-4">
             Technologies &amp; Production Tools
@@ -276,7 +276,7 @@ export default function ProjectDetails() {
           </div>
         </section>
 
-        {/* Visbeyond Card 5: Visual Gallery Exhibits */}
+        {/* Project Card 5: Visual Gallery Exhibits */}
         {allImages.length > 0 && (
           <section className="vb-case-card" aria-label="Visual Gallery">
             <div className="flex items-center justify-between mb-6">
@@ -315,7 +315,7 @@ export default function ProjectDetails() {
           </section>
         )}
 
-        {/* Visbeyond Orion Bottom Transition: Up Next Teaser Bento & Next Project Preview Card */}
+        {/* Footer Bottom Transition: Up Next Teaser Bento & Next Project Preview Card */}
         {nextProject && (
           <section className="flex flex-col gap-3" aria-label="Next project transition">
             <div className="vb-case-card">
@@ -359,7 +359,7 @@ export default function ProjectDetails() {
             </Link>
           </section>
         )}
-      </VisbeyondLayout>
+      </PortfolioLayout>
 
       {/* Lightbox Modal */}
       <AnimatePresence>

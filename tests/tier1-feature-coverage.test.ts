@@ -337,9 +337,9 @@ describe('Tier 1: Feature Coverage (50 Happy-Path Tests across F1-F10)', () => {
   });
 
   // --------------------------------------------------------------------------
-  // Feature 6 (F6): Visbeyond Blog Listing (/blogs) Page & Layout (R2)
+  // Feature 6 (F6): Portfolio Blog Listing (/blogs) Page & Layout (R2)
   // --------------------------------------------------------------------------
-  describe('F6: Visbeyond Blog Listing (/blogs) Page & Responsive Layout', () => {
+  describe('F6: Portfolio Blog Listing (/blogs) Page & Responsive Layout', () => {
     it('E2E-T1-F06-01: Clean Initial Render of /blogs', async () => {
       await browser.navigate(`${baseUrl}/blogs`);
       const bodyText = await browser.getText('body');
@@ -545,9 +545,9 @@ describe('Tier 1: Feature Coverage (50 Happy-Path Tests across F1-F10)', () => {
   });
 
   // --------------------------------------------------------------------------
-  // Feature 9 (F9): Visbeyond Dual-Theme Token Discipline & Contrast (R2)
+  // Feature 9 (F9): Portfolio Dual-Theme Token Discipline & Contrast (R2)
   // --------------------------------------------------------------------------
-  describe('F9: Visbeyond Dual-Theme Token Discipline & Contrast', () => {
+  describe('F9: Portfolio Dual-Theme Token Discipline & Contrast', () => {
     it('E2E-T1-F09-01: Dark Mode Design System Token Compliance', async () => {
       await browser.navigate(`${baseUrl}/blogs`);
       const bodyBg = await browser.getComputedStyle('body', 'background-color');
@@ -688,9 +688,10 @@ describe('Tier 1: Feature Coverage (50 Happy-Path Tests across F1-F10)', () => {
     it('E2E-T1-F10-05: Byte Battle Algorithmic Optimization Article', async () => {
       const slug = 'competitive-programming-algorithmic-optimization-byte-battle';
       const fileExists = fs.existsSync(path.join(process.cwd(), 'src/data/blogs', `${slug}.ts`));
-      const imageExists = fs.existsSync(path.join(process.cwd(), 'public/images/visbeyond/FLGzcv8zFbjfvUIC7ezsCAJg128.png'));
+      const imageExists = fs.existsSync(path.join(process.cwd(), 'public/images/studio/FLGzcv8zFbjfvUIC7ezsCAJg128.png')) ||
+        fs.existsSync(path.join(process.cwd(), 'public/images/Portfolio/FLGzcv8zFbjfvUIC7ezsCAJg128.png'));
 
-      assert.ok(imageExists, 'Local image public/images/visbeyond/FLGzcv8zFbjfvUIC7ezsCAJg128.png must exist');
+      assert.ok(imageExists, 'Local image for Byte Battle article must exist');
       assert.ok(fileExists, `Blog data file src/data/blogs/${slug}.ts must exist`);
       await browser.navigate(`${baseUrl}/blogs/${slug}`);
       const title = await browser.getTitle();

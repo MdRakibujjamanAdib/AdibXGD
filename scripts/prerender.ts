@@ -29,7 +29,7 @@ function ensureDir(dirPath: string) {
 }
 
 function resolveAbsoluteUrl(imgPath: string): string {
-  if (!imgPath) return `${baseUrl}/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg`;
+  if (!imgPath) return `${baseUrl}/MdRakibujamanAdib.jpg`;
   if (imgPath.startsWith('http://') || imgPath.startsWith('https://')) return imgPath;
   const clean = imgPath.startsWith('/') ? imgPath : `/${imgPath}`;
   return `${baseUrl}${clean.replace(/ /g, '%20')}`;
@@ -208,7 +208,7 @@ function getStaticRoutes(): RouteMeta[] {
       path: '',
       title: 'Md Rakibujjaman Adib | Web Developer & Brand Designer',
       description: "I'm Md Rakibujjaman Adib, a Web Developer & Creative Technologist. Explore my portfolio in visual brand identity, automation, and 3D design.",
-      image: resolveAbsoluteUrl('/images/OG%20Image%20of%20Md%20Rakibujjaman%20Adib,%20Designer,%20Web%20Devloper,%203D%20Artist.jpg'),
+      image: resolveAbsoluteUrl('/MdRakibujamanAdib.jpg'),
       type: 'website',
     },
     {

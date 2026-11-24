@@ -10,9 +10,9 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 import { personalInfo } from '../../data/content';
-import { VisbeyondStars } from '../ui/VisbeyondStars';
+import { StudioStars } from '../ui/StudioStars';
 
-// 16 Exact Animated Falling Star Meteors from Visbeyond
+// 16 Animated Falling Star Meteors
 const METEORS = [
   { id: 1, top: '40px', left: '-110px', width: '110px', duration: '5.6s', delay: '0.2s' },
   { id: 2, top: '70px', left: '-100px', width: '100px', duration: '7.0s', delay: '0.6s' },
@@ -32,7 +32,7 @@ const METEORS = [
   { id: 16, top: '-30px', left: '140px', width: '100px', duration: '7.0s', delay: '2.0s' },
 ];
 
-// Rolling Text Link Component (Visbeyond whole-word vertical rollover effect)
+// Rolling Text Link Component (whole-word vertical rollover effect)
 function RollingLink({
   to,
   href,
@@ -75,7 +75,7 @@ export default function PortfolioFooter({
 }) {
   return (
     <footer className="vb-footer-wrapper" aria-label="Site footer">
-      {/* 1. Visbeyond Social & Contact Stack */}
+      {/* 1. Studio Social & Contact Stack */}
       {socialMode === 'all' && (
         <div className="vb-footer-social-stack" aria-label="Social and contact links">
           <a
@@ -176,7 +176,7 @@ export default function PortfolioFooter({
       <div className="vb-footer-card">
         {/* Galaxy Cosmic Stardust & 16 Animated Falling Star Meteors */}
         <div className="vb-footer-galaxy" aria-hidden="true">
-          <VisbeyondStars className="vb-footer-stars-svg" />
+          <StudioStars className="vb-footer-stars-svg" />
           {METEORS.map(m => (
             <span
               key={m.id}

@@ -143,9 +143,9 @@ describe('Tier 3: Cross-Feature Combinations (8 Pairwise Suites: TC-T3-01 to TC-
   });
 
   // --------------------------------------------------------------------------
-  // TC-T3-05: Dark/Light Mode Switcher ↔ Visbeyond Design Tokens, .vb-card & Typography
+  // TC-T3-05: Dark/Light Mode Switcher ↔ Portfolio Design Tokens, .vb-card & Typography
   // --------------------------------------------------------------------------
-  it('TC-T3-05: Dark/Light Mode Switcher ↔ Visbeyond Design Tokens, .vb-card & Typography', async () => {
+  it('TC-T3-05: Dark/Light Mode Switcher ↔ Portfolio Design Tokens, .vb-card & Typography', async () => {
     await browser.navigate(`${baseUrl}/blogs`);
 
     // Dark Mode check

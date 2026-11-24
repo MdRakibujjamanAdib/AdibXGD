@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import VisbeyondLayout from '../components/layout/VisbeyondLayout';
+import PortfolioLayout from '../components/layout/PortfolioLayout';
 import SEO from '../components/SEO';
-import { VisbeyondStars } from '../components/ui/VisbeyondStars';
+import { StudioStars } from '../components/ui/StudioStars';
 import {
   allServices,
   SERVICE_CATEGORIES,
@@ -12,7 +12,7 @@ import {
   ServiceItem,
 } from '../data/services';
 
-// Typewriter / rotating text effect for the left sticky showcase (clean minimal typography matching Visbeyond)
+// Rotating text effect for the left sticky showcase
 const SHOWCASE_ROTATING_TITLES = [
   'UI/UX Design',
   '3D Animation',
@@ -61,7 +61,7 @@ function ShowcaseTypewriter() {
 
   return (
     <div className="relative w-full h-full flex items-center justify-center p-8 select-none bg-black overflow-hidden">
-      <VisbeyondStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
+      <StudioStars className="absolute inset-0 w-full h-full text-white/30 pointer-events-none" />
 
       <div className="relative z-10 flex items-center justify-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight flex items-center justify-center font-sans">
@@ -87,7 +87,7 @@ export default function Services() {
         description="Explore services across Autonomous AI Systems, Web & App Development, UI/UX Design, 3D Animation, and Brand Identity."
       />
 
-      <VisbeyondLayout
+      <PortfolioLayout
         pageLabel="Services"
         hideShowcaseOnMobile={false}
         footerSocialMode="contact-only"
@@ -104,7 +104,7 @@ export default function Services() {
           </div>
         }
       >
-        {/* Sticky Search by Category Card (Exact Visbeyond Pattern) */}
+        {/* Sticky Search by Category Card */}
         <section
           className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-6 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-none backdrop-blur-md transition-colors duration-300"
           aria-label="Filter services by category"
@@ -170,7 +170,7 @@ export default function Services() {
           </div>
         </section>
 
-        {/* Minimal Service Cards List (Exact Match to Visbeyond Reference) */}
+        {/* Minimal Service Cards List */}
         <section className="flex flex-col gap-3" aria-label="Services list">
           <AnimatePresence mode="popLayout">
             {filteredServices.map((service: ServiceItem) => (
@@ -206,7 +206,7 @@ export default function Services() {
             ))}
           </AnimatePresence>
         </section>
-      </VisbeyondLayout>
+      </PortfolioLayout>
     </>
   );
 }
