@@ -73,6 +73,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/flour-sack-2d-animation</loc>
+    <lastmod>2023-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/gadget-n-gadget-website</loc>
     <lastmod>2024-10-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -109,6 +115,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/massfx-physics-ball-simulation</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/mct-labs-web</loc>
     <lastmod>2023-12-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -127,6 +139,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/robotic-arm-ball-pickup-3d-animation</loc>
+    <lastmod>2023-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/shark-3d-sculpt-and-swim-animation</loc>
+    <lastmod>2024-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/The-Fading-Heartbeat</loc>
     <lastmod>2022-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -135,6 +159,12 @@
   <url>
     <loc>https://adibx.me/projects/traditional-fabric-substance-texturing</loc>
     <lastmod>2024-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/underwater-life-motion-graphics</loc>
+    <lastmod>2023-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -177,6 +207,18 @@
   <url>
     <loc>https://adibx.me/projects/Walton-Trade-Fair-Stall</loc>
     <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/zbrush-hand-anatomy-sculpting</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/zbrush-tortoise-creature-sculpt</loc>
+    <lastmod>2024-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

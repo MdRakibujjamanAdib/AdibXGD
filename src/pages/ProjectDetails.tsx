@@ -175,7 +175,9 @@ export default function ProjectDetails() {
                     ? 'Web Platform'
                     : project.category === 'Brand Identity'
                     ? 'Brand System'
-                    : 'Motion Video'}
+                    : project.category === 'UI/UX Design'
+                    ? 'Interactive UI'
+                    : 'Motion Animation'}
                 </span>
               </div>
             </div>
@@ -221,14 +223,27 @@ export default function ProjectDetails() {
         {/* Visbeyond Video Showcase Card */}
         {project.videoUrl && (
           <section className="vb-case-card overflow-hidden p-2" aria-label="Project video">
-            <div className="aspect-video w-full rounded-[16px] overflow-hidden bg-black">
-              <iframe
-                src={getEmbedUrl(project.videoUrl)}
-                title={project.title}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
+            <div className="aspect-video w-full rounded-[16px] overflow-hidden bg-black flex items-center justify-center">
+              {project.videoUrl.endsWith('.mp4') || !project.videoUrl.includes('://') ? (
+                <video
+                  src={project.videoUrl}
+                  poster={project.thumbnail && !project.thumbnail.endsWith('.mp4') ? project.thumbnail : undefined}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-contain"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <iframe
+                  src={getEmbedUrl(project.videoUrl)}
+                  title={project.title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              )}
             </div>
           </section>
         )}
