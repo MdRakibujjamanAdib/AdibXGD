@@ -119,7 +119,7 @@ export default function HomeHero() {
   }
 
   return (
-    <section className="vb-hero" data-theme={dark ? 'dark' : 'light'} aria-label="Portfolio">
+    <section className="vb-hero" aria-label="Portfolio">
       {/* Global Fixed Navigation Bar, Mobile Menu, and Viewport Frame */}
       <StudioNav
         dark={dark}

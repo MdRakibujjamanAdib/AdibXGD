@@ -33,7 +33,7 @@ export default function PortfolioLayout({
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="vb-hero" data-theme={dark ? 'dark' : 'light'}>
+    <div className="vb-hero">
       {/* Global Fixed Navigation Bar, Mobile Menu, and Viewport Frame */}
       <StudioNav
         dark={dark}
