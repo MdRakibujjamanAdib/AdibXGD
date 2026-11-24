@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Download,
   ExternalLink,
   ChevronDown,
   ArrowRight,
@@ -430,16 +429,6 @@ export default function About() {
 
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-[var(--vb-border)]">
-            <a
-              href="/Md_Rakibujjaman_Adib_CV.pdf"
-              download="Md_Rakibujjaman_Adib_CV.pdf"
-              className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[var(--vb-text)] text-[var(--vb-bg)] font-semibold text-sm hover:bg-[#e62e05] hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 select-none"
-            >
-              <span>Download CV</span>
-              <span className="w-6 h-6 rounded-full bg-[var(--vb-bg)]/15 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Download size={13} className="group-hover:translate-y-0.5 transition-transform" />
-              </span>
-            </a>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[var(--vb-border)] bg-[var(--vb-card-inset)] text-[var(--vb-text)] font-semibold text-sm hover:border-[var(--vb-text)] hover:-translate-y-0.5 transition-all duration-300"

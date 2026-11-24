@@ -5,7 +5,7 @@ export default function Home() {
   return <>
     <SEO
       title="Home"
-      description="Md Rakibujjaman Adib builds business websites, custom web applications, and AI automations for clients in Bangladesh, the Netherlands, and worldwide."
+      description="Freelance web developer and designer building business websites, web apps, and brand identities for clients in Bangladesh, the Netherlands, and worldwide."
     />
     <HomeHero />
   </>;

@@ -85,8 +85,8 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Web Development & AI Automation Services"
-        description="Get help with business websites, custom web apps, and AI workflow automation. Explore additional services in brand design, UI/UX, and 3D animation."
+        title="Web Development & Design Services"
+        description="Hire a freelance developer and designer for business websites, custom web applications, UI/UX, and brand identity. AI automation is also available."
       />
 
       <PortfolioLayout
@@ -97,17 +97,18 @@ export default function Services() {
         headerCard={
           <div className="flex flex-col justify-between min-h-[130px] md:min-h-[160px] xl:min-h-[190px] p-6 md:p-10 xl:p-12">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--vb-text)] leading-[1.1]">
-              Web Development &amp; AI Automation Services
+              Web Development &amp; Design Services
             </h1>
 
             <p className="text-sm md:text-[15px] text-[var(--vb-text-muted)] leading-relaxed max-w-xl font-sans mt-6 md:mt-8">
-              I build websites and web apps, and automate repetitive workflows with AI. I also offer brand identity, UI/UX design, and 3D visualization.
+              I design and build websites and custom web apps for businesses. I also create brand identities, design product interfaces, and automate repetitive workflows.
             </p>
           </div>
         }
       >
         <ul className="flex flex-wrap gap-x-6 gap-y-2 px-6 text-sm text-[var(--vb-text)]">
           <li><Link className="underline underline-offset-4" to="/projects/green-d-website">Web development case study: Green D</Link></li>
+          <li><Link className="underline underline-offset-4" to="/projects/green-d-brand-identity">Brand design case study: Green D</Link></li>
           <li><Link className="underline underline-offset-4" to="/projects/mct-labs-web">AI tools case study: MCT Labs</Link></li>
         </ul>
         {/* Sticky Search by Category Card */}

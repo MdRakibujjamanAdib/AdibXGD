@@ -52,7 +52,7 @@ export default function SEO({
     const cleanTitle = (title || '').replace(regex, '').trim();
 
     const siteTitle = cleanTitle === "Home" || cleanTitle === ""
-        ? `${name} | Web Developer & AI Automation Specialist`
+        ? `${name} | Freelance Web Developer & Designer`
         : `${cleanTitle} | ${name}`;
 
     // Keywords

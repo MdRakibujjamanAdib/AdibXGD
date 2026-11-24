@@ -236,11 +236,11 @@ export default function HomeHero() {
           <div className="vb-profile-heading">
             <div>
               <h1 className="vb-wordmark">ADIB</h1>
-              <p>Web Developer &amp; AI Automation Specialist</p>
+              <p>Web Developer &amp; Designer</p>
             </div>
           </div>
           <p className="vb-profile-description">
-            I&apos;m Md Rakibujjaman Adib, co-founder of Green D. I build business websites, custom web applications, and AI automations that reduce repetitive work.
+            I&apos;m Md Rakibujjaman Adib, co-founder of Green D. I design and build business websites, develop custom web apps, and create brand identities.
           </p>
         </Link>
 
