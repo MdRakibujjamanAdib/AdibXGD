@@ -32,17 +32,17 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
 
     try {
-      const formData = new FormData();
-      formData.append('access_key', 'fc1e1fb5-3901-4624-8fae-419df20514b2');
-      formData.append('name', formState.name);
-      formData.append('email', formState.email);
-      formData.append('message', formState.message);
+      const formData = new FormData(e.currentTarget);
+      formData.set('access_key', 'f9dd8315-6f12-41d3-9670-de9afb60bebd');
+      if (!formData.get('name')) formData.set('name', formState.name);
+      if (!formData.get('email')) formData.set('email', formState.email);
+      if (!formData.get('message')) formData.set('message', formState.message);
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
