@@ -67,6 +67,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/eid-mubarak-typography-graphic-design</loc>
+    <lastmod>2024-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/evergreen-token-ui-ux</loc>
     <lastmod>2024-09-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -81,6 +87,12 @@
   <url>
     <loc>https://adibx.me/projects/gadget-n-gadget-website</loc>
     <lastmod>2024-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/game-environment-design-3ds-max-vray</loc>
+    <lastmod>2024-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -199,6 +211,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/vray-shoe-commercial-animation</loc>
+    <lastmod>2024-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/vray-volumetric-godray-flower-vase</loc>
+    <lastmod>2024-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/walton-3d-monitor-design</loc>
     <lastmod>2024-05-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -237,6 +261,12 @@
   <url>
     <loc>https://adibx.me/blogs/iot-edge-sensing-carbon-modeling-green-d</loc>
     <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/blogs/mastering-vray-lighting-complete-visual-guide</loc>
+    <lastmod>2025-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
