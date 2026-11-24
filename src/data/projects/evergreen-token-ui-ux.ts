@@ -17,11 +17,23 @@ const project: Project = {
 <li style='margin-top: 10px;'><b>GOMS & ARCS Motivation Models:</b> GOMS task analysis minimizes procedural steps to a seamless 'Scan-Collect-Deposit' flow, while Keller's ARCS framework sustains intrinsic motivation through Attention, Relevance, Confidence, and Satisfaction.</li>\
 </ul></p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Interface System & Visual Ergonomics:</b> Designed in Figma, the mobile interface utilizes high-contrast dark and emerald palettes calibrated for outdoor readability. Key UX modules encompass AR scanner guidance, interactive reverse-vending ATM deposit mapping, a digital wallet with token staking, and a curated eco-partner reward marketplace.</p>",
-    thumbnail: "/images/projects/UI UX Design for Plasti Recycle Project (1).png",
-    images: [
+    thumbnail: "/images/projects/UI UX Design for Plasti Recycle Project (3).png",
+    thumbnails: [
+        "/images/projects/UI UX Design for Plasti Recycle Project (3).png",
         "/images/projects/UI UX Design for Plasti Recycle Project (1).png",
         "/images/projects/UI UX Design for Plasti Recycle Project (2).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (4).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (5).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (6).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (7).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (8).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (9).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (10).png"
+    ],
+    images: [
         "/images/projects/UI UX Design for Plasti Recycle Project (3).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (1).png",
+        "/images/projects/UI UX Design for Plasti Recycle Project (2).png",
         "/images/projects/UI UX Design for Plasti Recycle Project (4).png",
         "/images/projects/UI UX Design for Plasti Recycle Project (5).png",
         "/images/projects/UI UX Design for Plasti Recycle Project (6).png",
@@ -59,6 +71,10 @@ const project: Project = {
             {
                 name: "description",
                 content: "Reward-driven Mixed Reality & mobile application UI/UX designed in Figma, transforming urban plastic cleanup into an interactive gamified quest with redeemable token incentives."
+            },
+            {
+                property: "og:image",
+                content: "/images/projects/UI UX Design for Plasti Recycle Project (3).png"
             }
         ]
     }

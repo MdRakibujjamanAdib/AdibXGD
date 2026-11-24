@@ -11,10 +11,15 @@ const project: Project = {
     description: "<p style='text-align: justify;'>This project was an industrial 3D product modeling assignment centered on creating a millimeter-accurate prototype for Walton, the premier consumer tech and electronics manufacturer in Bangladesh. The design focused on an unreleased commercial monitor concept, with reference photography procured through academic faculty directly from the company.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Millimeter-Accurate Reverse Engineering:</b> Guided by multi-angle reference photos, the monitor chassis, micro-edge bezels, VESA mounting hub, and ergonomic stand were drafted with CAD-level precision. Every bevel radius, port cut-out, and cooling vent was aligned to production specifications.</p>\
 <p style='text-align: justify; margin-top: 30px;'><b>Photorealistic Product LookDev:</b> Materials were engineered to reflect modern hardware finishes: textured matte polymers for the rear housing, brushed aluminum along the support neck and base, and an anti-glare micro-diffusive glass panel. Rendered in clean studio lighting with soft specular highlights that emphasize the display's slim profile.</p>",
-    thumbnail: "/images/projects/3D Walton Monitor Design (1).jpg",
-    images: [
-        "/images/projects/3D Walton Monitor Design (1).jpg",
+    thumbnail: "/images/projects/3D Walton Monitor Design (2).jpg",
+    thumbnails: [
         "/images/projects/3D Walton Monitor Design (2).jpg",
+        "/images/projects/3D Walton Monitor Design (1).jpg",
+        "/images/projects/3D Walton Monitor Design (3).jpg"
+    ],
+    images: [
+        "/images/projects/3D Walton Monitor Design (2).jpg",
+        "/images/projects/3D Walton Monitor Design (1).jpg",
         "/images/projects/3D Walton Monitor Design (3).jpg"
     ],
     tags: [
@@ -44,6 +49,10 @@ const project: Project = {
             {
                 name: "description",
                 content: "Millimeter-accurate 3D product prototype of an unreleased Walton monitor, reverse-engineered and modeled in 3ds Max using company reference photos."
+            },
+            {
+                property: "og:image",
+                content: "/images/projects/3D Walton Monitor Design (2).jpg"
             }
         ]
     }
