@@ -34,8 +34,17 @@ import {
   InvertedCornerTopRightBottom,
 } from './ui/VisbeyondIcons';
 
-// Dynamically feature projects that have `featured: true` in their individual project files
-const featuredProjects = projects.filter(p => Boolean(p.featured));
+// Dynamically feature projects that have `featured: true` in their individual project files, sorted by featuredOrder
+const featuredProjects = projects
+  .filter(p => Boolean(p.featured))
+  .sort((a, b) => {
+    if (a.featuredOrder !== undefined && b.featuredOrder !== undefined) {
+      return a.featuredOrder - b.featuredOrder;
+    }
+    if (a.featuredOrder !== undefined) return -1;
+    if (b.featuredOrder !== undefined) return 1;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
 interface HeroSlide {
   id: string;
@@ -331,15 +340,7 @@ export default function HomeHero() {
                     <img src={project.thumbnail} alt={project.title} loading="lazy" />
                   </div>
                   <div className="vb-recent-label">
-                    <span>
-                      {project.id === 'Vray-Chess-Board'
-                        ? 'Chess Study'
-                        : project.id === 'green-d-website'
-                        ? 'Green D Web'
-                        : project.id === 'green-d-brand-identity'
-                        ? 'Green D Brand'
-                        : 'Low Poly 3D'}
-                    </span>
+                    <span>{project.shortTitle || project.title}</span>
                     <span className="vb-project-arrow" aria-hidden="true"><ArrowRight size={16} strokeWidth={1.5} /></span>
                     <InvertedCornerTopRight className="vb-recent-corner-right" />
                     <InvertedCornerBottomLeft className="vb-recent-corner-bottom" />

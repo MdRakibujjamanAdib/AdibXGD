@@ -11,9 +11,11 @@ import type { Project } from '../projects.ts';
 const project: Project = {
   id: "my-new-project-id",
   title: "Project Display Title",
+  shortTitle: "Short Label", // Optional concise label for homepage cards
   category: "Web & Automation", // '3D' | 'Web & Automation' | 'Brand Identity' | 'Video Editing'
   role: "Lead Developer / Designer",
   featured: false, // Set to true to display on Home screen!
+  featuredOrder: 1, // Optional ordering for home screen (1 is first/top)
   summary: "A brief one or two sentence summary of the project.",
   description: "<p>Detailed HTML or narrative description of the project.</p>",
   thumbnail: "/images/projects/your-thumbnail.jpg",

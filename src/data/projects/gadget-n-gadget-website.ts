@@ -3,8 +3,11 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "gadget-n-gadget-website",
     title: "Gadget N Gadget – E-Commerce & Retail Platform",
+    shortTitle: "Gadget N Gadget",
     category: "Web & Automation",
     role: "Lead UI/UX Designer & Web Lead",
+    featured: true,
+    featuredOrder: 1,
     summary: "A high-performance e-commerce platform designed for Gadget N Gadget, one of Bangladesh's recognized mobile and gadget retail chains.",
     description: `<p style='text-align: justify;'><b>Gadget N Gadget (GnG)</b> is one of the most recognized and trusted tech gadget and smartphone retailers in Bangladesh. Operating prominent physical showrooms in prime tech hubs across Dhaka—including Bashundhara City Shopping Complex, Jamuna Future Park, and their flagship store & GNG Care service center at Shah Ali Plaza in Mirpur-10—Gadget N Gadget bridges global technology with local consumers through 100% genuine products, official warranties, and nationwide delivery across all 64 districts.</p>
 
@@ -45,7 +48,6 @@ const project: Project = {
         "Conversion Optimization"
     ],
     date: "2024-10-29",
-    featured: true,
     seo: {
         keywords: [
             "Md Rakibujjaman Adib",

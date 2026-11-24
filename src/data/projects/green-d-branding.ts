@@ -3,8 +3,11 @@ import type { Project } from '../projects.ts';
 const project: Project = {
     id: "green-d-brand-identity",
     title: "Green D – Brand Identity System",
+    shortTitle: "Green D Brand",
     category: "Brand Identity",
     role: "Lead Brand Designer",
+    featured: true,
+    featuredOrder: 3,
     summary: "A strategic brand identity system for a sustainable technology startup blending environmental symbolism with modern digital design.",
     description:
         "<p style='text-align: justify;'>Green D required a cohesive brand identity that represents sustainability, innovation, and technological credibility. The objective was to design a scalable visual system suitable for digital platforms, software products, and corporate communication.</p>\
@@ -34,7 +37,6 @@ const project: Project = {
         "Corporate Identity"
     ],
     date: "2024-02-01",
-    featured: true,
     seo: {
         keywords: [
             "Md Rakibujjaman Adib",

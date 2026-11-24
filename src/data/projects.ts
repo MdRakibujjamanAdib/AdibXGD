@@ -2,6 +2,7 @@
 export interface Project {
   id: string;
   title: string;
+  shortTitle?: string; // Short label displayed on homepage recent cards (e.g. 'Gadget N Gadget')
   category: '3D' | 'Web & Automation' | 'Brand Identity' | 'Video Editing';
   role?: string;
   summary: string;
@@ -15,6 +16,7 @@ export interface Project {
   tags: string[];
   date: string;
   featured?: boolean;
+  featuredOrder?: number; // 1-based order for display on home screen (1 is top/first)
   seo?: {
     keywords?: string[];
     meta?: Array<{ name?: string; property?: string; content: string }>;
