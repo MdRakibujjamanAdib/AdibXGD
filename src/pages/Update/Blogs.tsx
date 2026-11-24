@@ -200,7 +200,7 @@ export default function Blogs() {
       >
         {/* Sticky Search & Category Filter Section (Exact Services Pattern: Centered in notch on <810px, left-aligned on desktop) */}
         <section
-          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-6 pb-5 px-4 sm:px-6 md:px-8 bg-[var(--vb-panel)] text-[var(--vb-text)] border border-[var(--vb-border)] shadow-none backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
+          className="blog-search-panel sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-6 pb-5 px-4 sm:px-6 md:px-8 bg-[var(--vb-panel)] text-[var(--vb-text)] border border-[var(--vb-border)] shadow-none backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
           aria-label="Filter blog articles"
         >
           {/* Top gap mask: seamlessly covers any blog content scrolling into the top 12px viewport gap */}
@@ -234,7 +234,7 @@ export default function Blogs() {
               - Tablet notch (440px-809px): centered inside notch between ADIB & Menu tabs
               - Desktop (>=810px): left-aligned cleanly
           */}
-          <div className="relative w-full min-h-[37px] flex items-center justify-center min-[810px]:justify-start mb-2 sm:mb-4">
+          <div className="blog-search-heading relative w-full min-h-[37px] flex items-center justify-center min-[810px]:justify-start mb-2 sm:mb-4">
             <h2 className="text-sm min-[440px]:text-base sm:text-lg xl:text-2xl font-bold tracking-tight text-[var(--vb-text)] whitespace-nowrap text-center min-[810px]:text-left px-2 transition-colors duration-300">
               Search articles
             </h2>
@@ -242,7 +242,7 @@ export default function Blogs() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="absolute right-0 top-1/2 -translate-y-1/2 inline-flex items-center gap-1.5 text-xs text-[#e62e05] hover:underline cursor-pointer font-medium px-2"
+                className="max-[439px]:hidden absolute right-0 top-1/2 -translate-y-1/2 inline-flex items-center gap-1.5 text-xs text-[#e62e05] hover:underline cursor-pointer font-medium px-2"
               >
                 <X size={12} />
                 <span>Reset ({filteredBlogs.length})</span>
@@ -289,6 +289,12 @@ export default function Blogs() {
               {selectedCategory !== 'All' && <span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-[#e62e05]" />}
             </button>
           </div>
+
+          {isFiltered && (
+            <button type="button" onClick={clearFilters} className="min-[440px]:hidden flex items-center gap-1.5 ml-auto mt-2 text-xs text-[#e62e05] cursor-pointer">
+              <X size={12} aria-hidden="true" /> Reset ({filteredBlogs.length})
+            </button>
+          )}
 
           {/* Category Filter Pills (Exact dashed-border aesthetic, matching Services page) */}
           <div id="blog-category-filters" hidden={!filtersOpen}>

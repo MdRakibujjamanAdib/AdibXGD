@@ -2955,3 +2955,10 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 
 
 
+
+/* Use the navigation notch for the blog title on phone widths. */
+@media (min-width: 360px) and (max-width: 439px) {
+  .blog-search-panel { padding-top: 6px; }
+  .blog-search-heading { width: auto; margin-left: 120px; margin-right: 48px; }
+  .blog-search-heading h2 { padding-inline: 0; font-size: 14px; }
+}
