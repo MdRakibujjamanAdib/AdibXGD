@@ -13,6 +13,8 @@ describe('Tier 1: Feature Coverage (50 Happy-Path Tests across F1-F10)', () => {
   before(async () => {
     baseUrl = await ensureServer(3000);
     browser = await getSharedBrowser(9226);
+    await browser.navigate(`${baseUrl}/`);
+    await browser.evaluate(`(() => { localStorage.clear(); localStorage.setItem('vb-theme', 'dark'); })()`);
   });
 
   after(async () => {

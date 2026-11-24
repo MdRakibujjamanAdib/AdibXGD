@@ -196,9 +196,9 @@ export default function Blogs() {
           </div>
         }
       >
-        {/* Sticky Search & Category Filter Section (Sticks to top, matches UI theme) */}
+        {/* Sticky Search & Category Filter Section (Sticks flush to top, matches UI theme) */}
         <section
-          style={{ position: 'sticky', top: '16px', zIndex: 20 }}
+          style={{ position: 'sticky', top: 0, zIndex: 20 }}
           className="rounded-[24px] overflow-hidden p-5 sm:p-6 bg-[var(--vb-panel)] border border-[var(--vb-border)] shadow-xl mb-6 md:mb-8 transition-colors"
           aria-label="Filter blog articles"
         >

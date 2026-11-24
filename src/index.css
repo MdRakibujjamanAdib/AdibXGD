@@ -120,7 +120,9 @@ body.dark,
 
 .vb-viewport-corner-tr,
 .vb-viewport-corner-bl,
-.vb-viewport-corner-br {
+.vb-viewport-corner-br,
+.vb-viewport-corner-content-tl,
+.vb-viewport-corner-content-bl {
   position: absolute;
   width: 18px;
   height: 18px;
@@ -142,6 +144,25 @@ body.dark,
 .vb-viewport-corner-br {
   right: 0;
   bottom: 0;
+}
+
+@media (min-width: 1200px) {
+  .vb-viewport-corner-content-tl {
+    top: 0;
+    left: calc(50% + var(--vb-gap) / 2);
+  }
+
+  .vb-viewport-corner-content-bl {
+    bottom: 0;
+    left: calc(50% + var(--vb-gap) / 2);
+  }
+}
+
+@media (max-width: 1199px) {
+  .vb-viewport-corner-content-tl,
+  .vb-viewport-corner-content-bl {
+    display: none;
+  }
 }
 
 /* Left Column: Sticky 3D / Carousel Showcase */
