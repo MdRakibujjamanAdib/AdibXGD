@@ -8,7 +8,7 @@ const project: Project = {
     role: "Full Stack Developer",
     featured: true,
     featuredOrder: 2,
-    summary: "A full-stack sustainability platform combining carbon tracking, smart home optimization, receipt-based emission analysis, and AI-powered eco insights.",
+    summary: "A full-stack sustainability platform combining IoT energy monitoring, carbon tracking, smart home optimization, receipt-based emission analysis, and AI-powered eco insights.",
     description: "<p style='text-align: justify;'>Green D is a full-stack carbon footprint tracking web application designed to help individuals measure, understand, and reduce their environmental impact. The platform combines real-time dashboards, AI-based forecasting, smart home simulation, and automated emission analysis into a unified sustainability ecosystem.</p>\
 \
 <p style='text-align: justify; margin-top: 30px;'><b>Personalized Sustainability Dashboard:</b> The main dashboard calculates a sustainability score, displays AI-powered carbon forecasts, and visualizes historical emission data. Weather integration and smart insights enhance contextual awareness for daily decision-making.</p>\
@@ -38,10 +38,12 @@ const project: Project = {
     ],
     demoUrl: "https://greend.vercel.app/",
     tags: [
+        "IoT",
+        "IoT Telemetry",
+        "Smart Home Integration",
         "React",
         "Full Stack Development",
         "Carbon Footprint Tracker",
-        "Smart Home Integration",
         "SaaS Platform",
         "Data Visualization",
         "Sustainability Tech",

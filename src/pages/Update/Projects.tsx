@@ -6,6 +6,7 @@ import { projects, Project } from '../../data/projects';
 import VisbeyondLayout from '../../components/layout/VisbeyondLayout';
 import SEO from '../../components/SEO';
 import { InvertedCornerTopRight, InvertedCornerBottomLeft } from '../../components/ui/VisbeyondIcons';
+import { buildCorpusVocabulary, correctSearchQuery, matchesProject } from '../../utils/fuzzySearch';
 
 export default function Projects() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -47,25 +48,81 @@ export default function Projects() {
     return ['All', ...Array.from(set)];
   }, []);
 
-  // Filtered projects matching category and search query
-  const filteredProjects = useMemo(() => {
-    return sortedProjects.filter((p) => {
-      const matchCat =
-        selectedCategory === 'All' ||
-        p.category?.toLowerCase() === selectedCategory.toLowerCase();
+  // Build corpus vocabulary for typo detection and character correction
+  const vocabulary = useMemo(() => buildCorpusVocabulary(projects), []);
+  const [strictMode, setStrictMode] = useState<boolean>(false);
 
-      const q = searchQuery.trim().toLowerCase();
-      const matchSearch =
-        !q ||
-        p.title.toLowerCase().includes(q) ||
-        (p.shortTitle && p.shortTitle.toLowerCase().includes(q)) ||
-        p.summary.toLowerCase().includes(q) ||
-        (p.category && p.category.toLowerCase().includes(q)) ||
-        (p.tags && p.tags.some((t) => t.toLowerCase().includes(q)));
+  // If user edits search query, reset strict mode
+  useEffect(() => {
+    setStrictMode(false);
+  }, [searchQuery]);
 
-      return matchCat && matchSearch;
-    });
-  }, [sortedProjects, selectedCategory, searchQuery]);
+  // Perform token-by-token character mistake analysis
+  const queryCorrection = useMemo(() => {
+    if (strictMode || !searchQuery.trim()) {
+      return {
+        rawQuery: searchQuery.trim(),
+        correctedQuery: searchQuery.trim(),
+        hasCorrection: false,
+        correctionDetails: [],
+      };
+    }
+    return correctSearchQuery(searchQuery, vocabulary);
+  }, [searchQuery, vocabulary, strictMode]);
+
+  // Filtered projects matching category and search query with character mistake tolerance
+  const { filteredProjects, usedFuzzyCorrection } = useMemo(() => {
+    const qRaw = searchQuery.trim().toLowerCase();
+    if (!qRaw) {
+      const matched = sortedProjects.filter((p) =>
+        selectedCategory === 'All' || p.category?.toLowerCase() === selectedCategory.toLowerCase()
+      );
+      return { filteredProjects: matched, usedFuzzyCorrection: false };
+    }
+
+    const rawWords = qRaw.split(/\s+/).filter(Boolean);
+    const correctedWords = queryCorrection.correctedQuery.toLowerCase().split(/\s+/).filter(Boolean);
+
+    // 1. Try exact match first
+    const exactMatches: Array<{ project: Project; score: number }> = [];
+    for (const p of sortedProjects) {
+      const { matches, score } = matchesProject(p, rawWords, selectedCategory);
+      if (matches) {
+        exactMatches.push({ project: p, score: score + (p.featured ? 50 : 0) });
+      }
+    }
+
+    if (exactMatches.length > 0) {
+      exactMatches.sort((a, b) => b.score - a.score);
+      return {
+        filteredProjects: exactMatches.map((m) => m.project),
+        usedFuzzyCorrection: false,
+      };
+    }
+
+    // 2. If no exact matches and typo correction is available (not in strict mode)
+    if (!strictMode) {
+      const fuzzyMatches: Array<{ project: Project; score: number }> = [];
+      const wordsToSearch = queryCorrection.hasCorrection ? correctedWords : rawWords;
+
+      for (const p of sortedProjects) {
+        const { matches, score } = matchesProject(p, wordsToSearch, selectedCategory);
+        if (matches) {
+          fuzzyMatches.push({ project: p, score: score + (p.featured ? 50 : 0) });
+        }
+      }
+
+      if (fuzzyMatches.length > 0) {
+        fuzzyMatches.sort((a, b) => b.score - a.score);
+        return {
+          filteredProjects: fuzzyMatches.map((m) => m.project),
+          usedFuzzyCorrection: queryCorrection.hasCorrection,
+        };
+      }
+    }
+
+    return { filteredProjects: [], usedFuzzyCorrection: false };
+  }, [sortedProjects, selectedCategory, searchQuery, queryCorrection, strictMode]);
 
   const [activeProject, setActiveProject] = useState<Project | undefined>(sortedProjects[0]);
 
@@ -218,6 +275,12 @@ export default function Projects() {
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && queryCorrection.hasCorrection) {
+                  e.preventDefault();
+                  handleSearchChange(queryCorrection.correctedQuery);
+                }
+              }}
               placeholder="Search projects by title, tool, or discipline..."
               className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-xs sm:text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] transition-all font-sans"
               aria-label="Search projects"
@@ -233,6 +296,48 @@ export default function Projects() {
               </button>
             )}
           </div>
+
+          {/* Smart Character Mistake / Typo Correction Notice */}
+          {searchQuery && queryCorrection.hasCorrection && (
+            <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2.5 mb-3.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-xs text-[var(--vb-text-muted)] animate-fadeIn">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#e62e05]/15 text-[#e62e05] shrink-0 uppercase tracking-wider">
+                  Typo Fix
+                </span>
+                <span className="truncate">
+                  {usedFuzzyCorrection ? 'Showing matches for ' : 'Did you mean: '}
+                  <button
+                    type="button"
+                    onClick={() => handleSearchChange(queryCorrection.correctedQuery)}
+                    className="font-bold text-[var(--vb-text)] underline hover:text-[#e62e05] cursor-pointer inline-block"
+                  >
+                    "{queryCorrection.correctedQuery}"
+                  </button>
+                  <span className="opacity-70 ml-1.5 hidden sm:inline">
+                    (fixed from <em>"{searchQuery}"</em>)
+                  </span>
+                </span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => handleSearchChange(queryCorrection.correctedQuery)}
+                  className="px-2.5 py-1 rounded-md bg-[#e62e05] text-white hover:brightness-110 text-[11px] font-semibold transition-all cursor-pointer shadow-sm"
+                >
+                  Apply "{queryCorrection.correctedQuery}"
+                </button>
+                {!strictMode && (
+                  <button
+                    type="button"
+                    onClick={() => setStrictMode(true)}
+                    className="text-[11px] text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] underline cursor-pointer"
+                  >
+                    Search strictly "{searchQuery}"
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Category Filter Pills */}
           <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center min-[810px]:justify-start" role="group" aria-label="Categories">
@@ -262,17 +367,34 @@ export default function Projects() {
         {filteredProjects.length === 0 ? (
           <div className="vb-card p-12 text-center rounded-[var(--vb-radius)] bg-[var(--vb-panel)] border border-[var(--vb-border)] my-6">
             <h3 className="text-base font-semibold text-[var(--vb-text)] mb-2">No projects found</h3>
-            <p className="text-sm text-[var(--vb-text-muted)] mb-5">
-              We couldn't find any projects matching your search criteria.
+            <p className="text-sm text-[var(--vb-text-muted)] mb-3">
+              We couldn't find any projects matching <em>"{searchQuery}"</em>.
             </p>
-            <button
-              type="button"
-              onClick={clearFilters}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e62e05] text-white text-xs font-semibold hover:brightness-110 transition-all cursor-pointer shadow-md"
-            >
-              <X size={14} />
-              <span>Reset All Filters</span>
-            </button>
+            {queryCorrection.hasCorrection && (
+              <div className="mb-5 inline-flex items-center gap-1.5 text-xs text-[var(--vb-text-muted)] bg-[var(--vb-subpanel)] px-3 py-1.5 rounded-lg border border-[var(--vb-border)]">
+                <span>Did you mean:</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStrictMode(false);
+                    handleSearchChange(queryCorrection.correctedQuery);
+                  }}
+                  className="font-bold text-[#e62e05] underline hover:brightness-110 cursor-pointer"
+                >
+                  "{queryCorrection.correctedQuery}"
+                </button>
+              </div>
+            )}
+            <div>
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e62e05] text-white text-xs font-semibold hover:brightness-110 transition-all cursor-pointer shadow-md"
+              >
+                <X size={14} />
+                <span>Reset All Filters</span>
+              </button>
+            </div>
           </div>
         ) : (
           <>
