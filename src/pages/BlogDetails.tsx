@@ -228,8 +228,8 @@ export default function BlogDetails() {
   // Sticky Left Showcase Component (Desktop >= 1200px)
   const blogShowcase = (
     <div className="relative w-full h-full flex flex-col justify-between overflow-hidden bg-[var(--vb-bg)] select-text">
-      {/* Featured Cover Image Display - flush with container and navbar curves */}
-      <div className="relative w-full h-[45%] min-h-[220px] overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
+      {/* Featured Cover Image Display - 16:9 ratio with natural height so images render with proper proportions */}
+      <div className="relative w-full aspect-[16/9] min-h-[280px] xl:min-h-[320px] overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
         <img
           src={blog.coverImage || blog.image}
           alt={blog.coverImageAlt || blog.title}
@@ -238,9 +238,9 @@ export default function BlogDetails() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
 
-      {/* Floating Table of Contents filling full width down to bottom-right label curve */}
+      {/* Floating Table of Contents positioned downwards and filling full width */}
       {blog.tableOfContents && blog.tableOfContents.length > 0 && (
-        <div className="relative w-full flex-1 flex flex-col p-5 pb-14 overflow-hidden bg-[var(--vb-panel)] border-t border-[var(--vb-border)]">
+        <div className="relative w-full flex-1 flex flex-col p-5 pt-6 pb-14 overflow-hidden bg-[var(--vb-panel)] border-t border-[var(--vb-border)]">
           <div className="flex items-center justify-between pb-2 border-b border-[var(--vb-border)]">
             <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-[var(--vb-text)] font-semibold">
               <List size={14} className="text-[#e62e05]" />
@@ -307,7 +307,7 @@ export default function BlogDetails() {
         showcaseChildren={blogShowcase}
         hideShowcaseOnMobile={true}
       >
-        {/* Top Hero Card (matching Visbeyond reference: Title, Date Pill, Subtitle, Read Button) */}
+        {/* Top Hero Card (matching Visbeyond reference: Clean Title & Subtitle) */}
         <section
           className="vb-card pt-16 sm:pt-20 xl:pt-10 p-6 sm:p-8 md:p-10 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)]"
           aria-label="Article header"
@@ -316,12 +316,6 @@ export default function BlogDetails() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--vb-text)] mb-4 leading-[1.15] font-sans">
             {blog.title}
           </h1>
-
-          {/* Date pill with right arrow placed UNDER the title */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[var(--vb-subpanel)] text-xs sm:text-[13px] text-[var(--vb-text-muted)] font-sans font-medium mb-6 border border-[var(--vb-border)]/50 select-none">
-            <span>{blog.date}</span>
-            <span className="text-[var(--vb-text-muted)]">&rarr;</span>
-          </div>
 
           {/* Clean Subtitle / Description */}
           <p className="text-base sm:text-lg text-[var(--vb-text-muted)] leading-relaxed font-sans max-w-3xl">
