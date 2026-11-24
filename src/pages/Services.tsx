@@ -106,9 +106,35 @@ export default function Services() {
       >
         {/* Sticky Search by Category Card (Exact Visbeyond Pattern) */}
         <section
-          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-8 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-none backdrop-blur-md transition-colors duration-300"
+          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-6 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-none backdrop-blur-md transition-colors duration-300"
           aria-label="Filter services by category"
         >
+          {/* Top gap mask: seamlessly covers any content scrolling into the top 12px viewport gap */}
+          <div
+            className="absolute -top-4 left-0 right-0 h-4 bg-[var(--vb-bg)] pointer-events-none z-30 transition-colors duration-300"
+            aria-hidden="true"
+          />
+
+          {/* Top-left corner mask: fills the area outside rounded-[20px] with var(--vb-bg) so scrolling cards never bleed through */}
+          <div
+            className="absolute -top-[1px] -left-[1px] w-5 h-5 pointer-events-none overflow-hidden z-30 text-[var(--vb-bg)] transition-colors duration-300"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-full h-full block">
+              <path d="M 0 0 L 20 0 C 8.954 0 0 8.954 0 20 Z" />
+            </svg>
+          </div>
+
+          {/* Top-right corner mask: fills the area outside rounded-[20px] with var(--vb-bg) so scrolling cards never bleed through */}
+          <div
+            className="absolute -top-[1px] -right-[1px] w-5 h-5 pointer-events-none overflow-hidden z-30 text-[var(--vb-bg)] transition-colors duration-300"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-full h-full block">
+              <path d="M 20 0 L 0 0 C 11.046 0 20 8.954 20 20 Z" />
+            </svg>
+          </div>
+
           {/* Top Notch Row:
               - Mobile (<440px): centered below top tabs
               - Tablet notch (440px-809px): centered in top bar notch between ADIB & Menu tabs
