@@ -2956,9 +2956,19 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 
 
 
-/* Use the navigation notch for the blog title on phone widths. */
-@media (min-width: 360px) and (max-width: 439px) {
+/* The title starts left-aligned, then slides into the notch as the panel docks. */
+@media (min-width: 360px) and (max-width: 809px) {
   .blog-search-panel { padding-top: 6px; }
-  .blog-search-heading { width: auto; margin-left: 120px; margin-right: 48px; }
-  .blog-search-heading h2 { padding-inline: 0; font-size: 14px; }
+  .blog-search-heading { display: block; width: 100%; margin-inline: 0; }
+  .blog-search-heading h2 {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--search-notch-progress, 0) * (50% + 36px));
+    transform: translate(calc(var(--search-notch-progress, 0) * -50%), -50%);
+    padding-inline: 0;
+    text-align: left;
+  }
+}
+@media (min-width: 360px) and (max-width: 439px) {
+  .blog-search-heading h2 { font-size: 14px; }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
@@ -24,6 +24,33 @@ export default function Blogs() {
   const [selectedCategory, setSelectedCategory] = useState<string>(urlCategory || 'All');
   const [searchQuery, setSearchQuery] = useState<string>(urlQuery || '');
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const searchPanelRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const panel = searchPanelRef.current;
+    if (!panel) return;
+    let frame = 0;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => {
+      frame = 0;
+      const dockTop = parseFloat(getComputedStyle(panel).top) || 12;
+      const distance = panel.getBoundingClientRect().top - dockTop;
+      const progress = reducedMotion.matches ? Number(distance <= 1) : Math.max(0, Math.min(1, 1 - distance / 100));
+      panel.style.setProperty('--search-notch-progress', String(progress));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    reducedMotion.addEventListener('change', schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      reducedMotion.removeEventListener('change', schedule);
+    };
+  }, []);
+
 
   // Sync state if URL query params change externally
   useEffect(() => {
@@ -200,6 +227,7 @@ export default function Blogs() {
       >
         {/* Sticky Search & Category Filter Section (Exact Services Pattern: Centered in notch on <810px, left-aligned on desktop) */}
         <section
+          ref={searchPanelRef}
           className="blog-search-panel sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-6 pb-5 px-4 sm:px-6 md:px-8 bg-[var(--vb-panel)] text-[var(--vb-text)] border border-[var(--vb-border)] shadow-none backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
           aria-label="Filter blog articles"
         >
