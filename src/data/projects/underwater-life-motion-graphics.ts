@@ -8,9 +8,14 @@ const project: Project = {
   featured: false,
   role: "Motion Graphics Designer & Animator",
   summary: "Atmospheric underwater biome animation created as a debut motion graphics project in Adobe After Effects, combining vector layers, Bézier curve easing, lighting caustics, and marine creature choreography.",
-  description: "<p style='text-align: justify;'>Marking a foundational debut into professional digital motion design, this project was authored as the artist's first official motion graphics assignment in Adobe After Effects. Staged in a tranquil oceanic ecosystem, the piece choreographs layered marine organisms, ambient sea currents, and gentle aquatic flora into a cohesive visual narrative.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Layered Composition & Parallax Depth:</b> Built from custom vector assets, the composition establishes multiple depth planes—foreground coral silhouettes, midground marine fauna, and atmospheric deep-water gradients. By parenting position and scale transforms with subtle speed differentials, the camera movement produces a multiplane parallax depth mimicking real ocean cinematography.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Graph Editor & Timing Discipline:</b> A key technical breakthrough in this debut project was moving beyond linear keyframes into customized Bézier speed and value curves within the After Effects Graph Editor. Non-linear easing imparts organic deceleration and buoyant drift to floating bubbles, undulating seaweeds, and gliding aquatic life.</p>",
+  description: "<p style='text-align: justify;'>Marking my foundational debut into professional digital motion design, this project was authored as my first official motion graphics assignment in Adobe After Effects. Staged in a tranquil oceanic ecosystem, the piece choreographs layered marine organisms, ambient sea currents, and gentle aquatic flora into a cohesive visual narrative.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Layered Vector Composition & Multiplane Parallax</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Constructed from modular vector silhouettes, the composition layers foreground reef outcroppings, midground swimming fauna, and distant ambient oceanic fog. Staggered velocity parenting produces a natural multiplane parallax effect as the camera glides across the seabed.</p>\
+<img src='/images/projects/underwater-life-motion-graphics-thumbnail.webp' alt='Debut underwater motion graphics animation in Adobe After Effects with layered parallax' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Graph Editor Bézier Curves & Buoyancy Timing</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Moving beyond rigid linear keyframes, every transform channel was sculpted with customized Bézier curves in the After Effects Graph Editor. Non-linear acceleration and deceleration impart authentic aquatic buoyancy to rising bubbles and swimming trajectories.</p>",
   thumbnail: "/images/projects/underwater-life-motion-graphics-thumbnail.webp",
   thumbnails: [
     "/images/projects/underwater-life-motion-graphics-thumbnail.webp"

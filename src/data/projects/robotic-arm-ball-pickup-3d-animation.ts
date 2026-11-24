@@ -8,9 +8,14 @@ const project: Project = {
   featured: false,
   role: "3D Modeler & Animator",
   summary: "Debut 3D animation milestone in Autodesk 3ds Max demonstrating mechanical joint hierarchy, forward kinematics (FK), claw grip coordination, and ball handling with realistic mass and weight.",
-  description: "<p style='text-align: justify;'>Serving as the artist's foundational milestone in digital 3D animation, this project was authored in Autodesk 3ds Max to explore industrial robotics and keyframed mechanical motion. The sequence centers around an articulated multi-axis robotic arm executing a precision ball retrieval, lift, and placement routine.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Hierarchical Mechanical Rigging & Pivot Alignment:</b> The robotic assembly was designed with modular hard-surface components—turntable base, lower arm beam, upper elbow linkage, wrist rotator, and dual-finger pneumatic gripper. Every segment was linked in a strict parent-child transform hierarchy with customized local pivot orientations to ensure clean single-axis rotation without gimbal anomalies.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Keyframing Weight, Inertia & Grip Timing:</b> Beyond simply translating geometry, the animation focuses on believable robotic behavior: subtle settling counter-movements as heavy hydraulic joints come to a halt, precise timing between gripper closure and the ball becoming a child of the end effector, and gradual acceleration curves that evoke authentic servo-motor physics.</p>",
+  description: "<p style='text-align: justify;'>Serving as my foundational milestone in digital 3D animation, this project was authored in Autodesk 3ds Max to explore industrial robotics and keyframed mechanical motion. The sequence centers around an articulated multi-axis robotic arm executing a precision ball retrieval, lift, and placement routine.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Hierarchical Mechanical Rigging & Pivot Alignment</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The robotic assembly was constructed from modular hard-surface parts: turntable pedestal, lower boom arm, hydraulic elbow linkages, wrist gimbal, and dual pneumatic gripper claws. Every joint was connected in a strict parent-child transform hierarchy with customized local pivot orientations to avoid rotational gimbal lock.</p>\
+<img src='/images/projects/robotic-arm-3d-animation-thumbnail.webp' alt='Articulated robotic arm 3D animation in 3ds Max executing precision ball pickup' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Keyframing Servo-Motor Physics, Mass & Grip Timing</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Beyond simple geometry translation, animation curves reflect authentic industrial automation: subtle settling oscillations as heavy metal arms brake to a halt, precise timing between claw contact and ball constraint attachment, and smooth bezier acceleration curves simulating electric servo drives.</p>",
   thumbnail: "/images/projects/robotic-arm-3d-animation-thumbnail.webp",
   thumbnails: [
     "/images/projects/robotic-arm-3d-animation-thumbnail.webp"

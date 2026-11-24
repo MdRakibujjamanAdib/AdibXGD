@@ -23,6 +23,9 @@ const project: Project = {
   <img src='/images/projects/gadget-n-gadget-phone-storefront-view.webp' alt='Gadget N Gadget smartphone UI and mobile layout mockup' style='width:100%; border-radius: 12px;' />
 </div>
 
+<p style='text-align: justify; margin-top: 30px;'><b>Ergonomic One-Handed Smartphone Shopping & Gestures:</b> On mobile, key checkout buttons, bottom navigation tabs, and category filters are aligned within the natural thumb sweep zone. Fast-loading web assets ensure instantaneous transitions between gadget listings and specs sheets.</p>
+<img src='/images/projects/gadget-n-gadget-iphone-mobile-mockup.webp' alt='Gadget N Gadget mobile UI displayed on modern smartphone mockup' style='width:100%; border-radius: 12px; margin: 20px 0 30px 0;' />
+
 <p style='text-align: justify; margin-top: 30px;'><b>Local Payment Ecosystem & Streamlined Checkout:</b> Addressing the specific needs of Bangladeshi e-commerce, the checkout flow was structured for transparency and minimal friction. The platform seamlessly integrates local Mobile Financial Services (bKash, Nagad, Rocket), major credit/debit card gateways (Visa, Mastercard, Amex), Cash on Delivery (COD), flexible EMI calculation models, and an automated pre-order reservation engine for highly anticipated global smartphone releases.</p>
 
 <p style='text-align: justify; margin-top: 30px;'><b>Engineering Excellence & Impact:</b> The website combines clean component modularity, optimized asset delivery, SEO-optimized product pages, and resilient state management. As a result, the platform established a robust digital presence for Gadget N Gadget, boosting online conversions, streamlining nationwide logistics dispatch, and reinforcing their reputation as an authorized and premier tech destination in Bangladesh.</p>`,

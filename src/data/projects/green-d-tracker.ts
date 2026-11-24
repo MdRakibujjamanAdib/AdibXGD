@@ -9,28 +9,32 @@ const project: Project = {
     featured: true,
     featuredOrder: 2,
     summary: "A full-stack sustainability platform combining IoT energy monitoring, carbon tracking, smart home optimization, receipt-based emission analysis, and AI-powered eco insights.",
-    description: "<p style='text-align: justify;'>Green D is a full-stack carbon footprint tracking web application designed to help individuals measure, understand, and reduce their environmental impact. The platform combines real-time dashboards, AI-based forecasting, smart home simulation, and automated emission analysis into a unified sustainability ecosystem.</p>\
+    description: "<p style='text-align: justify;'><b>Green D Smart Home & AI Carbon Footprint Tracker</b> is a full-stack sustainability web platform designed to help individuals and smart households measure, understand, and reduce their environmental impact. The platform unifies edge IoT power metering, optical character recognition (OCR) of utility bills, AI-based forecasting, and automated emission modeling into an actionable engineering feedback loop.</p>\
 \
-<p style='text-align: justify; margin-top: 30px;'><b>Personalized Sustainability Dashboard:</b> The main dashboard calculates a sustainability score, displays AI-powered carbon forecasts, and visualizes historical emission data. Weather integration and smart insights enhance contextual awareness for daily decision-making.</p>\
-<img src='/images/projects/greend-dashboard.webp' alt='Green D carbon footprint dashboard with sustainability score and AI carbon forecast' style='width:100%; margin:20px 0 30px 0;' />\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Ecosystem Architecture & Smart Home Ingress</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The central web application coordinates real-time telemetry streaming from household smart sensors, offering a unified portal for instant ecological feedback. Users gain immediate visibility into their home's power consumption metrics, active carbon debt, and climate forecasting.</p>\
+<img src='/images/projects/green-d-carbon-tracker-home.webp' alt='Green D IoT smart home carbon tracker application homepage and telemetry ingress' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
 \
-<p style='text-align: justify; margin-top: 30px;'><b>Smart Receipt Analysis:</b> Users can upload electricity bills, fuel receipts, transport tickets, or shopping invoices. The system analyzes consumption patterns and estimates associated carbon emissions, converting everyday expenses into measurable environmental impact metrics.</p>\
-<img src='/images/projects/greend-receipt.webp' alt='Green D receipt upload interface for carbon emission analysis' style='width:100%; margin:20px 0 30px 0;' />\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Personalized Sustainability Dashboard & AI Forecasting</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The main dashboard calculates an aggregate sustainability index, displays predictive AI carbon trajectory curves for the upcoming week, and visualizes historical power consumption curves. Integrated weather telemetry contextualizes energy spikes caused by cooling or heating demands.</p>\
+<img src='/images/projects/greend-dashboard.webp' alt='Green D carbon footprint dashboard with sustainability score and AI carbon forecast' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
 \
-<p style='text-align: justify; margin-top: 30px;'><b>Smart Home Energy Monitoring:</b> The Smart Home module simulates device-level control, enabling users to manage lights, fans, and energy usage states. Real-time carbon emission history visualization helps identify inefficiencies and optimize electricity consumption.</p>\
-<img src='/images/projects/greend-smart-home.webp' alt='Green D smart home interface with device control and carbon emission tracking' style='width:100%; margin:20px 0 30px 0;' />\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>03. Utility Receipt OCR Parsing & Automatic Emission Calculation</h3>\
+<p style='text-align: justify; margin-top: 12px;'>To eliminate manual survey entry, users scan electricity bills, fuel slips, or grocery receipts. An optical character recognition (OCR) pipeline parses kilowatt-hours (kWh) and liters of fuel, dynamically multiplying them against regional grid emission factors to calculate exact kilograms of CO2 equivalent.</p>\
+<img src='/images/projects/greend-receipt.webp' alt='Green D receipt upload interface for automated OCR carbon emission analysis' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
 \
-<p style='text-align: justify; margin-top: 30px;'><b>Green Maps & Route Optimization:</b> Integrated map tools allow users to compare transport options and choose lower carbon-emitting routes. The system supports eco-friendly route planning and highlights sustainable travel practices.</p>\
-<img src='/images/projects/greend-maps.webp' alt='Green D green maps route planner for low carbon travel options' style='width:100%; margin:20px 0 30px 0;' />\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>04. Device-Level IoT Power Monitoring & Circuit Simulation</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The Smart Home module interfaces with device-level telemetry, allowing granular control over lights, climate control, and appliances. Real-time carbon rate counters help homeowners identify inefficient vampire loads and schedule power-heavy cycles during off-peak hours.</p>\
+<img src='/images/projects/greend-smart-home.webp' alt='Green D smart home interface with device control and carbon emission tracking' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
 \
-<p style='text-align: justify; margin-top: 30px;'><b>Technical Architecture:</b> The application is built with a modern full-stack architecture, emphasizing performance, modular design, and scalability. It features dynamic state management, reusable UI components, API-driven data handling, and responsive design optimized for cross-device accessibility. The structured dashboard system ensures maintainable growth for future feature expansion, including AI integrations and IoT connectivity.</p>\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>05. Green Maps & Low-Carbon Geospatial Route Planning</h3>\
+<p style='text-align: justify; margin-top: 12px;'>An integrated geospatial routing engine models transit carbon costs. Explorers compare walking, cycling, public transit, and electric vehicle options, routing through lower-emission pathways and earning eco-credits for sustainable commuting choices.</p>\
+<img src='/images/projects/greend-maps.webp' alt='Green D green maps route planner for low carbon travel options' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
 \
-<p style='text-align: justify; margin-top: 20px;'>Green D demonstrates expertise in frontend engineering, backend logic design, dashboard UI architecture, sustainability data modeling, and real-world problem-solving through technology. The platform merges environmental awareness with modern web application development to create a scalable digital sustainability solution.</p>",
+<p style='text-align: justify; margin-top: 24px;'>Green D demonstrates expertise in frontend architecture, full-stack state management, edge IoT data ingestion, and sustainability data modeling to create a scalable digital climate solution.</p>",
     thumbnail: "/images/projects/green-d-carbon-tracker-home.webp",
     images: [
         "/images/projects/green-d-carbon-tracker-home.webp",
-        "/images/projects/green-d-web-home.webp",
-        "/images/projects/green-d-branding-hero-showcase.webp",
         "/images/projects/greend-dashboard.webp",
         "/images/projects/greend-receipt.webp",
         "/images/projects/greend-smart-home.webp",

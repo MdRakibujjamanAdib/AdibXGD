@@ -8,9 +8,14 @@ const project: Project = {
     featured: false,
     role: "Lighting & Environment Artist",
     summary: "Atmospheric outdoor CGI study exploring VRayEnvironmentFog aerial perspective, volumetric density falloff, and moody forest illumination around a rustic well.",
-    description: "<p style='text-align: justify;'>Atmospheric depth in computer graphics relies on participating media to soften distant silhouettes and scatter directional moonlight. This dedicated CGI study in Chaos V-Ray investigates large-scale outdoor fog simulation, centering on a rustic stone well situated within an overgrown misty forest.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Volumetric Density & Height Falloff:</b> Using VRayEnvironmentFog calibrated with custom height limits and distance attenuation, the mist clusters heavily near the damp forest floor while feathering into the tree canopies above. This produces layered atmospheric perspective, enhancing the sense of scale and spatial depth across deep tree lines.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Foliage Distribution & Moody Chiaroscuro:</b> Organic vegetation, grass clumps, and mossy ground details were distributed using procedural surface scattering. A cool, low-angle directional key light cuts through the dense forest canopy, highlighting the stone masonry of the well and water bucket while preserving rich, mysterious shadow contrast throughout the surrounding wilderness.</p>",
+    description: "<p style='text-align: justify;'><b>V-Ray Atmospheric Environment Fog & Forest Well Study</b> explores large-scale outdoor atmospheric perspective, participating media, and moody chiaroscuro lighting in Chaos V-Ray. Centered on a solitary rustic stone well nestled in an overgrown forest clearing, this project investigates how dense environmental fog enhances spatial depth and narrative mystery.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Volumetric Density, Height Falloff & Aerial Perspective</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Using VRayEnvironmentFog configured with a custom vertical density gradient, mist settles thickly across the damp forest soil while thinning out toward the upper canopy. Distant trees dissolve gradually into atmospheric haze, establishing believable depth planes.</p>\
+<img src='/images/projects/vray-environment-fog.webp' alt='Atmospheric forest well 3D render in Chaos V-Ray featuring dense volumetric Environment Fog' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Chiaroscuro Moonlight & Foliage Scattering</h3>\
+<p style='text-align: justify; margin-top: 12px;'>A low-angle cool keylight simulates nocturnal moonlight breaking through dense branches, catching the rough-hewn stone masonry, mossy wooden roof, and bucket rigging of the well while preserving dramatic shadow pockets across the surrounding wilderness.</p>",
     thumbnail: "/images/projects/vray-environment-fog.webp",
     thumbnails: [
         "/images/projects/vray-environment-fog.webp"

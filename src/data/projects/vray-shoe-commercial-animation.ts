@@ -9,9 +9,15 @@ const project: Project = {
   cardRatio: "square",
   role: "3D Product Modeler, Lighting & Rendering Artist",
   summary: "Debut academic milestone in commercial 3D footwear product visualization, modeling, and studio turntable lighting authored in 3ds Max and rendered with Chaos V-Ray.",
-  description: "<p style='text-align: justify;'>Marking the artist's first official assignment in commercial 3D product visualization and lighting, this project showcases high-end athletic footwear modeled with industrial design accuracy. The goal was to replicate commercial advertising standards by combining millimeter-accurate geometry with multi-point studio lighting and turntable camera motion.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Product Geometry & Multi-Material Construction:</b> The sneaker assembly was constructed across multiple functional components: the sculpted foam midsole with ergonomic shock pods, textured rubber tread outsole, breathable mesh vamp, synthetic leather overlays, and laced eyelet stays. Subdivided topology ensures smooth, artifact-free highlights across tight bevels and flowing organic stitch lines.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Studio Lighting & Turntable Animation:</b> The asset is illuminated using a three-point studio lighting rig in Chaos V-Ray—balancing a dominant high-key keylight, soft fill bounce, and a razor-sharp rim/edge light to accentuate the silhouette against a clean dark backdrop. The turntable animation highlights material anisotropy, fabric roughness, and specular sheen as the footwear rotates in space.</p>",
+  description: "<p style='text-align: justify;'>Marking my debut academic milestone in commercial 3D footwear product visualization, modeling, and lighting, this project presents athletic footwear engineered to high-budget advertising benchmarks. The goal was to master multi-material assembly, micro-surface normal texturing, and three-point cinematic studio lighting in Autodesk 3ds Max and Chaos V-Ray.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Industrial Multi-Material Assembly & Dynamic Floating Staging</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The sneaker assembly was built from functional real-world footwear patterns: a sculpted EVA foam midsole with shock-absorption pods, textured tread outsoles, breathable mesh fabric along the toe vamp, synthetic leather overlays, and laced eyelet stays with realistic tension physics.</p>\
+<img src='/images/projects/vray-shoe-commercial-animation-thumbnail.webp' alt='Commercial 3D athletic sneaker floating in dark studio space with sharp rim lighting' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. V-Ray Studio Lighting Rig & 360° Turntable Animation</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The lighting setup utilizes a balanced high-key keylight, soft ambient fill bounce, and a razor-sharp rim/kicker light to accentuate the shoe's sleek silhouette against the dark cyclorama backdrop. The full turntable animation captures continuous specular glints as the footwear rotates in 3D space.</p>\
+<img src='/images/projects/vray-shoe-commercial-turntable-preview.webp' alt='Turntable pedestal view of 3D shoe render demonstrating specular highlights and material falloff' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />",
   thumbnail: "/images/projects/vray-shoe-commercial-animation-thumbnail.webp",
   thumbnails: [
     "/images/projects/vray-shoe-commercial-animation-thumbnail.webp",

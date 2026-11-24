@@ -8,9 +8,14 @@ const project: Project = {
   featured: false,
   role: "3D Technical Artist & Simulation Specialist",
   summary: "Computational physics simulation in Autodesk 3ds Max using the MassFX dynamic physics engine to model realistic gravitational velocity, momentum, restitution, and rolling friction of a ball traversing wooden terrain.",
-  description: "<p style='text-align: justify;'>Bridging procedural mathematics and visual arts, this project explored real-time computational dynamics in Autodesk 3ds Max utilizing the integrated MassFX physics engine. The core objective was simulating the natural, unscripted trajectory of a rigid sphere traversing an intricate multi-tiered wooden run with exact physical laws.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Rigid-Body Setup & Collision Mesh Calibration:</b> The scene was architected using distinct rigid-body property assignments: the polished wooden tracks, inclined ramps, and bumper barriers were configured as Static Rigid Bodies with precise convex/concave mesh collision boundaries, while the rolling ball operated as a Dynamic Rigid Body with accurate mass density and rotational inertia.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Friction, Restitution & Kinetic Dissipation:</b> Simulation parameters were fine-tuned through iterative test bakes—adjusting static and dynamic friction coefficients alongside restitution (bounciness) to capture the authentic dampening of kinetic energy as the ball collides with wood grains. Once the organic path was finalized, the simulation was baked into standard transform animation curves for reproducible camera rendering.</p>",
+  description: "<p style='text-align: justify;'>Bridging procedural mathematics and visual arts, this project explored real-time computational dynamics in Autodesk 3ds Max utilizing the integrated MassFX physics engine. The core objective was simulating the natural, unscripted trajectory of a rigid sphere traversing an intricate multi-tiered wooden run governed by physical laws of gravity, momentum, and friction.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Rigid-Body Setup & Collision Mesh Calibration</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The scene was architected using distinct rigid-body property assignments: polished wooden tracks, inclined chutes, and redirector pins were designated as Static Rigid Bodies with custom convex hull collision boundaries, while the rolling sphere operated as a Dynamic Rigid Body with calibrated mass density and rotational inertia.</p>\
+<img src='/images/projects/massfx-physics-ball-simulation-thumbnail.webp' alt='3ds Max MassFX physics simulation showing rigid body ball rolling across wooden chutes' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Friction, Restitution & Kinetic Dissipation</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Simulation parameters were calibrated through iterative collision bakes—adjusting static and kinetic friction coefficients alongside restitution (elastic bounce) to capture authentic dampening as the ball contacts polished hardwood grains before dropping into the exit receptacle.</p>",
   thumbnail: "/images/projects/massfx-physics-ball-simulation-thumbnail.webp",
   thumbnails: [
     "/images/projects/massfx-physics-ball-simulation-thumbnail.webp"

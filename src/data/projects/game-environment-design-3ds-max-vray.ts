@@ -8,9 +8,14 @@ const project: Project = {
   featured: false,
   role: "Solo 3D Environment Artist",
   summary: "A personal hobby exploration in architectural worldbuilding, atmospheric lighting, and modular asset composition modeled in 3ds Max and rendered with Chaos V-Ray.",
-  description: "<p style='text-align: justify;'>Created as a passionate personal hobby project, this environment design explores worldbuilding, spatial scale, and dramatic atmospheric mood. Modeled in Autodesk 3ds Max and rendered in Chaos V-Ray, the composition balances architectural forms with natural elements to create an immersive game-ready level vignette.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Architectural Composition & Worldbuilding:</b> The environment emphasizes storytelling through structural silhouettes, weathered stone surfaces, and natural plant overgrowth. Props and architectural modules were staged to establish leading lines and visual hierarchy, drawing viewer curiosity into the depths of the virtual space.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Lighting Atmosphere & Materiality:</b> Direct solar illumination interacts with deep ambient occlusion shadows and soft volumetric haze to produce high contrast and cinematic atmosphere. Materials combine roughness maps, specular variation, and micro-surface displacement to convey aged stone, weathered timber, and organic foliage.</p>",
+  description: "<p style='text-align: justify;'>Created as a passionate personal hobby exploration in virtual worldbuilding, this environment design study was modeled in Autodesk 3ds Max and rendered with Chaos V-Ray. The scene balances grand architectural stonework with organic vegetation to craft an atmospheric, game-ready fantasy level vignette.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Architectural Worldbuilding & Spatial Composition</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The environment emphasizes visual storytelling through weathered stone ruins, arched gateways, and natural foliage overgrowth. Modular structural elements establish leading lines that pull the viewer's gaze into the depths of the virtual terrain.</p>\
+<img src='/images/projects/atmospheric-3d-game-environment-3ds-max-vray.webp' alt='Atmospheric 3D game environment design in 3ds Max featuring stone architecture and cinematic V-Ray lighting' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. V-Ray Volumetric Atmosphere & Material Weathering</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Direct solar illumination interacts with deep ambient occlusion shadows and soft environmental haze. Multi-layered PBR materials blend moss displacement, fractured masonry normals, and aged timber roughness to convey decades of weathering.</p>",
   thumbnail: "/images/projects/atmospheric-3d-game-environment-3ds-max-vray.webp",
   thumbnails: [
     "/images/projects/atmospheric-3d-game-environment-3ds-max-vray.webp"

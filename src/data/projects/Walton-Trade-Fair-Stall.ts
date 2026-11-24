@@ -8,12 +8,23 @@ const project: Project = {
     featured: false,
     role: "3D Designer & Visualizer",
     summary: "Concept stall design for Walton at Dhaka International Trade Fair, created in 3ds Max to showcase brand presence, product zones, and 5G promotion.",
-    description: "<p style='text-align: justify;'>This project presents a conceptual exhibition stall designed for Walton at the Dhaka International Trade Fair. Modeled and visualized in Autodesk 3ds Max, the objective was to create a modern, brand-focused space that highlights product innovation while maintaining a clean and inviting layout.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Brand Identity & Form:</b> The stall design follows Walton’s signature blue and white color scheme, integrating bold curves and layered horizontal elements to create a dynamic yet corporate structure. The illuminated Walton logo is positioned prominently to ensure maximum visibility across the exhibition hall.</p>\
-<img src='/images/projects/stall-design-inside-view.webp' alt='3D concept design of Walton stall at Dhaka International Trade Fair created in 3ds Max' style='width:100%; margin:20px 0 30px 0;' />\
-<p style='text-align: justify; margin-top: 30px;'><b>Zoning & Visitor Flow:</b> The layout is divided into clear functional zones, including product display walls, interactive seating areas, and a central promotional focal point featuring a bold 5G installation. The open-front design encourages smooth visitor movement while keeping key brand messages visible from multiple angles.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Product Showcase Strategy:</b> Dedicated display panels highlight Walton’s smartphone lineup and camera capabilities, supported by large-format visuals to enhance engagement. The use of clean lighting and minimal clutter ensures attention remains on the products.</p>\
-<p style='text-align: justify; margin-top: 20px;'>This concept demonstrates my ability to design exhibition stalls that combine branding, spatial planning, and 3D visualization. From architectural structure to promotional detailing, the project showcases how a trade fair booth can function as both a marketing space and a strong brand experience.</p>",
+    description: "<p style='text-align: justify;'><b>Walton Trade Fair Stall Concept</b> presents an exhibition booth designed for Walton at the prestigious Dhaka International Trade Fair (DITF). Modeled and visualized in Autodesk 3ds Max, the objective was to create a modern, brand-focused commercial pavilion that highlights consumer electronics innovation, 5G mobile ecosystems, and seamless visitor ergonomics.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Master Architectural Overview & Pavilion Identity</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The pavilion follows Walton's signature corporate blue and white aesthetic, using sweeping cantilevered canopies and architectural LED ribbons to command immediate presence on the main trade fair exhibition concourse.</p>\
+<img src='/images/projects/walton-stall-overview.webp' alt='Walton 3D exhibition stall master perspective showing brand canopy and pavilion architecture' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Frontal Elevation & 5G Brand Activation Zone</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The main facade features an open-front double-height entrance flanked by high-resolution LED media walls. A dedicated central 5G activation station captures incoming crowd attention while illuminated brand logos ensure maximum long-distance visibility across exhibition aisles.</p>\
+<img src='/images/projects/stall-design-front-view.webp' alt='Front elevation of Walton trade fair booth highlighting 5G display entrance and signage' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>03. Interior Zoning, Product Pods & Discussion Lounge</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The interior floor plan is strategically zoned into touch-and-try smartphone counters, smart appliance displays, and a semi-private VIP business discussion lounge equipped with ergonomic seating.</p>\
+<img src='/images/projects/stall-design-inside-view.webp' alt='Interior view of Walton exhibition booth showing experiential smartphone pods and lounge seating' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>04. Side Flank Circulation & Secondary Product Displays</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Lateral side elevations maintain clear 2.5-meter circulation aisles preventing foot traffic bottlenecks. Wall-mounted graphic lightboxes and accessory vitrines utilize flush LED backlighting to keep visitor focus on technical product specs.</p>\
+<img src='/images/projects/stall-design-side-view.webp' alt='Side elevation of Walton trade fair stall showing visitor circulation corridors and illuminated displays' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />",
     thumbnail: "/images/projects/walton-stall-overview.webp",
     images: [
         "/images/projects/walton-stall-overview.webp",

@@ -41,6 +41,18 @@ const blog: Blog = {
 <p>
   The Byte Battle contest presented five grueling algorithmic problems spanning complex dynamic programming, graph theory, number-theoretic modular arithmetic, and geometric sweep-line logic. Competitors faced tight execution envelopes: 1.0-second execution limits and 256MB memory caps for <code>N = 200,000</code> elements.
 </p>
+
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
+  <img
+    src="/images/byte-battle-championship-honours.webp"
+    alt="Md Rakibujjaman Adib celebrating Byte Battle Programming Contest championship victory"
+    class="w-full object-cover rounded-[18px] max-h-[460px]"
+  />
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+    Figure 1: Celebrating Champion honors at the Byte Battle Programming Contest 2025: algorithmic rigor translated into competitive victory.
+  </p>
+</div>
+
 <p>
   In an environment like that, guessing and checking is a death sentence. Before writing a single line of C++, an engineer must perform asymptotic estimation:
 </p>

@@ -9,9 +9,14 @@ const project: Project = {
     cardRatio: "square",
     role: "3D Modeler & Texture Artist",
     summary: "High-resolution 4K study of a rustic vintage bentwood chair, featuring realistic wood grain texture, distressed lacquer edge wear, and clean studio rendering.",
-    description: "<p style='text-align: justify;'>A focused hard-surface and material recreation study centered on an aged mid-century wooden dining chair. Built to explore authentic surface aging, procedural wood grain mapping, and subtle organic imperfections that distinguish real-world craftsmanship from sterile digital models.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Bentwood Curves & Structural Jointing:</b> The curved backrest, steam-bent support bows, and turned legs were drafted with attention to realistic joinery and wood turnings. Subtle asymmetries and softened corners replicate years of functional use.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Material Degradation & Studio Lighting:</b> The texture maps depict a dark stained oak with areas of rubbed-off varnish across the central seat and back crest where hands and clothing naturally contact the surface. Rendered at ultra-high 4000x4000 resolution against a neutral studio backdrop to emphasize micro-surface roughness and light scattering.</p>",
+    description: "<p style='text-align: justify;'><b>Vintage Wooden Chair Study</b> is a focused hard-surface and procedural material study centered on a rustic mid-century bentwood dining chair. Built to explore physical surface aging, procedural wood grain mapping, and subtle organic imperfections that distinguish genuine carpentry from sterile digital 3D models.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Steam-Bent Curves, Joinery & Structural Turning</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The curved backrest arch, steam-bent support struts, and lathe-turned legs were modeled with precise mortise-and-tenon joinery clearances. Subtle micro-bevels and rounded edges replicate decades of manual handling.</p>\
+<img src='/images/projects/vintage-wooden-chair-3d-study-render.webp' alt='4K studio render of vintage wooden bentwood chair showing stained oak texture and edge wear' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Lacquer Distressing & Studio Lighting LookDev</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Multi-layered PBR materials depict rich dark stained oak with realistic lacquer rub-off on the front seat edge and top backrest crest. Rendered against a neutral high-contrast studio cyclorama to highlight subtle specular gloss variations across the grain.</p>",
     thumbnail: "/images/projects/vintage-wooden-chair-3d-study-render.webp",
     images: [
         "/images/projects/vintage-wooden-chair-3d-study-render.webp"

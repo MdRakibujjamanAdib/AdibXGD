@@ -54,6 +54,18 @@ const blog: Blog = {
 <p>
   Generating code and rendering high-resolution generative images (via Stable Diffusion XL) require vastly different computing profiles. Placing both on a monolithic server would cause heavy diffusion workloads to choke low-latency conversational streaming.
 </p>
+
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
+  <img
+    src="/images/projects/mctlabs.png"
+    alt="MCT Labs Multimodal Creative AI Platform Interface and Prompt-to-Code Workspace"
+    class="w-full object-cover rounded-[18px] max-h-[460px]"
+  />
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+    Figure 1: The MCT Labs multimodal interface: streaming token generation, live code execution canvas, and asset synthesis workspace.
+  </p>
+</div>
+
 <p>
   We partitioned the backend into three distinct micro-services:
 </p>

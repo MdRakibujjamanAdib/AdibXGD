@@ -41,6 +41,18 @@ const blog: Blog = {
 <p>
   The fundamental challenge of serious gaming lies in a persistent tension: if the application feels like homework or a clinic test, user compliance plummets and immersion dissolves. Conversely, if gameplay mechanics overpower the scientific objectives, the simulation fails its clinical or educational mandate.
 </p>
+
+<div class="my-6 rounded-[22px] overflow-hidden border border-[var(--vb-border)] bg-[var(--vb-panel)] p-2">
+  <img
+    src="/images/projects/atmospheric-3d-game-environment-3ds-max-vray.webp"
+    alt="3D Serious Game Simulation World Architecture and Environment Lighting"
+    class="w-full object-cover rounded-[18px] max-h-[440px]"
+  />
+  <p class="py-2.5 px-3 text-xs text-[var(--vb-text-muted)] italic text-center">
+    Figure 1: Serious game virtual environment architecture: balancing atmospheric spatial presence with clinical task constraints.
+  </p>
+</div>
+
 <p>
   Solving this balance requires an architecture where <em>game mechanics</em> and <em>measurement heuristics</em> are strictly decoupled. Game loops should operate on standard game-feel principles (responsive physics, visual juice, spatial audio), while a dedicated heuristic layer intercepts telemetry asynchronously, evaluates player behavior, and modulates difficulty without breaking immersion.
 </p>

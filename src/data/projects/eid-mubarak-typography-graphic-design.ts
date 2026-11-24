@@ -9,9 +9,14 @@ const project: Project = {
   cardRatio: "square",
   role: "Typography & Graphic Designer",
   summary: "Debut typography milestone created in Adobe Illustrator fusing elegant Arabic calligraphy styling, modern Bengali lettering, and celebratory Islamic geometric aesthetic balance.",
-  description: "<p style='text-align: justify;'>Marking the artist's first official typography task, this design piece was authored in Adobe Illustrator to celebrate the sacred festival of Eid. The composition explores cross-cultural letterform design, balancing ornamental Islamic calligraphy traditions with modern geometric graphic layout.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Vector Typography & Letterform Craft:</b> The primary title combines handcrafted curves, sweeping descenders, and tailored swashes engineered directly on the vector Bézier grid. Stroke weights and kerning relationships were rigorously refined to achieve visual equilibrium between the bold festive greeting and intricate decorative accents.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Festive Color Harmony & Composition:</b> The artwork utilizes an evocative color palette of deep festive greens, luminous gold highlights, and clean negative space. Intricate crescent motifs, starlight geometry, and subtle arabesque patterns frame the typography, producing an elegant visual identity suitable for digital and print distribution.</p>",
+  description: "<p style='text-align: justify;'>Marking my debut professional typography and brand visual identity milestone, this artwork was authored in Adobe Illustrator to celebrate the sacred festival of Eid. The composition explores cross-cultural letterform design, balancing ornamental Islamic calligraphic heritage with contemporary vector geometric discipline.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Vector Typography & Letterform Architecture</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The primary title combines handcrafted vector curves, sweeping descenders, and tailored swashes engineered directly on the Bézier anchor grid. Stroke weights, negative space apertures, and kerning relationships were calibrated to establish visual equilibrium between bold festive impact and delicate calligraphic flourishes.</p>\
+<img src='/images/projects/eid-mubarak-typography-festive-poster.webp' alt='Eid Mubarak vector typography poster in Adobe Illustrator with elegant calligraphy and festive geometry' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Festive Color Harmony & Negative Space Balance</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The composition harmonizes rich celebratory greens with warm metallic gold accents and disciplined negative space. The surrounding arabesque geometry and crescent motifs guide eye movement smoothly inward toward the central greeting.</p>",
   thumbnail: "/images/projects/eid-mubarak-typography-festive-poster.webp",
   thumbnails: [
     "/images/projects/eid-mubarak-typography-festive-poster.webp"

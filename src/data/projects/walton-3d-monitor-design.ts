@@ -8,9 +8,19 @@ const project: Project = {
     featured: false,
     role: "3D Product Modeler & Visualizer",
     summary: "Millimeter-accurate 3D product prototype of an unreleased Walton monitor, reverse-engineered and modeled in 3ds Max using official company reference photographs.",
-    description: "<p style='text-align: justify;'>This project was an industrial 3D product modeling assignment centered on creating a millimeter-accurate prototype for Walton, the premier consumer tech and electronics manufacturer in Bangladesh. The design focused on an unreleased commercial monitor concept, with reference photography procured through academic faculty directly from the company.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Millimeter-Accurate Reverse Engineering:</b> Guided by multi-angle reference photos, the monitor chassis, micro-edge bezels, VESA mounting hub, and ergonomic stand were drafted with CAD-level precision. Every bevel radius, port cut-out, and cooling vent was aligned to production specifications.</p>\
-<p style='text-align: justify; margin-top: 30px;'><b>Photorealistic Product LookDev:</b> Materials were engineered to reflect modern hardware finishes: textured matte polymers for the rear housing, brushed aluminum along the support neck and base, and an anti-glare micro-diffusive glass panel. Rendered in clean studio lighting with soft specular highlights that emphasize the display's slim profile.</p>",
+    description: "<p style='text-align: justify;'><b>Walton 3D Monitor Design</b> was an industrial 3D product modeling assignment centered on creating a millimeter-accurate prototype for Walton Digi-Tech, the leading consumer technology manufacturer in Bangladesh. The project focused on reverse-engineering an unreleased commercial desktop monitor, using technical reference photography procured through academic faculty directly from the manufacturer.</p>\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>01. Industrial Workspace Context & Studio LookDev</h3>\
+<p style='text-align: justify; margin-top: 12px;'>To evaluate how the hardware integrates into modern professional environments, the monitor was staged on a minimalist creative desk setup alongside an ergonomic mesh office chair and architectural desk lighting. High-contrast directional sunlight rakes across the matte rear chassis and white support column, proving the material falloff under intense direct illumination.</p>\
+<img src='/images/projects/walton-3d-monitor-design-prototype-02.webp' alt='Walton 3D monitor prototype rear chassis and stand staged in sunlit studio workspace' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>02. Millimeter-Accurate Front Bezel & Display Geometry</h3>\
+<p style='text-align: justify; margin-top: 12px;'>Guided by orthogonal reference photos from Walton, the front fascia features micro-edge zero-bezel borders on the top and lateral sides, paired with a reinforced bottom chin housing the brand insignia and tactile control arrays. Subdivision surface modeling in 3ds Max ensured razor-sharp chamfers and pristine edge loops without surface pinching or normal distortion.</p>\
+<img src='/images/projects/walton-3d-monitor-design-prototype-01.webp' alt='Front elevation render of Walton 3D monitor showcasing ultra-slim bezel geometry and display panel' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />\
+\
+<h3 style='font-size: 1.25rem; font-weight: 700; margin-top: 36px; color: var(--vb-text);'>03. Ergonomic Stand Articulation & Mechanical Detailing</h3>\
+<p style='text-align: justify; margin-top: 12px;'>The articulating stand was modeled with full mechanical fidelity, featuring an internal counterbalanced height-adjustment rail, tilt/swivel gimbal joint, and integrated passthrough cable routing. High-spec PBR materials blend powdered matte plastic on the main enclosure with brushed metallic coatings on the structural pedestal.</p>\
+<img src='/images/projects/walton-3d-monitor-design-prototype-03.webp' alt='Detail angle of Walton 3D monitor stand articulation, cable management channel, and rear I/O layout' style='width:100%; border-radius:12px; margin:20px 0 32px 0;' />",
     thumbnail: "/images/projects/walton-3d-monitor-design-prototype-02.webp",
     thumbnails: [
         "/images/projects/walton-3d-monitor-design-prototype-02.webp",
