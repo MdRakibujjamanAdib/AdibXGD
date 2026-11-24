@@ -19,7 +19,7 @@ const project: Project = {
         <img src='/images/projects/green-d-id-card.png' alt='Green D branding mockups and visual system usage' style='width:100%; margin:20px 0 30px 0;' />\
         \
         <p style='text-align: justify; margin-top: 20px;'>This project demonstrates expertise in brand strategy, logo development, scalable design systems, and cross-platform visual identity implementation for modern tech startups.</p>",
-    thumbnail: "/images/projects/green-d-branding.png",
+    thumbnail: "/images/projects/green-d-id-card.png",
     images: [
         "/images/projects/green-d-logo.png",
         "/images/projects/green-d-branding.png",

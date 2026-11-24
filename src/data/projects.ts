@@ -8,6 +8,7 @@ export interface Project {
   summary: string;
   description: string;
   thumbnail: string;
+  thumbnails?: string[];
   images?: string[]; // For 3D, Branding, etc.
   videoUrl?: string; // For Video Editing (YouTube embed)
   demoUrl?: string;

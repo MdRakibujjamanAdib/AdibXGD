@@ -196,22 +196,21 @@ export default function Blogs() {
           </div>
         }
       >
-        {/* Sticky Search & Category Filter Section (Sticks flush to top, matches UI theme) */}
+        {/* Sticky Search & Category Filter Section (Exact Services Pattern: Left-aligned on desktop, top-3 sticky alignment) */}
         <section
-          style={{ position: 'sticky', top: 0, zIndex: 20 }}
-          className="rounded-[24px] overflow-hidden p-5 sm:p-6 bg-[var(--vb-panel)] border border-[var(--vb-border)] shadow-xl mb-6 md:mb-8 transition-colors"
+          className="sticky top-3 z-20 rounded-[20px] pt-12 min-[440px]:pt-1.5 min-[810px]:pt-14 xl:pt-8 pb-5 px-4 sm:px-6 md:px-8 bg-[#0e1011] dark:bg-white text-white dark:text-[#0e1011] border border-white/10 dark:border-black/10 shadow-xl backdrop-blur-md transition-colors duration-300 mb-6 md:mb-8"
           aria-label="Filter blog articles"
         >
-          {/* Centered Header Row */}
-          <div className="w-full flex items-center justify-center relative mb-3 sm:mb-4 min-h-[32px]">
-            <h2 className="text-sm min-[440px]:text-base sm:text-lg xl:text-xl font-bold tracking-tight text-[var(--vb-text)] text-center px-2">
+          {/* Header Row: Left-aligned on bigger screens (min-[810px] & desktop) */}
+          <div className="w-full min-h-[37px] flex items-center justify-between mb-2 sm:mb-4">
+            <h2 className="text-sm min-[440px]:text-base sm:text-lg xl:text-2xl font-bold tracking-tight text-white dark:text-[#0e1011] whitespace-nowrap text-center min-[810px]:text-left px-2 transition-colors duration-300">
               Search by Category
             </h2>
             {isFiltered && (
               <button
                 type="button"
                 onClick={clearFilters}
-                className="absolute right-0 top-1/2 -translate-y-1/2 inline-flex items-center gap-1.5 text-xs text-[#e62e05] hover:underline cursor-pointer font-medium"
+                className="inline-flex items-center gap-1.5 text-xs text-[#e62e05] hover:underline cursor-pointer font-medium px-2"
               >
                 <X size={12} />
                 <span>Reset ({filteredBlogs.length})</span>
@@ -223,21 +222,21 @@ export default function Blogs() {
           <div className="relative mb-3.5">
             <Search
               size={15}
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--vb-text-muted)] pointer-events-none"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/50 dark:text-[#0e1011]/50 pointer-events-none"
             />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search articles by title, topic, or keyword..."
-              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-xs sm:text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] transition-all font-sans"
+              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-white/10 dark:bg-black/5 border border-white/20 dark:border-black/10 text-xs sm:text-sm text-white dark:text-[#0e1011] placeholder:text-white/50 dark:placeholder:text-[#0e1011]/50 focus:outline-none focus:border-[#e62e05] transition-all font-sans"
               aria-label="Search articles"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => handleSearchChange('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/50 dark:text-[#0e1011]/50 hover:text-white dark:hover:text-[#0e1011] cursor-pointer"
                 aria-label="Clear search"
               >
                 <X size={14} />
@@ -245,8 +244,8 @@ export default function Blogs() {
             )}
           </div>
 
-          {/* Category Filter Pills (Exact dashed-border aesthetic, matching UI theme) */}
-          <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center" role="group" aria-label="Categories">
+          {/* Category Filter Pills (Exact dashed-border aesthetic, matching Services page) */}
+          <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center min-[810px]:justify-start" role="group" aria-label="Categories">
             {categories.map((category) => {
               const isActive = selectedCategory === category;
               return (
@@ -258,7 +257,7 @@ export default function Blogs() {
                   className={`vb-tag-pill px-3.5 py-1.5 rounded-[8px] text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none ${
                     isActive
                       ? 'active bg-[#e62e05] text-white border-transparent shadow-md shadow-[#e62e05]/30 font-semibold'
-                      : 'bg-transparent text-[var(--vb-text)] border border-dashed border-[var(--vb-border)] hover:border-[var(--vb-text)]/60'
+                      : 'bg-transparent text-white dark:text-[#0e1011] border border-dashed border-white/40 dark:border-black/30 hover:border-white dark:hover:border-[#0e1011]'
                   }`}
                   aria-pressed={isActive}
                 >

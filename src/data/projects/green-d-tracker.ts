@@ -23,8 +23,9 @@ const project: Project = {
 <p style='text-align: justify; margin-top: 30px;'><b>Technical Architecture:</b> The application is built with a modern full-stack architecture, emphasizing performance, modular design, and scalability. It features dynamic state management, reusable UI components, API-driven data handling, and responsive design optimized for cross-device accessibility. The structured dashboard system ensures maintainable growth for future feature expansion, including AI integrations and IoT connectivity.</p>\
 \
 <p style='text-align: justify; margin-top: 20px;'>Green D demonstrates expertise in frontend engineering, backend logic design, dashboard UI architecture, sustainability data modeling, and real-world problem-solving through technology. The platform merges environmental awareness with modern web application development to create a scalable digital sustainability solution.</p>",
-    thumbnail: "/images/projects/greend-home.png",
+    thumbnail: "/images/projects/greenD Home Image.png",
     images: [
+        "/images/projects/greenD Home Image.png",
         "/images/projects/greend-dashboard.png",
         "/images/projects/greend-receipt.png",
         "/images/projects/greend-smart-home.png",

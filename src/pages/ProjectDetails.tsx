@@ -17,6 +17,7 @@ import {
   InvertedCornerTopRight,
   InvertedCornerBottomLeft,
 } from '../components/ui/VisbeyondIcons';
+import ProjectThumbnailSlideshow from '../components/ui/ProjectThumbnailSlideshow';
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -118,7 +119,18 @@ export default function ProjectDetails() {
       />
       <VisbeyondLayout
         pageLabel={project.title}
-        showcaseImage={project.thumbnail}
+        showcaseImage={project.thumbnails && project.thumbnails.length > 1 ? undefined : project.thumbnail}
+        showcaseChildren={
+          project.thumbnails && project.thumbnails.length > 1 ? (
+            <ProjectThumbnailSlideshow
+              thumbnails={project.thumbnails}
+              fallback={project.thumbnail}
+              alt={project.title}
+              className="w-full h-full"
+              showIndicators={true}
+            />
+          ) : undefined
+        }
         showcaseAlt={project.title}
       >
         {/* Visbeyond Card 1: Overview & Metadata Specs Bento */}
@@ -261,15 +273,14 @@ export default function ProjectDetails() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            {/* Compact Thumbnail Grid for Visual Gallery Exhibits */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3">
               {allImages.map((img, index) => (
                 <button
                   key={index}
                   type="button"
                   onClick={() => openLightbox(index)}
-                  className={`group relative rounded-xl overflow-hidden bg-[var(--vb-subpanel)] border border-[var(--vb-border)] aspect-[16/10] focus:outline-none focus:ring-2 focus:ring-[#e62e05] ${
-                    index === 0 && allImages.length % 2 === 1 ? 'sm:col-span-2 aspect-[21/10]' : ''
-                  }`}
+                  className="group relative rounded-xl overflow-hidden bg-[var(--vb-subpanel)] border border-[var(--vb-border)] aspect-[4/3] sm:aspect-[16/10] focus:outline-none focus:ring-2 focus:ring-[#e62e05] cursor-pointer hover:border-[#e62e05]/50 transition-all duration-300 shadow-sm hover:shadow-md"
                 >
                   <img
                     src={img}
@@ -279,7 +290,7 @@ export default function ProjectDetails() {
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                     <ZoomIn
-                      size={22}
+                      size={18}
                       className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"
                     />
                   </div>
@@ -321,11 +332,13 @@ export default function ProjectDetails() {
                 <InvertedCornerBottomLeft className="vb-mobile-tab-corner-bottom" />
               </div>
               <div className="vb-next-preview-img-wrap">
-                <img
-                  src={nextProject.thumbnail}
+                <ProjectThumbnailSlideshow
+                  thumbnails={nextProject.thumbnails}
+                  fallback={nextProject.thumbnail}
                   alt={nextProject.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="w-full h-full"
+                  imgClassName="transition-transform duration-500 ease-out group-hover:scale-105"
+                  showIndicators={true}
                 />
               </div>
             </Link>
