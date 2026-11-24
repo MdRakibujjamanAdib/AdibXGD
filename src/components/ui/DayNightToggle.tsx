@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useId, useSyncExternalStore } from 'react';
+
+const subscribeToHydration = () => () => {};
+const clientReady = () => true;
+const serverReady = () => false;
 
 interface DayNightToggleProps {
   dark: boolean;
@@ -24,6 +28,7 @@ export default function DayNightToggle({
   className = '',
   size = 'md',
 }: DayNightToggleProps) {
+  const ready = useSyncExternalStore(subscribeToHydration, clientReady, serverReady);
   // Sizing configurations - compact, refined proportions matching 41px nav bar
   const width = size === 'sm' ? 36 : size === 'lg' ? 50 : 44;
   const height = size === 'sm' ? 15 : size === 'lg' ? 20 : 18;
@@ -37,6 +42,20 @@ export default function DayNightToggle({
       aria-pressed={dark}
       onClick={onToggle}
     >
+      {ready ? <ToggleArtwork dark={dark} /> : (
+        <>
+          <span className="vb-toggle-initial-light absolute inset-0"><ToggleArtwork dark={false} /></span>
+          <span className="vb-toggle-initial-dark absolute inset-0"><ToggleArtwork dark={true} /></span>
+        </>
+      )}
+    </button>
+  );
+}
+
+
+function ToggleArtwork({ dark }: { dark: boolean }) {
+  const clipId = useId();
+  return (
       <svg
         viewBox="0 0 264 108"
         className="w-full h-full overflow-visible block"
@@ -44,13 +63,13 @@ export default function DayNightToggle({
       >
         <defs>
           {/* Unique Clip Path for Capsule Track */}
-          <clipPath id="daynight-capsule-clip">
+          <clipPath id={clipId}>
             <rect x="0" y="0" width="264" height="108" rx="54" ry="54" />
           </clipPath>
         </defs>
 
         {/* Main Capsule Track */}
-        <g clipPath="url(#daynight-capsule-clip)">
+        <g clipPath={`url(#${clipId})`}>
           {/* Animated Sky Background */}
           <rect
             x="0"
@@ -217,6 +236,5 @@ export default function DayNightToggle({
           </g>
         </g>
       </svg>
-    </button>
   );
 }

@@ -25,28 +25,46 @@ export default function Blogs() {
   const [searchQuery, setSearchQuery] = useState<string>(urlQuery || '');
   const [filtersOpen, setFiltersOpen] = useState(false);
   const searchPanelRef = useRef<HTMLElement>(null);
+  const searchAnchorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const panel = searchPanelRef.current;
     if (!panel) return;
+    const anchor = searchAnchorRef.current;
+    const heading = panel.querySelector('h2');
+    const row = panel.querySelector('.blog-search-heading');
+    if (!anchor || !heading || !row) return;
     let frame = 0;
+    let naturalTop = 0;
+    let dockTop = 12;
+    let travel = 0;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => {
       frame = 0;
-      const dockTop = parseFloat(getComputedStyle(panel).top) || 12;
-      const distance = panel.getBoundingClientRect().top - dockTop;
+      const distance = naturalTop - window.scrollY - dockTop;
       const progress = reducedMotion.matches ? Number(distance <= 1) : Math.max(0, Math.min(1, 1 - distance / 100));
-      panel.style.setProperty('--search-notch-progress', String(progress));
+      heading.style.setProperty('--search-title-x', `${progress * travel}px`);
+    };
+    const measure = () => {
+      naturalTop = anchor.getBoundingClientRect().top + window.scrollY;
+      dockTop = parseFloat(getComputedStyle(panel).top) || 12;
+      travel = row.clientWidth / 2 + 36 - heading.getBoundingClientRect().width / 2;
+      update();
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
-    update();
+    const observer = new ResizeObserver(measure);
+    observer.observe(row);
+    observer.observe(heading);
+    measure();
+    document.fonts.ready.then(() => { if (panel.isConnected) measure(); });
     window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
+    window.addEventListener('resize', measure);
     reducedMotion.addEventListener('change', schedule);
     return () => {
       cancelAnimationFrame(frame);
+      observer.disconnect();
       window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
+      window.removeEventListener('resize', measure);
       reducedMotion.removeEventListener('change', schedule);
     };
   }, []);
@@ -225,6 +243,7 @@ export default function Blogs() {
           </div>
         }
       >
+        <div ref={searchAnchorRef} aria-hidden="true" className="h-0 -mb-3" />
         {/* Sticky Search & Category Filter Section (Exact Services Pattern: Centered in notch on <810px, left-aligned on desktop) */}
         <section
           ref={searchPanelRef}

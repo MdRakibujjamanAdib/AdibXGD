@@ -2963,8 +2963,9 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
   .blog-search-heading h2 {
     position: absolute;
     top: 50%;
-    left: calc(var(--search-notch-progress, 0) * (50% + 36px));
-    transform: translate(calc(var(--search-notch-progress, 0) * -50%), -50%);
+    left: 0;
+    transform: translate3d(var(--search-title-x, 0px), -50%, 0);
+    will-change: transform;
     padding-inline: 0;
     text-align: left;
   }
@@ -2972,3 +2973,8 @@ a:focus-visible .vb-roll-track { transform: translateY(-50%); }
 @media (min-width: 360px) and (max-width: 439px) {
   .blog-search-heading h2 { font-size: 14px; }
 }
+
+/* Static first-paint artwork matches the saved root theme before hydration. */
+.vb-toggle-initial-light { display: none; }
+html[data-theme="light"] .vb-toggle-initial-light { display: block; }
+html[data-theme="light"] .vb-toggle-initial-dark { display: none; }
