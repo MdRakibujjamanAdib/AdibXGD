@@ -172,20 +172,34 @@ export default function Blogs() {
               )}
             </AnimatePresence>
 
-            {/* Bottom Showcase Information Overlay with Blog Title (positioned lower in reflection area) */}
-            {currentDisplayBlog && (
-              <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 pb-6 md:pb-8 flex flex-col justify-end pointer-events-none">
-                <h3 className="text-lg md:text-xl font-bold font-sans text-white tracking-tight leading-snug line-clamp-2 drop-shadow-md max-w-[58%] mb-1">
-                  {currentDisplayBlog.title}
-                </h3>
-              </div>
-            )}
+            {/* Bottom Showcase Information Overlay with Blog Title: Line 1 spans full width, Line 2 stops before corner tab */}
+            {currentDisplayBlog && (() => {
+              const colonIndex = currentDisplayBlog.title.indexOf(':');
+              const line1 = colonIndex !== -1 ? currentDisplayBlog.title.slice(0, colonIndex + 1) : currentDisplayBlog.title;
+              const line2 = colonIndex !== -1 ? currentDisplayBlog.title.slice(colonIndex + 1).trim() : null;
+
+              return (
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 pb-5 md:pb-6 flex flex-col justify-end pointer-events-none drop-shadow-md">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold font-sans tracking-tight leading-snug flex flex-col">
+                    <span className="text-white block w-full truncate">
+                      {line1}
+                    </span>
+                    {line2 && (
+                      <span className="text-white/95 block max-w-[58%] truncate font-semibold text-sm md:text-base mt-0.5">
+                        {line2}
+                      </span>
+                    )}
+                  </h3>
+                </div>
+              );
+            })()}
           </div>
         }
       >
-        {/* Sticky Search & Category Filter Section (Matches UI theme: white in day, dark in night) */}
+        {/* Sticky Search & Category Filter Section (Sticks to top, matches UI theme) */}
         <section
-          className="sticky top-3 z-20 vb-card p-4 sm:p-6 bg-[var(--vb-panel)]/95 backdrop-blur-md border border-[var(--vb-border)] rounded-[20px] shadow-lg mb-6 md:mb-8 transition-colors"
+          style={{ position: 'sticky', top: '12px', zIndex: 20 }}
+          className="rounded-[20px] p-4 sm:p-6 bg-[var(--vb-panel)]/95 backdrop-blur-md border border-[var(--vb-border)] shadow-lg mb-6 md:mb-8 transition-colors"
           aria-label="Filter blog articles"
         >
           {/* Centered Header Row */}

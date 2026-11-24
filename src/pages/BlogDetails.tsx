@@ -228,12 +228,12 @@ export default function BlogDetails() {
   // Sticky Left Showcase Component (Desktop >= 1200px)
   const blogShowcase = (
     <div className="relative w-full h-full flex flex-col justify-between overflow-hidden bg-[var(--vb-bg)] select-text">
-      {/* Featured Cover Image Display - 16:9 ratio with natural height so images render with proper proportions */}
-      <div className="relative w-full aspect-[16/9] min-h-[280px] xl:min-h-[320px] overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
+      {/* Featured Cover Image Display - 16:9 ratio, anchored to top so extra space is cropped from bottom */}
+      <div className="relative w-full aspect-[16/9] min-h-[260px] max-h-[300px] xl:max-h-[340px] overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
         <img
           src={blog.coverImage || blog.image}
           alt={blog.coverImageAlt || blog.title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
