@@ -49,6 +49,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/3d-stage-modeling</loc>
+    <lastmod>2024-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/battle-axe-substance-texturing</loc>
+    <lastmod>2024-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/Vray-Chess-Board</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -57,6 +69,12 @@
   <url>
     <loc>https://adibx.me/projects/gadget-n-gadget-website</loc>
     <lastmod>2024-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/geometric-shape-maya-first-project</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -91,8 +109,38 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://adibx.me/projects/realistic-3d-room-environment</loc>
+    <lastmod>2024-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/retro-tv-3d-asset</loc>
+    <lastmod>2024-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://adibx.me/projects/The-Fading-Heartbeat</loc>
     <lastmod>2022-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/traditional-fabric-substance-texturing</loc>
+    <lastmod>2024-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/vintage-wooden-chair-study</loc>
+    <lastmod>2024-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/vray-architectural-environment-design</loc>
+    <lastmod>2024-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -111,6 +159,12 @@
   <url>
     <loc>https://adibx.me/projects/Vray-Lighting-Study</loc>
     <lastmod>2025-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adibx.me/projects/walton-3d-monitor-design</loc>
+    <lastmod>2024-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
