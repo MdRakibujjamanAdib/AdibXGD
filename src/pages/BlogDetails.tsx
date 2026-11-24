@@ -4,12 +4,12 @@ import {
   ArrowLeft,
   Calendar,
   Clock,
-  Tag,
   ArrowUpRight,
   Share2,
   Check,
   List,
   ChevronDown,
+  ArrowDown,
 } from 'lucide-react';
 import { blogs, Blog } from '../data/blogs';
 import VisbeyondLayout from '../components/layout/VisbeyondLayout';
@@ -99,7 +99,7 @@ export default function BlogDetails() {
       // Header bar
       const header = document.createElement('div');
       header.className =
-        'flex items-center justify-between px-4 py-2.5 bg-[#141414] border-b border-[var(--vb-border)] text-xs font-mono text-[#a1a1aa] select-none';
+        'flex items-center justify-between px-4 py-2.5 bg-[#141414] border-b border-[var(--vb-border)] text-xs font-sans text-[#a1a1aa] select-none';
 
       const langBadge = document.createElement('div');
       langBadge.className = 'flex items-center gap-2';
@@ -116,7 +116,7 @@ export default function BlogDetails() {
       copyBtn.setAttribute('type', 'button');
       copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
       copyBtn.className =
-        'vb-code-copy-btn-inline flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1f1f1f] hover:bg-[#2a2a2a] text-[#d4d4d8] hover:text-white transition-all text-[11px] cursor-pointer';
+        'vb-code-copy-btn-inline flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1f1f1f] hover:bg-[#2a2a2a] text-[#d4d4d8] hover:text-white transition-all text-[11px] font-sans cursor-pointer';
       copyBtn.innerHTML = `
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
         <span>Copy</span>
@@ -130,7 +130,7 @@ export default function BlogDetails() {
           }
           copyBtn.innerHTML = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span class="text-[#10b981] font-medium">Copied!</span>
+            <span class="text-[#10b981] font-medium font-sans">Copied!</span>
           `;
           setTimeout(() => {
             copyBtn.innerHTML = `
@@ -169,6 +169,14 @@ export default function BlogDetails() {
     }
   };
 
+  // Scroll to article content handler for "Read Article ↓" button
+  const scrollToArticle = () => {
+    const el = document.getElementById('article-content');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // Share / Copy Link handler
   const handleShare = async () => {
     const url = window.location.href;
@@ -200,24 +208,24 @@ export default function BlogDetails() {
     return (
       <VisbeyondLayout pageLabel="Article Not Found">
         <div className="vb-card p-12 text-center bg-[var(--vb-panel)] border border-[var(--vb-border)] rounded-[var(--vb-radius)]">
-          <h1 className="text-3xl font-bold text-[var(--vb-text)] mb-4">
+          <h1 className="text-3xl font-bold font-sans text-[var(--vb-text)] mb-4">
             Article Not Found
           </h1>
-          <p className="text-[var(--vb-text-muted)] mb-6">
+          <p className="text-[var(--vb-text-muted)] font-sans mb-6">
             The article you requested could not be located.
           </p>
           <Link
             to="/blogs"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e62e05] text-white font-medium text-sm hover:brightness-110 transition-all shadow-md"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e62e05] text-white font-sans font-medium text-sm hover:brightness-110 transition-all shadow-md"
           >
-            <ArrowLeft size={16} /> Back to Insights
+            <ArrowLeft size={16} /> Back to all articles
           </Link>
         </div>
       </VisbeyondLayout>
     );
   }
 
-  // Sticky Left Showcase Component
+  // Sticky Left Showcase Component (Desktop >= 1200px)
   const blogShowcase = (
     <div className="relative w-full h-full overflow-y-auto p-4 md:p-6 flex flex-col gap-4 bg-[var(--vb-bg)] pb-16 select-text">
       {/* Featured Cover Image Display */}
@@ -229,24 +237,24 @@ export default function BlogDetails() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
         <div className="absolute top-3 left-3">
-          <span className="px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider font-semibold bg-[#e62e05] text-white shadow-sm">
+          <span className="px-2.5 py-1 rounded-md text-xs font-sans font-semibold bg-[#e62e05] text-white shadow-sm">
             {blog.category}
           </span>
         </div>
-        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/90 font-mono">
+        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white/90 font-sans">
           <span className="inline-flex items-center gap-1">
-            <Calendar size={11} className="text-[#e62e05]" />
+            <Calendar size={12} className="text-[#e62e05]" />
             {blog.date}
           </span>
           <span className="inline-flex items-center gap-1">
-            <Clock size={11} />
+            <Clock size={12} />
             {blog.readTime}
           </span>
         </div>
       </div>
 
       {/* Author Credentials Card */}
-      <div className="vb-card p-4 flex flex-col gap-3 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] shrink-0">
+      <div className="vb-card p-5 flex flex-col gap-3 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] shrink-0">
         <div className="flex items-center gap-3">
           <img
             src={blog.author.avatar || '/MdRakibujamanAdib.jpg'}
@@ -254,22 +262,22 @@ export default function BlogDetails() {
             className="w-12 h-12 rounded-full object-cover border-2 border-[var(--vb-border)] shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-sm font-bold text-[var(--vb-text)] truncate">
+            <h3 className="text-sm font-bold font-sans text-[var(--vb-text)] truncate">
               {blog.author.name}
             </h3>
-            <p className="text-xs text-[var(--vb-text-muted)] truncate font-mono">
+            <p className="text-xs text-[var(--vb-text-muted)] truncate font-sans">
               {blog.author.role}
             </p>
           </div>
         </div>
         {blog.author.bio && (
-          <p className="text-xs text-[var(--vb-text-muted)] leading-relaxed line-clamp-3">
+          <p className="text-xs text-[var(--vb-text-muted)] leading-relaxed line-clamp-3 font-sans">
             {blog.author.bio}
           </p>
         )}
         <Link
           to="/about"
-          className="inline-flex items-center gap-1.5 text-xs font-mono text-[#e62e05] hover:underline pt-1"
+          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#e62e05] hover:underline pt-1"
         >
           <span>View profile &amp; credentials</span>
           <ArrowUpRight size={13} />
@@ -278,13 +286,13 @@ export default function BlogDetails() {
 
       {/* Floating Table of Contents with Scroll Spy */}
       {blog.tableOfContents && blog.tableOfContents.length > 0 && (
-        <div className="vb-card p-4 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] flex-1 min-h-[220px] flex flex-col gap-3">
+        <div className="vb-card p-5 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] flex-1 min-h-[220px] flex flex-col gap-3">
           <div className="flex items-center justify-between pb-2 border-b border-[var(--vb-border)]">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--vb-text)] font-semibold">
+            <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-[var(--vb-text)] font-semibold">
               <List size={14} className="text-[#e62e05]" />
               <span>Table of Contents</span>
             </div>
-            <span className="text-[10px] font-mono text-[var(--vb-text-muted)]">
+            <span className="text-[11px] font-sans text-[var(--vb-text-muted)]">
               {blog.tableOfContents.length} sections
             </span>
           </div>
@@ -300,7 +308,7 @@ export default function BlogDetails() {
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => handleTocClick(e, item.id)}
-                  className={`group flex items-start gap-2 text-xs py-2 px-3 rounded-lg transition-all duration-200 ${
+                  className={`group flex items-start gap-2 text-xs py-2 px-3 rounded-lg transition-all duration-200 font-sans ${
                     isActive
                       ? 'bg-[#e62e05]/10 text-[#e62e05] font-semibold border-l-2 border-[#e62e05]'
                       : 'text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] hover:bg-[var(--vb-subpanel)]'
@@ -345,52 +353,43 @@ export default function BlogDetails() {
         showcaseChildren={blogShowcase}
         hideShowcaseOnMobile={true}
       >
-        {/* Right Reading Canvas: Header Card */}
+        {/* Top Hero Card (matching Visbeyond reference: Date Pill, Title, Subtitle, Read Button) */}
         <section
-          className="vb-card pt-16 sm:pt-20 xl:pt-8 p-6 md:p-8 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)]"
+          className="vb-card pt-16 sm:pt-20 xl:pt-10 p-6 sm:p-8 md:p-10 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)]"
           aria-label="Article header"
         >
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <Link
-              to="/blogs"
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--vb-text-muted)] hover:text-[#e62e05] transition-colors group"
-            >
-              <ArrowLeft
-                size={14}
-                className="group-hover:-translate-x-1 transition-transform"
-              />
-              <span>Back to Insights</span>
-            </Link>
-
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#e62e05] bg-[#e62e05]/10 border border-[#e62e05]/20 px-2.5 py-1 rounded-full font-semibold">
-              {blog.category}
-            </span>
+          {/* Date pill with right arrow (May 24, 2026 → style) */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[var(--vb-subpanel)] text-xs sm:text-[13px] text-[var(--vb-text-muted)] font-sans font-medium mb-6 border border-[var(--vb-border)]/50 select-none">
+            <span>{blog.date}</span>
+            <span className="text-[var(--vb-text-muted)]">&rarr;</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight text-[var(--vb-text)] mb-4 leading-[1.15]">
+          {/* Clean, bold Article Title */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--vb-text)] mb-4 leading-[1.15] font-sans">
             {blog.title}
           </h1>
 
-          <p className="text-base md:text-lg text-[var(--vb-text-muted)] leading-relaxed font-sans border-l-2 border-[#e62e05] pl-4 my-4 italic">
+          {/* Clean Subtitle / Description */}
+          <p className="text-base sm:text-lg text-[var(--vb-text-muted)] leading-relaxed font-sans mb-8 max-w-3xl">
             {blog.subtitle || blog.summary}
           </p>
 
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--vb-border)] text-xs font-mono text-[var(--vb-text-muted)]">
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5">
-                <Calendar size={13} className="text-[#e62e05]" />
-                <span>{blog.date}</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Clock size={13} className="text-[#e62e05]" />
-                <span>{blog.readTime}</span>
-              </span>
-            </div>
+          {/* Action Row: Read Article CTA and Share */}
+          <div className="flex items-center justify-between gap-4">
+            <button
+              type="button"
+              onClick={scrollToArticle}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--vb-subpanel)] hover:bg-[var(--vb-card-inset)] text-[var(--vb-text)] font-sans font-semibold text-xs sm:text-sm border border-[var(--vb-border)] hover:border-[var(--vb-text)]/40 transition-all cursor-pointer shadow-sm select-none"
+              aria-label="Read full article"
+            >
+              <span>Read Article</span>
+              <ArrowDown size={14} className="text-[var(--vb-text)]" />
+            </button>
 
             <button
               type="button"
               onClick={handleShare}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono bg-[var(--vb-subpanel)] hover:bg-[var(--vb-card-inset)] text-[var(--vb-text)] border border-[var(--vb-border)] hover:border-[#e62e05]/40 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-sans font-medium bg-[var(--vb-subpanel)] hover:bg-[var(--vb-card-inset)] text-[var(--vb-text)] border border-[var(--vb-border)] hover:border-[#e62e05]/40 transition-colors cursor-pointer"
               aria-label="Share article"
             >
               {copied ? (
@@ -398,10 +397,43 @@ export default function BlogDetails() {
               ) : (
                 <Share2 size={13} className="text-[#e62e05]" />
               )}
-              <span>{copied ? 'Link Copied!' : 'Share Article'}</span>
+              <span>{copied ? 'Link Copied!' : 'Share'}</span>
             </button>
           </div>
         </section>
+
+        {/* Three Separate Full-Width Metadata Cards: Category, Reading Time, Date (Visbeyond aesthetic) */}
+        <div className="flex flex-col gap-2 sm:gap-2.5 my-1" aria-label="Article metadata">
+          {/* Row 1: Category */}
+          <div className="vb-card flex items-center justify-between px-6 py-4 rounded-[var(--vb-radius)] bg-[var(--vb-panel)] border border-[var(--vb-border)]">
+            <span className="text-sm sm:text-[15px] text-[var(--vb-text-muted)] font-sans">
+              Category
+            </span>
+            <span className="text-sm sm:text-[15px] font-semibold text-[var(--vb-text)] font-sans">
+              {blog.category}
+            </span>
+          </div>
+
+          {/* Row 2: Reading Time */}
+          <div className="vb-card flex items-center justify-between px-6 py-4 rounded-[var(--vb-radius)] bg-[var(--vb-panel)] border border-[var(--vb-border)]">
+            <span className="text-sm sm:text-[15px] text-[var(--vb-text-muted)] font-sans">
+              Reading Time
+            </span>
+            <span className="text-sm sm:text-[15px] font-semibold text-[var(--vb-text)] font-sans">
+              {blog.readTime}
+            </span>
+          </div>
+
+          {/* Row 3: Date */}
+          <div className="vb-card flex items-center justify-between px-6 py-4 rounded-[var(--vb-radius)] bg-[var(--vb-panel)] border border-[var(--vb-border)]">
+            <span className="text-sm sm:text-[15px] text-[var(--vb-text-muted)] font-sans">
+              Date
+            </span>
+            <span className="text-sm sm:text-[15px] font-semibold text-[var(--vb-text)] font-sans">
+              {blog.date}
+            </span>
+          </div>
+        </div>
 
         {/* Mobile-only Cover Image */}
         <section
@@ -426,7 +458,7 @@ export default function BlogDetails() {
             <button
               type="button"
               onClick={() => setMobileTocOpen(!mobileTocOpen)}
-              className="w-full flex items-center justify-between text-xs font-mono uppercase tracking-wider text-[var(--vb-text)] font-semibold cursor-pointer"
+              className="w-full flex items-center justify-between text-xs font-sans uppercase tracking-wider text-[var(--vb-text)] font-semibold cursor-pointer"
             >
               <div className="flex items-center gap-2">
                 <List size={14} className="text-[#e62e05]" />
@@ -442,7 +474,7 @@ export default function BlogDetails() {
               />
             </button>
             {mobileTocOpen && (
-              <div className="mt-3 pt-3 border-t border-[var(--vb-border)] flex flex-col gap-1">
+              <div className="mt-3 pt-3 border-t border-[var(--vb-border)] flex flex-col gap-1 font-sans">
                 {blog.tableOfContents.map((item) => (
                   <a
                     key={item.id}
@@ -451,7 +483,7 @@ export default function BlogDetails() {
                       handleTocClick(e, item.id);
                       setMobileTocOpen(false);
                     }}
-                    className={`text-xs py-1.5 px-2.5 rounded-lg transition-colors ${
+                    className={`text-xs py-1.5 px-2.5 rounded-lg transition-colors font-sans ${
                       activeSectionId === item.id
                         ? 'bg-[#e62e05]/10 text-[#e62e05] font-semibold'
                         : 'text-[var(--vb-text-muted)]'
@@ -467,41 +499,21 @@ export default function BlogDetails() {
 
         {/* Full Article Content Card */}
         <section
-          className="vb-card p-6 md:p-10 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)]"
+          id="article-content"
+          className="vb-card p-6 md:p-10 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)] scroll-mt-20"
           aria-label="Article content"
         >
+          {/* Main Article Prose Content */}
           <div
             ref={contentRef}
-            className="vb-prose max-w-none text-sm md:text-base leading-relaxed font-sans space-y-4"
+            className="vb-prose max-w-none text-[15px] sm:text-base leading-relaxed font-sans space-y-4"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
         </section>
 
-        {/* Article Footer: Granular Tag Pills */}
-        {blog.tags && blog.tags.length > 0 && (
-          <section
-            className="vb-card p-6 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-wrap items-center gap-2"
-            aria-label="Article tags"
-          >
-            <span className="text-xs font-mono uppercase tracking-wider text-[var(--vb-text-muted)] flex items-center gap-1.5 mr-2">
-              <Tag size={13} className="text-[#e62e05]" />
-              <span>Topics:</span>
-            </span>
-            {blog.tags.map((tag) => (
-              <Link
-                key={tag}
-                to={`/blogs?tag=${encodeURIComponent(tag)}`}
-                className="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-[var(--vb-subpanel)] hover:bg-[#e62e05]/10 text-[var(--vb-text-muted)] hover:text-[#e62e05] border border-[var(--vb-border)] hover:border-[#e62e05]/30 transition-all"
-              >
-                #{tag}
-              </Link>
-            ))}
-          </section>
-        )}
-
-        {/* Article Footer: Author Credentials Card */}
+        {/* Article Bottom: Author Credentials Card */}
         <section
-          className="vb-card p-6 md:p-8 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-col sm:flex-row items-center sm:items-start gap-5"
+          className="vb-card p-6 md:p-8 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-col sm:flex-row items-center sm:items-start gap-5"
           aria-label="Author credentials"
         >
           <img
@@ -512,48 +524,59 @@ export default function BlogDetails() {
           <div className="flex-1 text-center sm:text-left">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
               <div>
-                <h3 className="text-base font-bold text-[var(--vb-text)]">
+                <h3 className="text-base font-bold font-sans text-[var(--vb-text)]">
                   {blog.author.name}
                 </h3>
-                <p className="text-xs text-[var(--vb-text-muted)] font-mono">
+                <p className="text-xs text-[var(--vb-text-muted)] font-sans">
                   {blog.author.role}
                 </p>
               </div>
               <Link
                 to="/about"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium bg-[var(--vb-subpanel)] hover:bg-[#e62e05] text-[var(--vb-text)] hover:text-white border border-[var(--vb-border)] hover:border-[#e62e05] transition-all"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-sans font-medium bg-[var(--vb-subpanel)] hover:bg-[#e62e05] text-[var(--vb-text)] hover:text-white border border-[var(--vb-border)] hover:border-[#e62e05] transition-all"
               >
                 <span>About Author</span>
                 <ArrowUpRight size={13} />
               </Link>
             </div>
             {blog.author.bio && (
-              <p className="text-xs sm:text-sm text-[var(--vb-text-muted)] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--vb-text-muted)] leading-relaxed font-sans">
                 {blog.author.bio}
               </p>
             )}
           </div>
         </section>
 
-        {/* Article Footer: Next Article Preview Card */}
+        {/* Back to all articles navigation bar */}
+        <div className="flex items-center justify-between px-2 py-1">
+          <Link
+            to="/blogs"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans font-medium text-[var(--vb-text-muted)] hover:text-[#e62e05] transition-colors group"
+          >
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+            <span>Back to all articles</span>
+          </Link>
+        </div>
+
+        {/* Next Article Preview Card */}
         {nextBlog && (
           <section
-            className="vb-card p-6 md:p-8 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+            className="vb-card p-6 md:p-8 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
             aria-label="Next article"
           >
             <div className="max-w-md">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#e62e05] mb-2 block font-semibold">
+              <span className="text-xs font-sans uppercase tracking-widest text-[#e62e05] mb-2 block font-semibold">
                 Next Insight &amp; Article
               </span>
-              <h3 className="text-xl md:text-2xl font-bold tracking-tight text-[var(--vb-text)] mb-2">
+              <h3 className="text-xl md:text-2xl font-bold font-sans tracking-tight text-[var(--vb-text)] mb-2">
                 {nextBlog.title}
               </h3>
-              <p className="text-sm text-[var(--vb-text-muted)] line-clamp-2 mb-4 leading-relaxed">
+              <p className="text-sm text-[var(--vb-text-muted)] font-sans line-clamp-2 mb-4 leading-relaxed">
                 {nextBlog.summary}
               </p>
               <Link
                 to={`/blogs/${nextBlog.slug}`}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--vb-text)] underline underline-offset-4 decoration-1 hover:text-[#e62e05] transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[var(--vb-text)] underline underline-offset-4 decoration-1 hover:text-[#e62e05] transition-colors"
               >
                 <span>Read Next Article</span>
                 <ArrowUpRight size={15} />
@@ -567,7 +590,7 @@ export default function BlogDetails() {
               aria-label={`Next article: ${nextBlog.title}`}
             >
               <div className="vb-next-tab">
-                <span className="font-semibold text-xs text-[var(--vb-text)] tracking-tight truncate max-w-[200px]">
+                <span className="font-semibold text-xs text-[var(--vb-text)] tracking-tight truncate max-w-[200px] font-sans">
                   {nextBlog.category}
                 </span>
                 <InvertedCornerTopRight className="vb-mobile-tab-corner-right" />
