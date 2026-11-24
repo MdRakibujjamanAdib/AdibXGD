@@ -311,7 +311,7 @@ export default function Blogs() {
               onClick={() => setFiltersOpen(true)}
               onKeyDown={(event) => { if (event.key === 'Escape') setFiltersOpen(false); }}
               placeholder="Search articles by title, topic, or keyword..."
-              className="w-full pl-10 pr-24 py-2.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-xs sm:text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] transition-all font-sans"
+              className="w-full pl-10 pr-24 py-2.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-base min-[810px]:text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] transition-all font-sans"
               aria-label="Search articles"
             />
             {searchQuery && (
