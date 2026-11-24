@@ -34,21 +34,8 @@ import {
   InvertedCornerTopRightBottom,
 } from './ui/VisbeyondIcons';
 
-const ids = ['Vray-Chess-Board', 'green-d-website', 'green-d-brand-identity', 'Low-Poly-Village'];
-const featuredProjects = ids.flatMap(id => {
-  const project = projects.find(item => item.id === id);
-  return project
-    ? [
-        {
-          ...project,
-          thumbnail:
-            id === 'green-d-brand-identity'
-              ? '/images/projects/green-d-branding-hero.jpg'
-              : project.thumbnail,
-        },
-      ]
-    : [];
-});
+// Dynamically feature projects that have `featured: true` in their individual project files
+const featuredProjects = projects.filter(p => Boolean(p.featured));
 
 interface HeroSlide {
   id: string;

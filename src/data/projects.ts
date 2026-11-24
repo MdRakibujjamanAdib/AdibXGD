@@ -1,4 +1,3 @@
-
 /// <reference types="vite/client" />
 export interface Project {
   id: string;
@@ -22,9 +21,10 @@ export interface Project {
   };
 }
 
-// Dynamically import all object files from the projects folder
+// Dynamically import all individual project files from the projects/ folder
 const projectModules = import.meta.glob('./projects/*.ts', { eager: true });
 
-export const projects: Project[] = Object.values(projectModules).map(
-  (module: any) => module.default as Project
-);
+export const projects: Project[] = Object.entries(projectModules)
+  .filter(([path]) => !path.includes('_template') && !path.endsWith('index.ts'))
+  .map(([_, module]: [string, any]) => module.default as Project)
+  .filter((p): p is Project => Boolean(p && p.id && p.title));

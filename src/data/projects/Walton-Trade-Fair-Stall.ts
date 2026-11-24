@@ -4,6 +4,7 @@ const project: Project = {
     id: "Walton-Trade-Fair-Stall",
     title: "Walton Trade Fair Stall Concept",
     category: "3D",
+    featured: false,
     role: "3D Designer & Visualizer",
     summary: "Concept stall design for Walton at Dhaka International Trade Fair, created in 3ds Max to showcase brand presence, product zones, and 5G promotion.",
     description: "<p style='text-align: justify;'>This project presents a conceptual exhibition stall designed for Walton at the Dhaka International Trade Fair. Modeled and visualized in Autodesk 3ds Max, the objective was to create a modern, brand-focused space that highlights product innovation while maintaining a clean and inviting layout.</p>\

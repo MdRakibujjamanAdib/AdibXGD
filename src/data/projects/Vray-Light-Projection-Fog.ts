@@ -4,6 +4,7 @@ const project: Project = {
     id: "Vray-Light-Projection-Fog",
     title: "V-Ray Light Projection & Fog",
     category: "3D",
+    featured: false,
     role: "Lighting & Rendering Artist",
     summary: "An atmospheric V-Ray study combining light projection and Environment Fog to create god rays, textured light beams, and depth-rich outdoor scenes.",
     description: "<p style='text-align: justify;'>This project explores advanced V-Ray lighting techniques in Autodesk Maya, focusing on light projection and atmospheric effects using VRayEnvironmentFog. The goal was to create cinematic god rays, texture-projected lighting, and moody outdoor depth while maintaining control over exposure and clarity.</p>\

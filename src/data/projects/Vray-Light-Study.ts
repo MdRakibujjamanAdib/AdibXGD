@@ -4,6 +4,7 @@ const project: Project = {
     id: "Vray-Lighting-Study",
     title: "V-Ray Lighting Study",
     category: "3D",
+    featured: false,
     role: "Lighting & Rendering Artist",
     summary: "A practical V-Ray lighting study exploring Sun, Rect, Mesh, and IES lights to simulate realistic daylight and artificial illumination in production-style scenes.",
     description: "<p style='text-align: justify;'>This project explores different V-Ray light types in Autodesk Maya, focusing on how each contributes to realistic daylight and artificial illumination. Using controlled scenes, I tested V-Ray Sun, Rect, Mesh, and IES lights to understand their behavior, strengths, and ideal use cases for production-ready renders.</p>\

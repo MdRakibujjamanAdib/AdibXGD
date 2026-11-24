@@ -40,11 +40,12 @@ export interface Blog {
   link: string;
 }
 
-// Dynamically import all object files from the blogs folder
+// Dynamically import all individual blog files from the blogs/ folder
 const blogModules = import.meta.glob('./blogs/*.ts', { eager: true });
 
-export const blogs: Blog[] = Object.values(blogModules)
-  .map((module: any) => {
+export const blogs: Blog[] = Object.entries(blogModules)
+  .filter(([path]) => !path.includes('_template') && !path.endsWith('index.ts'))
+  .map(([_, module]: [string, any]) => {
     const raw = (module.default || module) as Partial<Blog> & Record<string, any>;
     const slug = raw.slug || raw.id || '';
     const coverImage = raw.coverImage || raw.image || '';
@@ -76,4 +77,5 @@ export const blogs: Blog[] = Object.values(blogModules)
       link,
     } as Blog;
   })
+  .filter((b): b is Blog => Boolean(b && b.slug && b.title))
   .sort((a, b) => new Date(b.isoDate || b.date).getTime() - new Date(a.isoDate || a.date).getTime());

@@ -4,6 +4,7 @@ const project: Project = {
     id: "Low-Poly-Village",
     title: "Low Poly Cartoon Village",
     category: "3D",
+    featured: true,
     role: "3D Modeler & Environment Artist",
     summary: "A stylized low poly village environment created in Autodesk Maya, focusing on simplified geometry, color harmony, and cartoon-inspired world building.",
     description: "<p style='text-align: justify;'>This project is a stylized low poly village environment created in Autodesk Maya as an exploration of simplified modeling and cartoon-style world building. The goal was to focus on form, silhouette, and color rather than high-detail realism, resulting in a clean and playful environment.</p>\

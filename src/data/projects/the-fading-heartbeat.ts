@@ -18,7 +18,7 @@ const project: Project = {
         "Tangail Saree"
     ],
     date: "2022-11-10",
-    featured: true,
+    featured: false,
     seo: {
         keywords: [
             "Md Rakibujjaman Adib",

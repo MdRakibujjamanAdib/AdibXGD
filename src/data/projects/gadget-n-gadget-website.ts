@@ -45,7 +45,7 @@ const project: Project = {
         "Conversion Optimization"
     ],
     date: "2024-10-29",
-    featured: true,
+    featured: false,
     seo: {
         keywords: [
             "Md Rakibujjaman Adib",

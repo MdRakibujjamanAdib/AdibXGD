@@ -4,6 +4,7 @@ const project: Project = {
     id: "Vray-Depth-Of-Field",
     title: "V-Ray Depth of Field Study",
     category: "3D",
+    featured: false,
     role: "Lighting & Rendering Artist",
     summary: "A cinematic depth of field study using the V-Ray Physical Camera to control focus, blur intensity, and realistic lens behavior in 3D scenes.",
     description: "<p style='text-align: justify;'>This project explores the implementation of Depth of Field (DOF) using the V-Ray Physical Camera in Autodesk Maya. The objective was to replicate real-world camera behavior by controlling focus distance, F-Number, and lens settings to create realistic foreground and background blur.</p>\

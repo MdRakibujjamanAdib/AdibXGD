@@ -4,6 +4,7 @@ const project: Project = {
     id: "Vray-Chess-Board",
     title: "Cinematic Chess Render",
     category: "3D",
+    featured: true,
     role: "3D Modeler & Rendering Artist",
     summary: "A cinematic chess scene modeled and rendered in Autodesk Maya using V-Ray, focusing on material realism, depth of field, and dramatic lighting.",
     description: "<p style='text-align: justify;'>This project features a fully modeled chess board and chess pieces created in Autodesk Maya and rendered using V-Ray. The goal was to explore cinematic lighting, realistic materials, and storytelling composition within a minimal environment.</p>\

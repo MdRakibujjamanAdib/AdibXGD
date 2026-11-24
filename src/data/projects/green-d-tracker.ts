@@ -43,7 +43,7 @@ const project: Project = {
         "Dashboard Architecture"
     ],
     date: "2024-02-23",
-    featured: true,
+    featured: false,
     seo: {
         keywords: [
             "Md Rakibujjaman Adib",

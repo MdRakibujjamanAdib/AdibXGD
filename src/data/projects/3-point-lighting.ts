@@ -4,6 +4,7 @@ const project: Project = {
     id: "3-Point-Lighting",
     title: "3-Point Lighting Study",
     category: "3D",
+    featured: false,
     role: "3D Artist",
     summary: "Cinematic 3D watch render demonstrating a structured 3-point lighting setup for balanced shadows and professional product presentation.",
     description: "<p style='text-align: justify;'>This study applies the classic 3-point lighting technique to a detailed 3D watch model using Autodesk Maya and Chaos V-Ray.</p>\
