@@ -16,6 +16,7 @@ export interface SEOProps {
     type?: 'website' | 'article';
     image?: string;
     url?: string;
+    robots?: string;
     customKeywords?: string[];
     customMeta?: Array<{ name?: string; property?: string; content: string }>;
     article?: ArticleMetadata;
@@ -28,6 +29,7 @@ export default function SEO({
     type = "website",
     image = "https://adibx.me/MdRakibujamanAdib.jpg",
     url = "https://adibx.me",
+    robots = "index, follow",
     customKeywords = [],
     customMeta = [],
     article
@@ -47,7 +49,7 @@ export default function SEO({
     const cleanTitle = (title || '').replace(regex, '').trim();
 
     const siteTitle = cleanTitle === "Home" || cleanTitle === ""
-        ? `${name} | Web Developer & Brand Designer`
+        ? `${name} | Web Developer & Graphic Designer`
         : `${cleanTitle} | ${name}`;
 
     // Keywords
@@ -221,6 +223,17 @@ export default function SEO({
         });
     }
 
+    if (type === 'article') {
+        schemas.push({
+            '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+                { '@type': 'ListItem', position: 2, name: 'Blogs', item: `${baseUrl}/blogs` },
+                { '@type': 'ListItem', position: 3, name: cleanTitle, item: currentUrl }
+            ]
+        });
+    }
+
     // Synchronize JSON-LD script directly in DOM head to ensure availability across all React 19 / helmet lifecycle stages
     React.useEffect(() => {
         const id = 'seo-jsonld-schema';
@@ -250,7 +263,7 @@ export default function SEO({
             <title>{siteTitle}</title>
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
-            <meta name="robots" content="index, follow" />
+            <meta name="robots" content={robots} />
             <meta name="language" content="en" />
             <meta name="author" content={name} />
 
@@ -306,9 +319,9 @@ export default function SEO({
 
             {/* Structured JSON-LD */}
             <script
+                id="seo-jsonld-schema"
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-            />
+            >{JSON.stringify(schemas).replace(/</g, '\\u003c')}</script>
         </Helmet>
     );
 }

@@ -20,6 +20,12 @@ export interface Blog {
   title: string;
   subtitle?: string;
   summary: string;
+  description?: string;
+  wordCount?: number;
+  relatedPosts?: string[];
+  imageSource?: string;
+  imageCredit?: string;
+  imageLicense?: string;
   category: string;
   tags: string[];
   date: string;
@@ -28,6 +34,7 @@ export interface Blog {
   author: BlogAuthor;
   coverImage: string;
   coverImageAlt: string;
+  coverImageSmall?: string;
   content: string;
   tableOfContents?: BlogTocItem[];
   featured?: boolean;
@@ -61,7 +68,7 @@ export const blogs: Blog[] = Object.entries(blogModules)
       tags: raw.tags || (raw.seo?.keywords ? raw.seo.keywords : []),
       date: raw.date || '',
       isoDate: raw.isoDate || (raw.date && !isNaN(new Date(raw.date).getTime()) ? new Date(raw.date).toISOString() : ''),
-      readTime: raw.readTime || '5 min read',
+      readTime: `${Math.max(1, Math.ceil((raw.content || '').replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length / 200))} min read`,
       author: raw.author || {
         name: 'Md Rakibujjaman Adib',
         role: 'Erasmus+ Game Developer & AI Architect',

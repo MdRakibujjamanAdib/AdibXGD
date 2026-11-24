@@ -1,20 +1,48 @@
+# Search Engine Crawlers (Standard Search Indexing)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI Search & Retrieval Crawlers (Search Discovery & Citations)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# General Crawlers
 User-agent: *
 Allow: /
 
-# Specifically allow AI crawlers to index the site for AI search engines
+# AI Model Training Scrapers (Separated Policy)
 User-agent: GPTBot
-Allow: /
-User-agent: ChatGPT-User
-Allow: /
-User-agent: OAI-SearchBot
-Allow: /
-User-agent: Google-Extended
-Allow: /
-User-agent: PerplexityBot
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: Applebot-Extended
-Allow: /
+Disallow: /
 
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Sitemap Reference
 Sitemap: https://adibx.me/sitemap.xml

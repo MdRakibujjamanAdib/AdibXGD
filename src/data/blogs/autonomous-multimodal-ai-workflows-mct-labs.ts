@@ -18,8 +18,12 @@ const blog: Blog = {
     bio: "Founder & Lead Developer of MCT Labs, building autonomous AI generation and runtime execution systems. Champion at DIU AI Expo.",
     url: "https://adibx.me/about"
   },
-  coverImage: "/images/projects/mctlabs.png",
-  coverImageAlt: "MCT Labs creative AI platform interface",
+  coverImage: "/images/blog/autonomous-multimodal-ai-workflows-mct-labs-cover.webp",
+  coverImageAlt: "Abstract branching neural-network illustration",
+  coverImageSmall: "/images/blog/autonomous-multimodal-ai-workflows-mct-labs-cover-800.webp",
+  imageSource: "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-neural-networks-used-in-deep-learning-it-was-created-by-novoto-studio-as-part-of-the-visualising-ai-proje-17483871/",
+  imageCredit: "Novoto Studio / Google DeepMind / Pexels",
+  imageLicense: "Pexels License: https://www.pexels.com/license/",
   featured: true,
   tableOfContents: [
     { id: "the-evolution-of-creative-workflows", title: "The Evolution from Passive Prompting to Agentic Systems", level: 2 },

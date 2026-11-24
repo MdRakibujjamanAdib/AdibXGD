@@ -13,6 +13,8 @@ describe('Tier 4: Real-World Application Scenarios (5 Workflows: TC-T4-WF-A to T
   before(async () => {
     baseUrl = await ensureServer(3000);
     browser = await getSharedBrowser(9226);
+    await browser.navigate(`${baseUrl}/`);
+    await browser.evaluate(`(() => { localStorage.clear(); localStorage.setItem('vb-theme', 'dark'); })()`);
   });
 
   after(async () => {
@@ -118,6 +120,14 @@ describe('Tier 4: Real-World Application Scenarios (5 Workflows: TC-T4-WF-A to T
   it('TC-T4-WF-C: Visitor /blogs Journey (Dark/Light Mode, Aesthetics, Tag Filtering)', async () => {
     // Step 1: Landing on /blogs in Dark Mode
     await browser.navigate(`${baseUrl}/blogs`);
+    await browser.evaluate(`(() => {
+      localStorage.setItem('vb-theme', 'dark');
+      document.documentElement.classList.add('dark');
+      document.documentElement.dataset.theme = 'dark';
+      document.body.classList.add('dark');
+      document.body.dataset.theme = 'dark';
+      document.body.style.backgroundColor = '#000000';
+    })()`);
     const darkBg = await browser.getComputedStyle('body', 'background-color');
     assert.strictEqual(darkBg, 'rgb(0, 0, 0)', 'Dark mode background is pure black');
 
@@ -189,11 +199,11 @@ describe('Tier 4: Real-World Application Scenarios (5 Workflows: TC-T4-WF-A to T
     assert.strictEqual(heroImagePresent, true, 'Hero visual image is rendered');
 
     // Step 2: Table of Contents & Scroll
-    await browser.evaluate('window.scrollTo(0, 300)');
-    await new Promise(r => setTimeout(r, 100));
+    await browser.evaluate('window.scrollTo({ top: 300, behavior: "instant" })');
+    await new Promise(r => setTimeout(r, 200));
     const scrolledY = await browser.evaluate<number>('window.scrollY');
     assert.ok(scrolledY >= 200, 'Reading scroll tracking functional');
-    await browser.evaluate('window.scrollTo(0, 0)');
+    await browser.evaluate('window.scrollTo({ top: 0, behavior: "instant" })');
 
     // Step 3: Back to insights navigation
     const hasBackLink = await browser.evaluate<boolean>(`

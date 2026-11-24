@@ -17,6 +17,60 @@ export interface BrowserOptions {
   userDataDir?: string;
 }
 
+export interface NavigateOptions {
+  timeoutMs?: number;
+  waitForSelector?: string;
+  waitForHydration?: boolean;
+  waitForCssStability?: boolean;
+  settleMs?: number;
+}
+
+export interface EmulatedMediaFeature {
+  name: string;
+  value: string;
+}
+
+export interface EmulatedMediaOptions {
+  media?: string;
+  features?: EmulatedMediaFeature[];
+}
+
+export type KeyEventType = 'keyDown' | 'keyUp' | 'rawKeyDown' | 'char';
+
+export interface KeyEventOptions {
+  key?: string;
+  code?: string;
+  windowsVirtualKeyCode?: number;
+  nativeVirtualKeyCode?: number;
+  text?: string;
+  unmodifiedText?: string;
+  modifiers?: number;
+}
+
+export type NamedKey =
+  | 'Tab'
+  | 'ShiftTab'
+  | 'Escape'
+  | 'Enter'
+  | 'ArrowDown'
+  | 'ArrowUp'
+  | 'Space';
+
+export interface NetworkEntry {
+  requestId: string;
+  url: string;
+  method: string;
+  type: string;
+  status?: number;
+  statusText?: string;
+  headers?: Record<string, string>;
+  mimeType?: string;
+  encodedDataLength?: number;
+  failed?: boolean;
+  errorText?: string;
+  timestamp: number;
+}
+
 function getJson<T = any>(url: string): Promise<T> {
   return new Promise((resolve, reject) => {
     http.get(url, (res) => {
@@ -64,6 +118,10 @@ export class BrowserController {
   private ws: WebSocket | null = null;
   private id = 1;
   private callbacks = new Map<number, { resolve: (val: any) => void; reject: (err: any) => void }>();
+  private eventListeners = new Map<string, Set<(params: any) => void>>();
+  private networkEntries: NetworkEntry[] = [];
+  private networkIndex = new Map<string, NetworkEntry>();
+  private lastNavigationStartIdx = 0;
   private userDataDir: string;
   private port: number;
 
@@ -88,7 +146,9 @@ export class BrowserController {
       '--mute-audio',
       '--no-default-browser-check',
       '--window-size=1440,900',
-    ]);
+    ], {
+      stdio: 'ignore',
+    });
 
     // Wait for CDP endpoint to become available
     let connected = false;
@@ -122,11 +182,64 @@ export class BrowserController {
     }
 
     await this.connectWs(pageTarget.webSocketDebuggerUrl);
+    this.setupNetworkListeners();
 
     await this.send('Page.enable');
     await this.send('DOM.enable');
     await this.send('CSS.enable');
     await this.send('Runtime.enable');
+    await this.send('Network.enable');
+  }
+
+  private setupNetworkListeners(): void {
+    this.on('Network.requestWillBeSent', (params) => {
+      const entry: NetworkEntry = {
+        requestId: params.requestId,
+        url: params.request?.url || '',
+        method: params.request?.method || 'GET',
+        type: params.type || 'Other',
+        timestamp: Date.now(),
+      };
+      this.networkEntries.push(entry);
+      this.networkIndex.set(params.requestId, entry);
+    });
+
+    this.on('Network.responseReceived', (params) => {
+      let entry = this.networkIndex.get(params.requestId);
+      if (!entry) {
+        entry = {
+          requestId: params.requestId,
+          url: params.response?.url || '',
+          method: 'GET',
+          type: params.type || 'Other',
+          timestamp: Date.now(),
+        };
+        this.networkEntries.push(entry);
+        this.networkIndex.set(params.requestId, entry);
+      }
+      entry.status = params.response?.status;
+      entry.statusText = params.response?.statusText;
+      entry.headers = params.response?.headers;
+      entry.mimeType = params.response?.mimeType;
+      if (params.type) {
+        entry.type = params.type;
+      }
+    });
+
+    this.on('Network.loadingFinished', (params) => {
+      const entry = this.networkIndex.get(params.requestId);
+      if (entry) {
+        entry.encodedDataLength = params.encodedDataLength;
+      }
+    });
+
+    this.on('Network.loadingFailed', (params) => {
+      const entry = this.networkIndex.get(params.requestId);
+      if (entry) {
+        entry.failed = true;
+        entry.errorText = params.errorText;
+      }
+    });
   }
 
   private connectWs(wsUrl: string): Promise<void> {
@@ -157,11 +270,60 @@ export class BrowserController {
             } else {
               resolve(msg.result);
             }
+          } else if (msg.method) {
+            const handlers = this.eventListeners.get(msg.method);
+            if (handlers && handlers.size > 0) {
+              for (const handler of Array.from(handlers)) {
+                try {
+                  handler(msg.params);
+                } catch (handlerErr) {
+                  console.error(`Error in CDP event handler for ${msg.method}:`, handlerErr);
+                }
+              }
+            }
           }
         } catch (e) {
           console.error('Error handling CDP WebSocket message:', e);
         }
       };
+    });
+  }
+
+  public on(event: string, handler: (params: any) => void): () => void {
+    let handlers = this.eventListeners.get(event);
+    if (!handlers) {
+      handlers = new Set();
+      this.eventListeners.set(event, handlers);
+    }
+    handlers.add(handler);
+    return () => this.off(event, handler);
+  }
+
+  public off(event: string, handler: (params: any) => void): void {
+    const handlers = this.eventListeners.get(event);
+    if (handlers) {
+      handlers.delete(handler);
+    }
+  }
+
+  public once(event: string, timeoutMs = 15000): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      const off = this.on(event, (params) => {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timer);
+          off();
+          resolve(params);
+        }
+      });
+      const timer = setTimeout(() => {
+        if (!settled) {
+          settled = true;
+          off();
+          reject(new Error(`Timed out waiting for CDP event '${event}' after ${timeoutMs}ms`));
+        }
+      }, timeoutMs);
     });
   }
 
@@ -199,9 +361,99 @@ export class BrowserController {
     return res?.result?.value as T;
   }
 
-  public async navigate(url: string, waitMs = 1200): Promise<void> {
+  public async navigate(url: string, waitMsOrOptions?: number | NavigateOptions): Promise<void> {
+    const waitMs =
+      typeof waitMsOrOptions === 'number'
+        ? waitMsOrOptions
+        : (waitMsOrOptions?.settleMs ?? 1200);
+
+    this.lastNavigationStartIdx = this.networkEntries.length;
     await this.send('Page.navigate', { url });
-    await new Promise(r => setTimeout(r, waitMs));
+    await new Promise(r => setTimeout(r, Math.max(waitMs, 1000)));
+  }
+
+  public async waitForHydration(timeoutMs = 10000): Promise<boolean> {
+    const start = Date.now();
+    const hydrated = await this.waitForCondition(`
+      (() => {
+        const root = document.getElementById('root');
+        if (!root || root.children.length === 0) return false;
+        const text = (root.textContent || '').trim();
+        const hasSemanticDom = root.querySelectorAll('nav, section, article, header, footer, h1, h2, a, button, img').length > 0;
+        return text.length > 0 || hasSemanticDom;
+      })()
+    `, timeoutMs);
+
+    if (!hydrated) return false;
+
+    const remaining = Math.max(200, timeoutMs - (Date.now() - start));
+    try {
+      await Promise.race([
+        this.evaluate<void>('document.fonts ? document.fonts.ready.then(() => undefined) : Promise.resolve()'),
+        new Promise(r => setTimeout(r, Math.min(remaining, 1500))),
+      ]);
+    } catch {
+      // Ignore font readiness failures on blocked/offline resources
+    }
+
+    return true;
+  }
+
+  public async waitForCssStability(selector = '.vb-hero, main, body', timeoutMs = 3000): Promise<boolean> {
+    const start = Date.now();
+    let previousSnapshot: string | null = null;
+    let stableMatches = 0;
+
+    while (Date.now() - start < timeoutMs) {
+      try {
+        const snapshot = await this.evaluate<string | null>(`
+          (() => {
+            const el = document.querySelector(${JSON.stringify(selector)}) || document.body;
+            if (!el) return null;
+            const style = window.getComputedStyle(el);
+            const bodyStyle = window.getComputedStyle(document.body);
+            const rect = el.getBoundingClientRect();
+            const runningFinite = (document.getAnimations ? document.getAnimations() : []).filter(a => {
+              if (a.playState !== 'running') return false;
+              const timing = a.effect && a.effect.getComputedTiming ? a.effect.getComputedTiming() : null;
+              return timing && timing.iterations !== Infinity;
+            }).length;
+            if (runningFinite > 0) return 'animating:' + runningFinite;
+            return JSON.stringify({
+              bg: style.backgroundColor,
+              bodyBg: bodyStyle.backgroundColor,
+              color: style.color,
+              opacity: style.opacity,
+              transform: style.transform,
+              w: Math.round(rect.width),
+              h: Math.round(rect.height),
+              t: Math.round(rect.top),
+              l: Math.round(rect.left)
+            });
+          })()
+        `);
+
+        if (snapshot && !snapshot.startsWith('animating:')) {
+          if (snapshot === previousSnapshot) {
+            stableMatches++;
+            if (stableMatches >= 1) {
+              return true;
+            }
+          } else {
+            stableMatches = 0;
+            previousSnapshot = snapshot;
+          }
+        } else {
+          stableMatches = 0;
+          previousSnapshot = null;
+        }
+      } catch {
+        // Retry until timeout
+      }
+      await new Promise(r => setTimeout(r, 60));
+    }
+
+    return false;
   }
 
   public async setViewport(options: ViewportOptions): Promise<void> {
@@ -211,7 +463,151 @@ export class BrowserController {
       deviceScaleFactor: options.deviceScaleFactor ?? 1,
       mobile: options.mobile ?? (options.width < 1024),
     });
-    await new Promise(r => setTimeout(r, 150));
+    await this.evaluate<void>('new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))');
+  }
+
+  public async setEmulatedMedia(options: EmulatedMediaOptions): Promise<void> {
+    await this.send('Emulation.setEmulatedMedia', {
+      media: options.media ?? '',
+      features: options.features ?? [],
+    });
+    await this.evaluate<void>('new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))');
+  }
+
+  public async dispatchKeyEvent(type: KeyEventType, options: KeyEventOptions = {}): Promise<void> {
+    await this.send('Input.dispatchKeyEvent', {
+      type,
+      ...options,
+    });
+  }
+
+  public async pressKey(key: NamedKey): Promise<void> {
+    const keyMap: Record<NamedKey, { key: string; code: string; windowsVirtualKeyCode: number; text?: string; shift?: boolean }> = {
+      Tab: { key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 },
+      ShiftTab: { key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, shift: true },
+      Escape: { key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 },
+      Enter: { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r' },
+      ArrowDown: { key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 },
+      ArrowUp: { key: 'ArrowUp', code: 'ArrowUp', windowsVirtualKeyCode: 38 },
+      Space: { key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ' },
+    };
+
+    const spec = keyMap[key];
+    if (!spec) {
+      throw new Error(`Unsupported key in pressKey: ${key}`);
+    }
+
+    if (spec.shift) {
+      await this.dispatchKeyEvent('keyDown', {
+        key: 'Shift',
+        code: 'ShiftLeft',
+        windowsVirtualKeyCode: 16,
+        nativeVirtualKeyCode: 16,
+        modifiers: 8,
+      });
+      await this.dispatchKeyEvent('keyDown', {
+        key: spec.key,
+        code: spec.code,
+        windowsVirtualKeyCode: spec.windowsVirtualKeyCode,
+        nativeVirtualKeyCode: spec.windowsVirtualKeyCode,
+        modifiers: 8,
+      });
+      await this.dispatchKeyEvent('keyUp', {
+        key: spec.key,
+        code: spec.code,
+        windowsVirtualKeyCode: spec.windowsVirtualKeyCode,
+        nativeVirtualKeyCode: spec.windowsVirtualKeyCode,
+        modifiers: 8,
+      });
+      await this.dispatchKeyEvent('keyUp', {
+        key: 'Shift',
+        code: 'ShiftLeft',
+        windowsVirtualKeyCode: 16,
+        nativeVirtualKeyCode: 16,
+        modifiers: 0,
+      });
+    } else {
+      await this.dispatchKeyEvent('keyDown', {
+        key: spec.key,
+        code: spec.code,
+        windowsVirtualKeyCode: spec.windowsVirtualKeyCode,
+        nativeVirtualKeyCode: spec.windowsVirtualKeyCode,
+        ...(spec.text ? { text: spec.text, unmodifiedText: spec.text } : {}),
+      });
+      await this.dispatchKeyEvent('keyUp', {
+        key: spec.key,
+        code: spec.code,
+        windowsVirtualKeyCode: spec.windowsVirtualKeyCode,
+        nativeVirtualKeyCode: spec.windowsVirtualKeyCode,
+      });
+    }
+
+    await this.evaluate<void>('new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))');
+  }
+
+  public clearNetworkLog(): void {
+    this.networkEntries = [];
+    this.networkIndex.clear();
+    this.lastNavigationStartIdx = 0;
+  }
+
+  public getNetworkEntries(urlPattern?: string | RegExp): NetworkEntry[] {
+    if (!urlPattern) {
+      return [...this.networkEntries];
+    }
+    return this.networkEntries.filter(entry =>
+      typeof urlPattern === 'string'
+        ? entry.url.includes(urlPattern)
+        : urlPattern.test(entry.url)
+    );
+  }
+
+  public getLastNavigationEntries(): NetworkEntry[] {
+    return this.networkEntries.slice(this.lastNavigationStartIdx);
+  }
+
+  public getLastDocumentResponse(): NetworkEntry | undefined {
+    const entries = this.getLastNavigationEntries();
+    for (let i = entries.length - 1; i >= 0; i--) {
+      if (entries[i].type === 'Document' && typeof entries[i].status === 'number') {
+        return entries[i];
+      }
+    }
+    for (let i = this.networkEntries.length - 1; i >= 0; i--) {
+      if (this.networkEntries[i].type === 'Document' && typeof this.networkEntries[i].status === 'number') {
+        return this.networkEntries[i];
+      }
+    }
+    return undefined;
+  }
+
+  public getLastResponseStatus(): number | null {
+    const doc = this.getLastDocumentResponse();
+    return typeof doc?.status === 'number' ? doc.status : null;
+  }
+
+  public getResponseHeaders(urlPattern: string | RegExp): Record<string, string> | null {
+    const matches = this.getNetworkEntries(urlPattern);
+    for (let i = matches.length - 1; i >= 0; i--) {
+      if (matches[i].headers) {
+        return matches[i].headers!;
+      }
+    }
+    return null;
+  }
+
+  public getAssetSize(urlPattern: string | RegExp): number | null {
+    const matches = this.getNetworkEntries(urlPattern);
+    for (let i = matches.length - 1; i >= 0; i--) {
+      if (typeof matches[i].encodedDataLength === 'number') {
+        return matches[i].encodedDataLength!;
+      }
+    }
+    return null;
+  }
+
+  public async blockUrls(urls: string[]): Promise<void> {
+    await this.send('Network.setBlockedURLs', { urls });
   }
 
   public async getTitle(): Promise<string> {
@@ -332,9 +728,13 @@ export class BrowserController {
   public async waitForSelector(selector: string, timeoutMs = 5000): Promise<boolean> {
     const start = Date.now();
     while (Date.now() - start < timeoutMs) {
-      const found = await this.evaluate<boolean>(`!!document.querySelector(${JSON.stringify(selector)})`);
-      if (found) return true;
-      await new Promise(r => setTimeout(r, 100));
+      try {
+        const found = await this.evaluate<boolean>(`!!document.querySelector(${JSON.stringify(selector)})`);
+        if (found) return true;
+      } catch {
+        // Target may be transitioning; keep polling until timeout
+      }
+      await new Promise(r => setTimeout(r, 50));
     }
     return false;
   }
@@ -346,7 +746,7 @@ export class BrowserController {
         const result = await this.evaluate<boolean>(expression);
         if (result) return true;
       } catch {}
-      await new Promise(r => setTimeout(r, 100));
+      await new Promise(r => setTimeout(r, 50));
     }
     return false;
   }
@@ -358,6 +758,8 @@ export class BrowserController {
       } catch {}
       this.ws = null;
     }
+
+    this.eventListeners.clear();
 
     if (this.browserProc) {
       try {

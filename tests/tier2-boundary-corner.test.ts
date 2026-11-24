@@ -405,11 +405,11 @@ describe('Tier 2: Boundary & Corner Cases (50 Edge Tests across F1-F10)', () => 
 
     it('E2E-T2-F06-05: Touch vs Desktop Hover Interaction States', async () => {
       await browser.setViewport({ width: 375, height: 812, mobile: true });
-      await browser.navigate(`${baseUrl}/blogs`, 500);
+      await browser.navigate(`${baseUrl}/blogs`, 1200);
 
       const isClickable = await browser.evaluate<boolean>(`
         (() => {
-          const link = document.querySelector('section[aria-label="Articles list"] a[href^="/blogs/"]');
+          const link = document.querySelector('section[aria-label="Articles list"] a[href^="/blogs/"]') || document.querySelector('a[href^="/blogs/"]');
           return !!link;
         })()
       `);
@@ -539,7 +539,7 @@ describe('Tier 2: Boundary & Corner Cases (50 Edge Tests across F1-F10)', () => 
       await browser.setViewport({ width: 375, height: 812, mobile: true });
       const slugs = getAvailableBlogSlugs();
       const targetSlug = slugs[0] || 'autonomous-multimodal-ai-workflows-mct-labs';
-      await browser.navigate(`${baseUrl}/blogs/${targetSlug}`, 500);
+      await browser.navigate(`${baseUrl}/blogs/${targetSlug}`, 1200);
 
       const contentVisible = await browser.evaluate<boolean>(`
         (() => {

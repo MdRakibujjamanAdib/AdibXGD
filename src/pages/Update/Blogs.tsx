@@ -6,6 +6,7 @@ import {
   Calendar,
   Clock,
   Search,
+  SlidersHorizontal,
   X,
   BookOpen,
 } from 'lucide-react';
@@ -22,6 +23,7 @@ export default function Blogs() {
   // Filter & Search states
   const [selectedCategory, setSelectedCategory] = useState<string>(urlCategory || 'All');
   const [searchQuery, setSearchQuery] = useState<string>(urlQuery || '');
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   // Sync state if URL query params change externally
   useEffect(() => {
@@ -234,7 +236,7 @@ export default function Blogs() {
           */}
           <div className="relative w-full min-h-[37px] flex items-center justify-center min-[810px]:justify-start mb-2 sm:mb-4">
             <h2 className="text-sm min-[440px]:text-base sm:text-lg xl:text-2xl font-bold tracking-tight text-[var(--vb-text)] whitespace-nowrap text-center min-[810px]:text-left px-2 transition-colors duration-300">
-              Search by Category
+              Search articles
             </h2>
             {isFiltered && (
               <button
@@ -249,7 +251,7 @@ export default function Blogs() {
           </div>
 
           {/* Sleek Integrated Search Bar */}
-          <div className="relative mb-3.5">
+          <div className="relative">
             <Search
               size={15}
               className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--vb-text-muted)] pointer-events-none"
@@ -258,24 +260,39 @@ export default function Blogs() {
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
+              onFocus={() => setFiltersOpen(true)}
+              onClick={() => setFiltersOpen(true)}
+              onKeyDown={(event) => { if (event.key === 'Escape') setFiltersOpen(false); }}
               placeholder="Search articles by title, topic, or keyword..."
-              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-xs sm:text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] transition-all font-sans"
+              className="w-full pl-10 pr-24 py-2.5 rounded-xl bg-[var(--vb-subpanel)] border border-[var(--vb-border)] text-xs sm:text-sm text-[var(--vb-text)] placeholder:text-[var(--vb-text-muted)] focus:outline-none focus:border-[#e62e05] transition-all font-sans"
               aria-label="Search articles"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => handleSearchChange('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] cursor-pointer"
+                className="absolute right-12 top-1/2 -translate-y-1/2 p-1 text-[var(--vb-text-muted)] hover:text-[var(--vb-text)] cursor-pointer"
                 aria-label="Clear search"
               >
                 <X size={14} />
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => setFiltersOpen(value => !value)}
+              aria-label="Toggle category filters"
+              aria-expanded={filtersOpen}
+              aria-controls="blog-category-filters"
+              className={`absolute right-2 top-1/2 -translate-y-1/2 grid place-items-center w-8 h-8 rounded-lg border cursor-pointer transition-colors ${filtersOpen || selectedCategory !== 'All' ? 'text-[#e62e05] border-[#e62e05]/30 bg-[#e62e05]/5' : 'text-[var(--vb-text-muted)] border-transparent hover:bg-[var(--vb-panel)]'}`}
+            >
+              <SlidersHorizontal size={17} aria-hidden="true" />
+              {selectedCategory !== 'All' && <span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-[#e62e05]" />}
+            </button>
           </div>
 
           {/* Category Filter Pills (Exact dashed-border aesthetic, matching Services page) */}
-          <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center min-[810px]:justify-start" role="group" aria-label="Categories">
+          <div id="blog-category-filters" hidden={!filtersOpen}>
+          <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center min-[810px]:justify-start pt-3.5" role="group" aria-label="Categories">
             {categories.map((category) => {
               const isActive = selectedCategory === category;
               return (
@@ -295,6 +312,7 @@ export default function Blogs() {
                 </button>
               );
             })}
+          </div>
           </div>
         </section>
 

@@ -1920,7 +1920,11 @@ body.dark .vb-footer-back-to-top,
 }
 
 /* Interaction polish: consistent timing, keyboard parity, and quiet touch states. */
-body { transition: background-color .35s ease, color .35s ease; }
+body {
+  background-color: var(--vb-bg, #000000);
+  color: var(--vb-text, #ffffff);
+  transition: background-color .35s ease, color .35s ease;
+}
 .vb-media img { position: absolute; inset: 0; }
 .vb-profile-description, .vb-profile-heading p, .vb-footer-col-title,
 .vb-copyright, .vb-section-heading h2, .vb-faq summary, .vb-faq details p {

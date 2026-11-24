@@ -232,6 +232,8 @@ export default function BlogDetails() {
       <div className="relative w-full aspect-[16/9] min-h-[260px] max-h-[300px] xl:max-h-[340px] overflow-hidden bg-[var(--vb-subpanel)] shrink-0">
         <img
           src={blog.coverImage || blog.image}
+          srcSet={blog.coverImageSmall ? `${blog.coverImageSmall} 800w, ${blog.coverImage} 1600w` : undefined}
+          sizes="(min-width: 1200px) 50vw, 100vw"
           alt={blog.coverImageAlt || blog.title}
           className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
         />
@@ -289,7 +291,8 @@ export default function BlogDetails() {
     <>
       <SEO
         title={blog.title}
-        description={blog.summary}
+        url={`https://adibx.me/blogs/${blog.slug}`}
+        description={blog.description || blog.summary}
         image={blog.coverImage || blog.image}
         type="article"
         article={{
@@ -364,6 +367,8 @@ export default function BlogDetails() {
           <div className="aspect-[16/10] w-full rounded-lg overflow-hidden bg-[var(--vb-subpanel)]">
             <img
               src={blog.coverImage || blog.image}
+          srcSet={blog.coverImageSmall ? `${blog.coverImageSmall} 800w, ${blog.coverImage} 1600w` : undefined}
+          sizes="(min-width: 1200px) 50vw, 100vw"
               alt={blog.coverImageAlt || blog.title}
               className="w-full h-full object-cover"
             />

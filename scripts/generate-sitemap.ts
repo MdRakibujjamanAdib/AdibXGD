@@ -170,6 +170,10 @@ ${allEntries
     }
 
     fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap, 'utf8');
+    const distDir = path.resolve(__dirname, '../dist');
+    if (fs.existsSync(distDir)) {
+        fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap, 'utf8');
+    }
     console.log(`Sitemap successfully generated at public/sitemap.xml with ${allEntries.length} routes.`);
 };
 
