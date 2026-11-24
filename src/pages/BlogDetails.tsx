@@ -235,53 +235,6 @@ export default function BlogDetails() {
           alt={blog.coverImageAlt || blog.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-        <div className="absolute top-3 left-3">
-          <span className="px-2.5 py-1 rounded-md text-xs font-sans font-semibold bg-[#e62e05] text-white shadow-sm">
-            {blog.category}
-          </span>
-        </div>
-        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white/90 font-sans">
-          <span className="inline-flex items-center gap-1">
-            <Calendar size={12} className="text-[#e62e05]" />
-            {blog.date}
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <Clock size={12} />
-            {blog.readTime}
-          </span>
-        </div>
-      </div>
-
-      {/* Author Credentials Card */}
-      <div className="vb-card p-5 flex flex-col gap-3 rounded-xl border border-[var(--vb-border)] bg-[var(--vb-panel)] shrink-0">
-        <div className="flex items-center gap-3">
-          <img
-            src={blog.author.avatar || '/MdRakibujamanAdib.jpg'}
-            alt={blog.author.name}
-            className="w-12 h-12 rounded-full object-cover border-2 border-[var(--vb-border)] shrink-0"
-          />
-          <div className="min-w-0">
-            <h3 className="text-sm font-bold font-sans text-[var(--vb-text)] truncate">
-              {blog.author.name}
-            </h3>
-            <p className="text-xs text-[var(--vb-text-muted)] truncate font-sans">
-              {blog.author.role}
-            </p>
-          </div>
-        </div>
-        {blog.author.bio && (
-          <p className="text-xs text-[var(--vb-text-muted)] leading-relaxed line-clamp-3 font-sans">
-            {blog.author.bio}
-          </p>
-        )}
-        <Link
-          to="/about"
-          className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#e62e05] hover:underline pt-1"
-        >
-          <span>View profile &amp; credentials</span>
-          <ArrowUpRight size={13} />
-        </Link>
       </div>
 
       {/* Floating Table of Contents with Scroll Spy */}
@@ -353,28 +306,28 @@ export default function BlogDetails() {
         showcaseChildren={blogShowcase}
         hideShowcaseOnMobile={true}
       >
-        {/* Top Hero Card (matching Visbeyond reference: Date Pill, Title, Subtitle, Read Button) */}
+        {/* Top Hero Card (matching Visbeyond reference: Title, Date Pill, Subtitle, Read Button) */}
         <section
           className="vb-card pt-16 sm:pt-20 xl:pt-10 p-6 sm:p-8 md:p-10 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)]"
           aria-label="Article header"
         >
-          {/* Date pill with right arrow (May 24, 2026 → style) */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[var(--vb-subpanel)] text-xs sm:text-[13px] text-[var(--vb-text-muted)] font-sans font-medium mb-6 border border-[var(--vb-border)]/50 select-none">
-            <span>{blog.date}</span>
-            <span className="text-[var(--vb-text-muted)]">&rarr;</span>
-          </div>
-
           {/* Clean, bold Article Title */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--vb-text)] mb-4 leading-[1.15] font-sans">
             {blog.title}
           </h1>
+
+          {/* Date pill with right arrow placed UNDER the title */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[var(--vb-subpanel)] text-xs sm:text-[13px] text-[var(--vb-text-muted)] font-sans font-medium mb-6 border border-[var(--vb-border)]/50 select-none">
+            <span>{blog.date}</span>
+            <span className="text-[var(--vb-text-muted)]">&rarr;</span>
+          </div>
 
           {/* Clean Subtitle / Description */}
           <p className="text-base sm:text-lg text-[var(--vb-text-muted)] leading-relaxed font-sans mb-8 max-w-3xl">
             {blog.subtitle || blog.summary}
           </p>
 
-          {/* Action Row: Read Article CTA and Share */}
+          {/* Action Row: Read Article CTA and Share matching twin buttons */}
           <div className="flex items-center justify-between gap-4">
             <button
               type="button"
@@ -389,15 +342,15 @@ export default function BlogDetails() {
             <button
               type="button"
               onClick={handleShare}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-sans font-medium bg-[var(--vb-subpanel)] hover:bg-[var(--vb-card-inset)] text-[var(--vb-text)] border border-[var(--vb-border)] hover:border-[#e62e05]/40 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--vb-subpanel)] hover:bg-[var(--vb-card-inset)] text-[var(--vb-text)] font-sans font-semibold text-xs sm:text-sm border border-[var(--vb-border)] hover:border-[var(--vb-text)]/40 transition-all cursor-pointer shadow-sm select-none"
               aria-label="Share article"
             >
+              <span>{copied ? 'Link Copied!' : 'Share Article'}</span>
               {copied ? (
-                <Check size={13} className="text-green-500" />
+                <Check size={14} className="text-green-500" />
               ) : (
-                <Share2 size={13} className="text-[#e62e05]" />
+                <Share2 size={14} className="text-[var(--vb-text)]" />
               )}
-              <span>{copied ? 'Link Copied!' : 'Share'}</span>
             </button>
           </div>
         </section>
@@ -561,10 +514,10 @@ export default function BlogDetails() {
         {/* Next Article Preview Card */}
         {nextBlog && (
           <section
-            className="vb-card p-6 md:p-8 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+            className="vb-card p-6 md:p-8 rounded-[var(--vb-radius)] border border-[var(--vb-border)] bg-[var(--vb-panel)] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 overflow-hidden"
             aria-label="Next article"
           >
-            <div className="max-w-md">
+            <div className="flex-1 min-w-0 max-w-xl">
               <span className="text-xs font-sans uppercase tracking-widest text-[#e62e05] mb-2 block font-semibold">
                 Next Insight &amp; Article
               </span>
@@ -586,7 +539,7 @@ export default function BlogDetails() {
             {/* Next Article Preview Card with Top-Left Inverted Cutout Tab */}
             <Link
               to={`/blogs/${nextBlog.slug}`}
-              className="vb-next-preview-card group md:w-[320px] shrink-0"
+              className="vb-next-preview-card group w-full lg:w-[280px] xl:w-[320px] max-w-full shrink-0 overflow-hidden"
               aria-label={`Next article: ${nextBlog.title}`}
             >
               <div className="vb-next-tab">

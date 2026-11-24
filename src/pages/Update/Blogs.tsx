@@ -171,39 +171,12 @@ export default function Blogs() {
                 </div>
               )}
             </AnimatePresence>
-
-            {/* Bottom Showcase Information Overlay */}
-            {currentDisplayBlog && (
-              <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 pb-14 flex flex-col justify-end pointer-events-none">
-                <div className="flex flex-wrap items-center gap-2 mb-2.5">
-                  <span className="text-xs font-sans font-semibold text-[#e62e05] bg-black/75 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/10">
-                    {currentDisplayBlog.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-sans text-white/80 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/10">
-                    <Calendar size={11} className="text-[#e62e05]" />
-                    {currentDisplayBlog.date}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-sans text-white/80 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/10">
-                    <Clock size={11} />
-                    {currentDisplayBlog.readTime}
-                  </span>
-                </div>
-
-                <h3 className="text-xl md:text-2xl font-bold font-sans text-white tracking-tight leading-snug line-clamp-2 drop-shadow-md mb-2">
-                  {currentDisplayBlog.title}
-                </h3>
-
-                <p className="text-xs md:text-sm text-white/80 line-clamp-2 leading-relaxed max-w-lg drop-shadow font-sans">
-                  {currentDisplayBlog.summary}
-                </p>
-              </div>
-            )}
           </div>
         }
       >
-        {/* Modern Search & Category Filter Section */}
+        {/* Sticky Search & Category Filter Section (Always on top like Services page) */}
         <section
-          className="vb-card p-4 sm:p-6 bg-[var(--vb-panel)] border border-[var(--vb-border)] rounded-[var(--vb-radius)]"
+          className="sticky top-3 z-20 vb-card p-4 sm:p-5 bg-[var(--vb-panel)]/95 backdrop-blur-md border border-[var(--vb-border)] rounded-[var(--vb-radius)] shadow-lg transition-colors"
           aria-label="Filter blog articles"
         >
           {/* Sleek Search Bar */}
@@ -306,10 +279,8 @@ export default function Blogs() {
                   {/* Card Content Body */}
                   <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      {/* Clean Metadata: Category • Date • Read Time */}
+                      {/* Clean Metadata: Date • Read Time */}
                       <div className="flex items-center gap-2 text-xs font-sans text-[var(--vb-text-muted)] mb-2.5">
-                        <span className="font-semibold text-[#e62e05]">{blog.category}</span>
-                        <span>&bull;</span>
                         <span>{blog.date}</span>
                         <span>&bull;</span>
                         <span>{blog.readTime}</span>
@@ -328,14 +299,15 @@ export default function Blogs() {
                       </p>
                     </div>
 
-                    {/* Bottom Card Action Link */}
+                    {/* Bottom Card Action Link with Category */}
                     <div className="pt-3 border-t border-[var(--vb-border)]/50 flex items-center justify-between text-xs font-sans">
+                      <span className="font-semibold text-[#e62e05]">{blog.category}</span>
                       <Link
                         to={blog.link || `/blogs/${blog.slug}`}
-                        className="inline-flex items-center gap-1.5 font-medium text-[#e62e05] group-hover:translate-x-1 transition-transform"
+                        className="inline-flex items-center gap-1.5 font-medium text-[var(--vb-text)] hover:text-[#e62e05] group-hover:translate-x-1 transition-all"
                       >
                         <span>Read article</span>
-                        <ArrowUpRight size={13} />
+                        <ArrowUpRight size={13} className="text-[#e62e05]" />
                       </Link>
                     </div>
                   </div>
